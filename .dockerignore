@@ -1,0 +1,15 @@
+# Only explicitly named build inputs can leave the workspace.
+**
+!Dockerfile
+!.dockerignore
+!requirements.txt
+!run_agent.py
+!harness.py
+!planner.py
+!budget_manager.py
+!llm_gateway.py
+!llm_fallback.py
+!math_solver.py
+!search_solver.py
+!data_solver.py
+!coding_solver.py

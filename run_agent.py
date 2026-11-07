@@ -16,7 +16,12 @@ def main() -> int:
         "--trusted-code", action="store_true",
         help="execute coding tests only in explicitly trusted working copies; this is not a sandbox",
     )
-    parser.add_argument("--enable-llm", action="store_true", help="enable bounded LLM fallback")
+    llm_mode = parser.add_mutually_exclusive_group()
+    llm_mode.add_argument("--enable-llm", dest="llm", action="store_const", const=True,
+                          help="require explicit LLM configuration and enable bounded fallback")
+    llm_mode.add_argument("--disable-llm", dest="llm", action="store_const", const=False,
+                          help="disable all LLM calls, even with configured environment")
+    parser.set_defaults(llm=None)
     parser.add_argument("--llm-model", choices=sorted(MODELS), default=DEFAULT_MODEL)
     parser.add_argument("--llm-timeout", type=float, default=20)
     parser.add_argument("--llm-max-tokens", type=int, default=1024)
@@ -44,7 +49,9 @@ def main() -> int:
         parser.error(str(exc))
 
     gateway = None
-    if args.enable_llm:
+    configured = all(os.environ.get(name, "").strip() for name in ("BUDGET", "LLM_BASE_URL", "LLM_API_KEY"))
+    enable_llm = args.llm is True or (args.llm is None and configured)
+    if enable_llm:
         if budget is None:
             parser.error("--enable-llm requires an explicit BUDGET")
         if int(budget) > 0:

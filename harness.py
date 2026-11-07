@@ -201,6 +201,9 @@ def save_answer(directory: Path, answer: str) -> None:
             temporary = Path(output.name)
             output.write(answer + "\n")
             output.flush()
+            # A root container and the host grader can have different UIDs.
+            # NamedTemporaryFile defaults to 0600; publish a readable result.
+            os.fchmod(output.fileno(), 0o644)
             os.fsync(output.fileno())
         os.replace(temporary, directory / "answer.txt")
     finally:
