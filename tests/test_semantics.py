@@ -15,7 +15,7 @@ import httpx
 from budget_manager import BudgetManager
 from harness import run_tasks
 from llm_gateway import LLMGateway
-from test_llm import envelope, local_server
+from test_llm import FALLBACK_PREFIX, envelope, local_server
 
 
 FACTS = ("# Ada\nBorn: 1980\nMentor: Bea\nEmployer: Acme\n"
@@ -49,6 +49,8 @@ class SemanticTests(unittest.TestCase):
         self.root = Path(temporary.name)
 
     def check_case(self, kind, instruction, plan, answer=None, *, files=None, wire=False):
+        if kind == "math":
+            instruction = FALLBACK_PREFIX + instruction
         directory = self.root / str(len(list(self.root.iterdir())))
         task = directory / "task"
         task.mkdir(parents=True)

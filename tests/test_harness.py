@@ -68,7 +68,7 @@ class MathSolverTests(unittest.TestCase):
 
     def test_unknown_incomplete_or_invalid_instructions_are_rejected(self):
         cases = [
-            "What is 2 + 2?",
+            "What is 2 + unknown?",
             problem(100, "It ships 2 boxes per day for 3 days. It loses some boxes."),
             problem(100, "It receives an unknown number of boxes."),
             problem(100, "Then the stock is split equally into 0 warehouses and "

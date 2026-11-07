@@ -131,6 +131,18 @@ def equivalent_math_step(expected_op, expected_value, proposed_op, proposed_valu
     return expected_op in multipliers and proposed_op == "mul" and proposed_value == multipliers[expected_op]
 
 
+def format_math(value):
+    """Finite decimal when exact; otherwise an explicit reduced fraction.
+
+    This is an implementation convention: the rules do not define a general
+    non-integer answer format. Never silently round a rational result.
+    """
+    try:
+        return data_solver._format(value)
+    except data_solver.UnsupportedData:
+        return f"{value.numerator}/{value.denominator}"
+
+
 def calculate_math(value, steps):
     for op, operand, _ in steps:
         if op == "add":
@@ -151,7 +163,7 @@ def calculate_math(value, steps):
             value *= operand / 100
         if value.numerator.bit_length() > 2048 or value.denominator.bit_length() > 2048:
             raise UnsupportedMeaning("arithmetic limit exceeded")
-    return data_solver._format(value)
+    return format_math(value)
 
 
 RELATIONS = {"mentor": "mentor", "coach": "mentor", "advisor": "mentor", "adviser": "mentor",

@@ -271,6 +271,11 @@ def _prepare(task_type, instruction, task_dir=None) -> Prepared:
     ):
         raise InvalidPlan("scientific notation is unsupported")
     if task_type == "math":
+        # The local route has a deliberately narrower outer instruction grammar.
+        # The computation itself is verified by the same math_spec in both routes.
+        prefix = "Solve the following arithmetic: "
+        if problem.startswith(prefix):
+            problem = problem[len(prefix):]
         return _prepare_math(problem)
     if task_dir is None:
         raise InvalidPlan("missing task directory")

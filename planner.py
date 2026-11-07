@@ -60,7 +60,7 @@ def _features(task, trusted_code=False) -> Features:
     complexity = 1 + numbers // 3 + relations + conditions + len(text) // 1000
     native = False
     if task.task_type == "math":
-        native = math_solver._PROBLEM.fullmatch(text) is not None
+        native = math_solver.local_form(text)
     elif task.task_type == "search":
         parsed = search_solver._INSTRUCTION.fullmatch(text)
         native = parsed is not None and any(p.fullmatch(parsed["question"]) for p, _ in search_solver._QUESTIONS)

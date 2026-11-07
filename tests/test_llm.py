@@ -24,7 +24,8 @@ from llm_fallback import InvalidPlan, propose_coding
 from openjiuwen.core.workflow import WorkflowExecutionState, create_workflow_session
 
 
-MATH = "Start with 10 coins. Add 5 coins. Multiply by 3. What is the result?"
+FALLBACK_PREFIX = "Solve the following arithmetic: "
+MATH = FALLBACK_PREFIX + "Start with 10 coins. Add 5 coins. Multiply by 3. What is the result?"
 MATH_PLAN = {
     "initial": {"value": "10", "quote": "10 coins"},
     "steps": [
@@ -120,6 +121,10 @@ class LLMTests(unittest.TestCase):
         return gateway, requests, key
 
     def make_task(self, task_type="math", instruction=MATH, files=None):
+        # Keep these tests on the real fallback node as the free solver expands.
+        # Warehouse fixtures in test_local_successes still exercise the local route.
+        if task_type == "math" and not instruction.startswith((FALLBACK_PREFIX, "A warehouse starts with")):
+            instruction = FALLBACK_PREFIX + instruction
         task = self.root / f"task_{len(list(self.root.iterdir())):03d}"
         task.mkdir()
         data = {"task_type": task_type, "instruction": instruction, "reward": 3}
