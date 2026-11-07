@@ -11,6 +11,7 @@ from decimal import Decimal
 from pathlib import Path
 import shutil
 import re
+import stat
 import subprocess
 import tempfile
 
@@ -117,6 +118,23 @@ def main():
     assert not any(value.startswith(("LLM_API_KEY=", "LLM_BASE_URL=")) for value in image["Config"]["Env"])
     audit = json.loads(container(["-c", AUDIT]).stdout)
     dependencies = container(["-m", "pip", "check"]).stdout.strip()
+    # Verify the tested image contains this checkout's runtime, not an older
+    # successful build. Tests and the diagnostic remain read-only bind mounts.
+    inputs = [line[1:] for line in (ROOT / ".dockerignore").read_text().splitlines()
+              if line.startswith("!")]
+    expected_hashes = {name: hashlib.sha256((ROOT / name).read_bytes()).hexdigest() for name in inputs}
+    actual_hashes = json.loads(container(["-c",
+        "import hashlib,json; from pathlib import Path; "
+        "names=" + repr(inputs) + "; print(json.dumps({name:hashlib.sha256(Path('/app',name).read_bytes()).hexdigest() for name in names}))"
+    ]).stdout)
+    assert actual_hashes == expected_hashes, "image does not match current runtime sources"
+    isolation = json.loads(container(["-I", "-S", "-B", "/audit/probe.py"],
+        [(ROOT / "tests/coding_isolation_probe.py", "/audit/probe.py", True)]).stdout)
+    assert isolation["sandbox_confirmed"] is False
+    assert isolation["task_code_executed"] is False
+    for name, experiment in isolation.get("experiments", {}).items():
+        assert not experiment["timed_out"], (name, experiment)
+        assert experiment["returncode"] == (-9 if name == "cpu" else 0), (name, experiment)
 
     with tempfile.TemporaryDirectory(prefix="harness-docker-") as temporary:
         base = Path(temporary)
@@ -132,6 +150,7 @@ def main():
                 assert not path.exists()
             else:
                 assert path.read_text().strip() == answer
+                assert stat.S_IMODE(path.stat().st_mode) == 0o644
         assert "solved=6 skipped=2 failed=0" in standard.stdout
 
         # Explicit opt-in for supplied organizer examples only, never inferred
@@ -139,7 +158,9 @@ def main():
         trusted_run = container(["/app/run_agent.py", "--tasks-dir", "/data/tasks", "--trusted-code"],
                                 [(trusted, "/data/tasks", False)])
         for name, answer in ANSWERS.items():
-            assert (trusted / name / "answer.txt").read_text().strip() == answer
+            path = trusted / name / "answer.txt"
+            assert path.read_text().strip() == answer
+            assert stat.S_IMODE(path.stat().st_mode) == 0o644
         trusted_after = hashes(trusted)
         changed_sources = []
         for name in ("coding_0003", "coding_0007"):
@@ -164,7 +185,9 @@ def main():
         print(suite.stderr, end="")
 
     assert material_before == hashes(ROOT / "codex-local")
-    print(json.dumps({"image": args.image, "docker_images_size": size, "inspect_size_bytes": image["Size"], "audit": audit,
+    print(json.dumps({"image": args.image, "image_id": image["Id"], "matching_runtime_files": len(inputs),
+                      "docker_images_size": size, "inspect_size_bytes": image["Size"], "audit": audit,
+                      "isolation_research": isolation,
                       "dependencies": dependencies, "safe_examples": "6/8", "trusted_examples": "8/8",
                       "persisted_repairs": changed_sources, "malformed_task_exit": 1,
                       "missing_directory_exit": 2, "source_materials_unchanged": True}, indent=2))
