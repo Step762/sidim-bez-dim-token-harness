@@ -8,6 +8,7 @@ from pathlib import Path
 
 def main() -> int:
     from llm_gateway import DEFAULT_MODEL, MODELS
+    from planner import STRATEGIES
 
     parser = argparse.ArgumentParser(description="Run local task routes with optional trusted code repair.")
     parser.add_argument("--tasks-dir", required=True, type=Path)
@@ -19,6 +20,8 @@ def main() -> int:
     parser.add_argument("--llm-model", choices=sorted(MODELS), default=DEFAULT_MODEL)
     parser.add_argument("--llm-timeout", type=float, default=20)
     parser.add_argument("--llm-max-tokens", type=int, default=1024)
+    parser.add_argument("--strategy", choices=STRATEGIES, default="priority",
+                        help="task ordering: priority (default), original, reward")
     args = parser.parse_args()
     if not args.tasks_dir.is_dir():
         parser.error("--tasks-dir must name an existing directory")
@@ -53,10 +56,12 @@ def main() -> int:
             except LLMError as exc:
                 parser.error(str(exc))
 
+    report = {}
     counts = asyncio.run(run_tasks(
         args.tasks_dir, allow_trusted_code=args.trusted_code, llm=gateway,
         budget=int(budget) if budget is not None else None,
         manager=manager,
+        strategy=args.strategy, report=report,
     ))
     usage = gateway.summary() if gateway is not None else "llm_tokens_used=0"
     print(
@@ -66,6 +71,8 @@ def main() -> int:
         flush=True,
     )
     print(manager.summary(), flush=True)
+    print(f"planner_strategy={args.strategy} reward_solved={report['reward_solved']} "
+          f"unsuccessful_attempts={report['unsuccessful_attempts']}", flush=True)
     return 1 if counts["failed"] else 0
 
 

@@ -37,6 +37,7 @@ from llm_gateway import LLMError
 from llm_gateway import install_openjiuwen_budget_guard
 from budget_manager import BudgetManager
 from llm_fallback import InvalidPlan, solve_fallback
+from planner import Planner, local_outcome
 import csv
 
 
@@ -80,6 +81,8 @@ SOLVERS = {
 
 class SolveTask(WorkflowComponent):
     async def invoke(self, inputs, session, context):
+        if inputs.get("route") == "fallback":
+            return {"status": "skipped", "answer": "", "reason": inputs.get("local_reason") or "unsupported local formulation"}
         solver = SOLVERS.get(inputs["task_type"])
         if solver is None:
             return {"status": "skipped", "answer": "", "reason": "unsupported task type"}
@@ -110,19 +113,14 @@ class FallbackTask(WorkflowComponent):
         result = {key: inputs[key] for key in ("status", "answer", "reason")}
         if (
             result["status"] != "skipped" or self.gateway is None
+            or inputs.get("route") == "local"
             or type(self.budget) is not int or self.budget <= 0 or not self.gateway.available
         ):
             return result
         # A code proposal cannot become a solution without isolated verification.
         if inputs["task_type"] not in {"math", "search", "data_analysis"}:
             return result
-        if result["reason"] in {
-            "cannot split into zero warehouses", "requested column is absent from CSV",
-            "invalid or unsupported numeric value", "CSV row has the wrong number of fields",
-            "missing, empty or duplicate CSV headers", "aggregate is undefined for an empty selection",
-            "COUNT column contains missing values", "conflicting or ambiguous entity definitions",
-            "cannot read the complete knowledge base", "CSV cannot be read or contains invalid data",
-        } or result["reason"].startswith("missing or ambiguous "):
+        if local_outcome(result["reason"]) != "unsupported":
             return result
         task_dir = Path(inputs["task_dir"]) if inputs.get("task_dir") else None
         if task_dir is not None and (task_dir / "answer.txt").exists():
@@ -155,6 +153,7 @@ def build_workflow(*, llm=None, budget=None, manager=None) -> Workflow:
             "task_dir": "${task_dir}",
             "task_id": "${task_id}",
             "trusted_code": "${trusted_code}",
+            "route": "${route}", "local_reason": "${local_reason}",
         },
     )
     workflow.add_workflow_comp(
@@ -164,6 +163,7 @@ def build_workflow(*, llm=None, budget=None, manager=None) -> Workflow:
             "instruction": "${start.instruction}",
             "task_dir": "${start.task_dir}",
             "trusted_code": "${start.trusted_code}",
+            "route": "${start.route}", "local_reason": "${start.local_reason}",
         },
     )
     workflow.set_end_comp(
@@ -181,6 +181,7 @@ def build_workflow(*, llm=None, budget=None, manager=None) -> Workflow:
             "task_type": "${start.task_type}", "instruction": "${start.instruction}",
             "task_dir": "${start.task_dir}",
             "task_id": "${start.task_id}",
+            "route": "${start.route}",
         },
     )
     workflow.add_connection("start", "solve")
@@ -210,22 +211,34 @@ def save_answer(directory: Path, answer: str) -> None:
 async def run_tasks(
     tasks_dir: Path, *, allow_trusted_code: bool = False, llm=None, budget=None,
     manager=None,
+    strategy="priority", report=None,
 ) -> dict[str, int]:
-    """Run in directory order; one bad task must not prevent later answers."""
+    """Schedule local and fallback passes through the same openJiuwen workflow."""
     if not tasks_dir.is_dir():
         raise ValueError(f"tasks directory does not exist: {tasks_dir}")
     manager = manager if manager is not None else (llm.manager if llm is not None else BudgetManager(0))
     workflow = build_workflow(llm=llm, budget=budget, manager=manager)
-    counts = {"solved": 0, "skipped": 0, "failed": 0}
+    tasks = []
+    malformed = 0
     for path in sorted(tasks_dir.glob("*/task.json")):
         try:
-            task = load_task(path)
+            tasks.append(load_task(path))
+        except Exception as exc:
+            malformed += 1
+            print(f"{path.parent.name}: failed: {exc}", flush=True)
+    planner = Planner(tasks, manager, llm, strategy=strategy, trusted_code=allow_trusted_code,
+                      llm_enabled=budget is None or (type(budget) is int and budget > 0))
+    printed = set()
+    while (decision := planner.next()) is not None:
+        task = decision.entry.task
+        try:
             output = await workflow.invoke(
                 {
                     "task_type": task.task_type, "instruction": task.instruction,
                     "task_dir": str(task.directory),
                     "task_id": str(task.directory.resolve()),
                     "trusted_code": allow_trusted_code,
+                    "route": decision.phase, "local_reason": decision.entry.reason,
                 },
                 create_workflow_session(),
             )
@@ -237,10 +250,22 @@ async def run_tasks(
                 save_answer(task.directory, result["answer"])
             elif status != "skipped":
                 raise RuntimeError(f"unexpected solver status: {status}")
-            counts[status] += 1
-            detail = result["answer"] if status == "solved" else result["reason"]
-            print(f"{task.task_id}: {status}: {detail}", flush=True)
+            planner.finish(decision, status, result["reason"])
+            if status == "solved":
+                print(f"{task.task_id}: solved: {result['answer']}", flush=True)
+                printed.add(decision.entry.key)
         except Exception as exc:
-            counts["failed"] += 1
-            print(f"{path.parent.name}: failed: {exc}", flush=True)
-    return counts
+            if not decision.entry.terminal:
+                planner.finish(decision, "failed", str(exc))
+            print(f"{task.task_id}: failed: {exc}", flush=True)
+            printed.add(decision.entry.key)
+    for entry in planner.entries:
+        if entry.key not in printed:
+            print(f"{entry.task.task_id}: skipped [{entry.state}]: {entry.reason}", flush=True)
+    if report is not None:
+        report.update(planner.report())
+    return {
+        "solved": sum(entry.state == "solved" for entry in planner.entries),
+        "skipped": sum(entry.state not in {"solved", "failed"} for entry in planner.entries),
+        "failed": malformed + sum(entry.state == "failed" for entry in planner.entries),
+    }

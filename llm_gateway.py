@@ -255,13 +255,17 @@ class LLMGateway:
             raise LLMError("inconsistent usage total")
         return output
 
-    async def complete(self, system: str, payload: dict, *, task_id: str = "direct") -> Completion:
-        if not self.available:
-            raise LLMError("LLM is disabled or budget is zero")
+    def validate_generation_contract(self):
+        """Read-only check shared by scheduling and actual request admission."""
         if (not self.model.endswith("-noreason") or self.accounting.reasoning == "separate") and (
             not self.accounting.total_output_bound_confirmed or self.accounting.reasoning == "unknown"
         ):
             raise LLMError("reasoning model requires a verified total output bound and usage contract")
+
+    async def complete(self, system: str, payload: dict, *, task_id: str = "direct") -> Completion:
+        if not self.available:
+            raise LLMError("LLM is disabled or budget is zero")
+        self.validate_generation_contract()
         messages = self._messages(system, payload)
         request_id = uuid.uuid4().hex
         try:
