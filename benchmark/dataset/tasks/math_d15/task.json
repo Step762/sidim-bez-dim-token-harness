@@ -1,0 +1,6 @@
+{
+  "instruction": "Solve the following arithmetic: Start with 27 coins. Subtract 8 coins. Multiply by 4.",
+  "reward": 2,
+  "task_id": "math_d15",
+  "task_type": "math"
+}

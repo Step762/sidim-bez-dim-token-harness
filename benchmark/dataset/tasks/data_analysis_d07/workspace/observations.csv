@@ -1,0 +1,4 @@
+sku,period,units,region,price
+"pin, deluxe",1,7,east,2
+"pin, deluxe",2,-2,west,3
+pin,3,99,east,1

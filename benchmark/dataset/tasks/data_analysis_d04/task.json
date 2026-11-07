@@ -1,0 +1,6 @@
+{
+  "instruction": "The file observations.csv. What is the max of units where region = 'east'?",
+  "reward": 13,
+  "task_id": "data_analysis_d04",
+  "task_type": "data_analysis"
+}

@@ -1,0 +1,6 @@
+{
+  "instruction": "Starting at 10, multiply by 3 before adding 4. What is the result?",
+  "reward": 1,
+  "task_id": "math_d12",
+  "task_type": "math"
+}

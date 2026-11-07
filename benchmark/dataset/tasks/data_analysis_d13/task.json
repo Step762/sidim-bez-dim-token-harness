@@ -1,0 +1,6 @@
+{
+  "instruction": "In observations.csv, sort by units descending and sku ascending to break ties. Return the sku of the first row.",
+  "reward": 8,
+  "task_id": "data_analysis_d13",
+  "task_type": "data_analysis"
+}

@@ -1,0 +1,6 @@
+{
+  "instruction": "Solve the following arithmetic: Begin at 160 units. Increase by 5 percent. Subtract 9 units. Divide by 3.",
+  "reward": 0,
+  "task_id": "math_h15",
+  "task_type": "math"
+}

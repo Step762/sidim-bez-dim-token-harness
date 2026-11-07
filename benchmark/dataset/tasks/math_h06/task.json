@@ -1,0 +1,6 @@
+{
+  "instruction": "Split 42 marbles in the ratio 3:4. How many marbles are in the smaller share?",
+  "reward": 0,
+  "task_id": "math_h06",
+  "task_type": "math"
+}

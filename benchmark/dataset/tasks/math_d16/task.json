@@ -1,0 +1,6 @@
+{
+  "instruction": "Compute 6 / 2 (1 + 2); no precedence convention for implicit multiplication is provided.",
+  "reward": 1,
+  "task_id": "math_d16",
+  "task_type": "math"
+}

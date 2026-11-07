@@ -1,0 +1,245 @@
+{
+  "agent_seconds": 0.019674810000651632,
+  "agent_stderr": "",
+  "agent_stdout": "data_analysis_d13: skipped [unsupported]: fallback context cannot be established reliably\nsearch_d08: skipped [insufficient_evidence]: missing or ambiguous born fact\n",
+  "backend": "host",
+  "budget": 1000,
+  "budget_state": {
+    "available": "1000.0",
+    "frozen": false,
+    "limit": 1000,
+    "requests": [],
+    "reserved": "0.0",
+    "spent": "0.0",
+    "tasks": {},
+    "uncertain_calls": 0
+  },
+  "by_difficulty": {
+    "medium": {
+      "answer_precision": null,
+      "answerable": 2,
+      "correct": 0,
+      "false_negative_skips": 2,
+      "false_positive_fraction": null,
+      "justified_refusal_recall": null,
+      "justified_refusals": 0,
+      "llm_calls": 0,
+      "llm_reserved": 0.0,
+      "llm_spent": 0.0,
+      "paid_correct_reward_per_unit": null,
+      "possible_reward": 8,
+      "reward": 0,
+      "seconds": 0.009873513999991701,
+      "skip_fraction": 1.0,
+      "skipped": 2,
+      "total": 2,
+      "unanswerable": 0,
+      "unverified": 0,
+      "wrong": 0
+    }
+  },
+  "by_split": {
+    "development": {
+      "answer_precision": null,
+      "answerable": 2,
+      "correct": 0,
+      "false_negative_skips": 2,
+      "false_positive_fraction": null,
+      "justified_refusal_recall": null,
+      "justified_refusals": 0,
+      "llm_calls": 0,
+      "llm_reserved": 0.0,
+      "llm_spent": 0.0,
+      "paid_correct_reward_per_unit": null,
+      "possible_reward": 8,
+      "reward": 0,
+      "seconds": 0.009873513999991701,
+      "skip_fraction": 1.0,
+      "skipped": 2,
+      "total": 2,
+      "unanswerable": 0,
+      "unverified": 0,
+      "wrong": 0
+    }
+  },
+  "by_type": {
+    "data_analysis": {
+      "answer_precision": null,
+      "answerable": 1,
+      "correct": 0,
+      "false_negative_skips": 1,
+      "false_positive_fraction": null,
+      "justified_refusal_recall": null,
+      "justified_refusals": 0,
+      "llm_calls": 0,
+      "llm_reserved": 0.0,
+      "llm_spent": 0.0,
+      "paid_correct_reward_per_unit": null,
+      "possible_reward": 8,
+      "reward": 0,
+      "seconds": 0.003389387999959581,
+      "skip_fraction": 1.0,
+      "skipped": 1,
+      "total": 1,
+      "unanswerable": 0,
+      "unverified": 0,
+      "wrong": 0
+    },
+    "search": {
+      "answer_precision": null,
+      "answerable": 1,
+      "correct": 0,
+      "false_negative_skips": 1,
+      "false_positive_fraction": null,
+      "justified_refusal_recall": null,
+      "justified_refusals": 0,
+      "llm_calls": 0,
+      "llm_reserved": 0.0,
+      "llm_spent": 0.0,
+      "paid_correct_reward_per_unit": null,
+      "possible_reward": 0,
+      "reward": 0,
+      "seconds": 0.00648412600003212,
+      "skip_fraction": 1.0,
+      "skipped": 1,
+      "total": 1,
+      "unanswerable": 0,
+      "unverified": 0,
+      "wrong": 0
+    }
+  },
+  "changed_inputs": [],
+  "comparison_policy_version": "rational-canonical-json-v1",
+  "dataset_manifest_sha256": "2861a8eb1c07abb199d39066a5b65fea2920298dd252904e564846cecd537049",
+  "dataset_version": "diagnostic-128-v1",
+  "execution": "real agent, controlled local HTTP simulation",
+  "mock_requests": [],
+  "mock_sha256": "df056463d4249a94aaad6c0f20818b374a778af926cf1cec9e413de386d054ea",
+  "mode": "mock-good",
+  "order": [
+    [
+      "search_d08",
+      "local"
+    ],
+    [
+      "data_analysis_d13",
+      "local"
+    ]
+  ],
+  "reference_sha256": "082cf7c2e7557cdb28540891d2803ef3f194c0b0c4ad8697e6a442de2ab9f5ca",
+  "rows": [
+    {
+      "actual": null,
+      "answer": "pin",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "sorted-top-sku",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "unsupported analysis instructions",
+          "seconds": 0.003389387999959581,
+          "status": "skipped"
+        }
+      ],
+      "oracle": {
+        "method": "sqlite",
+        "query": "SELECT sku FROM observations ORDER BY units DESC,sku ASC LIMIT 1",
+        "shape": "scalar"
+      },
+      "outcome": "unsupported",
+      "policy": "exact",
+      "rationale": "sorted-top-sku",
+      "reward": 8,
+      "seconds": 0.003389387999959581,
+      "split": "development",
+      "status": "skipped",
+      "tags": [
+        "sorting"
+      ],
+      "task_id": "data_analysis_d13",
+      "task_type": "data_analysis"
+    },
+    {
+      "actual": null,
+      "answer": "1989",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "fact-in-prose",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "missing or ambiguous born fact",
+          "seconds": 0.00648412600003212,
+          "status": "skipped"
+        }
+      ],
+      "oracle": null,
+      "outcome": "insufficient_evidence",
+      "policy": "exact",
+      "rationale": "fact-in-prose",
+      "reward": 0,
+      "seconds": 0.00648412600003212,
+      "split": "development",
+      "status": "skipped",
+      "tags": [
+        "prose"
+      ],
+      "task_id": "search_d08",
+      "task_type": "search"
+    }
+  ],
+  "runtime_sha256": {
+    ".dockerignore": "0e096a456572ac8160ba05043dc4319b027e0e3b2cd42d18b004a582f889cca2",
+    "Dockerfile": "eff987a6a8cf4203ad887d582b3a491af5754206671d67be40827abc57f99a77",
+    "budget_manager.py": "8259d00cf23cb1c5f0bd2162784f0c91dc005cf570e99d9a4cfb30929abcbb4f",
+    "coding_solver.py": "e64d5913e831c72a2afd36e70512f290886d8fd7be577ed38d6a57ac3c30d9e7",
+    "data_solver.py": "c4be03febb1852211d8fd6329ea45a6f459cf596ca801d2d448590ced9cb9b0d",
+    "harness.py": "678339926da05c11dfeccb532158325842b9aea3822caf5c921a984acf4fec58",
+    "llm_fallback.py": "8d2ae2b53c057c117932393740a76d51312f0b4000749a4a40e650e7c710e354",
+    "llm_gateway.py": "d86450f235ed339dfc0766859b13a43b6f9a52d850a0fb7b06b8ff6a5d999331",
+    "math_solver.py": "5cff0d75ef690a58d53ce991f5c60898c005af7f5b699187bb5d55627d395c03",
+    "plan_semantics.py": "ed61b70aa4812dc259dbd81fce91c6ee160d5bd7a0186c9e04ea1487d3d9ee7c",
+    "planner.py": "a7503feccfca59b610b6473ea19e97e35c4f6c95eb116fc349e5eea848037c29",
+    "requirements.txt": "d8c2924d446449dfd156153333b01a3ae0ef3fd0da64acfe36eae937663a3da3",
+    "run_agent.py": "0b51035f9e3707b72c043fca5c63e460869b4df19e82b6fd8180ec05b3f878be",
+    "safe_files.py": "04aa6c98f6da2555b80ab298d0937ea32f39a0deea0710fa78e97d849d6c7cfb",
+    "search_solver.py": "1aa9987c50646a689d3f37c68b7111df51d57bd0fdaa9425d129dadd8cbf7cb6"
+  },
+  "split": "all",
+  "strategy": "priority",
+  "summary": {
+    "answer_precision": null,
+    "answerable": 2,
+    "correct": 0,
+    "false_negative_skips": 2,
+    "false_positive_fraction": null,
+    "justified_refusal_recall": null,
+    "justified_refusals": 0,
+    "llm_calls": 0,
+    "llm_reserved": 0.0,
+    "llm_spent": 0.0,
+    "paid_correct_reward_per_unit": null,
+    "possible_reward": 8,
+    "reward": 0,
+    "seconds": 0.009873513999991701,
+    "skip_fraction": 1.0,
+    "skipped": 2,
+    "total": 2,
+    "unanswerable": 0,
+    "unverified": 0,
+    "wrong": 0
+  },
+  "trusted_code": false,
+  "wall_seconds": 6.233668242000022
+}

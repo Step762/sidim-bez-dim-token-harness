@@ -1,0 +1,132 @@
+{
+  "4d1de2a661d8cd17bf43ca1ddda74f19ea4709595a00a51be7f0274c210d1b2a": {
+    "instruction": "What city is Vela Nox's mentor's company based in?",
+    "plan": {
+      "answer": "Porto",
+      "entity": "vela nox",
+      "field": "headquarters",
+      "relations": [
+        "mentor",
+        "employer"
+      ]
+    },
+    "task_id": "search_d15"
+  },
+  "5a7d9312e2821e71144bae9ed3397b65a1db3eb518e71aeaa065c0ad3d190b79": {
+    "instruction": "Where is Nola Frost's workplace located?",
+    "plan": {
+      "answer": "Faro",
+      "entity": "nola frost",
+      "field": "headquarters",
+      "relations": [
+        "employer"
+      ]
+    },
+    "task_id": "search_h15"
+  },
+  "9703bff064fe82b3ba170a60dc1eb8e8efd817e7781a2d2e9fabf9c1471a4ea6": {
+    "instruction": "Find the lowest units from observations.csv where period below 4.",
+    "plan": {
+      "column": "units",
+      "file": "observations.csv",
+      "filters": [
+        {
+          "column": "period",
+          "op": "<",
+          "quote": "period below 4",
+          "type": "number",
+          "value": "4"
+        }
+      ],
+      "operation": "min"
+    },
+    "task_id": "data_analysis_h15"
+  },
+  "9e3734721983f5ec1e1b79281917b086a1d3cd83770ab9d3c6fd8349904ba5fb": {
+    "instruction": "When was the employer of the mentor of Orin Moss established?",
+    "plan": {
+      "answer": "1996",
+      "entity": "orin moss",
+      "field": "founded",
+      "relations": [
+        "mentor",
+        "employer"
+      ]
+    },
+    "task_id": "search_h02"
+  },
+  "b2483733658067c7f1827fd52aa9fb26f780fee53bd41934d9ec6a65e05e53d7": {
+    "instruction": "Begin at 160 units. Increase by 5 percent. Subtract 9 units. Divide by 3.",
+    "plan": {
+      "initial": {
+        "quote": "160 units",
+        "value": "160"
+      },
+      "steps": [
+        {
+          "op": "increase_percent",
+          "quote": "Increase by 5 percent",
+          "value": "5"
+        },
+        {
+          "op": "sub",
+          "quote": "Subtract 9 units",
+          "value": "9"
+        },
+        {
+          "op": "div",
+          "quote": "Divide by 3",
+          "value": "3"
+        }
+      ]
+    },
+    "task_id": "math_h15"
+  },
+  "ebd26d3c43383b2dd27f9efe7ea9d01c88b8ccb80148ba20a40e71f4c9a00d39": {
+    "instruction": "Start with 27 coins. Subtract 8 coins. Multiply by 4.",
+    "plan": {
+      "initial": {
+        "quote": "27 coins",
+        "value": "27"
+      },
+      "steps": [
+        {
+          "op": "sub",
+          "quote": "Subtract 8 coins",
+          "value": "8"
+        },
+        {
+          "op": "mul",
+          "quote": "Multiply by 4",
+          "value": "4"
+        }
+      ]
+    },
+    "task_id": "math_d15"
+  },
+  "f9c76309dd3c1faa309a6aec1bed2d604c808e03790b2c587caf4acf4b6953e6": {
+    "instruction": "Calculate the total units in observations.csv where region is 'east' and period at least 2.",
+    "plan": {
+      "column": "units",
+      "file": "observations.csv",
+      "filters": [
+        {
+          "column": "region",
+          "op": "=",
+          "quote": "region is 'east'",
+          "type": "string",
+          "value": "east"
+        },
+        {
+          "column": "period",
+          "op": ">=",
+          "quote": "period at least 2",
+          "type": "number",
+          "value": "2"
+        }
+      ],
+      "operation": "sum"
+    },
+    "task_id": "data_analysis_d14"
+  }
+}

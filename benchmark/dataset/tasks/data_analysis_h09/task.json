@@ -1,0 +1,6 @@
+{
+  "instruction": "Group observations.csv by region, sum units, and return the region with the largest sum; break ties alphabetically.",
+  "reward": 1,
+  "task_id": "data_analysis_h09",
+  "task_type": "data_analysis"
+}

@@ -1,0 +1,444 @@
+{
+  "distribution": "artificial uniform diagnostic distribution",
+  "files": {
+    "tasks/coding_d01/task.json": "115b6aef51393ad3d7f58c223eed8b55901ccde38a2468f1746c6afd01c4287d",
+    "tasks/coding_d01/workspace/engine.py": "63224b771d6e10b6b4c90c47a5a12c29513a38d5c93ff64095e5fdb40f208005",
+    "tasks/coding_d01/workspace/test_engine.py": "a0980af81e1419bc6309653532ed857db2b34a041d2e8bebfa08d929dd9e7495",
+    "tasks/coding_d02/task.json": "30f74b62e2d6dcce8969daa77a80483a7e3a1ce46e2fb1d88237251294544453",
+    "tasks/coding_d02/workspace/engine.py": "9e311e88986331f9e4bb43111266dbd93e6d0500c2f6b07442824bf1f0b738cf",
+    "tasks/coding_d02/workspace/test_engine.py": "ad5418966c5b8783c51285fb3e49fcb6ed07c68209cf186ae869802e75c5cdaa",
+    "tasks/coding_d03/task.json": "5a8827932bea0e0454a5925718b0176e8ecf8cf9fbc04e5baa3d170e0dd4c073",
+    "tasks/coding_d03/workspace/engine.py": "0c34d141ff875cbb7c1e8c7824263534350a0315253e7d9c9f821e88f337dc57",
+    "tasks/coding_d03/workspace/test_engine.py": "f7cb53cf9baf6b1d468e9ba4e2ec8e8b6d8befb4d1dfffba944b803d1754a884",
+    "tasks/coding_d04/task.json": "cb709b14fabb41db8923d5c2c58bd97a606dbf25edc546cbd07aa0ee79216282",
+    "tasks/coding_d04/workspace/engine.py": "30700974533a5f2b5b7138c84df15f92e4f7bebd5225e950d0b32e62179315c8",
+    "tasks/coding_d04/workspace/test_engine.py": "d21be72ef51d74ac108775e9d0625215504787f4487aea1886ff6110118a2e5c",
+    "tasks/coding_d05/task.json": "d94fd67956698fa341159b427b566952d8e8817a6572eb2ec6a22c6f8ad6e6db",
+    "tasks/coding_d05/workspace/engine.py": "e0a0b0f7e8381886d0d972fead1f11e4b1558957d59ce9bdf911e0949fc5ef95",
+    "tasks/coding_d05/workspace/test_engine.py": "e090a692a699988cd2e93558fe0a35945d92d0caa40b9682cf7f030e73143781",
+    "tasks/coding_d06/task.json": "cc616402bdc12c6b9091a2f782d8cbe89aa5ef912b979a153b3e3845a3fc457d",
+    "tasks/coding_d06/workspace/engine.py": "56e14363a2daf84c406a5845fdf9ae09d3d4092e69ce594ceffe4af0e3db6e5a",
+    "tasks/coding_d06/workspace/test_engine.py": "b008098be937dd40f9c26410af2b75f675909730393018060833e0527c9161e0",
+    "tasks/coding_d07/task.json": "edcdc65ac12902c51d3e665c4e0e43a882467d70d4b19876906a15c6d5e5966c",
+    "tasks/coding_d07/workspace/engine.py": "e2b0afd56d161ca77de5877ac7ee8184b10b7a7bc007f0a88b391d29f119a91f",
+    "tasks/coding_d07/workspace/test_engine.py": "5de48796716803a0f3df55d63c2c9bc96b27eac21a3bdf1663406e46ce406991",
+    "tasks/coding_d08/task.json": "5a0f58966dd1f3c58ac494a6906f6a72e4e86f7af5387ea6b0b496facd4bd954",
+    "tasks/coding_d08/workspace/engine.py": "a37cb590fe0b1cc92dad8908be3721b283a6185ad066109b553cf8828afcf2c7",
+    "tasks/coding_d08/workspace/test_engine.py": "20c8b0da939ea8b87b55bdffed2c751b1ddd9d6410efd248d46b1124064759e1",
+    "tasks/coding_d09/task.json": "cb9fe79db44be34d0fbb0a5a972f0a106bd3866f76b51323231cf7b0be10d88b",
+    "tasks/coding_d09/workspace/engine.py": "28d841867ef92d4b980606f5668724e3341dc9196e76dc4a6d918cc1d65c7761",
+    "tasks/coding_d09/workspace/test_engine.py": "54a8870980f0b5cd676e4a842814df2c27e3d88dd5a23f61463326381848a856",
+    "tasks/coding_d10/task.json": "035adeab1d3a64cce23540b7fbd8376477c2a928ad11a46c5b71ec58b2b894f0",
+    "tasks/coding_d10/workspace/engine.py": "bc2454bb9247943139cd18a439eef3962d626741e978e0db94cb51e734bf7ce3",
+    "tasks/coding_d10/workspace/test_engine.py": "505a88b211153be343b7bbf3f9b6cb15cee6954eab6425f3c65f1d3a803cf9c9",
+    "tasks/coding_d11/task.json": "a0db2a6e364e376372961e92eb2642ef4e9bffbe079d33d6992976c74c673d02",
+    "tasks/coding_d11/workspace/engine.py": "30d60550c7340526b37a59f7aa01ac9487253c61507b48ff1b74d29625d1ce88",
+    "tasks/coding_d11/workspace/test_engine.py": "327f9b8c44ceaad1d9813b608c1cb1ef92e5ce66d553f282aca19eb4a6585cbe",
+    "tasks/coding_d12/task.json": "ed7f73bb2cd6e66a424e75e761fe366ae0e949408993760b5dcb33f6e2e442b8",
+    "tasks/coding_d12/workspace/engine.py": "f2ecaf26e0497706eeab92302f32de79a4efad182c38639dba34e2b0fc521210",
+    "tasks/coding_d12/workspace/test_engine.py": "b04c1a3c00ba891ff5d0dff9111deb8b90946031b0acbb2d7cfb12a65e83c391",
+    "tasks/coding_d13/task.json": "a06c801e191cdd1617e7429d92cb3c8d892c851f0b0de5cb3b1e31b356e89d5e",
+    "tasks/coding_d13/workspace/engine.py": "bcde0b1b1223d2015adf62ea401ee048268b82063ff3b6c5d9f48e454769a0b2",
+    "tasks/coding_d13/workspace/test_engine.py": "bd60f049c4d35713c912276ee005d8767d40d1028019c31ebfc0bb3c7c6c7011",
+    "tasks/coding_d14/task.json": "a48251b4a1cf6c551176b57c1ccd1e2d04ce73302053321a2b026db47caa8fd9",
+    "tasks/coding_d14/workspace/engine.py": "d6aba9f9e330777315d6c25e93b3017dc447373ffcf7331c0ea75430a5c7c14c",
+    "tasks/coding_d14/workspace/test_engine.py": "540015e0795b606fd03f13f94426f4c5baae8108791b08677f32ce55b48582ba",
+    "tasks/coding_d15/task.json": "89914a02335720add0a1f6ccce5b500481481b004a80c2de35b88e96d0574d7c",
+    "tasks/coding_d15/workspace/test_engine.py": "79c6a71319d7e97955b7a826c3aa2a150496e43bbe0704e3c5435977f6b1e11e",
+    "tasks/coding_d16/task.json": "1694d60186f1db00da312b4adf02fa7ba8f906a2f3947019b8fa1f74150b3aa1",
+    "tasks/coding_d16/workspace/engine.py": "3fa0cd6aaed33eb63cd428790dc5f549ec8727d48047322662bff2cdd102a640",
+    "tasks/coding_h01/task.json": "1df5a55db2f1ffde44799947cea23125abc68caa0fa201dfa132793430204828",
+    "tasks/coding_h01/workspace/engine.py": "17b0c23de6de72ebc4164db654cb166862a641c381884f009740de2a810317b7",
+    "tasks/coding_h01/workspace/test_engine.py": "871772971d72e557faff0c048141e191b58075f1afaa85f070e832f2eddd6efc",
+    "tasks/coding_h02/task.json": "011df7454ab25a4eb8637ebca32ae7bb8de2b2c7791c8e8116f495bd4639eb5e",
+    "tasks/coding_h02/workspace/engine.py": "467cdd68dbc22a0d971488b1aa49c7222a32fcfab47d684c9be0f6b20042bdde",
+    "tasks/coding_h02/workspace/test_engine.py": "88c8c3b5d38c953c2389a96df936a0fe01c9037537e8ee70283224326bb36baa",
+    "tasks/coding_h03/task.json": "9b11c316228b387791b8f4b6d96736d12deecb1cf785df46eed8697336588e21",
+    "tasks/coding_h03/workspace/engine.py": "c478cae622dda689fccb4e8a885c8112be8d6f310c00f8c1a6724188ad01323c",
+    "tasks/coding_h03/workspace/test_engine.py": "2c34ac42a11cd3f4a66866436872ed3ee1c473647e225095c51c26854d69ca9a",
+    "tasks/coding_h04/task.json": "0dfb9c3c99138fd846f7f5783dafbb0a9c9374da92978085b7c86f75f566ae06",
+    "tasks/coding_h04/workspace/engine.py": "c4fed3a5b050c57dcd9fbca131c46c392a22034d81f06b0d7b2a09b110320c11",
+    "tasks/coding_h04/workspace/test_engine.py": "bc6e8d159b1ed769be09bac6bceffa9e4bafa56a28e8736289c52669df036c10",
+    "tasks/coding_h05/task.json": "d2e1e4a62dc76f5b8295c17f0d22434f537d1afe5f1f4a3715ab02042477eecf",
+    "tasks/coding_h05/workspace/engine.py": "dbe1767fac3ac59962ca967e0ac27ad9e42c514c0843c3c17e2820764a30e643",
+    "tasks/coding_h05/workspace/test_engine.py": "0f4ad9d14b92cee1dc601ac993d4e2980e5d85ca5a679a126766b5ff510acf43",
+    "tasks/coding_h06/task.json": "798af5a45004ac4f6f9cec918c5475a1fad71d9527c706ec9b44dc7c0d814126",
+    "tasks/coding_h06/workspace/engine.py": "e98aa008002e128ee43d126bb8a37f0cc3b6deb43da0f4891fdc6993d82168b9",
+    "tasks/coding_h06/workspace/test_engine.py": "956f18614916833c4606df6adb0ced4ac9cecc00232186fc4816d1783fc0b784",
+    "tasks/coding_h07/task.json": "83f7eb346bc0b1e30e6ee7eb04ca7187ed2b64f9df842fd7473eb9c507014931",
+    "tasks/coding_h07/workspace/engine.py": "61e7ed5c4e2e059b5b93484760e34edfefdd3217f3f0baa4ce2cef5c7a22665b",
+    "tasks/coding_h07/workspace/test_engine.py": "49804f8b76a2a9b6912d0d4d2f9d53d33e631ea67422122b08f9c11f6cb9ff63",
+    "tasks/coding_h08/task.json": "24c7b6597ac2420c040bd485ae3c302ff2a5c5d5840e109a6e332ef00ee1b218",
+    "tasks/coding_h08/workspace/engine.py": "3da7b0bde82a998f342da9d1076cb5698ccf39ef52cf41acba6862d3f7456e8b",
+    "tasks/coding_h08/workspace/test_engine.py": "8e86ef4f703d27cee4129b839cff51759c3d71d8605e1d4ee872ef18560221c0",
+    "tasks/coding_h09/task.json": "0640e3f49cbf68d2143d2d1a823d66383c0250172ed49dda021ff9574e43670b",
+    "tasks/coding_h09/workspace/engine.py": "c10f77d686a68be38d6105bf6b06a7a44936c881c9cc6ea8d21044f0306ff429",
+    "tasks/coding_h09/workspace/test_engine.py": "99ae4d089ab9e04d1919bd2fb7c853c9eb053ddef85278512d874fde4f83afae",
+    "tasks/coding_h10/task.json": "d534b839e34697b5e0326c34eb4b482df72a7809ec3e5c8d41728ab7be1cf229",
+    "tasks/coding_h10/workspace/engine.py": "8c153c092bee3c4bedca6a33a4c96c9a71bc12ee87847927605e7096b1a96d2c",
+    "tasks/coding_h10/workspace/test_engine.py": "0e2b9109d6cdc875f95208d38e32d3e2f8d1c50441c0012ed572cddc98ab0dac",
+    "tasks/coding_h11/task.json": "7739bbb1301e02f4e59694b536d7915b25ab4af8be2ddc25ca6489d8ad249145",
+    "tasks/coding_h11/workspace/engine.py": "41a7dc5bb2696cf6758e0bff3be215c279dcf1302069c324c8966c958c02dcbc",
+    "tasks/coding_h11/workspace/test_engine.py": "8e2f3de584450c9d417e1ae32f0aa8a69dce044b5969b8faa0b7cdb8129f4ceb",
+    "tasks/coding_h12/task.json": "77fd23477cda8600ce69ff46b09827a2e66727bb267f33e4eac31d9ad5e4a2ef",
+    "tasks/coding_h12/workspace/engine.py": "9f0818766a4751fb80e862fdbdf4f43028a2571e694d44269e3e038454a75006",
+    "tasks/coding_h12/workspace/test_engine.py": "73797b19dee20a3b120f5e9b9120b2268ada889d7cae3aa0352ba2f1f9aaa1ca",
+    "tasks/coding_h13/task.json": "c36ae15a363f5b7758335c3126ff9d15204c232bc3d0c83d93bd72e49512d904",
+    "tasks/coding_h13/workspace/engine.py": "da7d6710efa298c21352ded0a964e25b9de43e488b2d2b6d979d0b1c4d682c1e",
+    "tasks/coding_h13/workspace/test_engine.py": "c3a053eb4695bdacb89a9d72f2b486f211ad29465c78cee83d07138619859f51",
+    "tasks/coding_h14/task.json": "666f106971f9ffe7c3ccd74811257fd5a2a4d37baf2150c627483fc41f35150b",
+    "tasks/coding_h14/workspace/engine.py": "b31306ceb26d375889c47f779c7fef41bd80ed174a55ea2fac8d62a8e26e3f18",
+    "tasks/coding_h14/workspace/test_engine.py": "4bc43fd6d0f3b7ef761c67182debc08668bde83d6d6941b6a10bf605a7f4a904",
+    "tasks/coding_h15/task.json": "ff5aed4408e4e05cc396498f000cd3d4f5ed0d104d7853a17fca4471eea89d61",
+    "tasks/coding_h15/workspace/engine.py": "5c011d46b485acebaeb6920ed2861d5f9644adc9b931d3557f04613bf25e8dc6",
+    "tasks/coding_h15/workspace/test_engine.py": "c3d2f8e9f57cad6ba71ac2453327f8454c09df65fbac57e3168aef1ff29d424c",
+    "tasks/coding_h16/task.json": "0813e59aa23819e08c96e78bafdb5d2a6b0dc2fae353b55256f3246457748060",
+    "tasks/coding_h16/workspace/engine.py": "54cd5e9e1b2207cbf51bce5db2f6df5916db557b70efa637ddb721f6e607f8b7",
+    "tasks/coding_h16/workspace/test_engine.py": "f5e7dfe5c0a9271c5767677ea5b54be290b0c6b1ce7964c2b2e5a12296473216",
+    "tasks/data_analysis_d01/task.json": "48f5235f240b7231e1d04a98a74090abbec02e07f30d08395d6cb5747194a73c",
+    "tasks/data_analysis_d01/workspace/observations.csv": "c9bf5d015dae55a954bdd783b326c91f0fb1f553e543c2904ec6212391b40320",
+    "tasks/data_analysis_d02/task.json": "51554d4d6da9e35c5f6aa985c8fe4f4217b2665c8fde4b794493be1e0ec29645",
+    "tasks/data_analysis_d02/workspace/observations.csv": "aaef818868962021da3663ff4460e6c5d5da500a752f4026199c1e19e089cc48",
+    "tasks/data_analysis_d03/task.json": "e51cbeb6d4739d6d720e12cb0e898b13b37d27bb91ef28aa4f896f4678fb4b12",
+    "tasks/data_analysis_d03/workspace/observations.csv": "71ef8af910aaa1ec6b95f544ea8c1154c70356174eae9313e319c577df6047b0",
+    "tasks/data_analysis_d04/task.json": "6bc3569a5f7f5740ac7898386875ffeeef928b6f93bb0d46572b645027090db4",
+    "tasks/data_analysis_d04/workspace/observations.csv": "1c22981d089c5df16d2334da0df80dc7587003e554bbe4f01cd6f4e7db279fdc",
+    "tasks/data_analysis_d05/task.json": "a444a9078bfa215e384b3dbd31d4c4b20dd787858dfd81d88a1c267f9d797503",
+    "tasks/data_analysis_d05/workspace/observations.csv": "25796e3cc0eda3d5a842d1777de4246a9c97836ff123d2773866b72fd565f745",
+    "tasks/data_analysis_d06/task.json": "f44e4a467f93c0e30a4d84ea041d911f3099aea705e299134b7faf27d920c27a",
+    "tasks/data_analysis_d06/workspace/observations.csv": "4a73d400fa22ce8188cafd3f5d6ee0bfdea99b30d6b774de5ea4b20530375c11",
+    "tasks/data_analysis_d07/task.json": "8d50fc6f3aaf3b88f699ad13815109996e953937ff8372ec5f71fe178e3c1c1e",
+    "tasks/data_analysis_d07/workspace/observations.csv": "383d576529102794bdfcd64394ee1193cfc4ce7d076e13331cebc5d3858adfc4",
+    "tasks/data_analysis_d08/task.json": "a01699e21bf26bca74e3f3af98738b2a11045628d9c3f8479ac69fe7e6aa5293",
+    "tasks/data_analysis_d08/workspace/observations.csv": "3ca739343cee769760b6fa86197b74c8dd5a802d06d8de6cf7a0fd767d0ddee4",
+    "tasks/data_analysis_d09/task.json": "22d8cb5a4de59c52d7734d5f79cc0683e39eb00addc8f77b599152ac44303668",
+    "tasks/data_analysis_d09/workspace/observations.csv": "6d7fcc3b16e3233fe1cc318f93041e6d7d06ae112da3590dda4dcec3b5d2f176",
+    "tasks/data_analysis_d10/task.json": "c1efd82748a55c390331e1cf3947e3ec1035f07580020813da3e287278429b8e",
+    "tasks/data_analysis_d10/workspace/observations.csv": "b356fcb6ef1537d1e6886b3d783b320a4b7fec2f7030c835a1d1dc02a867bf0b",
+    "tasks/data_analysis_d11/task.json": "67cf6d66e0abd79be8878cd26f9e8b54303af87a52c17b62eb303e316572ea28",
+    "tasks/data_analysis_d11/workspace/observations.csv": "62c0833d970b47e35ee644553434cd399f657ba31036bcd5f54d81312c3ca7b9",
+    "tasks/data_analysis_d12/task.json": "c10837581282ca53ec4dfca197eedddbdad35eb94cde09a70738f4927c847b12",
+    "tasks/data_analysis_d12/workspace/observations.csv": "e01ff43e067738f5ef29b16e1c106ca926ec4f3d64251006ea6000552ac5899c",
+    "tasks/data_analysis_d13/task.json": "f2fd95fd512c0b2156b3d86d83115fcdf58f403b18721bd6986a4a24c255eebc",
+    "tasks/data_analysis_d13/workspace/observations.csv": "77f34876edf25f37d26e1d718bedaf02dd31d363fb7aa8467329332f582a0898",
+    "tasks/data_analysis_d14/task.json": "ab362c9845ecd7429de378e3b8df14aa6299e0d5cdaf33f05ee45b9f3fdc9913",
+    "tasks/data_analysis_d14/workspace/observations.csv": "14b2f1c3de52449c8cf137e4d759fa9eaf7da68104e40d7c7bdc5291556f5e9b",
+    "tasks/data_analysis_d15/task.json": "98848f3a607aa08ffa4c6d625cddf49abbf7914d4906d3b6f40ca6717a593f39",
+    "tasks/data_analysis_d15/workspace/observations.csv": "f9452ec3ae50f1c6bb2c6cd93e964bb989fc99ee801b1813d112fd1883e0f6c2",
+    "tasks/data_analysis_d16/task.json": "6d5348837eb0b929d94055276b37103dad2194a59d0ccee389fdb93f8d901aec",
+    "tasks/data_analysis_d16/workspace/observations.csv": "423f9c98ed23d8223810494346dd3bf4bb951b3ae4ad4edcc0b52d7d9fc2d881",
+    "tasks/data_analysis_h01/task.json": "834ac08034fb0bd5d26ad8328e72930f4300db37ae5506615c94b621bb2ee935",
+    "tasks/data_analysis_h01/workspace/observations.csv": "97a5a725ff07f4ac73876b0fa2ba3c164ba0d4e6048412dbfae41680ad30c5b0",
+    "tasks/data_analysis_h02/task.json": "74603581bdded9e3c8c6268cc4ea798dd8b6cccd03b5aa5e5ed60ee90caa59c3",
+    "tasks/data_analysis_h02/workspace/observations.csv": "3b2cc350c5911dee7bcc037e0e552d4edc3b6b5e6fe2821e5815f1ec6b8fc6c7",
+    "tasks/data_analysis_h03/task.json": "4615386d1eb8853edd2647b418904c43e8914dee37141c10aa0587f819093fdd",
+    "tasks/data_analysis_h03/workspace/observations.csv": "09a0deb5bdc09da03761276776663a18015da8c5c2d5fe299bf4b5290e405d1d",
+    "tasks/data_analysis_h04/task.json": "af02f81e6c18f1f46c223bd7a3dd9c9a51d4a417804520c18472a2cce15742e1",
+    "tasks/data_analysis_h04/workspace/observations.csv": "6277023127f4f6a7c39e0b214c328ec8d1460fa3822c4bd0dca06d3f7dff5065",
+    "tasks/data_analysis_h05/task.json": "a1fe7728a4f127a36b355a8387722300e7c9727608cc707bb5be14d9cfabb9c4",
+    "tasks/data_analysis_h05/workspace/observations.csv": "e6baf0cc674ff101396cd518aeb5d6a26201da115db87817aa37358b1e1edca3",
+    "tasks/data_analysis_h06/task.json": "c836fa1925a43ba75e2b8aa7bffa562322a5fe6afc74049d1dea189ffca2da6a",
+    "tasks/data_analysis_h06/workspace/observations.csv": "d1a7586cb5a5ab31106038152718881f899e7cbde9ededc6401d273700a1ec86",
+    "tasks/data_analysis_h07/task.json": "d866a1b290a930b4dd2849e1a0d387106547af2a7744350cd13b76dc4a074298",
+    "tasks/data_analysis_h07/workspace/observations.csv": "5a2f661be479f567ee0d6c54c1e236251b3d4b52644c632450789c09308db640",
+    "tasks/data_analysis_h08/task.json": "fe825d06812cfa061b7375ad274cfc145c0265f57d6453a4802791f6684fc70e",
+    "tasks/data_analysis_h08/workspace/observations.csv": "21ec085d4584d2260f3b2540a13ccd602d094887ffed01cbb98eaff6d83042b7",
+    "tasks/data_analysis_h09/task.json": "c4fa46b52afb7e7b0fac2ad23ae074183cabcea8f5d00fb0325bf04b86a843fe",
+    "tasks/data_analysis_h09/workspace/observations.csv": "43fe598ae7ebe62f0504cda040803998bfaa7a57986153de2731c1a4b3fe904f",
+    "tasks/data_analysis_h10/task.json": "4b0a73276a8e5d8716821d1e6a8f3832dcc97ac9069767da153bd26a571b58d4",
+    "tasks/data_analysis_h11/task.json": "2002794771ebae11e771ce99cbab2b852110539be50fd6f6cbd696e9ffd3a98c",
+    "tasks/data_analysis_h11/workspace/observations.csv": "60668602bd5e76756a4903426c8d5f42989fc79d21937c53b23c9a775d2fe610",
+    "tasks/data_analysis_h12/task.json": "1b7b9c985be7a9b7674b6b0bb84b4881b7151a3118f41df4986cbf5eead0c547",
+    "tasks/data_analysis_h12/workspace/observations.csv": "a8537a4e05e6efc9cf635ea503d7bca924962b3a98b799ffd1776dd8234948b2",
+    "tasks/data_analysis_h13/task.json": "93786e03e3246692df540219a93294c4f029dcd0b6e432be2417b16aa80a0a55",
+    "tasks/data_analysis_h13/workspace/observations.csv": "1aad676fd67dea5be834f7b014960adbbf14fce2c98b041ae5d9f35d76259bb2",
+    "tasks/data_analysis_h14/task.json": "fe74c57f7f405d1df360b02da05deb41757977a41be0509e837780ac7cf9d92a",
+    "tasks/data_analysis_h14/workspace/nested/ledger.csv": "0d6566ddb5ddeeaa0f4042984c3ba4fe68f7cf1f687393b5a32d46f4735af90a",
+    "tasks/data_analysis_h15/task.json": "16ab5c2ad824ecb5e6d99de9c09707028b1038a58f606c8584dc0a570504b0a7",
+    "tasks/data_analysis_h15/workspace/observations.csv": "1e00539a4e839efa2d74feb81daa7548f2714a774d8bad899ffe877dcec6288f",
+    "tasks/data_analysis_h16/task.json": "97311414efa67e36bbc86aaed8cdd8fa276926644671ac52ee66cb139c8e577c",
+    "tasks/data_analysis_h16/workspace/observations.csv": "84a501de3012106b114ad83768d367ec29ccca1190431157e8050f9e7ad2eb89",
+    "tasks/math_d01/task.json": "48453d27524e511cf997cfa05f8e0471503a3f0e8bdac8b3da3e7242a4f55cd8",
+    "tasks/math_d02/task.json": "f98207ff7fd4737ec6003b4030736983738fb0e463b72db904a7b32083b4fb19",
+    "tasks/math_d03/task.json": "162dbf007af8f03135639c3284107e22820cbd74c05762787af086a3329a469b",
+    "tasks/math_d04/task.json": "de300ee4ff982fc6de2d135bdbb8fd6adbfe94732ec834e6057cac65c9968a75",
+    "tasks/math_d05/task.json": "b47fb063c7d1a1445c66bf642cecdd364c3845eca4645c06dd52efda98cb3654",
+    "tasks/math_d06/task.json": "4bccb712cb05ae53cf577c673ab48ffd34777f8d6bfc14061ce54f07604b34b4",
+    "tasks/math_d07/task.json": "4b30892d6976e6c5df04ffca21eccd348dd3e203879cd1b88ec6fa83a3ed7a79",
+    "tasks/math_d08/task.json": "9a594f0ec0defc7221668969168609aa64c2bc2160e76688a8e5e02346cd968a",
+    "tasks/math_d09/task.json": "d84cfbfb98c519428d1125042559fd8ed5c47117ade33fd27551b4225b36f59a",
+    "tasks/math_d10/task.json": "d250bc7b1f32162008bea5d0d560faa7fcccf7d62103b4784a7f6a9b1884575e",
+    "tasks/math_d11/task.json": "9ef669135f2813b1d29053dd92cbfec2396959d1af7ad459b686b53f07ab1f90",
+    "tasks/math_d12/task.json": "d4b9aebb7049282e0b235839b56f480d3706726ccb5e60f0173629e89ad0e463",
+    "tasks/math_d13/task.json": "f0cb2af2ff37b3cb045464c768a2aab5bf492304d4043ac2d93e73909e434804",
+    "tasks/math_d14/task.json": "bc2b34200b324971fdd60230c46f7eed412b1027bd962b370b58229c2ce1a1e7",
+    "tasks/math_d15/task.json": "84431e5dbdc1d538a4f4659f8821179811bd64c9448d8f0ba95c3a86437a1636",
+    "tasks/math_d16/task.json": "d461fae55b73a3e252dd41f2e71a0e899e15484cd892d55f41578ddf5644e4af",
+    "tasks/math_h01/task.json": "0655ef34932f063962cc6b7ce00c471cbcc09c4f0370b6197d199f0d1404ac89",
+    "tasks/math_h02/task.json": "8e7794948ad29bcb083ae89eda22e2827ebb505f5b7ea1b76c4f30ba410045da",
+    "tasks/math_h03/task.json": "f4539066a4e0e6d78ae79ef0a08f1b99691b62e73bf3b4dd0d0fb92ac8b1f11b",
+    "tasks/math_h04/task.json": "78fe1eef88d395309256f4a3424c8305a17a9c4106d61a228b9d2e22755d3ad3",
+    "tasks/math_h05/task.json": "991d4197643d3df0d1241cff9d630fafd0cb1f858019188b7be9ec968d7ba6ce",
+    "tasks/math_h06/task.json": "0fc1ea896b3d0634fb614f7d93e5c68f2d015ba8ca41cebcc367fda8f6320f24",
+    "tasks/math_h07/task.json": "c973def5df2c0171ea470cf1698bc1925708563ca59f8132f7500291dff3e63d",
+    "tasks/math_h08/task.json": "b2d08ca666e83c4e61a6dea4fbadbde7db5a966dad5303b715bea062116edd0f",
+    "tasks/math_h09/task.json": "fa048e68a7f96309b833300705c800a5f40531c718a601ece658c8b445e0f9ad",
+    "tasks/math_h10/task.json": "298d638ed7a57078922d499ec62ff3e5146dd6b55ed29321fae6fb9caa617558",
+    "tasks/math_h11/task.json": "8ffd02fce20432b10de3a2b901277a4e47f907ca26c685e566b71beb4e9483a7",
+    "tasks/math_h12/task.json": "b992816dc7ff994d76d97976268c606a3813d52a3bf6981d862dde51cea2eddf",
+    "tasks/math_h13/task.json": "6b7e00a843ce956ce9ac93fce4229264c4ff93ef2967699c73739b96ac5bf671",
+    "tasks/math_h14/task.json": "815f7704dee0a3c7eb000a6090b201533e1f45e5ebe953917a8ff66db783ee71",
+    "tasks/math_h15/task.json": "5ff1abc8392d6d97a514c8d115fa6154fab3df1609ed7d42a59ac3bfb278c4b4",
+    "tasks/math_h16/task.json": "15b5627d4d0c21876cbff18844b543ad545cf8476a58b1c6a03e56caf3e1bd7a",
+    "tasks/search_d01/task.json": "60e1de1e3bd64cd731232793af875dd7f4b54dd5b6056bddd17cc7ebc6583a56",
+    "tasks/search_d01/workspace/kb/archive_00.md": "9fb077cf621cf24b13f3e01f705d9ee782ad29ffeb443badc319144b6abfa4ef",
+    "tasks/search_d01/workspace/kb/archive_01.md": "fa5347db787d1095f1633a6f9be611d7e7c912014e039df5d653de3a3e88a7ce",
+    "tasks/search_d02/task.json": "34970aa0d541c1db056f651786c6a572c63c8dae197730c7f2e00c2577d2b7a2",
+    "tasks/search_d02/workspace/kb/archive_00.md": "be8d671a2ac5369883a9c3beb664c1e951905e3f3abfd860c5edc035495cec39",
+    "tasks/search_d03/task.json": "aa3f7de1f789c61795a86b7c84076b904b2fcd6133f84db2c57560b413d1beb4",
+    "tasks/search_d03/workspace/kb/archive_00.md": "a96620907c636e7c353eefc8063b2cd88bfdb603bd512b5134d3a4e3ffb50ab8",
+    "tasks/search_d04/task.json": "2beb07b52bcccbe3d2ff8e52d7bbb2c1a55d9f2613ae73d733f3a2d9c0c191b7",
+    "tasks/search_d04/workspace/kb/archive_00.md": "89815e74b995f809819120eb9135643f2d067779f26cfb9e5d2efffc3ca2c381",
+    "tasks/search_d05/task.json": "b6896c8bcbd2e7e91a2b7be81fa62855892220d2e0256560668f8e4653296dfe",
+    "tasks/search_d05/workspace/kb/archive_00.md": "7b936d997789aa2ffcfaad733fd4ef40ffd935d3f0f5d831c987b714b3edee36",
+    "tasks/search_d05/workspace/kb/archive_01.md": "158dda821576100c652a485f814e80de33d3b7d714618ff387080bb95434ed6f",
+    "tasks/search_d05/workspace/kb/archive_02.md": "56da8a78d6a6350b78d55f2b5273bf3c23f20074799bf1562794a2b46c10d1d8",
+    "tasks/search_d06/task.json": "46d51f45b3c2acc740462c046c1fc7d6462000af3947cc9dd4bde1b52ead8814",
+    "tasks/search_d06/workspace/kb/archive_00.md": "7b936d997789aa2ffcfaad733fd4ef40ffd935d3f0f5d831c987b714b3edee36",
+    "tasks/search_d06/workspace/kb/archive_01.md": "5aa817034cbdfe03fba189d3ca7be879147239111251537821cb382d808465ae",
+    "tasks/search_d06/workspace/kb/archive_02.md": "f1e9aafa777ce350166c41720cc413142ba51f563b10fc6fabf746689b82f0c5",
+    "tasks/search_d07/task.json": "e2581457e99eea56d5814deb98d742f61979e883db4ba735929a2bd9f1c4bb3c",
+    "tasks/search_d07/workspace/kb/archive_00.md": "7b936d997789aa2ffcfaad733fd4ef40ffd935d3f0f5d831c987b714b3edee36",
+    "tasks/search_d07/workspace/kb/archive_01.md": "158dda821576100c652a485f814e80de33d3b7d714618ff387080bb95434ed6f",
+    "tasks/search_d07/workspace/kb/archive_02.md": "56da8a78d6a6350b78d55f2b5273bf3c23f20074799bf1562794a2b46c10d1d8",
+    "tasks/search_d08/task.json": "818169ccaee3867b0e1c070b7ee75fe647c92bd16537aa5254f3606efa7ecfb3",
+    "tasks/search_d08/workspace/kb/archive_00.md": "ea9843bc370abf05ffee3d7bcdc617df62bd3f3974051185c3bd0903b76b3806",
+    "tasks/search_d09/task.json": "5c573ce33d4f4d420e29de8d0f473f961600fc312f2f423800fe7a1530647144",
+    "tasks/search_d09/workspace/kb/archive_00.md": "b7cb23dc3daad3d89b7a593b8124f1a22cf38dd2643807895c2e830d754d56d5",
+    "tasks/search_d10/task.json": "f2962e47b504b6b2f05f8f7cfe70223b68c5b3d3e3e1712433c649eb2b1353f2",
+    "tasks/search_d10/workspace/kb/archive_00.md": "340250a3351ac10c082a2aa559459a71b16a0a8721093c7805b93dfbdb6e47cc",
+    "tasks/search_d10/workspace/kb/archive_01.md": "dd81a25a24674a1f8619bfdaea7d22093fdf64088add772e8af89b54adfe47e8",
+    "tasks/search_d11/task.json": "e96a40ede01a6f6a63f2cdefe06375044dfe12c717cdb4ea345e979ad8b9702e",
+    "tasks/search_d11/workspace/kb/archive_00.md": "a052adfc99f5e7ce8f44b4d4fc1a127ab8b668f582e71610a9528b111389751c",
+    "tasks/search_d12/task.json": "696ff1438ccaa8b2179d0a11784c6fe07e7177f437e3faf8ceaaf83f6df8cfc6",
+    "tasks/search_d12/workspace/kb/archive_00.md": "ebeca768976935886d1241a6551bb46fca658f483471fc48deb33708973fd724",
+    "tasks/search_d12/workspace/kb/archive_01.md": "3fbc404037c7887537f57a3b4e7844e8bf03de878a0489e95c6b08315eaccc0e",
+    "tasks/search_d13/task.json": "cae9500ea3643a7798145162cc235279bf6e389a2c405919d7c74d5c1eb87303",
+    "tasks/search_d13/workspace/kb/archive_00.md": "131fe563909366e17ebabee05f47b9bc4e63cc01890f5056f9f465adb8a55422",
+    "tasks/search_d13/workspace/kb/archive_01.md": "5f44a227e50da4c7c257dc2d9491b190d203d05b8f96dee947576068369237c1",
+    "tasks/search_d14/task.json": "10384e69ce32513962e1849e2dfac6d51d10a76d9daf4235c12a08d342361e30",
+    "tasks/search_d14/workspace/kb/archive_00.md": "f1d90268bef573ab89f312933a43cb601c715226687e1bc6450b524f705146d5",
+    "tasks/search_d14/workspace/kb/archive_01.md": "fa48196e3694cf6617d91214b1eb6f0b6d9d8c6aa639a06fa59c11184f493a43",
+    "tasks/search_d15/task.json": "19e5039f524396a658bff8211379974adea0e8b5bb28ca5bd866658066305976",
+    "tasks/search_d15/workspace/kb/archive_00.md": "7b936d997789aa2ffcfaad733fd4ef40ffd935d3f0f5d831c987b714b3edee36",
+    "tasks/search_d15/workspace/kb/archive_01.md": "158dda821576100c652a485f814e80de33d3b7d714618ff387080bb95434ed6f",
+    "tasks/search_d15/workspace/kb/archive_02.md": "56da8a78d6a6350b78d55f2b5273bf3c23f20074799bf1562794a2b46c10d1d8",
+    "tasks/search_d16/task.json": "4ebf83ff8c4f382cbd739004979f92ecdc85403cfde840cb6fd434ffc1b9654f",
+    "tasks/search_h01/task.json": "3dc0085e502c8062960ee572682114c79b4dcf6af42dd81c1fd6ee99d37ca8a7",
+    "tasks/search_h01/workspace/kb/archive_00.md": "7c36b65810ed28789e997344d5ebdb7fd7d073a17e5bb40b676a06abaeb9992e",
+    "tasks/search_h02/task.json": "34703dd8122276a47054c706eb17912087f761fc3166f13bb9b62f3c213b48ac",
+    "tasks/search_h02/workspace/kb/archive_00.md": "f3a29037bd8f791fde1d8eb80655b02cb5d89b902c9fec2523434288484bbb89",
+    "tasks/search_h02/workspace/kb/archive_01.md": "1bd1ec8cc00deaea0b3f26771d6acb35d4e635d69b876c1a2eebdf9ca4c22e70",
+    "tasks/search_h02/workspace/kb/archive_02.md": "027fe88d0f5f0c6e6bf66f02985679496e3ebc81fb1efc4eab585387da630d93",
+    "tasks/search_h03/task.json": "a52e78ae7e418c1b883fc27e92a33e28e87e2e98221611e436134e2a6fea4fbf",
+    "tasks/search_h03/workspace/kb/archive_00.md": "88be02dd4aa546308b97ed594c8f53ee2009528470f6d1908c5d21b4983c31bf",
+    "tasks/search_h04/task.json": "c82bfc58f62ba92430c000200ca60e6bef8267ff5e5c6563fd600cdf056e26eb",
+    "tasks/search_h04/workspace/kb/archive_00.md": "cee0b2d5a7a3eb892252fcb40f2f06968a25cbde4b34694930fec96079956773",
+    "tasks/search_h04/workspace/kb/archive_01.md": "493bfefe7c2ca2a60951f96697e6161811f5b41ef87308a656a90b670082fb64",
+    "tasks/search_h05/task.json": "758ea544b3d47bebe0a5f65a7e622a18544c2d49ed9ec9a8248117d466a1de13",
+    "tasks/search_h05/workspace/kb/archive_00.md": "4d85c8381e68d0d4c25fb743d946e5e7645eef4880e627ecc0d0c8acc7804828",
+    "tasks/search_h06/task.json": "27058ee70c26c4ef6c04f85a34c3ba56340ae192fd8425c77083a01517847a35",
+    "tasks/search_h06/workspace/kb/archive_00.md": "335c40826b8134bce39447f0e2158701aff063af51134395ec2cdf6f4100e085",
+    "tasks/search_h06/workspace/kb/archive_01.md": "86e2272ab8ea1835b0980a3bed3fb4d5831827e2550ff6f0784cccb570372089",
+    "tasks/search_h06/workspace/kb/archive_02.md": "f07bcaae331820988b7a688ba49017612254504e6d1d97e43177006ab27794eb",
+    "tasks/search_h07/task.json": "22296b9608ed9d772a257ce1b5e5e30106a98c481741db1d3eccc094d138c7e1",
+    "tasks/search_h07/workspace/kb/archive_00.md": "32ff22cc312955cf76c19f31d53b42983a29e8fd8230c2fbef461d16de6c30d8",
+    "tasks/search_h07/workspace/kb/archive_01.md": "5940dcaa1584ea98385e88323ed0421bcb9a33f7b661f612467a67f6aa86529b",
+    "tasks/search_h08/task.json": "1b007e579f69c4079096250774e1c26b3ffea6cfe1f0721e1791470e18daf615",
+    "tasks/search_h08/workspace/kb/archive_00.md": "73150b28950b950ddff55c27f4226c964dc4f56fb8d197836f8c54f732fb0291",
+    "tasks/search_h09/task.json": "ba12be3926d09e13c80c4b4029eb7f5a95a34bb13e13cce838c11b5e1bc44911",
+    "tasks/search_h09/workspace/kb/archive_00.md": "db0078ba050775575fc276f38ae873c0e9e2acba7de5323668534b4c1f923113",
+    "tasks/search_h10/task.json": "84ea584c7856694d596c26bed831d5e6b4b360204adc85782ddc9a547b396b93",
+    "tasks/search_h10/workspace/kb/archive_00.md": "794e84e3d35488e5f27d5935c508643d75397f8fa0542f7607973ffa41a9c182",
+    "tasks/search_h11/task.json": "fecbb686e1e043babe038df099e7b51fc0a48a07b1de414f2f7157212daef7d0",
+    "tasks/search_h11/workspace/kb/archive_00.md": "877d25ba5625146077a9233194a0313f3e10a5e2fc51de9b6868b46fc6234af1",
+    "tasks/search_h12/task.json": "1ff435e22e21c8d2cb1fadfb1eaf60c1b7b5ff333cd1c56c1d91136e6bd95b0c",
+    "tasks/search_h13/task.json": "a9ff72cde63747caaa109d82cd65f62b5ff3b15b11adb8a836edc85af5b9d715",
+    "tasks/search_h13/workspace/kb/archive_00.md": "683420cb4de033c5bacf4c6fcc48b562b1cb0370f84f98a201de1759cb070b47",
+    "tasks/search_h14/task.json": "68b6b0eb72a7f1effd94e27021db616a7b52fb6a345239e625be492bbfe30911",
+    "tasks/search_h14/workspace/kb/archive_00.md": "49e9e8cc4786a74186a8c1684dca23a4d922f647de2bcf8d7d13b172ba9156a5",
+    "tasks/search_h14/workspace/kb/archive_01.md": "137dd6f66d03ff211c290cb576640c494f31f33a6e3ba9c175eff4951c2a12fc",
+    "tasks/search_h15/task.json": "0e0aae72ec7fc97ec4ac3d79198da5775644c61465ef5b2bddca52570d7d6ff0",
+    "tasks/search_h15/workspace/kb/archive_00.md": "86e2272ab8ea1835b0980a3bed3fb4d5831827e2550ff6f0784cccb570372089",
+    "tasks/search_h15/workspace/kb/archive_01.md": "5ef81e1bdbdaf6f466b09d9878cb00c2a06dbe33a1d807e113ff8ac2fabc0af9",
+    "tasks/search_h16/task.json": "3a6235516dede982bd764542ec3458bbd9ced565ce7090cb166c769377bf9f8c",
+    "tasks/search_h16/workspace/kb/archive_00.md": "4ed43707d9f12f5f87b8f2b44981860c01511f8120702333004dbab6e4593434"
+  },
+  "pairs": [
+    {
+      "category": "math+math",
+      "pair_id": "pair_01",
+      "tasks": [
+        "math_d01",
+        "math_h02"
+      ]
+    },
+    {
+      "category": "math+math",
+      "pair_id": "pair_02",
+      "tasks": [
+        "math_d08",
+        "math_h16"
+      ]
+    },
+    {
+      "category": "math+math",
+      "pair_id": "pair_03",
+      "tasks": [
+        "math_d15",
+        "math_h15"
+      ]
+    },
+    {
+      "category": "math+math",
+      "pair_id": "pair_04",
+      "tasks": [
+        "math_d09",
+        "math_h08"
+      ]
+    },
+    {
+      "category": "math+search",
+      "pair_id": "pair_05",
+      "tasks": [
+        "math_d04",
+        "search_d01"
+      ]
+    },
+    {
+      "category": "math+search",
+      "pair_id": "pair_06",
+      "tasks": [
+        "math_h07",
+        "search_h08"
+      ]
+    },
+    {
+      "category": "math+search",
+      "pair_id": "pair_07",
+      "tasks": [
+        "math_d15",
+        "search_d15"
+      ]
+    },
+    {
+      "category": "math+search",
+      "pair_id": "pair_08",
+      "tasks": [
+        "math_h04",
+        "search_h02"
+      ]
+    },
+    {
+      "category": "math+data_analysis",
+      "pair_id": "pair_09",
+      "tasks": [
+        "math_d07",
+        "data_analysis_d01"
+      ]
+    },
+    {
+      "category": "math+data_analysis",
+      "pair_id": "pair_10",
+      "tasks": [
+        "math_h06",
+        "data_analysis_h08"
+      ]
+    },
+    {
+      "category": "math+data_analysis",
+      "pair_id": "pair_11",
+      "tasks": [
+        "math_h15",
+        "data_analysis_h15"
+      ]
+    },
+    {
+      "category": "math+data_analysis",
+      "pair_id": "pair_12",
+      "tasks": [
+        "math_d10",
+        "data_analysis_d12"
+      ]
+    },
+    {
+      "category": "search+data_analysis",
+      "pair_id": "pair_13",
+      "tasks": [
+        "search_d03",
+        "data_analysis_h05"
+      ]
+    },
+    {
+      "category": "search+data_analysis",
+      "pair_id": "pair_14",
+      "tasks": [
+        "search_d08",
+        "data_analysis_d13"
+      ]
+    },
+    {
+      "category": "search+data_analysis",
+      "pair_id": "pair_15",
+      "tasks": [
+        "search_h15",
+        "data_analysis_d14"
+      ]
+    },
+    {
+      "category": "search+data_analysis",
+      "pair_id": "pair_16",
+      "tasks": [
+        "search_d14",
+        "data_analysis_h14"
+      ]
+    },
+    {
+      "category": "coding+any",
+      "pair_id": "pair_17",
+      "tasks": [
+        "coding_d01",
+        "math_d01"
+      ]
+    },
+    {
+      "category": "coding+any",
+      "pair_id": "pair_18",
+      "tasks": [
+        "coding_h05",
+        "search_d08"
+      ]
+    },
+    {
+      "category": "coding+any",
+      "pair_id": "pair_19",
+      "tasks": [
+        "coding_d07",
+        "data_analysis_d01"
+      ]
+    },
+    {
+      "category": "coding+any",
+      "pair_id": "pair_20",
+      "tasks": [
+        "coding_d02",
+        "coding_h13"
+      ]
+    }
+  ],
+  "seeds": {
+    "development": 20261105,
+    "holdout": 20261106
+  },
+  "version": "diagnostic-128-v1"
+}

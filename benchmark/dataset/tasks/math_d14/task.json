@@ -1,0 +1,6 @@
+{
+  "instruction": "An invoice of 85 euros is shared equally among attendees. The attendee count is unknown. What is each share?",
+  "reward": 13,
+  "task_id": "math_d14",
+  "task_type": "math"
+}

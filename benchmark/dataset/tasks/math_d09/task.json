@@ -1,0 +1,6 @@
+{
+  "instruction": "Round 7.235 to two decimal places using round-half-up.",
+  "reward": 3,
+  "task_id": "math_d09",
+  "task_type": "math"
+}

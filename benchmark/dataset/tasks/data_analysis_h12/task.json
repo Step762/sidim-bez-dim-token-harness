@@ -1,0 +1,6 @@
+{
+  "instruction": "The file observations.csv. What is the avg of units?",
+  "reward": 5,
+  "task_id": "data_analysis_h12",
+  "task_type": "data_analysis"
+}

@@ -1,0 +1,6 @@
+{
+  "instruction": "Run `python3 test_engine.py` in the current directory; some tests fail. Fix the bugs in engine.py (do not edit the tests) until all tests pass. Work only inside the current directory. When you are done, write ONLY the word DONE to the file answer.txt in the current directory.",
+  "reward": 0,
+  "task_id": "coding_d03",
+  "task_type": "coding"
+}

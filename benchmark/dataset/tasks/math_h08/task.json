@@ -1,0 +1,6 @@
+{
+  "instruction": "An account starts at 100 euros and grows by 10% annually, compounded for three years. What is its final balance?",
+  "reward": 13,
+  "task_id": "math_h08",
+  "task_type": "math"
+}

@@ -1,0 +1,5447 @@
+{
+  "agent_seconds": 1.4075276960002157,
+  "agent_stderr": "",
+  "agent_stdout": "data_analysis_h14: solved: -3\nsearch_d01: solved: 1974\nsearch_h05: solved: 2003\ndata_analysis_d02: solved: 4\ndata_analysis_d04: solved: 24\nmath_d04: solved: -4\nmath_d06: solved: 129\nmath_d02: solved: -5.1\ndata_analysis_h03: solved: 1\ndata_analysis_h05: solved: 0.15\ndata_analysis_h01: solved: 4\nmath_h01: solved: 87\nmath_d03: solved: 0.75\nsearch_d06: solved: 1948\ndata_analysis_d06: solved: 12\ndata_analysis_d05: solved: 7\ndata_analysis_h06: solved: 1.5\nsearch_d13: solved: 1986\nsearch_h11: solved: 1998\ndata_analysis_d08: solved: 0\nmath_d07: solved: 0.625\ndata_analysis_d01: solved: 32\ndata_analysis_h04: solved: 23\nsearch_d02: solved: 2007\nsearch_d04: solved: Aster Loom\nsearch_d05: solved: Porto\nmath_h11: solved: 26\nsearch_d03: solved: São Tomé\nmath_h04: solved: -6\nmath_d05: solved: 270\nmath_d01: solved: 163\ndata_analysis_d03: solved: -9\nsearch_h01: solved: 2001\ndata_analysis_d07: solved: 5\nsearch_h03: solved: Ari Gale\nsearch_h04: solved: 1963\ndata_analysis_h02: solved: -9\nmath_h02: solved: 0.725\nmath_h03: solved: 2\nmath_h16: solved: 30\ndata_analysis_d14: solved: 35\nsearch_h15: solved: Faro\nsearch_d15: solved: Porto\nsearch_h02: solved: 1996\ndata_analysis_h15: solved: -9\nmath_d15: solved: 76\nmath_h15: solved: 53\ncoding_d01: skipped [unsafe]: preflight: unsafe\ncoding_d02: skipped [unsafe]: preflight: unsafe\ncoding_d03: skipped [unsafe]: preflight: unsafe\ncoding_d04: skipped [unsafe]: preflight: unsafe\ncoding_d05: skipped [unsafe]: preflight: unsafe\ncoding_d06: skipped [unsafe]: preflight: unsafe\ncoding_d07: skipped [unsafe]: preflight: unsafe\ncoding_d08: skipped [unsafe]: preflight: unsafe\ncoding_d09: skipped [unsafe]: preflight: unsafe\ncoding_d10: skipped [unsafe]: preflight: unsafe\ncoding_d11: skipped [unsafe]: preflight: unsafe\ncoding_d12: skipped [unsafe]: preflight: unsafe\ncoding_d13: skipped [unsafe]: preflight: unsafe\ncoding_d14: skipped [unsafe]: preflight: unsafe\ncoding_d15: skipped [unsafe]: preflight: unsafe\ncoding_d16: skipped [unsafe]: preflight: unsafe\ncoding_h01: skipped [unsafe]: preflight: unsafe\ncoding_h02: skipped [unsafe]: preflight: unsafe\ncoding_h03: skipped [unsafe]: preflight: unsafe\ncoding_h04: skipped [unsafe]: preflight: unsafe\ncoding_h05: skipped [unsafe]: preflight: unsafe\ncoding_h06: skipped [unsafe]: preflight: unsafe\ncoding_h07: skipped [unsafe]: preflight: unsafe\ncoding_h08: skipped [unsafe]: preflight: unsafe\ncoding_h09: skipped [unsafe]: preflight: unsafe\ncoding_h10: skipped [unsafe]: preflight: unsafe\ncoding_h11: skipped [unsafe]: preflight: unsafe\ncoding_h12: skipped [unsafe]: preflight: unsafe\ncoding_h13: skipped [unsafe]: preflight: unsafe\ncoding_h14: skipped [unsafe]: preflight: unsafe\ncoding_h15: skipped [unsafe]: preflight: unsafe\ncoding_h16: skipped [unsafe]: preflight: unsafe\ndata_analysis_d09: skipped [insufficient_evidence]: aggregate is undefined for an empty selection\ndata_analysis_d10: skipped [insufficient_evidence]: requested column is absent from CSV\ndata_analysis_d11: skipped [invalid_data]: invalid or unsupported numeric value\ndata_analysis_d12: skipped [unsupported]: fallback context cannot be established reliably\ndata_analysis_d13: skipped [unsupported]: fallback context cannot be established reliably\ndata_analysis_d15: skipped [unsupported]: fallback context cannot be established reliably\ndata_analysis_d16: skipped [invalid_data]: CSV cannot be read or contains invalid data\ndata_analysis_h07: skipped [unsupported]: fallback context cannot be established reliably\ndata_analysis_h08: skipped [unsupported]: fallback context cannot be established reliably\ndata_analysis_h09: skipped [unsupported]: fallback context cannot be established reliably\ndata_analysis_h10: skipped [insufficient_evidence]: preflight: insufficient_evidence\ndata_analysis_h11: skipped [invalid_data]: missing, empty or duplicate CSV headers\ndata_analysis_h12: skipped [insufficient_evidence]: aggregate is undefined for an empty selection\ndata_analysis_h13: skipped [invalid_data]: invalid or unsupported numeric value\ndata_analysis_h16: skipped [unsupported]: fallback context cannot be established reliably\nmath_d08: skipped [unsupported]: fallback context cannot be established reliably\nmath_d09: skipped [unsupported]: fallback context cannot be established reliably\nmath_d10: skipped [unsupported]: fallback context cannot be established reliably\nmath_d11: skipped [unsupported]: fallback context cannot be established reliably\nmath_d12: skipped [unsupported]: fallback context cannot be established reliably\nmath_d13: skipped [unsupported]: fallback context cannot be established reliably\nmath_d14: skipped [unsupported]: fallback context cannot be established reliably\nmath_d16: skipped [unsupported]: fallback context cannot be established reliably\nmath_h05: skipped [unsupported]: fallback context cannot be established reliably\nmath_h06: skipped [unsupported]: fallback context cannot be established reliably\nmath_h07: skipped [unsupported]: fallback context cannot be established reliably\nmath_h08: skipped [unsupported]: fallback context cannot be established reliably\nmath_h09: skipped [unsupported]: fallback context cannot be established reliably\nmath_h10: skipped [unsupported]: fallback context cannot be established reliably\nmath_h12: skipped [unsupported]: fallback context cannot be established reliably\nmath_h13: skipped [unsupported]: fallback context cannot be established reliably\nmath_h14: skipped [unsupported]: fallback context cannot be established reliably\nsearch_d07: skipped [unsupported]: fallback context cannot be established reliably\nsearch_d08: skipped [insufficient_evidence]: missing or ambiguous born fact\nsearch_d09: skipped [unsupported]: fallback context cannot be established reliably\nsearch_d10: skipped [insufficient_evidence]: conflicting or ambiguous entity definitions\nsearch_d11: skipped [insufficient_evidence]: missing or ambiguous headquarters fact\nsearch_d12: skipped [unsupported]: fallback context cannot be established reliably\nsearch_d14: skipped [insufficient_evidence]: conflicting or ambiguous entity definitions\nsearch_d16: skipped [insufficient_evidence]: preflight: insufficient_evidence\nsearch_h06: skipped [unsupported]: fallback context cannot be established reliably\nsearch_h07: skipped [unsupported]: fallback context cannot be established reliably\nsearch_h08: skipped [insufficient_evidence]: missing or ambiguous born fact\nsearch_h09: skipped [insufficient_evidence]: missing or ambiguous born fact\nsearch_h10: skipped [insufficient_evidence]: conflicting or ambiguous entity definitions\nsearch_h12: skipped [insufficient_evidence]: preflight: insufficient_evidence\nsearch_h13: skipped [insufficient_evidence]: conflicting or ambiguous entity definitions\nsearch_h14: skipped [insufficient_evidence]: missing or ambiguous born fact\nsearch_h16: skipped [insufficient_evidence]: missing or ambiguous born fact\n",
+  "backend": "host",
+  "budget": 100000,
+  "budget_state": {
+    "available": "99426.5",
+    "frozen": false,
+    "limit": 100000,
+    "requests": [
+      {
+        "estimated_input": 2088,
+        "input_tokens": 123,
+        "max_output": 256,
+        "output_tokens": 107,
+        "request_id": "4a088bf99a4442e2aff532f8fba15734",
+        "reserved_tenths": 4648,
+        "spent_tenths": 1193,
+        "state": "settled",
+        "task_id": "/tmp/benchmark-run-8wtik43e/tasks/data_analysis_d14"
+      },
+      {
+        "estimated_input": 1766,
+        "input_tokens": 108,
+        "max_output": 256,
+        "output_tokens": 47,
+        "request_id": "7e0af392a0964d96bfd641e1c5d5e16f",
+        "reserved_tenths": 4326,
+        "spent_tenths": 578,
+        "state": "settled",
+        "task_id": "/tmp/benchmark-run-8wtik43e/tasks/search_h15"
+      },
+      {
+        "estimated_input": 1823,
+        "input_tokens": 120,
+        "max_output": 256,
+        "output_tokens": 50,
+        "request_id": "8af8c108a236411a802090c89c1563bc",
+        "reserved_tenths": 4383,
+        "spent_tenths": 620,
+        "state": "settled",
+        "task_id": "/tmp/benchmark-run-8wtik43e/tasks/search_d15"
+      },
+      {
+        "estimated_input": 1825,
+        "input_tokens": 121,
+        "max_output": 256,
+        "output_tokens": 48,
+        "request_id": "6fb0042fcbb448e3af7880fc546b7b74",
+        "reserved_tenths": 4385,
+        "spent_tenths": 601,
+        "state": "settled",
+        "task_id": "/tmp/benchmark-run-8wtik43e/tasks/search_h02"
+      },
+      {
+        "estimated_input": 2062,
+        "input_tokens": 116,
+        "max_output": 256,
+        "output_tokens": 73,
+        "request_id": "7760610994144183a075a0be1eac9a20",
+        "reserved_tenths": 4622,
+        "spent_tenths": 846,
+        "state": "settled",
+        "task_id": "/tmp/benchmark-run-8wtik43e/tasks/data_analysis_h15"
+      },
+      {
+        "estimated_input": 1880,
+        "input_tokens": 86,
+        "max_output": 256,
+        "output_tokens": 73,
+        "request_id": "09dbc658f66b48d5bfb5e475c470cfce",
+        "reserved_tenths": 4440,
+        "spent_tenths": 816,
+        "state": "settled",
+        "task_id": "/tmp/benchmark-run-8wtik43e/tasks/math_d15"
+      },
+      {
+        "estimated_input": 1900,
+        "input_tokens": 91,
+        "max_output": 256,
+        "output_tokens": 99,
+        "request_id": "fe95a75a610f4c968085ae787b592c12",
+        "reserved_tenths": 4460,
+        "spent_tenths": 1081,
+        "state": "settled",
+        "task_id": "/tmp/benchmark-run-8wtik43e/tasks/math_h15"
+      }
+    ],
+    "reserved": "0.0",
+    "spent": "573.5",
+    "tasks": {
+      "/tmp/benchmark-run-8wtik43e/tasks/data_analysis_d14": {
+        "calls": 1,
+        "reserved_tenths": 0,
+        "spent_tenths": 1193
+      },
+      "/tmp/benchmark-run-8wtik43e/tasks/data_analysis_h15": {
+        "calls": 1,
+        "reserved_tenths": 0,
+        "spent_tenths": 846
+      },
+      "/tmp/benchmark-run-8wtik43e/tasks/math_d15": {
+        "calls": 1,
+        "reserved_tenths": 0,
+        "spent_tenths": 816
+      },
+      "/tmp/benchmark-run-8wtik43e/tasks/math_h15": {
+        "calls": 1,
+        "reserved_tenths": 0,
+        "spent_tenths": 1081
+      },
+      "/tmp/benchmark-run-8wtik43e/tasks/search_d15": {
+        "calls": 1,
+        "reserved_tenths": 0,
+        "spent_tenths": 620
+      },
+      "/tmp/benchmark-run-8wtik43e/tasks/search_h02": {
+        "calls": 1,
+        "reserved_tenths": 0,
+        "spent_tenths": 601
+      },
+      "/tmp/benchmark-run-8wtik43e/tasks/search_h15": {
+        "calls": 1,
+        "reserved_tenths": 0,
+        "spent_tenths": 578
+      }
+    },
+    "uncertain_calls": 0
+  },
+  "by_difficulty": {
+    "easy": {
+      "answer_precision": 1.0,
+      "answerable": 29,
+      "correct": 23,
+      "false_negative_skips": 6,
+      "false_positive_fraction": 0.0,
+      "justified_refusal_recall": null,
+      "justified_refusals": 0,
+      "llm_calls": 0,
+      "llm_reserved": 0.0,
+      "llm_spent": 0.0,
+      "paid_correct_reward_per_unit": null,
+      "possible_reward": 164,
+      "reward": 134,
+      "seconds": 0.11825261200101522,
+      "skip_fraction": 0.20689655172413793,
+      "skipped": 6,
+      "total": 29,
+      "unanswerable": 0,
+      "unverified": 0,
+      "wrong": 0
+    },
+    "hard": {
+      "answer_precision": 1.0,
+      "answerable": 13,
+      "correct": 3,
+      "false_negative_skips": 10,
+      "false_positive_fraction": 0.0,
+      "justified_refusal_recall": null,
+      "justified_refusals": 0,
+      "llm_calls": 1,
+      "llm_reserved": 0.0,
+      "llm_spent": 60.1,
+      "paid_correct_reward_per_unit": 0.08319467554076539,
+      "possible_reward": 57,
+      "reward": 13,
+      "seconds": 0.08195575100035057,
+      "skip_fraction": 0.7692307692307693,
+      "skipped": 10,
+      "total": 13,
+      "unanswerable": 0,
+      "unverified": 0,
+      "wrong": 0
+    },
+    "medium": {
+      "answer_precision": 1.0,
+      "answerable": 62,
+      "correct": 21,
+      "false_negative_skips": 41,
+      "false_positive_fraction": 0.0,
+      "justified_refusal_recall": 1.0,
+      "justified_refusals": 24,
+      "llm_calls": 6,
+      "llm_reserved": 0.0,
+      "llm_spent": 513.4,
+      "paid_correct_reward_per_unit": 0.04869497467861317,
+      "possible_reward": 282,
+      "reward": 100,
+      "seconds": 0.5806088220051606,
+      "skip_fraction": 0.7558139534883721,
+      "skipped": 65,
+      "total": 86,
+      "unanswerable": 24,
+      "unverified": 0,
+      "wrong": 0
+    }
+  },
+  "by_split": {
+    "development": {
+      "answer_precision": 1.0,
+      "answerable": 52,
+      "correct": 25,
+      "false_negative_skips": 27,
+      "false_positive_fraction": 0.0,
+      "justified_refusal_recall": 1.0,
+      "justified_refusals": 12,
+      "llm_calls": 3,
+      "llm_reserved": 0.0,
+      "llm_spent": 262.9,
+      "paid_correct_reward_per_unit": 0.05705591479650057,
+      "possible_reward": 287,
+      "reward": 153,
+      "seconds": 0.40432848000364174,
+      "skip_fraction": 0.609375,
+      "skipped": 39,
+      "total": 64,
+      "unanswerable": 12,
+      "unverified": 0,
+      "wrong": 0
+    },
+    "holdout": {
+      "answer_precision": 1.0,
+      "answerable": 52,
+      "correct": 22,
+      "false_negative_skips": 30,
+      "false_positive_fraction": 0.0,
+      "justified_refusal_recall": 1.0,
+      "justified_refusals": 12,
+      "llm_calls": 4,
+      "llm_reserved": 0.0,
+      "llm_spent": 310.6,
+      "paid_correct_reward_per_unit": 0.04829362524146812,
+      "possible_reward": 216,
+      "reward": 94,
+      "seconds": 0.37648870500288467,
+      "skip_fraction": 0.65625,
+      "skipped": 42,
+      "total": 64,
+      "unanswerable": 12,
+      "unverified": 0,
+      "wrong": 0
+    }
+  },
+  "by_type": {
+    "coding": {
+      "answer_precision": null,
+      "answerable": 29,
+      "correct": 0,
+      "false_negative_skips": 29,
+      "false_positive_fraction": null,
+      "justified_refusal_recall": 1.0,
+      "justified_refusals": 3,
+      "llm_calls": 0,
+      "llm_reserved": 0.0,
+      "llm_spent": 0.0,
+      "paid_correct_reward_per_unit": null,
+      "possible_reward": 131,
+      "reward": 0,
+      "seconds": 0,
+      "skip_fraction": 1.0,
+      "skipped": 32,
+      "total": 32,
+      "unanswerable": 3,
+      "unverified": 0,
+      "wrong": 0
+    },
+    "data_analysis": {
+      "answer_precision": 1.0,
+      "answerable": 24,
+      "correct": 17,
+      "false_negative_skips": 7,
+      "false_positive_fraction": 0.0,
+      "justified_refusal_recall": 1.0,
+      "justified_refusals": 8,
+      "llm_calls": 2,
+      "llm_reserved": 0.0,
+      "llm_spent": 203.9,
+      "paid_correct_reward_per_unit": 0.06375674350171653,
+      "possible_reward": 167,
+      "reward": 110,
+      "seconds": 0.282454307001899,
+      "skip_fraction": 0.46875,
+      "skipped": 15,
+      "total": 32,
+      "unanswerable": 8,
+      "unverified": 0,
+      "wrong": 0
+    },
+    "math": {
+      "answer_precision": 1.0,
+      "answerable": 27,
+      "correct": 15,
+      "false_negative_skips": 12,
+      "false_positive_fraction": 0.0,
+      "justified_refusal_recall": 1.0,
+      "justified_refusals": 5,
+      "llm_calls": 2,
+      "llm_reserved": 0.0,
+      "llm_spent": 189.7,
+      "paid_correct_reward_per_unit": 0.010542962572482868,
+      "possible_reward": 116,
+      "reward": 67,
+      "seconds": 0.20400451500154304,
+      "skip_fraction": 0.53125,
+      "skipped": 17,
+      "total": 32,
+      "unanswerable": 5,
+      "unverified": 0,
+      "wrong": 0
+    },
+    "search": {
+      "answer_precision": 1.0,
+      "answerable": 24,
+      "correct": 15,
+      "false_negative_skips": 9,
+      "false_positive_fraction": 0.0,
+      "justified_refusal_recall": 1.0,
+      "justified_refusals": 8,
+      "llm_calls": 3,
+      "llm_reserved": 0.0,
+      "llm_spent": 179.9,
+      "paid_correct_reward_per_unit": 0.08337965536409116,
+      "possible_reward": 89,
+      "reward": 70,
+      "seconds": 0.2943583630030844,
+      "skip_fraction": 0.53125,
+      "skipped": 17,
+      "total": 32,
+      "unanswerable": 8,
+      "unverified": 0,
+      "wrong": 0
+    }
+  },
+  "changed_inputs": [],
+  "comparison_policy_version": "rational-canonical-json-v1",
+  "dataset_manifest_sha256": "2861a8eb1c07abb199d39066a5b65fea2920298dd252904e564846cecd537049",
+  "dataset_version": "diagnostic-128-v1",
+  "execution": "real agent, controlled local HTTP simulation",
+  "mock_requests": [
+    {
+      "fixture_available": true,
+      "instruction_hash": "f9c76309dd3c1faa309a6aec1bed2d604c808e03790b2c587caf4acf4b6953e6",
+      "mode": "mock-good",
+      "payload_keys": [
+        "columns",
+        "file",
+        "instruction",
+        "row_count",
+        "type"
+      ],
+      "reference_fields_present": false,
+      "task_id": "data_analysis_d14",
+      "usage": {
+        "completion_tokens": 107,
+        "prompt_tokens": 123,
+        "total_tokens": 230
+      }
+    },
+    {
+      "fixture_available": true,
+      "instruction_hash": "5a7d9312e2821e71144bae9ed3397b65a1db3eb518e71aeaa065c0ad3d190b79",
+      "mode": "mock-good",
+      "payload_keys": [
+        "instruction",
+        "records",
+        "type"
+      ],
+      "reference_fields_present": false,
+      "task_id": "search_h15",
+      "usage": {
+        "completion_tokens": 47,
+        "prompt_tokens": 108,
+        "total_tokens": 155
+      }
+    },
+    {
+      "fixture_available": true,
+      "instruction_hash": "4d1de2a661d8cd17bf43ca1ddda74f19ea4709595a00a51be7f0274c210d1b2a",
+      "mode": "mock-good",
+      "payload_keys": [
+        "instruction",
+        "records",
+        "type"
+      ],
+      "reference_fields_present": false,
+      "task_id": "search_d15",
+      "usage": {
+        "completion_tokens": 50,
+        "prompt_tokens": 120,
+        "total_tokens": 170
+      }
+    },
+    {
+      "fixture_available": true,
+      "instruction_hash": "9e3734721983f5ec1e1b79281917b086a1d3cd83770ab9d3c6fd8349904ba5fb",
+      "mode": "mock-good",
+      "payload_keys": [
+        "instruction",
+        "records",
+        "type"
+      ],
+      "reference_fields_present": false,
+      "task_id": "search_h02",
+      "usage": {
+        "completion_tokens": 48,
+        "prompt_tokens": 121,
+        "total_tokens": 169
+      }
+    },
+    {
+      "fixture_available": true,
+      "instruction_hash": "9703bff064fe82b3ba170a60dc1eb8e8efd817e7781a2d2e9fabf9c1471a4ea6",
+      "mode": "mock-good",
+      "payload_keys": [
+        "columns",
+        "file",
+        "instruction",
+        "row_count",
+        "type"
+      ],
+      "reference_fields_present": false,
+      "task_id": "data_analysis_h15",
+      "usage": {
+        "completion_tokens": 73,
+        "prompt_tokens": 116,
+        "total_tokens": 189
+      }
+    },
+    {
+      "fixture_available": true,
+      "instruction_hash": "ebd26d3c43383b2dd27f9efe7ea9d01c88b8ccb80148ba20a40e71f4c9a00d39",
+      "mode": "mock-good",
+      "payload_keys": [
+        "instruction",
+        "type"
+      ],
+      "reference_fields_present": false,
+      "task_id": "math_d15",
+      "usage": {
+        "completion_tokens": 73,
+        "prompt_tokens": 86,
+        "total_tokens": 159
+      }
+    },
+    {
+      "fixture_available": true,
+      "instruction_hash": "b2483733658067c7f1827fd52aa9fb26f780fee53bd41934d9ec6a65e05e53d7",
+      "mode": "mock-good",
+      "payload_keys": [
+        "instruction",
+        "type"
+      ],
+      "reference_fields_present": false,
+      "task_id": "math_h15",
+      "usage": {
+        "completion_tokens": 99,
+        "prompt_tokens": 91,
+        "total_tokens": 190
+      }
+    }
+  ],
+  "mock_sha256": "df056463d4249a94aaad6c0f20818b374a778af926cf1cec9e413de386d054ea",
+  "mode": "mock-good",
+  "order": [
+    [
+      "data_analysis_h14",
+      "local"
+    ],
+    [
+      "search_d01",
+      "local"
+    ],
+    [
+      "search_h05",
+      "local"
+    ],
+    [
+      "search_h16",
+      "local"
+    ],
+    [
+      "data_analysis_d02",
+      "local"
+    ],
+    [
+      "data_analysis_d04",
+      "local"
+    ],
+    [
+      "data_analysis_d15",
+      "local"
+    ],
+    [
+      "math_d04",
+      "local"
+    ],
+    [
+      "math_d06",
+      "local"
+    ],
+    [
+      "math_d02",
+      "local"
+    ],
+    [
+      "data_analysis_h03",
+      "local"
+    ],
+    [
+      "data_analysis_d10",
+      "local"
+    ],
+    [
+      "data_analysis_h05",
+      "local"
+    ],
+    [
+      "search_d09",
+      "local"
+    ],
+    [
+      "search_h07",
+      "local"
+    ],
+    [
+      "data_analysis_h01",
+      "local"
+    ],
+    [
+      "math_h01",
+      "local"
+    ],
+    [
+      "math_d03",
+      "local"
+    ],
+    [
+      "search_d06",
+      "local"
+    ],
+    [
+      "data_analysis_d06",
+      "local"
+    ],
+    [
+      "data_analysis_d05",
+      "local"
+    ],
+    [
+      "data_analysis_h06",
+      "local"
+    ],
+    [
+      "data_analysis_h12",
+      "local"
+    ],
+    [
+      "search_d10",
+      "local"
+    ],
+    [
+      "search_d13",
+      "local"
+    ],
+    [
+      "search_h11",
+      "local"
+    ],
+    [
+      "data_analysis_d08",
+      "local"
+    ],
+    [
+      "data_analysis_d09",
+      "local"
+    ],
+    [
+      "math_d07",
+      "local"
+    ],
+    [
+      "data_analysis_d01",
+      "local"
+    ],
+    [
+      "data_analysis_h04",
+      "local"
+    ],
+    [
+      "math_d13",
+      "local"
+    ],
+    [
+      "search_d02",
+      "local"
+    ],
+    [
+      "search_d04",
+      "local"
+    ],
+    [
+      "search_d05",
+      "local"
+    ],
+    [
+      "math_h11",
+      "local"
+    ],
+    [
+      "search_d12",
+      "local"
+    ],
+    [
+      "search_d14",
+      "local"
+    ],
+    [
+      "search_d03",
+      "local"
+    ],
+    [
+      "search_h10",
+      "local"
+    ],
+    [
+      "search_d11",
+      "local"
+    ],
+    [
+      "search_h14",
+      "local"
+    ],
+    [
+      "data_analysis_d11",
+      "local"
+    ],
+    [
+      "data_analysis_h13",
+      "local"
+    ],
+    [
+      "math_h04",
+      "local"
+    ],
+    [
+      "search_h09",
+      "local"
+    ],
+    [
+      "math_d05",
+      "local"
+    ],
+    [
+      "math_d01",
+      "local"
+    ],
+    [
+      "data_analysis_d03",
+      "local"
+    ],
+    [
+      "data_analysis_d16",
+      "local"
+    ],
+    [
+      "data_analysis_h11",
+      "local"
+    ],
+    [
+      "search_d08",
+      "local"
+    ],
+    [
+      "search_h01",
+      "local"
+    ],
+    [
+      "search_h08",
+      "local"
+    ],
+    [
+      "search_h13",
+      "local"
+    ],
+    [
+      "data_analysis_d07",
+      "local"
+    ],
+    [
+      "math_h13",
+      "local"
+    ],
+    [
+      "search_h03",
+      "local"
+    ],
+    [
+      "search_h04",
+      "local"
+    ],
+    [
+      "data_analysis_h02",
+      "local"
+    ],
+    [
+      "math_h02",
+      "local"
+    ],
+    [
+      "math_h03",
+      "local"
+    ],
+    [
+      "math_h16",
+      "local"
+    ],
+    [
+      "data_analysis_d12",
+      "local"
+    ],
+    [
+      "data_analysis_h07",
+      "local"
+    ],
+    [
+      "math_d14",
+      "local"
+    ],
+    [
+      "math_h08",
+      "local"
+    ],
+    [
+      "data_analysis_h08",
+      "local"
+    ],
+    [
+      "math_h12",
+      "local"
+    ],
+    [
+      "math_h14",
+      "local"
+    ],
+    [
+      "data_analysis_d13",
+      "local"
+    ],
+    [
+      "math_d11",
+      "local"
+    ],
+    [
+      "data_analysis_d14",
+      "local"
+    ],
+    [
+      "math_d10",
+      "local"
+    ],
+    [
+      "search_d07",
+      "local"
+    ],
+    [
+      "data_analysis_h15",
+      "local"
+    ],
+    [
+      "math_h07",
+      "local"
+    ],
+    [
+      "search_d15",
+      "local"
+    ],
+    [
+      "search_h15",
+      "local"
+    ],
+    [
+      "search_h02",
+      "local"
+    ],
+    [
+      "math_d09",
+      "local"
+    ],
+    [
+      "math_h10",
+      "local"
+    ],
+    [
+      "math_h09",
+      "local"
+    ],
+    [
+      "math_d15",
+      "local"
+    ],
+    [
+      "data_analysis_h16",
+      "local"
+    ],
+    [
+      "math_h05",
+      "local"
+    ],
+    [
+      "search_h06",
+      "local"
+    ],
+    [
+      "data_analysis_h09",
+      "local"
+    ],
+    [
+      "math_d12",
+      "local"
+    ],
+    [
+      "math_d16",
+      "local"
+    ],
+    [
+      "math_d08",
+      "local"
+    ],
+    [
+      "math_h06",
+      "local"
+    ],
+    [
+      "math_h15",
+      "local"
+    ],
+    [
+      "data_analysis_d14",
+      "fallback"
+    ],
+    [
+      "search_h15",
+      "fallback"
+    ],
+    [
+      "search_d15",
+      "fallback"
+    ],
+    [
+      "search_h02",
+      "fallback"
+    ],
+    [
+      "data_analysis_h15",
+      "fallback"
+    ],
+    [
+      "math_d15",
+      "fallback"
+    ],
+    [
+      "math_h15",
+      "fallback"
+    ]
+  ],
+  "reference_sha256": "082cf7c2e7557cdb28540891d2803ef3f194c0b0c4ad8697e6a442de2ab9f5ca",
+  "rows": [
+    {
+      "actual": null,
+      "answer": "DONE",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "easy",
+      "family": "binary-add",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [],
+      "oracle": {
+        "function": "join",
+        "hidden_examples": [
+          [
+            [
+              19,
+              -8
+            ],
+            11
+          ]
+        ],
+        "method": "independent_function_examples"
+      },
+      "outcome": "unsafe",
+      "policy": "coding",
+      "rationale": "Requires verified source repair; DONE alone is insufficient.",
+      "reward": 3,
+      "seconds": 0,
+      "split": "development",
+      "status": "skipped",
+      "tags": [
+        "untrusted_execution_disabled",
+        "reviewed_fixture"
+      ],
+      "task_id": "coding_d01",
+      "task_type": "coding"
+    },
+    {
+      "actual": null,
+      "answer": "DONE",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "easy",
+      "family": "binary-product",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [],
+      "oracle": {
+        "function": "product",
+        "hidden_examples": [
+          [
+            [
+              7,
+              -2
+            ],
+            -14
+          ]
+        ],
+        "method": "independent_function_examples"
+      },
+      "outcome": "unsafe",
+      "policy": "coding",
+      "rationale": "Requires verified source repair; DONE alone is insufficient.",
+      "reward": 13,
+      "seconds": 0,
+      "split": "development",
+      "status": "skipped",
+      "tags": [
+        "untrusted_execution_disabled",
+        "reviewed_fixture"
+      ],
+      "task_id": "coding_d02",
+      "task_type": "coding"
+    },
+    {
+      "actual": null,
+      "answer": "DONE",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "minimum-comparison",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [],
+      "oracle": {
+        "function": "small",
+        "hidden_examples": [
+          [
+            [
+              17,
+              5
+            ],
+            5
+          ]
+        ],
+        "method": "independent_function_examples"
+      },
+      "outcome": "unsafe",
+      "policy": "coding",
+      "rationale": "Requires verified source repair; DONE alone is insufficient.",
+      "reward": 0,
+      "seconds": 0,
+      "split": "development",
+      "status": "skipped",
+      "tags": [
+        "untrusted_execution_disabled",
+        "reviewed_fixture"
+      ],
+      "task_id": "coding_d03",
+      "task_type": "coding"
+    },
+    {
+      "actual": null,
+      "answer": "DONE",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "maximum-loop",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [],
+      "oracle": {
+        "function": "peak",
+        "hidden_examples": [
+          [
+            [
+              [
+                9,
+                1,
+                14,
+                6
+              ]
+            ],
+            14
+          ]
+        ],
+        "method": "independent_function_examples"
+      },
+      "outcome": "unsafe",
+      "policy": "coding",
+      "rationale": "Requires verified source repair; DONE alone is insufficient.",
+      "reward": 1,
+      "seconds": 0,
+      "split": "development",
+      "status": "skipped",
+      "tags": [
+        "untrusted_execution_disabled",
+        "reviewed_fixture"
+      ],
+      "task_id": "coding_d04",
+      "task_type": "coding"
+    },
+    {
+      "actual": null,
+      "answer": "DONE",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "easy",
+      "family": "even-predicate",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [],
+      "oracle": {
+        "function": "even",
+        "hidden_examples": [
+          [
+            [
+              -6
+            ],
+            true
+          ]
+        ],
+        "method": "independent_function_examples"
+      },
+      "outcome": "unsafe",
+      "policy": "coding",
+      "rationale": "Requires verified source repair; DONE alone is insufficient.",
+      "reward": 3,
+      "seconds": 0,
+      "split": "development",
+      "status": "skipped",
+      "tags": [
+        "untrusted_execution_disabled",
+        "reviewed_fixture"
+      ],
+      "task_id": "coding_d05",
+      "task_type": "coding"
+    },
+    {
+      "actual": null,
+      "answer": "DONE",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "reverse-versus-sort",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [],
+      "oracle": {
+        "function": "flip",
+        "hidden_examples": [
+          [
+            [
+              [
+                9,
+                4,
+                8
+              ]
+            ],
+            [
+              8,
+              4,
+              9
+            ]
+          ]
+        ],
+        "method": "independent_function_examples"
+      },
+      "outcome": "unsafe",
+      "policy": "coding",
+      "rationale": "Requires verified source repair; DONE alone is insufficient.",
+      "reward": 0,
+      "seconds": 0,
+      "split": "development",
+      "status": "skipped",
+      "tags": [
+        "untrusted_execution_disabled",
+        "reviewed_fixture"
+      ],
+      "task_id": "coding_d06",
+      "task_type": "coding"
+    },
+    {
+      "actual": null,
+      "answer": "DONE",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "off-by-one-range",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [],
+      "oracle": {
+        "function": "indices",
+        "hidden_examples": [
+          [
+            [
+              5
+            ],
+            [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          ]
+        ],
+        "method": "independent_function_examples"
+      },
+      "outcome": "unsafe",
+      "policy": "coding",
+      "rationale": "Requires verified source repair; DONE alone is insufficient.",
+      "reward": 1,
+      "seconds": 0,
+      "split": "development",
+      "status": "skipped",
+      "tags": [
+        "untrusted_execution_disabled",
+        "reviewed_fixture"
+      ],
+      "task_id": "coding_d07",
+      "task_type": "coding"
+    },
+    {
+      "actual": null,
+      "answer": "DONE",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "wrong-string-case",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [],
+      "oracle": {
+        "function": "clean",
+        "hidden_examples": [
+          [
+            [
+              "CODE"
+            ],
+            "code"
+          ]
+        ],
+        "method": "independent_function_examples"
+      },
+      "outcome": "unsafe",
+      "policy": "coding",
+      "rationale": "Requires verified source repair; DONE alone is insufficient.",
+      "reward": 8,
+      "seconds": 0,
+      "split": "development",
+      "status": "skipped",
+      "tags": [
+        "untrusted_execution_disabled",
+        "reviewed_fixture"
+      ],
+      "task_id": "coding_d08",
+      "task_type": "coding"
+    },
+    {
+      "actual": null,
+      "answer": "DONE",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "missing-absolute",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [],
+      "oracle": {
+        "function": "magnitude",
+        "hidden_examples": [
+          [
+            [
+              -11
+            ],
+            11
+          ]
+        ],
+        "method": "independent_function_examples"
+      },
+      "outcome": "unsafe",
+      "policy": "coding",
+      "rationale": "Requires verified source repair; DONE alone is insufficient.",
+      "reward": 1,
+      "seconds": 0,
+      "split": "development",
+      "status": "skipped",
+      "tags": [
+        "untrusted_execution_disabled",
+        "reviewed_fixture"
+      ],
+      "task_id": "coding_d09",
+      "task_type": "coding"
+    },
+    {
+      "actual": null,
+      "answer": "DONE",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "floor-instead-of-mean",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [],
+      "oracle": {
+        "function": "mean",
+        "hidden_examples": [
+          [
+            [
+              [
+                2,
+                3,
+                6
+              ]
+            ],
+            3.6666666666666665
+          ]
+        ],
+        "method": "independent_function_examples"
+      },
+      "outcome": "unsafe",
+      "policy": "coding",
+      "rationale": "Requires verified source repair; DONE alone is insufficient.",
+      "reward": 5,
+      "seconds": 0,
+      "split": "development",
+      "status": "skipped",
+      "tags": [
+        "untrusted_execution_disabled",
+        "reviewed_fixture"
+      ],
+      "task_id": "coding_d10",
+      "task_type": "coding"
+    },
+    {
+      "actual": null,
+      "answer": "DONE",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "boundary-inclusive",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [],
+      "oracle": {
+        "function": "adult",
+        "hidden_examples": [
+          [
+            [
+              19
+            ],
+            true
+          ]
+        ],
+        "method": "independent_function_examples"
+      },
+      "outcome": "unsafe",
+      "policy": "coding",
+      "rationale": "Requires verified source repair; DONE alone is insufficient.",
+      "reward": 13,
+      "seconds": 0,
+      "split": "development",
+      "status": "skipped",
+      "tags": [
+        "untrusted_execution_disabled",
+        "reviewed_fixture"
+      ],
+      "task_id": "coding_d11",
+      "task_type": "coding"
+    },
+    {
+      "actual": null,
+      "answer": "DONE",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "wrong-dictionary-default",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [],
+      "oracle": {
+        "function": "lookup",
+        "hidden_examples": [
+          [
+            [
+              {
+                "a": 8
+              },
+              "b"
+            ],
+            0
+          ]
+        ],
+        "method": "independent_function_examples"
+      },
+      "outcome": "unsafe",
+      "policy": "coding",
+      "rationale": "Requires verified source repair; DONE alone is insufficient.",
+      "reward": 3,
+      "seconds": 0,
+      "split": "development",
+      "status": "skipped",
+      "tags": [
+        "untrusted_execution_disabled",
+        "reviewed_fixture"
+      ],
+      "task_id": "coding_d12",
+      "task_type": "coding"
+    },
+    {
+      "actual": null,
+      "answer": "DONE",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "slice-last-item",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [],
+      "oracle": {
+        "function": "tail",
+        "hidden_examples": [
+          [
+            [
+              [
+                5,
+                6,
+                1
+              ]
+            ],
+            1
+          ]
+        ],
+        "method": "independent_function_examples"
+      },
+      "outcome": "unsafe",
+      "policy": "coding",
+      "rationale": "Requires verified source repair; DONE alone is insufficient.",
+      "reward": 2,
+      "seconds": 0,
+      "split": "development",
+      "status": "skipped",
+      "tags": [
+        "untrusted_execution_disabled",
+        "reviewed_fixture"
+      ],
+      "task_id": "coding_d13",
+      "task_type": "coding"
+    },
+    {
+      "actual": null,
+      "answer": "DONE",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "damaged-source-syntax",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [],
+      "oracle": {
+        "function": "double",
+        "hidden_examples": [
+          [
+            [
+              -4
+            ],
+            -8
+          ]
+        ],
+        "method": "independent_function_examples"
+      },
+      "outcome": "unsafe",
+      "policy": "coding",
+      "rationale": "Requires verified source repair; DONE alone is insufficient.",
+      "reward": 13,
+      "seconds": 0,
+      "split": "development",
+      "status": "skipped",
+      "tags": [
+        "untrusted_execution_disabled",
+        "reviewed_fixture"
+      ],
+      "task_id": "coding_d14",
+      "task_type": "coding"
+    },
+    {
+      "actual": null,
+      "answer": null,
+      "answer_mode": null,
+      "answerable": false,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "missing-target",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [],
+      "oracle": {
+        "function": "f",
+        "hidden_examples": [
+          [
+            [
+              8
+            ],
+            16
+          ]
+        ],
+        "method": "independent_function_examples"
+      },
+      "outcome": "unsafe",
+      "policy": "coding",
+      "rationale": "Required evidence is absent or pure-function tests conflict.",
+      "reward": 1,
+      "seconds": 0,
+      "split": "development",
+      "status": "skipped",
+      "tags": [
+        "untrusted_execution_disabled",
+        "impossible"
+      ],
+      "task_id": "coding_d15",
+      "task_type": "coding"
+    },
+    {
+      "actual": null,
+      "answer": null,
+      "answer_mode": null,
+      "answerable": false,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "missing-tests",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [],
+      "oracle": {
+        "function": "f",
+        "hidden_examples": [
+          [
+            [
+              8
+            ],
+            9
+          ]
+        ],
+        "method": "independent_function_examples"
+      },
+      "outcome": "unsafe",
+      "policy": "coding",
+      "rationale": "Required evidence is absent or pure-function tests conflict.",
+      "reward": 2,
+      "seconds": 0,
+      "split": "development",
+      "status": "skipped",
+      "tags": [
+        "untrusted_execution_disabled",
+        "impossible"
+      ],
+      "task_id": "coding_d16",
+      "task_type": "coding"
+    },
+    {
+      "actual": null,
+      "answer": "DONE",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "sum-accumulator",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [],
+      "oracle": {
+        "function": "total",
+        "hidden_examples": [
+          [
+            [
+              [
+                -7,
+                3,
+                9
+              ]
+            ],
+            5
+          ]
+        ],
+        "method": "independent_function_examples"
+      },
+      "outcome": "unsafe",
+      "policy": "coding",
+      "rationale": "Requires verified source repair; DONE alone is insufficient.",
+      "reward": 8,
+      "seconds": 0,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [
+        "untrusted_execution_disabled",
+        "reviewed_fixture"
+      ],
+      "task_id": "coding_h01",
+      "task_type": "coding"
+    },
+    {
+      "actual": null,
+      "answer": "DONE",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "odd-predicate",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [],
+      "oracle": {
+        "function": "odd",
+        "hidden_examples": [
+          [
+            [
+              -5
+            ],
+            true
+          ]
+        ],
+        "method": "independent_function_examples"
+      },
+      "outcome": "unsafe",
+      "policy": "coding",
+      "rationale": "Requires verified source repair; DONE alone is insufficient.",
+      "reward": 5,
+      "seconds": 0,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [
+        "untrusted_execution_disabled",
+        "reviewed_fixture"
+      ],
+      "task_id": "coding_h02",
+      "task_type": "coding"
+    },
+    {
+      "actual": null,
+      "answer": "DONE",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "discount-direction",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [],
+      "oracle": {
+        "function": "net",
+        "hidden_examples": [
+          [
+            [
+              37,
+              11
+            ],
+            26
+          ]
+        ],
+        "method": "independent_function_examples"
+      },
+      "outcome": "unsafe",
+      "policy": "coding",
+      "rationale": "Requires verified source repair; DONE alone is insufficient.",
+      "reward": 2,
+      "seconds": 0,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [
+        "untrusted_execution_disabled",
+        "reviewed_fixture"
+      ],
+      "task_id": "coding_h03",
+      "task_type": "coding"
+    },
+    {
+      "actual": null,
+      "answer": "DONE",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "scale-factor",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [],
+      "oracle": {
+        "function": "scale",
+        "hidden_examples": [
+          [
+            [
+              13,
+              2
+            ],
+            26
+          ]
+        ],
+        "method": "independent_function_examples"
+      },
+      "outcome": "unsafe",
+      "policy": "coding",
+      "rationale": "Requires verified source repair; DONE alone is insufficient.",
+      "reward": 8,
+      "seconds": 0,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [
+        "untrusted_execution_disabled",
+        "reviewed_fixture"
+      ],
+      "task_id": "coding_h04",
+      "task_type": "coding"
+    },
+    {
+      "actual": null,
+      "answer": "DONE",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "cube-power",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [],
+      "oracle": {
+        "function": "cube",
+        "hidden_examples": [
+          [
+            [
+              5
+            ],
+            125
+          ]
+        ],
+        "method": "independent_function_examples"
+      },
+      "outcome": "unsafe",
+      "policy": "coding",
+      "rationale": "Requires verified source repair; DONE alone is insufficient.",
+      "reward": 2,
+      "seconds": 0,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [
+        "untrusted_execution_disabled",
+        "reviewed_fixture"
+      ],
+      "task_id": "coding_h05",
+      "task_type": "coding"
+    },
+    {
+      "actual": null,
+      "answer": "DONE",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "remove-duplicates",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [],
+      "oracle": {
+        "function": "unique",
+        "hidden_examples": [
+          [
+            [
+              [
+                8,
+                2,
+                8,
+                2
+              ]
+            ],
+            [
+              2,
+              8
+            ]
+          ]
+        ],
+        "method": "independent_function_examples"
+      },
+      "outcome": "unsafe",
+      "policy": "coding",
+      "rationale": "Requires verified source repair; DONE alone is insufficient.",
+      "reward": 2,
+      "seconds": 0,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [
+        "untrusted_execution_disabled",
+        "reviewed_fixture"
+      ],
+      "task_id": "coding_h06",
+      "task_type": "coding"
+    },
+    {
+      "actual": null,
+      "answer": "DONE",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "filter-sign",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [],
+      "oracle": {
+        "function": "positive",
+        "hidden_examples": [
+          [
+            [
+              [
+                -9,
+                4,
+                1
+              ]
+            ],
+            [
+              4,
+              1
+            ]
+          ]
+        ],
+        "method": "independent_function_examples"
+      },
+      "outcome": "unsafe",
+      "policy": "coding",
+      "rationale": "Requires verified source repair; DONE alone is insufficient.",
+      "reward": 13,
+      "seconds": 0,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [
+        "untrusted_execution_disabled",
+        "reviewed_fixture"
+      ],
+      "task_id": "coding_h07",
+      "task_type": "coding"
+    },
+    {
+      "actual": null,
+      "answer": "DONE",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "sort-key-descending",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [],
+      "oracle": {
+        "function": "rank",
+        "hidden_examples": [
+          [
+            [
+              [
+                9,
+                3,
+                6
+              ]
+            ],
+            [
+              9,
+              6,
+              3
+            ]
+          ]
+        ],
+        "method": "independent_function_examples"
+      },
+      "outcome": "unsafe",
+      "policy": "coding",
+      "rationale": "Requires verified source repair; DONE alone is insufficient.",
+      "reward": 0,
+      "seconds": 0,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [
+        "untrusted_execution_disabled",
+        "reviewed_fixture"
+      ],
+      "task_id": "coding_h08",
+      "task_type": "coding"
+    },
+    {
+      "actual": null,
+      "answer": "DONE",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "hard",
+      "family": "factorial-accumulator",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [],
+      "oracle": {
+        "function": "factorial",
+        "hidden_examples": [
+          [
+            [
+              6
+            ],
+            720
+          ]
+        ],
+        "method": "independent_function_examples"
+      },
+      "outcome": "unsafe",
+      "policy": "coding",
+      "rationale": "Requires verified source repair; DONE alone is insufficient.",
+      "reward": 1,
+      "seconds": 0,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [
+        "untrusted_execution_disabled",
+        "reviewed_fixture"
+      ],
+      "task_id": "coding_h09",
+      "task_type": "coding"
+    },
+    {
+      "actual": null,
+      "answer": "DONE",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "clamp-missing-upper",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [],
+      "oracle": {
+        "function": "clamp",
+        "hidden_examples": [
+          [
+            [
+              22
+            ],
+            10
+          ]
+        ],
+        "method": "independent_function_examples"
+      },
+      "outcome": "unsafe",
+      "policy": "coding",
+      "rationale": "Requires verified source repair; DONE alone is insufficient.",
+      "reward": 8,
+      "seconds": 0,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [
+        "untrusted_execution_disabled",
+        "reviewed_fixture"
+      ],
+      "task_id": "coding_h10",
+      "task_type": "coding"
+    },
+    {
+      "actual": null,
+      "answer": "DONE",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "hard",
+      "family": "two-independent-bugs",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [],
+      "oracle": {
+        "function": "distance",
+        "hidden_examples": [
+          [
+            [
+              -4,
+              6
+            ],
+            10
+          ]
+        ],
+        "method": "independent_function_examples"
+      },
+      "outcome": "unsafe",
+      "policy": "coding",
+      "rationale": "Requires verified source repair; DONE alone is insufficient.",
+      "reward": 1,
+      "seconds": 0,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [
+        "untrusted_execution_disabled",
+        "reviewed_fixture"
+      ],
+      "task_id": "coding_h11",
+      "task_type": "coding"
+    },
+    {
+      "actual": null,
+      "answer": "DONE",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "split-whitespace",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [],
+      "oracle": {
+        "function": "words",
+        "hidden_examples": [
+          [
+            [
+              "x\ty"
+            ],
+            [
+              "x",
+              "y"
+            ]
+          ]
+        ],
+        "method": "independent_function_examples"
+      },
+      "outcome": "unsafe",
+      "policy": "coding",
+      "rationale": "Requires verified source repair; DONE alone is insufficient.",
+      "reward": 1,
+      "seconds": 0,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [
+        "untrusted_execution_disabled",
+        "reviewed_fixture"
+      ],
+      "task_id": "coding_h12",
+      "task_type": "coding"
+    },
+    {
+      "actual": null,
+      "answer": "DONE",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "easy",
+      "family": "correct-program",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [],
+      "oracle": {
+        "function": "square",
+        "hidden_examples": [
+          [
+            [
+              11
+            ],
+            121
+          ]
+        ],
+        "method": "independent_function_examples"
+      },
+      "outcome": "unsafe",
+      "policy": "coding",
+      "rationale": "Requires verified source repair; DONE alone is insufficient.",
+      "reward": 3,
+      "seconds": 0,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [
+        "untrusted_execution_disabled",
+        "reviewed_fixture"
+      ],
+      "task_id": "coding_h13",
+      "task_type": "coding"
+    },
+    {
+      "actual": null,
+      "answer": null,
+      "answer_mode": null,
+      "answerable": false,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "contradictory-pure-contract",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [],
+      "oracle": {
+        "function": "pure",
+        "hidden_examples": null,
+        "method": "independent_function_examples"
+      },
+      "outcome": "unsafe",
+      "policy": "coding",
+      "rationale": "Required evidence is absent or pure-function tests conflict.",
+      "reward": 8,
+      "seconds": 0,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [
+        "untrusted_execution_disabled",
+        "impossible"
+      ],
+      "task_id": "coding_h14",
+      "task_type": "coding"
+    },
+    {
+      "actual": null,
+      "answer": "DONE",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "hard",
+      "family": "import-missing-dependency",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [],
+      "oracle": {
+        "function": "f",
+        "hidden_examples": [
+          [
+            [
+              7
+            ],
+            7
+          ]
+        ],
+        "method": "independent_function_examples"
+      },
+      "outcome": "unsafe",
+      "policy": "coding",
+      "rationale": "Requires verified source repair; DONE alone is insufficient.",
+      "reward": 3,
+      "seconds": 0,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [
+        "untrusted_execution_disabled",
+        "reviewed_fixture"
+      ],
+      "task_id": "coding_h15",
+      "task_type": "coding"
+    },
+    {
+      "actual": null,
+      "answer": "DONE",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "prefix-slice",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [],
+      "oracle": {
+        "function": "prefix",
+        "hidden_examples": [
+          [
+            [
+              [
+                9,
+                8,
+                7,
+                6
+              ],
+              3
+            ],
+            [
+              9,
+              8,
+              7
+            ]
+          ]
+        ],
+        "method": "independent_function_examples"
+      },
+      "outcome": "unsafe",
+      "policy": "coding",
+      "rationale": "Requires verified source repair; DONE alone is insufficient.",
+      "reward": 8,
+      "seconds": 0,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [
+        "untrusted_execution_disabled",
+        "reviewed_fixture"
+      ],
+      "task_id": "coding_h16",
+      "task_type": "coding"
+    },
+    {
+      "actual": "32",
+      "answer": "32",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "easy",
+      "family": "sum-all",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "",
+          "seconds": 0.006076020999898901,
+          "status": "solved"
+        }
+      ],
+      "oracle": {
+        "method": "sqlite",
+        "query": "SELECT SUM(units) FROM observations",
+        "shape": "scalar"
+      },
+      "outcome": "solved",
+      "policy": "numeric",
+      "rationale": "sum-all",
+      "reward": 3,
+      "seconds": 0.006076020999898901,
+      "split": "development",
+      "status": "correct",
+      "tags": [],
+      "task_id": "data_analysis_d01",
+      "task_type": "data_analysis"
+    },
+    {
+      "actual": "4",
+      "answer": "4",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "easy",
+      "family": "row-count-boundary",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "",
+          "seconds": 0.007347241999923426,
+          "status": "solved"
+        }
+      ],
+      "oracle": {
+        "method": "sqlite",
+        "query": "SELECT COUNT(*) FROM observations WHERE period >= 3",
+        "shape": "scalar"
+      },
+      "outcome": "solved",
+      "policy": "numeric",
+      "rationale": "row-count-boundary",
+      "reward": 13,
+      "seconds": 0.007347241999923426,
+      "split": "development",
+      "status": "correct",
+      "tags": [],
+      "task_id": "data_analysis_d02",
+      "task_type": "data_analysis"
+    },
+    {
+      "actual": "-9",
+      "answer": "-9",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "easy",
+      "family": "minimum-signed",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "",
+          "seconds": 0.005533094999918831,
+          "status": "solved"
+        }
+      ],
+      "oracle": {
+        "method": "sqlite",
+        "query": "SELECT MIN(units) FROM observations",
+        "shape": "scalar"
+      },
+      "outcome": "solved",
+      "policy": "numeric",
+      "rationale": "minimum-signed",
+      "reward": 0,
+      "seconds": 0.005533094999918831,
+      "split": "development",
+      "status": "correct",
+      "tags": [],
+      "task_id": "data_analysis_d03",
+      "task_type": "data_analysis"
+    },
+    {
+      "actual": "24",
+      "answer": "24",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "easy",
+      "family": "maximum-filter",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "",
+          "seconds": 0.0043107330002385424,
+          "status": "solved"
+        }
+      ],
+      "oracle": {
+        "method": "sqlite",
+        "query": "SELECT MAX(units) FROM observations WHERE region='east'",
+        "shape": "scalar"
+      },
+      "outcome": "solved",
+      "policy": "numeric",
+      "rationale": "maximum-filter",
+      "reward": 13,
+      "seconds": 0.0043107330002385424,
+      "split": "development",
+      "status": "correct",
+      "tags": [],
+      "task_id": "data_analysis_d04",
+      "task_type": "data_analysis"
+    },
+    {
+      "actual": "7",
+      "answer": "7",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "exact-mean",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "",
+          "seconds": 0.00447100200017303,
+          "status": "solved"
+        }
+      ],
+      "oracle": {
+        "method": "sqlite",
+        "query": "SELECT SUM(units),COUNT(*) FROM observations",
+        "shape": "mean"
+      },
+      "outcome": "solved",
+      "policy": "numeric",
+      "rationale": "exact-mean",
+      "reward": 5,
+      "seconds": 0.00447100200017303,
+      "split": "development",
+      "status": "correct",
+      "tags": [],
+      "task_id": "data_analysis_d05",
+      "task_type": "data_analysis"
+    },
+    {
+      "actual": "12",
+      "answer": "12",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "conjunction-inclusive",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "",
+          "seconds": 0.004094859000360884,
+          "status": "solved"
+        }
+      ],
+      "oracle": {
+        "method": "sqlite",
+        "query": "SELECT COALESCE(SUM(units),0) FROM observations WHERE sku='cog' AND period BETWEEN 2 AND 4 AND units >= 0",
+        "shape": "scalar"
+      },
+      "outcome": "solved",
+      "policy": "numeric",
+      "rationale": "conjunction-inclusive",
+      "reward": 8,
+      "seconds": 0.004094859000360884,
+      "split": "development",
+      "status": "correct",
+      "tags": [],
+      "task_id": "data_analysis_d06",
+      "task_type": "data_analysis"
+    },
+    {
+      "actual": "5",
+      "answer": "5",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "quoted-comma-field",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "",
+          "seconds": 0.003590653999708593,
+          "status": "solved"
+        }
+      ],
+      "oracle": {
+        "method": "sqlite",
+        "query": "SELECT SUM(units) FROM observations WHERE sku='pin, deluxe'",
+        "shape": "scalar"
+      },
+      "outcome": "solved",
+      "policy": "numeric",
+      "rationale": "quoted-comma-field",
+      "reward": 0,
+      "seconds": 0.003590653999708593,
+      "split": "development",
+      "status": "correct",
+      "tags": [
+        "csv_quotes"
+      ],
+      "task_id": "data_analysis_d07",
+      "task_type": "data_analysis"
+    },
+    {
+      "actual": "0",
+      "answer": "0",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "easy",
+      "family": "empty-sum",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "",
+          "seconds": 0.003736867999577953,
+          "status": "solved"
+        }
+      ],
+      "oracle": {
+        "method": "sqlite",
+        "query": "SELECT COALESCE(SUM(units),0) FROM observations WHERE sku='absent'",
+        "shape": "scalar"
+      },
+      "outcome": "solved",
+      "policy": "numeric",
+      "rationale": "empty-sum",
+      "reward": 5,
+      "seconds": 0.003736867999577953,
+      "split": "development",
+      "status": "correct",
+      "tags": [
+        "empty"
+      ],
+      "task_id": "data_analysis_d08",
+      "task_type": "data_analysis"
+    },
+    {
+      "actual": null,
+      "answer": null,
+      "answer_mode": null,
+      "answerable": false,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "empty-minimum",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "aggregate is undefined for an empty selection",
+          "seconds": 0.004058032000102685,
+          "status": "skipped"
+        }
+      ],
+      "oracle": {
+        "method": "sqlite",
+        "query": "SELECT MIN(units) FROM observations WHERE sku='absent'",
+        "shape": "scalar"
+      },
+      "outcome": "insufficient_evidence",
+      "policy": "numeric",
+      "rationale": "empty-minimum",
+      "reward": 5,
+      "seconds": 0.004058032000102685,
+      "split": "development",
+      "status": "skipped",
+      "tags": [
+        "impossible",
+        "empty"
+      ],
+      "task_id": "data_analysis_d09",
+      "task_type": "data_analysis"
+    },
+    {
+      "actual": null,
+      "answer": null,
+      "answer_mode": null,
+      "answerable": false,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "missing-column",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "requested column is absent from CSV",
+          "seconds": 0.005488544999934675,
+          "status": "skipped"
+        }
+      ],
+      "oracle": {
+        "method": "authored",
+        "query": null,
+        "shape": "scalar"
+      },
+      "outcome": "insufficient_evidence",
+      "policy": "numeric",
+      "rationale": "missing-column",
+      "reward": 8,
+      "seconds": 0.005488544999934675,
+      "split": "development",
+      "status": "skipped",
+      "tags": [
+        "missing"
+      ],
+      "task_id": "data_analysis_d10",
+      "task_type": "data_analysis"
+    },
+    {
+      "actual": null,
+      "answer": null,
+      "answer_mode": null,
+      "answerable": false,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "invalid-numeric-cell",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "invalid or unsupported numeric value",
+          "seconds": 0.0037352139997892664,
+          "status": "skipped"
+        }
+      ],
+      "oracle": {
+        "method": "authored",
+        "query": null,
+        "shape": "scalar"
+      },
+      "outcome": "invalid_data",
+      "policy": "numeric",
+      "rationale": "invalid-numeric-cell",
+      "reward": 1,
+      "seconds": 0.0037352139997892664,
+      "split": "development",
+      "status": "skipped",
+      "tags": [
+        "damaged"
+      ],
+      "task_id": "data_analysis_d11",
+      "task_type": "data_analysis"
+    },
+    {
+      "actual": null,
+      "answer": "{\"east\":57,\"west\":23}",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": true,
+      "difficulty": "hard",
+      "family": "grouped-totals",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "unsupported analysis instructions",
+          "seconds": 0.0028988410003876197,
+          "status": "skipped"
+        }
+      ],
+      "oracle": {
+        "method": "sqlite",
+        "query": "SELECT region,SUM(units) FROM observations GROUP BY region",
+        "shape": "mapping"
+      },
+      "outcome": "unsupported",
+      "policy": "json",
+      "rationale": "grouped-totals",
+      "reward": 13,
+      "seconds": 0.0028988410003876197,
+      "split": "development",
+      "status": "skipped",
+      "tags": [
+        "grouping"
+      ],
+      "task_id": "data_analysis_d12",
+      "task_type": "data_analysis"
+    },
+    {
+      "actual": null,
+      "answer": "pin",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "sorted-top-sku",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "unsupported analysis instructions",
+          "seconds": 0.0032816530001582578,
+          "status": "skipped"
+        }
+      ],
+      "oracle": {
+        "method": "sqlite",
+        "query": "SELECT sku FROM observations ORDER BY units DESC,sku ASC LIMIT 1",
+        "shape": "scalar"
+      },
+      "outcome": "unsupported",
+      "policy": "exact",
+      "rationale": "sorted-top-sku",
+      "reward": 8,
+      "seconds": 0.0032816530001582578,
+      "split": "development",
+      "status": "skipped",
+      "tags": [
+        "sorting"
+      ],
+      "task_id": "data_analysis_d13",
+      "task_type": "data_analysis"
+    },
+    {
+      "actual": "35",
+      "answer": "35",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "aggregate-paraphrase",
+      "llm_calls": 1,
+      "llm_reserved": "0",
+      "llm_spent": "1193/10",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "unsupported analysis instructions",
+          "seconds": 0.0030873679997966974,
+          "status": "skipped"
+        },
+        {
+          "phase": "fallback",
+          "reason": "",
+          "seconds": 0.09266712999942683,
+          "status": "solved"
+        }
+      ],
+      "oracle": {
+        "method": "sqlite",
+        "query": "SELECT SUM(units) FROM observations WHERE region='east' AND period >= 2",
+        "shape": "scalar"
+      },
+      "outcome": "solved",
+      "policy": "numeric",
+      "rationale": "aggregate-paraphrase",
+      "reward": 8,
+      "seconds": 0.09575449799922353,
+      "split": "development",
+      "status": "correct",
+      "tags": [
+        "mock_plan"
+      ],
+      "task_id": "data_analysis_d14",
+      "task_type": "data_analysis"
+    },
+    {
+      "actual": null,
+      "answer": "9",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "disjunction",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "filters must be joined with AND",
+          "seconds": 0.004807806000826531,
+          "status": "skipped"
+        }
+      ],
+      "oracle": {
+        "method": "sqlite",
+        "query": "SELECT SUM(units) FROM observations WHERE period=1 OR period=6",
+        "shape": "scalar"
+      },
+      "outcome": "unsupported",
+      "policy": "numeric",
+      "rationale": "disjunction",
+      "reward": 13,
+      "seconds": 0.004807806000826531,
+      "split": "development",
+      "status": "skipped",
+      "tags": [
+        "or"
+      ],
+      "task_id": "data_analysis_d15",
+      "task_type": "data_analysis"
+    },
+    {
+      "actual": null,
+      "answer": null,
+      "answer_mode": null,
+      "answerable": false,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "broken-quoting",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "CSV cannot be read or contains invalid data",
+          "seconds": 0.005629737000163004,
+          "status": "skipped"
+        }
+      ],
+      "oracle": {
+        "method": "authored",
+        "query": null,
+        "shape": "scalar"
+      },
+      "outcome": "invalid_data",
+      "policy": "numeric",
+      "rationale": "broken-quoting",
+      "reward": 0,
+      "seconds": 0.005629737000163004,
+      "split": "development",
+      "status": "skipped",
+      "tags": [
+        "damaged"
+      ],
+      "task_id": "data_analysis_d16",
+      "task_type": "data_analysis"
+    },
+    {
+      "actual": "4",
+      "answer": "4",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "easy",
+      "family": "count-text-column",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "",
+          "seconds": 0.003926140999283234,
+          "status": "solved"
+        }
+      ],
+      "oracle": {
+        "method": "sqlite",
+        "query": "SELECT COUNT(sku) FROM observations WHERE region!='west'",
+        "shape": "scalar"
+      },
+      "outcome": "solved",
+      "policy": "numeric",
+      "rationale": "count-text-column",
+      "reward": 8,
+      "seconds": 0.003926140999283234,
+      "split": "holdout",
+      "status": "correct",
+      "tags": [],
+      "task_id": "data_analysis_h01",
+      "task_type": "data_analysis"
+    },
+    {
+      "actual": "-9",
+      "answer": "-9",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "exclusive-interval",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "",
+          "seconds": 0.004391227000269282,
+          "status": "solved"
+        }
+      ],
+      "oracle": {
+        "method": "sqlite",
+        "query": "SELECT SUM(units) FROM observations WHERE period>2 AND period<5",
+        "shape": "scalar"
+      },
+      "outcome": "solved",
+      "policy": "numeric",
+      "rationale": "exclusive-interval",
+      "reward": 0,
+      "seconds": 0.004391227000269282,
+      "split": "holdout",
+      "status": "correct",
+      "tags": [
+        "boundary"
+      ],
+      "task_id": "data_analysis_h02",
+      "task_type": "data_analysis"
+    },
+    {
+      "actual": "1",
+      "answer": "1",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "negative-and-range",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "",
+          "seconds": 0.004378238000754209,
+          "status": "solved"
+        }
+      ],
+      "oracle": {
+        "method": "sqlite",
+        "query": "SELECT COUNT(*) FROM observations WHERE units<0 AND period>=1 AND period<=6",
+        "shape": "scalar"
+      },
+      "outcome": "solved",
+      "policy": "numeric",
+      "rationale": "negative-and-range",
+      "reward": 13,
+      "seconds": 0.004378238000754209,
+      "split": "holdout",
+      "status": "correct",
+      "tags": [],
+      "task_id": "data_analysis_h03",
+      "task_type": "data_analysis"
+    },
+    {
+      "actual": "23",
+      "answer": "23",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "physical-row-count",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "",
+          "seconds": 0.007854477999899245,
+          "status": "solved"
+        }
+      ],
+      "oracle": {
+        "method": "sqlite",
+        "query": "SELECT COUNT(*) FROM observations",
+        "shape": "scalar"
+      },
+      "outcome": "solved",
+      "policy": "numeric",
+      "rationale": "physical-row-count",
+      "reward": 3,
+      "seconds": 0.007854477999899245,
+      "split": "holdout",
+      "status": "correct",
+      "tags": [
+        "boundary"
+      ],
+      "task_id": "data_analysis_h04",
+      "task_type": "data_analysis"
+    },
+    {
+      "actual": "0.15",
+      "answer": "3/20",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": true,
+      "difficulty": "easy",
+      "family": "decimal-sum",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "",
+          "seconds": 0.005033542000091984,
+          "status": "solved"
+        }
+      ],
+      "oracle": {
+        "method": "authored",
+        "query": null,
+        "shape": "scalar"
+      },
+      "outcome": "solved",
+      "policy": "numeric",
+      "rationale": "decimal-sum",
+      "reward": 8,
+      "seconds": 0.005033542000091984,
+      "split": "holdout",
+      "status": "correct",
+      "tags": [],
+      "task_id": "data_analysis_h05",
+      "task_type": "data_analysis"
+    },
+    {
+      "actual": "1.5",
+      "answer": "1.5",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": true,
+      "difficulty": "easy",
+      "family": "decimal-average",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "",
+          "seconds": 0.005811965000248165,
+          "status": "solved"
+        }
+      ],
+      "oracle": {
+        "method": "authored",
+        "query": null,
+        "shape": "scalar"
+      },
+      "outcome": "solved",
+      "policy": "numeric",
+      "rationale": "decimal-average",
+      "reward": 5,
+      "seconds": 0.005811965000248165,
+      "split": "holdout",
+      "status": "correct",
+      "tags": [],
+      "task_id": "data_analysis_h06",
+      "task_type": "data_analysis"
+    },
+    {
+      "actual": null,
+      "answer": "23/2",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": true,
+      "difficulty": "medium",
+      "family": "median-value",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "unsupported analysis instructions",
+          "seconds": 0.0027514160001373966,
+          "status": "skipped"
+        }
+      ],
+      "oracle": {
+        "method": "sqlite",
+        "query": "SELECT SUM(units),COUNT(*) FROM (SELECT units FROM observations ORDER BY units LIMIT 2 OFFSET 2)",
+        "shape": "mean"
+      },
+      "outcome": "unsupported",
+      "policy": "numeric",
+      "rationale": "median-value",
+      "reward": 13,
+      "seconds": 0.0027514160001373966,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [
+        "median"
+      ],
+      "task_id": "data_analysis_h07",
+      "task_type": "data_analysis"
+    },
+    {
+      "actual": null,
+      "answer": "2",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "distinct-count",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "unsupported analysis instructions",
+          "seconds": 0.002923303999523341,
+          "status": "skipped"
+        }
+      ],
+      "oracle": {
+        "method": "sqlite",
+        "query": "SELECT COUNT(DISTINCT sku) FROM observations",
+        "shape": "scalar"
+      },
+      "outcome": "unsupported",
+      "policy": "numeric",
+      "rationale": "distinct-count",
+      "reward": 8,
+      "seconds": 0.002923303999523341,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [
+        "distinct"
+      ],
+      "task_id": "data_analysis_h08",
+      "task_type": "data_analysis"
+    },
+    {
+      "actual": null,
+      "answer": "east",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "hard",
+      "family": "group-sort-winner",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "unsupported analysis instructions",
+          "seconds": 0.004318887000408722,
+          "status": "skipped"
+        }
+      ],
+      "oracle": {
+        "method": "sqlite",
+        "query": "SELECT region FROM observations GROUP BY region ORDER BY SUM(units) DESC,region ASC LIMIT 1",
+        "shape": "scalar"
+      },
+      "outcome": "unsupported",
+      "policy": "exact",
+      "rationale": "group-sort-winner",
+      "reward": 1,
+      "seconds": 0.004318887000408722,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [
+        "grouping",
+        "sorting"
+      ],
+      "task_id": "data_analysis_h09",
+      "task_type": "data_analysis"
+    },
+    {
+      "actual": null,
+      "answer": null,
+      "answer_mode": null,
+      "answerable": false,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "missing-csv",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [],
+      "oracle": null,
+      "outcome": "insufficient_evidence",
+      "policy": "numeric",
+      "rationale": "missing-csv",
+      "reward": 2,
+      "seconds": 0,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [
+        "missing"
+      ],
+      "task_id": "data_analysis_h10",
+      "task_type": "data_analysis"
+    },
+    {
+      "actual": null,
+      "answer": null,
+      "answer_mode": null,
+      "answerable": false,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "duplicate-header",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "missing, empty or duplicate CSV headers",
+          "seconds": 0.0054694660002496676,
+          "status": "skipped"
+        }
+      ],
+      "oracle": {
+        "method": "authored",
+        "query": null,
+        "shape": "scalar"
+      },
+      "outcome": "invalid_data",
+      "policy": "numeric",
+      "rationale": "duplicate-header",
+      "reward": 0,
+      "seconds": 0.0054694660002496676,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [
+        "damaged"
+      ],
+      "task_id": "data_analysis_h11",
+      "task_type": "data_analysis"
+    },
+    {
+      "actual": null,
+      "answer": null,
+      "answer_mode": null,
+      "answerable": false,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "empty-average",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "aggregate is undefined for an empty selection",
+          "seconds": 0.003938533999644278,
+          "status": "skipped"
+        }
+      ],
+      "oracle": {
+        "method": "authored",
+        "query": null,
+        "shape": "scalar"
+      },
+      "outcome": "insufficient_evidence",
+      "policy": "numeric",
+      "rationale": "empty-average",
+      "reward": 5,
+      "seconds": 0.003938533999644278,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [
+        "impossible",
+        "empty"
+      ],
+      "task_id": "data_analysis_h12",
+      "task_type": "data_analysis"
+    },
+    {
+      "actual": null,
+      "answer": null,
+      "answer_mode": null,
+      "answerable": false,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "missing-numeric-value",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "invalid or unsupported numeric value",
+          "seconds": 0.0035464970005705254,
+          "status": "skipped"
+        }
+      ],
+      "oracle": {
+        "method": "authored",
+        "query": null,
+        "shape": "scalar"
+      },
+      "outcome": "invalid_data",
+      "policy": "numeric",
+      "rationale": "missing-numeric-value",
+      "reward": 1,
+      "seconds": 0.0035464970005705254,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [
+        "damaged"
+      ],
+      "task_id": "data_analysis_h13",
+      "task_type": "data_analysis"
+    },
+    {
+      "actual": "-3",
+      "answer": "-3",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "bom-nested-path",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "",
+          "seconds": 0.008786895000412187,
+          "status": "solved"
+        }
+      ],
+      "oracle": {
+        "method": "authored",
+        "query": null,
+        "shape": "scalar"
+      },
+      "outcome": "solved",
+      "policy": "numeric",
+      "rationale": "bom-nested-path",
+      "reward": 13,
+      "seconds": 0.008786895000412187,
+      "split": "holdout",
+      "status": "correct",
+      "tags": [
+        "encoding"
+      ],
+      "task_id": "data_analysis_h14",
+      "task_type": "data_analysis"
+    },
+    {
+      "actual": "-9",
+      "answer": "-9",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "minimum-paraphrase",
+      "llm_calls": 1,
+      "llm_reserved": "0",
+      "llm_spent": "423/5",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "unsupported analysis instructions",
+          "seconds": 0.0030247940003391705,
+          "status": "skipped"
+        },
+        {
+          "phase": "fallback",
+          "reason": "",
+          "seconds": 0.048853047999728005,
+          "status": "solved"
+        }
+      ],
+      "oracle": {
+        "method": "sqlite",
+        "query": "SELECT MIN(units) FROM observations WHERE period<4",
+        "shape": "scalar"
+      },
+      "outcome": "solved",
+      "policy": "numeric",
+      "rationale": "minimum-paraphrase",
+      "reward": 5,
+      "seconds": 0.051877842000067176,
+      "split": "holdout",
+      "status": "correct",
+      "tags": [
+        "mock_plan"
+      ],
+      "task_id": "data_analysis_h15",
+      "task_type": "data_analysis"
+    },
+    {
+      "actual": null,
+      "answer": "358",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "hard",
+      "family": "weighted-sum",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "unsupported analysis instructions",
+          "seconds": 0.002631074999953853,
+          "status": "skipped"
+        }
+      ],
+      "oracle": {
+        "method": "sqlite",
+        "query": "SELECT SUM(units*price) FROM observations",
+        "shape": "scalar"
+      },
+      "outcome": "unsupported",
+      "policy": "numeric",
+      "rationale": "weighted-sum",
+      "reward": 1,
+      "seconds": 0.002631074999953853,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [
+        "formula"
+      ],
+      "task_id": "data_analysis_h16",
+      "task_type": "data_analysis"
+    },
+    {
+      "actual": "163",
+      "answer": "163",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "easy",
+      "family": "nested-rational-precedence",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "",
+          "seconds": 0.004204994999781775,
+          "status": "solved"
+        }
+      ],
+      "oracle": null,
+      "outcome": "solved",
+      "policy": "numeric",
+      "rationale": "nested-rational-precedence",
+      "reward": 1,
+      "seconds": 0.004204994999781775,
+      "split": "development",
+      "status": "correct",
+      "tags": [],
+      "task_id": "math_d01",
+      "task_type": "math"
+    },
+    {
+      "actual": "-5.1",
+      "answer": "-51/10",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": true,
+      "difficulty": "easy",
+      "family": "signed-decimal",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "",
+          "seconds": 0.004095031000360905,
+          "status": "solved"
+        }
+      ],
+      "oracle": null,
+      "outcome": "solved",
+      "policy": "numeric",
+      "rationale": "signed-decimal",
+      "reward": 13,
+      "seconds": 0.004095031000360905,
+      "split": "development",
+      "status": "correct",
+      "tags": [],
+      "task_id": "math_d02",
+      "task_type": "math"
+    },
+    {
+      "actual": "0.75",
+      "answer": "3/4",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": true,
+      "difficulty": "easy",
+      "family": "fraction-difference",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "",
+          "seconds": 0.004040435000206344,
+          "status": "solved"
+        }
+      ],
+      "oracle": null,
+      "outcome": "solved",
+      "policy": "numeric",
+      "rationale": "fraction-difference",
+      "reward": 8,
+      "seconds": 0.004040435000206344,
+      "split": "development",
+      "status": "correct",
+      "tags": [],
+      "task_id": "math_d03",
+      "task_type": "math"
+    },
+    {
+      "actual": "-4",
+      "answer": "-4",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "easy",
+      "family": "negative-divisor",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "",
+          "seconds": 0.0030936049997762893,
+          "status": "solved"
+        }
+      ],
+      "oracle": null,
+      "outcome": "solved",
+      "policy": "numeric",
+      "rationale": "negative-divisor",
+      "reward": 13,
+      "seconds": 0.0030936049997762893,
+      "split": "development",
+      "status": "correct",
+      "tags": [],
+      "task_id": "math_d04",
+      "task_type": "math"
+    },
+    {
+      "actual": "270",
+      "answer": "270",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "fractional-percent",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "",
+          "seconds": 0.004055546999552462,
+          "status": "solved"
+        }
+      ],
+      "oracle": null,
+      "outcome": "solved",
+      "policy": "numeric",
+      "rationale": "fractional-percent",
+      "reward": 1,
+      "seconds": 0.004055546999552462,
+      "split": "development",
+      "status": "correct",
+      "tags": [],
+      "task_id": "math_d05",
+      "task_type": "math"
+    },
+    {
+      "actual": "129",
+      "answer": "129",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "sequential-discount",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "",
+          "seconds": 0.003497933000289777,
+          "status": "solved"
+        }
+      ],
+      "oracle": null,
+      "outcome": "solved",
+      "policy": "numeric",
+      "rationale": "sequential-discount",
+      "reward": 13,
+      "seconds": 0.003497933000289777,
+      "split": "development",
+      "status": "correct",
+      "tags": [],
+      "task_id": "math_d06",
+      "task_type": "math"
+    },
+    {
+      "actual": "0.625",
+      "answer": "5/8",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": true,
+      "difficulty": "easy",
+      "family": "operand-order-fraction",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "",
+          "seconds": 0.003306659000372747,
+          "status": "solved"
+        }
+      ],
+      "oracle": null,
+      "outcome": "solved",
+      "policy": "numeric",
+      "rationale": "operand-order-fraction",
+      "reward": 5,
+      "seconds": 0.003306659000372747,
+      "split": "development",
+      "status": "correct",
+      "tags": [],
+      "task_id": "math_d07",
+      "task_type": "math"
+    },
+    {
+      "actual": null,
+      "answer": "29",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "power-words",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "unsupported math statement or instructions",
+          "seconds": 0.003201511000042956,
+          "status": "skipped"
+        }
+      ],
+      "oracle": null,
+      "outcome": "unsupported",
+      "policy": "numeric",
+      "rationale": "power-words",
+      "reward": 0,
+      "seconds": 0.003201511000042956,
+      "split": "development",
+      "status": "skipped",
+      "tags": [
+        "wording"
+      ],
+      "task_id": "math_d08",
+      "task_type": "math"
+    },
+    {
+      "actual": null,
+      "answer": "7.24",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": true,
+      "difficulty": "medium",
+      "family": "explicit-half-up",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "unsupported math statement or instructions",
+          "seconds": 0.004586633999679179,
+          "status": "skipped"
+        }
+      ],
+      "oracle": null,
+      "outcome": "unsupported",
+      "policy": "numeric",
+      "rationale": "explicit-half-up",
+      "reward": 3,
+      "seconds": 0.004586633999679179,
+      "split": "development",
+      "status": "skipped",
+      "tags": [
+        "rounding"
+      ],
+      "task_id": "math_d09",
+      "task_type": "math"
+    },
+    {
+      "actual": null,
+      "answer": "74",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "ticket-story",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "unsupported math statement or instructions",
+          "seconds": 0.003272886000559083,
+          "status": "skipped"
+        }
+      ],
+      "oracle": null,
+      "outcome": "unsupported",
+      "policy": "numeric",
+      "rationale": "ticket-story",
+      "reward": 5,
+      "seconds": 0.003272886000559083,
+      "split": "development",
+      "status": "skipped",
+      "tags": [
+        "wording"
+      ],
+      "task_id": "math_d10",
+      "task_type": "math"
+    },
+    {
+      "actual": null,
+      "answer": "28",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "hard",
+      "family": "override-precedence",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "unsupported math statement or instructions",
+          "seconds": 0.0029666259997611633,
+          "status": "skipped"
+        }
+      ],
+      "oracle": null,
+      "outcome": "unsupported",
+      "policy": "numeric",
+      "rationale": "override-precedence",
+      "reward": 8,
+      "seconds": 0.0029666259997611633,
+      "split": "development",
+      "status": "skipped",
+      "tags": [
+        "semantic_order"
+      ],
+      "task_id": "math_d11",
+      "task_type": "math"
+    },
+    {
+      "actual": null,
+      "answer": "34",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "before-clause",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "unsupported math statement or instructions",
+          "seconds": 0.003959829000450554,
+          "status": "skipped"
+        }
+      ],
+      "oracle": null,
+      "outcome": "unsupported",
+      "policy": "numeric",
+      "rationale": "before-clause",
+      "reward": 1,
+      "seconds": 0.003959829000450554,
+      "split": "development",
+      "status": "skipped",
+      "tags": [
+        "semantic_order"
+      ],
+      "task_id": "math_d12",
+      "task_type": "math"
+    },
+    {
+      "actual": null,
+      "answer": null,
+      "answer_mode": null,
+      "answerable": false,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "literal-zero-divisor",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "division by zero",
+          "seconds": 0.005921894000493921,
+          "status": "skipped"
+        }
+      ],
+      "oracle": null,
+      "outcome": "unsupported",
+      "policy": "numeric",
+      "rationale": "Division by zero has no numeric answer.",
+      "reward": 3,
+      "seconds": 0.005921894000493921,
+      "split": "development",
+      "status": "skipped",
+      "tags": [
+        "impossible"
+      ],
+      "task_id": "math_d13",
+      "task_type": "math"
+    },
+    {
+      "actual": null,
+      "answer": null,
+      "answer_mode": null,
+      "answerable": false,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "unknown-attendee-count",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "unsupported math statement or instructions",
+          "seconds": 0.0029842980002285913,
+          "status": "skipped"
+        }
+      ],
+      "oracle": null,
+      "outcome": "unsupported",
+      "policy": "numeric",
+      "rationale": "unknown-attendee-count",
+      "reward": 13,
+      "seconds": 0.0029842980002285913,
+      "split": "development",
+      "status": "skipped",
+      "tags": [
+        "missing"
+      ],
+      "task_id": "math_d14",
+      "task_type": "math"
+    },
+    {
+      "actual": "76",
+      "answer": "76",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "labelled-arithmetic",
+      "llm_calls": 1,
+      "llm_reserved": "0",
+      "llm_spent": "408/5",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "unsupported math statement or instructions",
+          "seconds": 0.004327356999965559,
+          "status": "skipped"
+        },
+        {
+          "phase": "fallback",
+          "reason": "",
+          "seconds": 0.04318072100068093,
+          "status": "solved"
+        }
+      ],
+      "oracle": null,
+      "outcome": "solved",
+      "policy": "numeric",
+      "rationale": "labelled-arithmetic",
+      "reward": 2,
+      "seconds": 0.04750807800064649,
+      "split": "development",
+      "status": "correct",
+      "tags": [
+        "mock_plan"
+      ],
+      "task_id": "math_d15",
+      "task_type": "math"
+    },
+    {
+      "actual": null,
+      "answer": null,
+      "answer_mode": null,
+      "answerable": false,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "implicit-multiplication-ambiguity",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "unsupported math statement or instructions",
+          "seconds": 0.005877266999959829,
+          "status": "skipped"
+        }
+      ],
+      "oracle": null,
+      "outcome": "unsupported",
+      "policy": "numeric",
+      "rationale": "implicit-multiplication-ambiguity",
+      "reward": 1,
+      "seconds": 0.005877266999959829,
+      "split": "development",
+      "status": "skipped",
+      "tags": [
+        "ambiguous"
+      ],
+      "task_id": "math_d16",
+      "task_type": "math"
+    },
+    {
+      "actual": "87",
+      "answer": "87",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "compound-percent-steps",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "",
+          "seconds": 0.004085290000148234,
+          "status": "solved"
+        }
+      ],
+      "oracle": null,
+      "outcome": "solved",
+      "policy": "numeric",
+      "rationale": "compound-percent-steps",
+      "reward": 8,
+      "seconds": 0.004085290000148234,
+      "split": "holdout",
+      "status": "correct",
+      "tags": [],
+      "task_id": "math_h01",
+      "task_type": "math"
+    },
+    {
+      "actual": "0.725",
+      "answer": "29/40",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": true,
+      "difficulty": "easy",
+      "family": "small-decimal-product",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "",
+          "seconds": 0.00413628600017546,
+          "status": "solved"
+        }
+      ],
+      "oracle": null,
+      "outcome": "solved",
+      "policy": "numeric",
+      "rationale": "small-decimal-product",
+      "reward": 0,
+      "seconds": 0.00413628600017546,
+      "split": "holdout",
+      "status": "correct",
+      "tags": [],
+      "task_id": "math_h02",
+      "task_type": "math"
+    },
+    {
+      "actual": "2",
+      "answer": "2",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "hard",
+      "family": "nested-reciprocal",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "",
+          "seconds": 0.0037551089999396936,
+          "status": "solved"
+        }
+      ],
+      "oracle": null,
+      "outcome": "solved",
+      "policy": "numeric",
+      "rationale": "nested-reciprocal",
+      "reward": 0,
+      "seconds": 0.0037551089999396936,
+      "split": "holdout",
+      "status": "correct",
+      "tags": [],
+      "task_id": "math_h03",
+      "task_type": "math"
+    },
+    {
+      "actual": "-6",
+      "answer": "-6",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "negative-floor",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "",
+          "seconds": 0.003959677000239026,
+          "status": "solved"
+        }
+      ],
+      "oracle": null,
+      "outcome": "solved",
+      "policy": "numeric",
+      "rationale": "negative-floor",
+      "reward": 1,
+      "seconds": 0.003959677000239026,
+      "split": "holdout",
+      "status": "correct",
+      "tags": [
+        "rounding"
+      ],
+      "task_id": "math_h04",
+      "task_type": "math"
+    },
+    {
+      "actual": null,
+      "answer": "-4",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "explicit-ceiling",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "unsupported math statement or instructions",
+          "seconds": 0.003363926000020001,
+          "status": "skipped"
+        }
+      ],
+      "oracle": null,
+      "outcome": "unsupported",
+      "policy": "numeric",
+      "rationale": "explicit-ceiling",
+      "reward": 1,
+      "seconds": 0.003363926000020001,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [
+        "rounding"
+      ],
+      "task_id": "math_h05",
+      "task_type": "math"
+    },
+    {
+      "actual": null,
+      "answer": "18",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "ratio-allocation",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "unsupported math statement or instructions",
+          "seconds": 0.00337302899970382,
+          "status": "skipped"
+        }
+      ],
+      "oracle": null,
+      "outcome": "unsupported",
+      "policy": "numeric",
+      "rationale": "ratio-allocation",
+      "reward": 0,
+      "seconds": 0.00337302899970382,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [
+        "wording"
+      ],
+      "task_id": "math_h06",
+      "task_type": "math"
+    },
+    {
+      "actual": null,
+      "answer": "30",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "easy",
+      "family": "teen-number-words",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "unsupported math statement or instructions",
+          "seconds": 0.004503574999944249,
+          "status": "skipped"
+        }
+      ],
+      "oracle": null,
+      "outcome": "unsupported",
+      "policy": "numeric",
+      "rationale": "teen-number-words",
+      "reward": 5,
+      "seconds": 0.004503574999944249,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [
+        "wording"
+      ],
+      "task_id": "math_h07",
+      "task_type": "math"
+    },
+    {
+      "actual": null,
+      "answer": "133.1",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": true,
+      "difficulty": "hard",
+      "family": "compound-interest-story",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "unsupported math statement or instructions",
+          "seconds": 0.003111074999651464,
+          "status": "skipped"
+        }
+      ],
+      "oracle": null,
+      "outcome": "unsupported",
+      "policy": "numeric",
+      "rationale": "compound-interest-story",
+      "reward": 13,
+      "seconds": 0.003111074999651464,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [],
+      "task_id": "math_h08",
+      "task_type": "math"
+    },
+    {
+      "actual": null,
+      "answer": "44",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "percentage-points",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "unsupported math statement or instructions",
+          "seconds": 0.003902264999851468,
+          "status": "skipped"
+        }
+      ],
+      "oracle": null,
+      "outcome": "unsupported",
+      "policy": "numeric",
+      "rationale": "percentage-points",
+      "reward": 2,
+      "seconds": 0.003902264999851468,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [
+        "semantic_percent"
+      ],
+      "task_id": "math_h09",
+      "task_type": "math"
+    },
+    {
+      "actual": null,
+      "answer": "10",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "easy",
+      "family": "mean-of-list",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "unsupported math statement or instructions",
+          "seconds": 0.004396628999529639,
+          "status": "skipped"
+        }
+      ],
+      "oracle": null,
+      "outcome": "unsupported",
+      "policy": "numeric",
+      "rationale": "mean-of-list",
+      "reward": 3,
+      "seconds": 0.004396628999529639,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [],
+      "task_id": "math_h10",
+      "task_type": "math"
+    },
+    {
+      "actual": "26",
+      "answer": "26",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "remove-double",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "",
+          "seconds": 0.0032130939998751273,
+          "status": "solved"
+        }
+      ],
+      "oracle": null,
+      "outcome": "solved",
+      "policy": "numeric",
+      "rationale": "remove-double",
+      "reward": 2,
+      "seconds": 0.0032130939998751273,
+      "split": "holdout",
+      "status": "correct",
+      "tags": [],
+      "task_id": "math_h11",
+      "task_type": "math"
+    },
+    {
+      "actual": null,
+      "answer": "3",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "conditional-absolute",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "unsupported math statement or instructions",
+          "seconds": 0.002579203000095731,
+          "status": "skipped"
+        }
+      ],
+      "oracle": null,
+      "outcome": "unsupported",
+      "policy": "numeric",
+      "rationale": "conditional-absolute",
+      "reward": 8,
+      "seconds": 0.002579203000095731,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [
+        "conditional"
+      ],
+      "task_id": "math_h12",
+      "task_type": "math"
+    },
+    {
+      "actual": null,
+      "answer": null,
+      "answer_mode": null,
+      "answerable": false,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "computed-zero-divisor",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "division by zero",
+          "seconds": 0.004273163000107161,
+          "status": "skipped"
+        }
+      ],
+      "oracle": null,
+      "outcome": "unsupported",
+      "policy": "numeric",
+      "rationale": "computed-zero-divisor",
+      "reward": 0,
+      "seconds": 0.004273163000107161,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [
+        "impossible"
+      ],
+      "task_id": "math_h13",
+      "task_type": "math"
+    },
+    {
+      "actual": null,
+      "answer": null,
+      "answer_mode": null,
+      "answerable": false,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "unspecified-tie-rule",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "unsupported math statement or instructions",
+          "seconds": 0.004936585999530507,
+          "status": "skipped"
+        }
+      ],
+      "oracle": null,
+      "outcome": "unsupported",
+      "policy": "numeric",
+      "rationale": "unspecified-tie-rule",
+      "reward": 8,
+      "seconds": 0.004936585999530507,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [
+        "ambiguous"
+      ],
+      "task_id": "math_h14",
+      "task_type": "math"
+    },
+    {
+      "actual": "53",
+      "answer": "53",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "labelled-ledger",
+      "llm_calls": 1,
+      "llm_reserved": "0",
+      "llm_spent": "1081/10",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "unsupported math statement or instructions",
+          "seconds": 0.003666866999992635,
+          "status": "skipped"
+        },
+        {
+          "phase": "fallback",
+          "reason": "",
+          "seconds": 0.03655190800054697,
+          "status": "solved"
+        }
+      ],
+      "oracle": null,
+      "outcome": "solved",
+      "policy": "numeric",
+      "rationale": "labelled-ledger",
+      "reward": 0,
+      "seconds": 0.04021877500053961,
+      "split": "holdout",
+      "status": "correct",
+      "tags": [
+        "mock_plan"
+      ],
+      "task_id": "math_h15",
+      "task_type": "math"
+    },
+    {
+      "actual": "30",
+      "answer": "30",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "easy",
+      "family": "quotient-expression-operands",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "",
+          "seconds": 0.0036236050000297837,
+          "status": "solved"
+        }
+      ],
+      "oracle": null,
+      "outcome": "solved",
+      "policy": "numeric",
+      "rationale": "quotient-expression-operands",
+      "reward": 0,
+      "seconds": 0.0036236050000297837,
+      "split": "holdout",
+      "status": "correct",
+      "tags": [],
+      "task_id": "math_h16",
+      "task_type": "math"
+    },
+    {
+      "actual": "1974",
+      "answer": "1974",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "easy",
+      "family": "birth-heading",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "",
+          "seconds": 0.006041856000592816,
+          "status": "solved"
+        }
+      ],
+      "oracle": null,
+      "outcome": "solved",
+      "policy": "exact",
+      "rationale": "birth-heading",
+      "reward": 13,
+      "seconds": 0.006041856000592816,
+      "split": "development",
+      "status": "correct",
+      "tags": [],
+      "task_id": "search_d01",
+      "task_type": "search"
+    },
+    {
+      "actual": "2007",
+      "answer": "2007",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "easy",
+      "family": "company-founding",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "",
+          "seconds": 0.0059422740005175,
+          "status": "solved"
+        }
+      ],
+      "oracle": null,
+      "outcome": "solved",
+      "policy": "exact",
+      "rationale": "company-founding",
+      "reward": 3,
+      "seconds": 0.0059422740005175,
+      "split": "development",
+      "status": "correct",
+      "tags": [],
+      "task_id": "search_d02",
+      "task_type": "search"
+    },
+    {
+      "actual": "São Tomé",
+      "answer": "São Tomé",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "easy",
+      "family": "unicode-city",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "",
+          "seconds": 0.004529933999947389,
+          "status": "solved"
+        }
+      ],
+      "oracle": null,
+      "outcome": "solved",
+      "policy": "exact",
+      "rationale": "unicode-city",
+      "reward": 2,
+      "seconds": 0.004529933999947389,
+      "split": "development",
+      "status": "correct",
+      "tags": [],
+      "task_id": "search_d03",
+      "task_type": "search"
+    },
+    {
+      "actual": "Aster Loom",
+      "answer": "Aster Loom",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "easy",
+      "family": "direct-employer",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "",
+          "seconds": 0.004620933999831323,
+          "status": "solved"
+        }
+      ],
+      "oracle": null,
+      "outcome": "solved",
+      "policy": "exact",
+      "rationale": "direct-employer",
+      "reward": 3,
+      "seconds": 0.004620933999831323,
+      "split": "development",
+      "status": "correct",
+      "tags": [],
+      "task_id": "search_d04",
+      "task_type": "search"
+    },
+    {
+      "actual": "Porto",
+      "answer": "Porto",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "mentor-company-city",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "",
+          "seconds": 0.006388662999597727,
+          "status": "solved"
+        }
+      ],
+      "oracle": null,
+      "outcome": "solved",
+      "policy": "exact",
+      "rationale": "mentor-company-city",
+      "reward": 3,
+      "seconds": 0.006388662999597727,
+      "split": "development",
+      "status": "correct",
+      "tags": [],
+      "task_id": "search_d05",
+      "task_type": "search"
+    },
+    {
+      "actual": "1948",
+      "answer": "1948",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "hard",
+      "family": "three-mentor-chain",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "",
+          "seconds": 0.008126499999889347,
+          "status": "solved"
+        }
+      ],
+      "oracle": null,
+      "outcome": "solved",
+      "policy": "exact",
+      "rationale": "three-mentor-chain",
+      "reward": 8,
+      "seconds": 0.008126499999889347,
+      "split": "development",
+      "status": "correct",
+      "tags": [],
+      "task_id": "search_d06",
+      "task_type": "search"
+    },
+    {
+      "actual": null,
+      "answer": "Vela Nox",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "inverse-mentor",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "unsupported search question",
+          "seconds": 0.002877457999602484,
+          "status": "skipped"
+        }
+      ],
+      "oracle": null,
+      "outcome": "unsupported",
+      "policy": "exact",
+      "rationale": "inverse-mentor",
+      "reward": 5,
+      "seconds": 0.002877457999602484,
+      "split": "development",
+      "status": "skipped",
+      "tags": [
+        "inverse"
+      ],
+      "task_id": "search_d07",
+      "task_type": "search"
+    },
+    {
+      "actual": null,
+      "answer": "1989",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "fact-in-prose",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "missing or ambiguous born fact",
+          "seconds": 0.0038537939999514492,
+          "status": "skipped"
+        }
+      ],
+      "oracle": null,
+      "outcome": "insufficient_evidence",
+      "policy": "exact",
+      "rationale": "fact-in-prose",
+      "reward": 0,
+      "seconds": 0.0038537939999514492,
+      "split": "development",
+      "status": "skipped",
+      "tags": [
+        "prose"
+      ],
+      "task_id": "search_d08",
+      "task_type": "search"
+    },
+    {
+      "actual": null,
+      "answer": "1966",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "explicit-alias",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "entity or relation cannot be resolved",
+          "seconds": 0.005657252000673907,
+          "status": "skipped"
+        }
+      ],
+      "oracle": null,
+      "outcome": "unsupported",
+      "policy": "exact",
+      "rationale": "explicit-alias",
+      "reward": 8,
+      "seconds": 0.005657252000673907,
+      "split": "development",
+      "status": "skipped",
+      "tags": [
+        "alias"
+      ],
+      "task_id": "search_d09",
+      "task_type": "search"
+    },
+    {
+      "actual": null,
+      "answer": null,
+      "answer_mode": null,
+      "answerable": false,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "contradictory-birth",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "conflicting or ambiguous entity definitions",
+          "seconds": 0.0051377119998505805,
+          "status": "skipped"
+        }
+      ],
+      "oracle": null,
+      "outcome": "insufficient_evidence",
+      "policy": "exact",
+      "rationale": "contradictory-birth",
+      "reward": 5,
+      "seconds": 0.0051377119998505805,
+      "split": "development",
+      "status": "skipped",
+      "tags": [
+        "contradiction"
+      ],
+      "task_id": "search_d10",
+      "task_type": "search"
+    },
+    {
+      "actual": null,
+      "answer": null,
+      "answer_mode": null,
+      "answerable": false,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "missing-company-fact",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "missing or ambiguous headquarters fact",
+          "seconds": 0.0044490930004030815,
+          "status": "skipped"
+        }
+      ],
+      "oracle": null,
+      "outcome": "insufficient_evidence",
+      "policy": "exact",
+      "rationale": "missing-company-fact",
+      "reward": 2,
+      "seconds": 0.0044490930004030815,
+      "split": "development",
+      "status": "skipped",
+      "tags": [
+        "missing"
+      ],
+      "task_id": "search_d11",
+      "task_type": "search"
+    },
+    {
+      "actual": null,
+      "answer": "1992",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "hard",
+      "family": "disambiguated-homonyms",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "entity or relation cannot be resolved",
+          "seconds": 0.005841260000124748,
+          "status": "skipped"
+        }
+      ],
+      "oracle": null,
+      "outcome": "unsupported",
+      "policy": "exact",
+      "rationale": "disambiguated-homonyms",
+      "reward": 2,
+      "seconds": 0.005841260000124748,
+      "split": "development",
+      "status": "skipped",
+      "tags": [
+        "homonym"
+      ],
+      "task_id": "search_d12",
+      "task_type": "search"
+    },
+    {
+      "actual": "1986",
+      "answer": "1986",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "easy",
+      "family": "near-identical-names",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "",
+          "seconds": 0.006310016000497853,
+          "status": "solved"
+        }
+      ],
+      "oracle": null,
+      "outcome": "solved",
+      "policy": "exact",
+      "rationale": "near-identical-names",
+      "reward": 5,
+      "seconds": 0.006310016000497853,
+      "split": "development",
+      "status": "correct",
+      "tags": [],
+      "task_id": "search_d13",
+      "task_type": "search"
+    },
+    {
+      "actual": null,
+      "answer": "1978",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "complementary-records",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "conflicting or ambiguous entity definitions",
+          "seconds": 0.00450018799983809,
+          "status": "skipped"
+        }
+      ],
+      "oracle": null,
+      "outcome": "insufficient_evidence",
+      "policy": "exact",
+      "rationale": "complementary-records",
+      "reward": 2,
+      "seconds": 0.00450018799983809,
+      "split": "development",
+      "status": "skipped",
+      "tags": [
+        "split_record"
+      ],
+      "task_id": "search_d14",
+      "task_type": "search"
+    },
+    {
+      "actual": "Porto",
+      "answer": "Porto",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "based-in-paraphrase",
+      "llm_calls": 1,
+      "llm_reserved": "0",
+      "llm_spent": "62",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "unsupported search question",
+          "seconds": 0.003910944999915955,
+          "status": "skipped"
+        },
+        {
+          "phase": "fallback",
+          "reason": "",
+          "seconds": 0.054752572999859694,
+          "status": "solved"
+        }
+      ],
+      "oracle": null,
+      "outcome": "solved",
+      "policy": "exact",
+      "rationale": "based-in-paraphrase",
+      "reward": 5,
+      "seconds": 0.05866351799977565,
+      "split": "development",
+      "status": "correct",
+      "tags": [
+        "mock_plan"
+      ],
+      "task_id": "search_d15",
+      "task_type": "search"
+    },
+    {
+      "actual": null,
+      "answer": null,
+      "answer_mode": null,
+      "answerable": false,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "empty-knowledge-base",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [],
+      "oracle": null,
+      "outcome": "insufficient_evidence",
+      "policy": "exact",
+      "rationale": "empty-knowledge-base",
+      "reward": 5,
+      "seconds": 0,
+      "split": "development",
+      "status": "skipped",
+      "tags": [
+        "missing"
+      ],
+      "task_id": "search_d16",
+      "task_type": "search"
+    },
+    {
+      "actual": "2001",
+      "answer": "2001",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "easy",
+      "family": "multiple-headings",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "",
+          "seconds": 0.005904855999688152,
+          "status": "solved"
+        }
+      ],
+      "oracle": null,
+      "outcome": "solved",
+      "policy": "exact",
+      "rationale": "multiple-headings",
+      "reward": 0,
+      "seconds": 0.005904855999688152,
+      "split": "holdout",
+      "status": "correct",
+      "tags": [],
+      "task_id": "search_h01",
+      "task_type": "search"
+    },
+    {
+      "actual": "1996",
+      "answer": "1996",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "hard",
+      "family": "nested-of-relations",
+      "llm_calls": 1,
+      "llm_reserved": "0",
+      "llm_spent": "601/10",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "unsupported search question",
+          "seconds": 0.002852079999684065,
+          "status": "skipped"
+        },
+        {
+          "phase": "fallback",
+          "reason": "",
+          "seconds": 0.042725635999886435,
+          "status": "solved"
+        }
+      ],
+      "oracle": null,
+      "outcome": "solved",
+      "policy": "exact",
+      "rationale": "nested-of-relations",
+      "reward": 5,
+      "seconds": 0.0455777159995705,
+      "split": "holdout",
+      "status": "correct",
+      "tags": [
+        "mock_plan"
+      ],
+      "task_id": "search_h02",
+      "task_type": "search"
+    },
+    {
+      "actual": "Ari Gale",
+      "answer": "Ari Gale",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "easy",
+      "family": "typographic-possessive",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "",
+          "seconds": 0.003795213000557851,
+          "status": "solved"
+        }
+      ],
+      "oracle": null,
+      "outcome": "solved",
+      "policy": "exact",
+      "rationale": "typographic-possessive",
+      "reward": 0,
+      "seconds": 0.003795213000557851,
+      "split": "holdout",
+      "status": "correct",
+      "tags": [],
+      "task_id": "search_h03",
+      "task_type": "search"
+    },
+    {
+      "actual": "1963",
+      "answer": "1963",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "mentor-birth",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "",
+          "seconds": 0.005783512000562041,
+          "status": "solved"
+        }
+      ],
+      "oracle": null,
+      "outcome": "solved",
+      "policy": "exact",
+      "rationale": "mentor-birth",
+      "reward": 0,
+      "seconds": 0.005783512000562041,
+      "split": "holdout",
+      "status": "correct",
+      "tags": [],
+      "task_id": "search_h04",
+      "task_type": "search"
+    },
+    {
+      "actual": "2003",
+      "answer": "2003",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "easy",
+      "family": "same-name-other-world",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "",
+          "seconds": 0.0039311020000241115,
+          "status": "solved"
+        }
+      ],
+      "oracle": null,
+      "outcome": "solved",
+      "policy": "exact",
+      "rationale": "same-name-other-world",
+      "reward": 13,
+      "seconds": 0.0039311020000241115,
+      "split": "holdout",
+      "status": "correct",
+      "tags": [
+        "isolation"
+      ],
+      "task_id": "search_h05",
+      "task_type": "search"
+    },
+    {
+      "actual": null,
+      "answer": "[\"Ari Gale\",\"Nola Frost\"]",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": true,
+      "difficulty": "hard",
+      "family": "inverse-employees",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "unsupported search question",
+          "seconds": 0.002728662000663462,
+          "status": "skipped"
+        }
+      ],
+      "oracle": null,
+      "outcome": "unsupported",
+      "policy": "json",
+      "rationale": "inverse-employees",
+      "reward": 1,
+      "seconds": 0.002728662000663462,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [
+        "inverse"
+      ],
+      "task_id": "search_h06",
+      "task_type": "search"
+    },
+    {
+      "actual": null,
+      "answer": null,
+      "answer_mode": null,
+      "answerable": false,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "ambiguous-shared-alias",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "entity or relation cannot be resolved",
+          "seconds": 0.004374404999907711,
+          "status": "skipped"
+        }
+      ],
+      "oracle": null,
+      "outcome": "unsupported",
+      "policy": "exact",
+      "rationale": "ambiguous-shared-alias",
+      "reward": 8,
+      "seconds": 0.004374404999907711,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [
+        "ambiguous"
+      ],
+      "task_id": "search_h07",
+      "task_type": "search"
+    },
+    {
+      "actual": null,
+      "answer": "1991",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "markdown-table",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "missing or ambiguous born fact",
+          "seconds": 0.004177425000307267,
+          "status": "skipped"
+        }
+      ],
+      "oracle": null,
+      "outcome": "insufficient_evidence",
+      "policy": "exact",
+      "rationale": "markdown-table",
+      "reward": 0,
+      "seconds": 0.004177425000307267,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [
+        "table"
+      ],
+      "task_id": "search_h08",
+      "task_type": "search"
+    },
+    {
+      "actual": null,
+      "answer": "1988",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "full-date-to-year",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "missing or ambiguous born fact",
+          "seconds": 0.006504341999971075,
+          "status": "skipped"
+        }
+      ],
+      "oracle": null,
+      "outcome": "insufficient_evidence",
+      "policy": "exact",
+      "rationale": "full-date-to-year",
+      "reward": 1,
+      "seconds": 0.006504341999971075,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [
+        "schema"
+      ],
+      "task_id": "search_h09",
+      "task_type": "search"
+    },
+    {
+      "actual": null,
+      "answer": null,
+      "answer_mode": null,
+      "answerable": false,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "conflicting-city",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "conflicting or ambiguous entity definitions",
+          "seconds": 0.004424198999913642,
+          "status": "skipped"
+        }
+      ],
+      "oracle": null,
+      "outcome": "insufficient_evidence",
+      "policy": "exact",
+      "rationale": "conflicting-city",
+      "reward": 2,
+      "seconds": 0.004424198999913642,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [
+        "contradiction"
+      ],
+      "task_id": "search_h10",
+      "task_type": "search"
+    },
+    {
+      "actual": "1998",
+      "answer": "1998",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "inert-code-fence",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "",
+          "seconds": 0.005131268000695854,
+          "status": "solved"
+        }
+      ],
+      "oracle": null,
+      "outcome": "solved",
+      "policy": "exact",
+      "rationale": "inert-code-fence",
+      "reward": 5,
+      "seconds": 0.005131268000695854,
+      "split": "holdout",
+      "status": "correct",
+      "tags": [
+        "untrusted_text"
+      ],
+      "task_id": "search_h11",
+      "task_type": "search"
+    },
+    {
+      "actual": null,
+      "answer": null,
+      "answer_mode": null,
+      "answerable": false,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "missing-kb-directory",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [],
+      "oracle": null,
+      "outcome": "insufficient_evidence",
+      "policy": "exact",
+      "rationale": "missing-kb-directory",
+      "reward": 13,
+      "seconds": 0,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [
+        "missing"
+      ],
+      "task_id": "search_h12",
+      "task_type": "search"
+    },
+    {
+      "actual": null,
+      "answer": "1977",
+      "answer_mode": null,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "irrelevant-field-conflict",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "conflicting or ambiguous entity definitions",
+          "seconds": 0.0038265940002020216,
+          "status": "skipped"
+        }
+      ],
+      "oracle": null,
+      "outcome": "insufficient_evidence",
+      "policy": "exact",
+      "rationale": "irrelevant-field-conflict",
+      "reward": 0,
+      "seconds": 0.0038265940002020216,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [
+        "overconservative"
+      ],
+      "task_id": "search_h13",
+      "task_type": "search"
+    },
+    {
+      "actual": null,
+      "answer": null,
+      "answer_mode": null,
+      "answerable": false,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "cycle-without-terminal-fact",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "missing or ambiguous born fact",
+          "seconds": 0.006290147999607143,
+          "status": "skipped"
+        }
+      ],
+      "oracle": null,
+      "outcome": "insufficient_evidence",
+      "policy": "exact",
+      "rationale": "cycle-without-terminal-fact",
+      "reward": 2,
+      "seconds": 0.006290147999607143,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [
+        "missing",
+        "cycle"
+      ],
+      "task_id": "search_h14",
+      "task_type": "search"
+    },
+    {
+      "actual": "Faro",
+      "answer": "Faro",
+      "answer_mode": 420,
+      "answerable": true,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "located-paraphrase",
+      "llm_calls": 1,
+      "llm_reserved": "0",
+      "llm_spent": "289/5",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "unsupported search question",
+          "seconds": 0.0030679649999001413,
+          "status": "skipped"
+        },
+        {
+          "phase": "fallback",
+          "reason": "",
+          "seconds": 0.04966126900035306,
+          "status": "solved"
+        }
+      ],
+      "oracle": null,
+      "outcome": "solved",
+      "policy": "exact",
+      "rationale": "located-paraphrase",
+      "reward": 5,
+      "seconds": 0.0527292340002532,
+      "split": "holdout",
+      "status": "correct",
+      "tags": [
+        "mock_plan"
+      ],
+      "task_id": "search_h15",
+      "task_type": "search"
+    },
+    {
+      "actual": null,
+      "answer": null,
+      "answer_mode": null,
+      "answerable": false,
+      "contest_format_unknown": false,
+      "difficulty": "medium",
+      "family": "unknown-terminal-value",
+      "llm_calls": 0,
+      "llm_reserved": "0",
+      "llm_spent": "0",
+      "observations": [
+        {
+          "phase": "local",
+          "reason": "missing or ambiguous born fact",
+          "seconds": 0.006239235000066401,
+          "status": "skipped"
+        }
+      ],
+      "oracle": null,
+      "outcome": "insufficient_evidence",
+      "policy": "exact",
+      "rationale": "unknown-terminal-value",
+      "reward": 13,
+      "seconds": 0.006239235000066401,
+      "split": "holdout",
+      "status": "skipped",
+      "tags": [
+        "missing"
+      ],
+      "task_id": "search_h16",
+      "task_type": "search"
+    }
+  ],
+  "runtime_sha256": {
+    ".dockerignore": "0e096a456572ac8160ba05043dc4319b027e0e3b2cd42d18b004a582f889cca2",
+    "Dockerfile": "eff987a6a8cf4203ad887d582b3a491af5754206671d67be40827abc57f99a77",
+    "budget_manager.py": "8259d00cf23cb1c5f0bd2162784f0c91dc005cf570e99d9a4cfb30929abcbb4f",
+    "coding_solver.py": "e64d5913e831c72a2afd36e70512f290886d8fd7be577ed38d6a57ac3c30d9e7",
+    "data_solver.py": "c4be03febb1852211d8fd6329ea45a6f459cf596ca801d2d448590ced9cb9b0d",
+    "harness.py": "678339926da05c11dfeccb532158325842b9aea3822caf5c921a984acf4fec58",
+    "llm_fallback.py": "8d2ae2b53c057c117932393740a76d51312f0b4000749a4a40e650e7c710e354",
+    "llm_gateway.py": "d86450f235ed339dfc0766859b13a43b6f9a52d850a0fb7b06b8ff6a5d999331",
+    "math_solver.py": "5cff0d75ef690a58d53ce991f5c60898c005af7f5b699187bb5d55627d395c03",
+    "plan_semantics.py": "ed61b70aa4812dc259dbd81fce91c6ee160d5bd7a0186c9e04ea1487d3d9ee7c",
+    "planner.py": "a7503feccfca59b610b6473ea19e97e35c4f6c95eb116fc349e5eea848037c29",
+    "requirements.txt": "d8c2924d446449dfd156153333b01a3ae0ef3fd0da64acfe36eae937663a3da3",
+    "run_agent.py": "0b51035f9e3707b72c043fca5c63e460869b4df19e82b6fd8180ec05b3f878be",
+    "safe_files.py": "04aa6c98f6da2555b80ab298d0937ea32f39a0deea0710fa78e97d849d6c7cfb",
+    "search_solver.py": "1aa9987c50646a689d3f37c68b7111df51d57bd0fdaa9425d129dadd8cbf7cb6"
+  },
+  "split": "all",
+  "strategy": "priority",
+  "summary": {
+    "answer_precision": 1.0,
+    "answerable": 104,
+    "correct": 47,
+    "false_negative_skips": 57,
+    "false_positive_fraction": 0.0,
+    "justified_refusal_recall": 1.0,
+    "justified_refusals": 24,
+    "llm_calls": 7,
+    "llm_reserved": 0.0,
+    "llm_spent": 573.5,
+    "paid_correct_reward_per_unit": 0.05231037489102005,
+    "possible_reward": 503,
+    "reward": 247,
+    "seconds": 0.7808171850065264,
+    "skip_fraction": 0.6328125,
+    "skipped": 81,
+    "total": 128,
+    "unanswerable": 24,
+    "unverified": 0,
+    "wrong": 0
+  },
+  "trusted_code": false,
+  "wall_seconds": 8.785750412000198
+}

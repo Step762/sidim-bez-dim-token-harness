@@ -1,0 +1,6 @@
+{
+  "instruction": "Increase 240 by 12.5 percent.",
+  "reward": 1,
+  "task_id": "math_d05",
+  "task_type": "math"
+}

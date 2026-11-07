@@ -1,0 +1,6 @@
+{
+  "instruction": "The file observations.csv. What is the min of units where sku = 'absent'?",
+  "reward": 5,
+  "task_id": "data_analysis_d09",
+  "task_type": "data_analysis"
+}

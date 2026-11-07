@@ -1,0 +1,6 @@
+{
+  "instruction": "Using observations.csv, return a JSON object mapping each region to its total units.",
+  "reward": 13,
+  "task_id": "data_analysis_d12",
+  "task_type": "data_analysis"
+}

@@ -28,7 +28,7 @@ from pathlib import Path
 assert importlib.metadata.version("openjiuwen") == "0.1.20.post1"
 assert os.environ["HOME"] == "/tmp"
 assert not Path("/var/run/docker.sock").exists()
-for name in (".venv", ".git", "codex-local", "AGENTS.md", ".env", "tests", "__pycache__"):
+for name in (".venv", ".git", "codex-local", "AGENTS.md", ".env", "tests", "benchmark", "__pycache__"):
     assert not Path("/app", name).exists(), name
 assert not any(key in os.environ for key in ("LLM_API_KEY", "LLM_BASE_URL"))
 try:
@@ -97,14 +97,14 @@ def main():
             raise AssertionError(f"Docker returned {result.returncode}, expected {expected}:\n{result.stdout}\n{result.stderr}")
         return result
 
-    def container(arguments, mounts=(), expected=0):
+    def container(arguments, mounts=(), expected=0, timeout=300):
         command = ["run", "--rm", "--network", "none", "--read-only", "--tmpfs", "/tmp:rw,size=2g",
                    "--cap-drop", "ALL", "--security-opt", "no-new-privileges", "--pids-limit", "512",
                    "--memory", "16g", "--cpus", "8", "--workdir", "/app", "--entrypoint", "python",
                    "-e", "HOME=/tmp", "-e", "BUDGET=0"]
         for source, target, readonly in mounts:
             command += ["--mount", f"type=bind,source={source},target={target}" + (",readonly" if readonly else "")]
-        return docker([*command, args.image, *arguments], expected=expected)
+        return docker([*command, args.image, *arguments], expected=expected, timeout=timeout)
 
     material_before = hashes(ROOT / "codex-local")
     image = json.loads(docker(["image", "inspect", args.image]).stdout)[0]
@@ -181,7 +181,8 @@ def main():
         # Verification inputs are read-only mounts, never image/build contents.
         suite = container(["-B", "-m", "unittest", "discover", "-s", "/app/tests", "-v"],
                           [(ROOT / "tests", "/app/tests", True),
-                           (ROOT / "codex-local", "/app/codex-local", True)])
+                           (ROOT / "benchmark", "/app/benchmark", True),
+                           (ROOT / "codex-local", "/app/codex-local", True)], timeout=600)
         print(suite.stderr, end="")
 
     assert material_before == hashes(ROOT / "codex-local")

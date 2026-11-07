@@ -1,0 +1,6 @@
+{
+  "instruction": "Calculate -(-3.75 + 1.2) / -0.5",
+  "reward": 13,
+  "task_id": "math_d02",
+  "task_type": "math"
+}

@@ -1,0 +1,6 @@
+{
+  "instruction": "The file observations.csv. What is the sum of units where period = 1 or period = 6?",
+  "reward": 13,
+  "task_id": "data_analysis_d15",
+  "task_type": "data_analysis"
+}

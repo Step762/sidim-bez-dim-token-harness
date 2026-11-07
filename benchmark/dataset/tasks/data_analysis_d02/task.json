@@ -1,0 +1,6 @@
+{
+  "instruction": "The file observations.csv. How many rows are there where period >= 3?",
+  "reward": 13,
+  "task_id": "data_analysis_d02",
+  "task_type": "data_analysis"
+}
