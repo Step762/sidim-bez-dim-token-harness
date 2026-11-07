@@ -12,6 +12,7 @@ import coding_solver
 from budget_manager import cost_tenths
 from llm_fallback import prepare, InvalidPlan
 from llm_gateway import LLMError
+from safe_files import UnsafeFile, markdown_files, open_directory
 
 
 STRATEGIES = ("priority", "original", "reward")
@@ -82,7 +83,7 @@ def _features(task, trusted_code=False) -> Features:
         kb = workspace / "kb"
         if not kb.resolve().is_relative_to(workspace.resolve()):
             return Features(complexity, native, False, "unsafe")
-        if not kb.is_dir() or not any(kb.rglob("*.md")):
+        if not kb.is_dir() or not markdown_files(kb):
             return Features(complexity, native, False, "insufficient_evidence")
     elif task.task_type == "data_analysis":
         names = set(re.findall(r"(?<![\w./-])([A-Za-z0-9_./-]+\.csv)(?![\w./-])", text))
@@ -105,8 +106,9 @@ def _features(task, trusted_code=False) -> Features:
 
 def features(task, trusted_code=False) -> Features:
     try:
-        return _features(task, trusted_code)
-    except (OSError, RuntimeError):
+        with open_directory(task.directory):
+            return _features(task, trusted_code)
+    except (OSError, RuntimeError, UnsafeFile):
         return Features(1, False, False, "invalid_data")
 
 
@@ -133,7 +135,8 @@ class Entry:
 
     @property
     def key(self):
-        return str(self.task.directory.resolve())
+        # Stable identifier: a later link replacement must not change scheduler keys.
+        return str(self.task.directory.absolute())
 
     @property
     def terminal(self):

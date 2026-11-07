@@ -6,6 +6,8 @@ import operator
 from pathlib import Path
 import re
 
+from safe_files import CSV_BYTES, open_text
+
 
 class UnsupportedData(ValueError):
     """The requested result cannot be established reliably."""
@@ -238,7 +240,8 @@ def solve_data(instruction: str, task_dir: Path) -> str:
             or not path.resolve().is_relative_to(workspace.resolve())
         ):
             raise UnsupportedData("CSV points outside the current workspace")
-        with path.open(encoding="utf-8-sig", newline="") as stream:
+        with open_text(task_dir, Path("workspace") / relative, maximum=CSV_BYTES,
+                       encoding="utf-8-sig", newline="") as stream:
             return _analyze(stream, parsed["question"])
     except UnsupportedData:
         raise

@@ -3,6 +3,8 @@
 from pathlib import Path
 import re
 
+from safe_files import KB_BYTES, MARKDOWN_BYTES, UnsafeFile, markdown_files, read_text
+
 
 class UnsupportedSearch(ValueError):
     """A unique, supported answer cannot be established from the local KB."""
@@ -76,16 +78,19 @@ def _load_kb(task_dir: Path) -> tuple[dict, set[str]]:
     try:
         if not kb.is_dir() or not kb.resolve().is_relative_to(task_dir.resolve()):
             raise UnsupportedSearch("missing or external workspace/kb")
-        for path in sorted(kb.rglob("*.md")):
-            if not path.resolve().is_relative_to(kb.resolve()):
-                raise UnsupportedSearch("knowledge document points outside workspace/kb")
-            for entity, facts in _records(path.read_text(encoding="utf-8")):
+        total = 0
+        for relative in markdown_files(kb):
+            text = read_text(kb, relative, maximum=MARKDOWN_BYTES)
+            total += len(text.encode("utf-8"))
+            if total > KB_BYTES:
+                raise UnsupportedSearch("cannot read the complete knowledge base")
+            for entity, facts in _records(text):
                 if entity in index and facts != index[entity]:
                     ambiguous.add(entity)
                 if any(len(values) != 1 for values in facts.values()):
                     ambiguous.add(entity)
                 index[entity] = facts
-    except (OSError, UnicodeError) as exc:
+    except (OSError, UnicodeError, UnsafeFile) as exc:
         raise UnsupportedSearch("cannot read the complete knowledge base") from exc
     return index, ambiguous
 

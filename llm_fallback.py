@@ -13,6 +13,7 @@ import coding_solver
 import data_solver
 import search_solver
 from llm_gateway import LLMError, strict_json
+from safe_files import CSV_BYTES, TASK_JSON_BYTES, open_text, read_text
 
 
 class InvalidPlan(ValueError):
@@ -307,8 +308,9 @@ def _prepare_data(problem, instruction, task_dir):
     if len(names) != 1:
         raise InvalidPlan("a unique CSV input is required")
     name = next(iter(names))
-    path = _file(task_dir, name)
-    with path.open(encoding="utf-8-sig", newline="") as stream:
+    _file(task_dir, name)
+    with open_text(task_dir, Path("workspace") / name, maximum=CSV_BYTES,
+                   encoding="utf-8-sig", newline="") as stream:
         reader = csv.reader(stream, strict=True)
         header = next(reader, [])
         if not header or len(set(header)) != len(header) or any(
@@ -436,8 +438,10 @@ async def propose_coding(gateway, instruction, task_dir, *, trusted=False) -> di
     parsed = coding_solver._INSTRUCTION.fullmatch(" ".join(instruction.split()))
     if parsed is None or parsed["source"].startswith("test") or parsed["source"] == parsed["test"]:
         raise InvalidPlan("unsupported code context")
-    source = _file(task_dir, parsed["source"]).read_text(encoding="utf-8")
-    tests = _file(task_dir, parsed["test"]).read_text(encoding="utf-8")
+    _file(task_dir, parsed["source"])
+    _file(task_dir, parsed["test"])
+    source = read_text(task_dir, Path("workspace") / parsed["source"], maximum=TASK_JSON_BYTES)
+    tests = read_text(task_dir, Path("workspace") / parsed["test"], maximum=TASK_JSON_BYTES)
     if len(source) + len(tests) > 10000:
         raise InvalidPlan("code context is too large")
     reply = await gateway.complete(

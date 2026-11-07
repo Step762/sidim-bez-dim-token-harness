@@ -5,7 +5,11 @@ import json
 import math
 import os
 from pathlib import Path
+import secrets
+import stat
 import tempfile
+
+from safe_files import TASK_JSON_BYTES, directory_guards, identity, open_directory, read_text
 
 from openjiuwen.core.common.logging.log_config import configure_log_config
 
@@ -52,7 +56,11 @@ class Task:
 
 def load_task(path: Path) -> Task:
     """Select only task inputs; reference answers are never part of a Task."""
-    data = json.loads(path.read_text(encoding="utf-8"))
+    path = path.absolute()
+    with open_directory(path.parent) as directory:
+        directory_identity = identity(os.fstat(directory))
+    with directory_guards({path.parent: directory_identity}):
+        data = json.loads(read_text(path.parent, path.name, maximum=TASK_JSON_BYTES))
     if not isinstance(data, dict):
         raise ValueError("task.json must contain an object")
     for field in ("task_type", "instruction"):
@@ -192,23 +200,26 @@ def build_workflow(*, llm=None, budget=None, manager=None) -> Workflow:
 
 def save_answer(directory: Path, answer: str) -> None:
     """Atomically publish an answer beside task.json, never in workspace/."""
-    temporary = None
-    try:
-        with tempfile.NamedTemporaryFile(
-            mode="w", encoding="utf-8", dir=directory,
-            prefix=".answer-", suffix=".tmp", delete=False,
-        ) as output:
-            temporary = Path(output.name)
-            output.write(answer + "\n")
-            output.flush()
-            # A root container and the host grader can have different UIDs.
-            # NamedTemporaryFile defaults to 0600; publish a readable result.
-            os.fchmod(output.fileno(), 0o644)
-            os.fsync(output.fileno())
-        os.replace(temporary, directory / "answer.txt")
-    finally:
-        if temporary is not None and temporary.exists():
-            temporary.unlink()
+    with open_directory(directory) as parent:
+        temporary = f".answer-{secrets.token_hex(16)}.tmp"
+        fd = os.open(temporary, os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW | os.O_CLOEXEC,
+                     0o600, dir_fd=parent)
+        try:
+            with os.fdopen(fd, "w", encoding="utf-8") as output:
+                output.write(answer + "\n")
+                output.flush()
+                os.fchmod(output.fileno(), 0o644)
+                os.fsync(output.fileno())
+            # Refuse publication if the pathname was replaced during the write.
+            with open_directory(directory) as current:
+                if identity(os.fstat(current)) != identity(os.fstat(parent)):
+                    raise ValueError("answer directory was replaced")
+            os.replace(temporary, "answer.txt", src_dir_fd=parent, dst_dir_fd=parent)
+        finally:
+            try:
+                os.unlink(temporary, dir_fd=parent)
+            except FileNotFoundError:
+                pass
 
 
 async def run_tasks(
@@ -221,25 +232,52 @@ async def run_tasks(
         raise ValueError(f"tasks directory does not exist: {tasks_dir}")
     manager = manager if manager is not None else (llm.manager if llm is not None else BudgetManager(0))
     workflow = build_workflow(llm=llm, budget=budget, manager=manager)
-    tasks = []
-    malformed = 0
-    for path in sorted(tasks_dir.glob("*/task.json")):
-        try:
-            tasks.append(load_task(path))
-        except Exception as exc:
-            malformed += 1
-            print(f"{path.parent.name}: failed: {exc}", flush=True)
+    tasks_dir = tasks_dir.resolve(strict=True)
+    with open_directory(tasks_dir) as root:
+        with directory_guards({tasks_dir: identity(os.fstat(root))}) as guards:
+            tasks, malformed, seen = [], 0, set()
+            for name in sorted(os.listdir(root)):
+                directory = tasks_dir / name
+                try:
+                    info = os.stat(name, dir_fd=root, follow_symlinks=False)
+                    if stat.S_ISLNK(info.st_mode):
+                        raise ValueError("symbolic task directory links are unsupported")
+                    if not stat.S_ISDIR(info.st_mode):
+                        continue
+                    with open_directory(directory) as child:
+                        try:
+                            os.stat("task.json", dir_fd=child, follow_symlinks=False)
+                        except FileNotFoundError:
+                            continue
+                        key = identity(os.fstat(child))
+                        if key in seen:
+                            raise ValueError("duplicate task directory")
+                        guards[directory] = key
+                        task = load_task(directory / "task.json")
+                    seen.add(key)
+                    tasks.append(task)
+                except Exception as exc:
+                    malformed += 1
+                    print(f"{name}: failed: {exc}", flush=True)
+            return await _execute_tasks(tasks, malformed, workflow, allow_trusted_code,
+                                        llm, budget, manager, strategy, report)
+
+
+async def _execute_tasks(tasks, malformed, workflow, allow_trusted_code,
+                         llm, budget, manager, strategy, report):
     planner = Planner(tasks, manager, llm, strategy=strategy, trusted_code=allow_trusted_code,
                       llm_enabled=budget is None or (type(budget) is int and budget > 0))
     printed = set()
     while (decision := planner.next()) is not None:
         task = decision.entry.task
         try:
+            with open_directory(task.directory):
+                pass  # Guards reject replacement since discovery, before any solver runs.
             output = await workflow.invoke(
                 {
                     "task_type": task.task_type, "instruction": task.instruction,
                     "task_dir": str(task.directory),
-                    "task_id": str(task.directory.resolve()),
+                    "task_id": decision.entry.key,
                     "trusted_code": allow_trusted_code,
                     "route": decision.phase, "local_reason": decision.entry.reason,
                 },
