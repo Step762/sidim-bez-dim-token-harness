@@ -18,12 +18,14 @@ from safe_files import read_text
 MAX_SOURCE_BYTES = 64 * 1024
 MAX_NODES = 256
 EXPECTED_OPERATORS = {"add": ast.Add, "subtract": ast.Sub, "multiply": ast.Mult}
-CONTRACTS = (*EXPECTED_OPERATORS, "at_least", "scale")
+CONTRACTS = (*EXPECTED_OPERATORS, "at_least", "remainder_equals", "scale")
 ARITHMETIC_OPERATORS = (*EXPECTED_OPERATORS.values(), ast.Div)
+PREDICATE_EDITS = {ast.Gt: ast.GtE, ast.NotEq: ast.Eq}
 OPERATOR_TEXT = {
     ast.Add: "+", ast.Sub: "-", ast.Mult: "*", ast.Div: "/", ast.Gt: ">", ast.GtE: ">=",
+    ast.NotEq: "!=", ast.Eq: "==",
 }
-REPLACEMENT_TEXT = ("+", "-", "*", ">=")
+REPLACEMENT_TEXT = ("+", "-", "*", ">=", "==")
 DOMAIN = "two exact built-in int arguments, assuming sufficient resources"
 UNARY_DOMAIN = "one exact built-in int argument, assuming sufficient resources"
 PLAIN_HEADER = re.compile(r"def [A-Za-z_][A-Za-z0-9_]*\([ \t]*[A-Za-z_][A-Za-z0-9_]*[ \t]*\)(?=[ \t]*(?:#.*)?$)")
@@ -39,6 +41,7 @@ class OperatorReturn:
     parameters: tuple[str, ...]
     operator: type[ast.operator] | type[ast.cmpop]
     literal: int | None = None
+    modulus: int | None = None
 
 
 def parse_bounded_module(source: str) -> ast.Module:
@@ -71,8 +74,15 @@ def parse_int_literal(node: ast.expr) -> int:
     return value
 
 
+def _valid_remainder(modulus: int | None, residue: int | None) -> bool:
+    return (
+        type(modulus) is int and type(residue) is int
+        and modulus.bit_length() <= 128 and 0 <= residue < modulus
+    )
+
+
 def parse_operator_return(source: str) -> OperatorReturn:
-    """Recognize binary arithmetic, a threshold comparison or scaling by a literal."""
+    """Recognize a supported arithmetic return or one bounded integer predicate."""
     tree = parse_bounded_module(source)
     if len(tree.body) != 1 or not isinstance(tree.body[0], ast.FunctionDef) or tree.type_ignores:
         raise UnsupportedSource("expected one plain function")
@@ -111,13 +121,27 @@ def parse_operator_return(source: str) -> OperatorReturn:
             left=ast.Name(id=name), ops=[ast.Gt() | ast.GtE() as op], comparators=[limit],
         ) if parameters == (name,):
             return OperatorReturn(function.name, parameters, type(op), parse_int_literal(limit))
+        case ast.Compare(
+            left=ast.BinOp(left=ast.Name(id=name), op=ast.Mod(), right=divisor),
+            ops=[ast.NotEq() | ast.Eq() as op], comparators=[remainder],
+        ) if parameters == (name,):
+            modulus, residue = parse_int_literal(divisor), parse_int_literal(remainder)
+            if not _valid_remainder(modulus, residue):
+                raise UnsupportedSource("expected a positive modulus and a canonical residue")
+            return OperatorReturn(function.name, parameters, type(op), residue, modulus)
         case ast.BinOp(left=ast.Name(id=name), op=ast.Mult(), right=factor) if parameters == (name,):
             return OperatorReturn(function.name, parameters, ast.Mult, parse_int_literal(factor))
         case _:
             raise UnsupportedSource("expected supported arithmetic or a comparison with a literal threshold")
 
 
-def _contract_operator(contract: str | None, threshold: int | None):
+def _contract_operator(
+    contract: str | None, threshold: int | None, modulus: int | None, residue: int | None,
+):
+    if contract == "remainder_equals":
+        return ast.Eq if threshold is None and _valid_remainder(modulus, residue) else None
+    if modulus is not None or residue is not None:
+        return None
     if contract == "at_least":
         if type(threshold) is int and threshold.bit_length() <= 128:
             return ast.GtE
@@ -127,9 +151,10 @@ def _contract_operator(contract: str | None, threshold: int | None):
 
 def verify_candidate(
     original: str, candidate: str, *, function: str, contract: str, threshold: int | None = None,
+    modulus: int | None = None, residue: int | None = None,
 ) -> bool:
     """Prove an operator-only edit on the declared exact-int domain."""
-    expected = _contract_operator(contract, threshold)
+    expected = _contract_operator(contract, threshold, modulus, residue)
     if expected is None:
         return False
     try:
@@ -137,12 +162,13 @@ def verify_candidate(
         after = parse_operator_return(candidate)
     except (SyntaxError, ValueError, RecursionError):
         return False
-    # The approved arithmetic operator implements the contract directly. For a
-    # threshold, >= is false below the fixed limit and true at or above it.
+    # For exact ints the operator implements the specified comparison directly.
+    # A remainder contract preserves the positive divisor and canonical residue.
     return (
         before.function == function
-        and before.literal == threshold
-        and (contract != "at_least" or before.operator is ast.Gt)
+        and before.literal == (residue if modulus is not None else threshold)
+        and before.modulus == modulus
+        and (before.literal is None or PREDICATE_EDITS.get(before.operator) is expected)
         and before.operator is not expected
         and replace(before, operator=expected) == after
     )
@@ -218,15 +244,22 @@ def _scale_proposal(source: str, function: str, factor: int) -> dict:
     return {"patch": patch}
 
 
-def _operator_proposal(source: str, function: str, contract: str, threshold: int | None, expected) -> dict:
+def _operator_proposal(
+    source: str, function: str, contract: str, expected, *,
+    threshold: int | None, modulus: int | None, residue: int | None,
+) -> dict:
     before = parse_operator_return(source)
     if before.function != function:
         return {"status": "function_mismatch"}
-    if before.literal != threshold or (contract == "at_least" and before.operator not in (ast.Gt, ast.GtE)):
+    literal = residue if modulus is not None else threshold
+    if before.literal != literal or before.modulus != modulus:
         return {"status": "contract_mismatch"}
     if before.operator is expected:
         return {"status": "already_conforms"}
-    if contract != "at_least":
+    if literal is not None:
+        if PREDICATE_EDITS.get(before.operator) is not expected:
+            return {"status": "contract_mismatch"}
+    else:
         proposal = static_coding.review_source(source, experimental=True, function=function, contract=contract)
         candidate = proposal.get("proposal_source")
         if not isinstance(candidate, str):
@@ -235,7 +268,10 @@ def _operator_proposal(source: str, function: str, contract: str, threshold: int
             return {"status": "candidate_rejected"}
     patch = _operator_patch(source, before.operator, expected)
     candidate = apply_operator_edit(source, patch)
-    if not verify_candidate(source, candidate, function=function, contract=contract, threshold=threshold):
+    if not verify_candidate(
+        source, candidate, function=function, contract=contract, threshold=threshold,
+        modulus=modulus, residue=residue,
+    ):
         return {"status": "candidate_rejected"}
     return {"patch": patch}
 
@@ -243,22 +279,28 @@ def _operator_proposal(source: str, function: str, contract: str, threshold: int
 def review_task(
     task_dir: Path, source: Path, *, function: str | None, contract: str | None,
     threshold: int | None = None, factor: int | None = None,
+    modulus: int | None = None, residue: int | None = None,
 ) -> dict:
     """Read one workspace file and return a one-token edit or a reason to skip."""
     report = {
         "function": function,
         "contract": contract,
-        "domain": UNARY_DOMAIN if contract in ("at_least", "scale") else DOMAIN,
+        "domain": UNARY_DOMAIN if contract in ("at_least", "remainder_equals", "scale") else DOMAIN,
         "independently_verified_under_contract": False,
         "contest_solution_confirmed": False,
     }
     if contract == "at_least":
         report["threshold"] = threshold
+    if contract == "remainder_equals":
+        report.update(modulus=modulus, residue=residue)
     if contract == "scale":
         report["factor"] = factor
-        valid_contract = type(factor) is int and factor.bit_length() <= 128 and threshold is None
+        valid_contract = (
+            type(factor) is int and factor.bit_length() <= 128
+            and threshold is None and modulus is None and residue is None
+        )
     else:
-        expected = _contract_operator(contract, threshold)
+        expected = _contract_operator(contract, threshold, modulus, residue)
         valid_contract = expected is not None and factor is None
     if not function or not valid_contract:
         return {**report, "status": "missing_or_unsupported_contract"}
@@ -271,7 +313,9 @@ def review_task(
             if contract == "scale":
                 proposal = _scale_proposal(original, function, factor)
             else:
-                proposal = _operator_proposal(original, function, contract, threshold, expected)
+                proposal = _operator_proposal(
+                    original, function, contract, expected, threshold=threshold, modulus=modulus, residue=residue,
+                )
     except SyntaxError:
         return {**report, "status": "syntax_invalid"}
     except (UnsupportedSource, tokenize.TokenError) as exc:
@@ -305,10 +349,12 @@ def main() -> None:
     parser.add_argument("--contract", choices=CONTRACTS, required=True)
     parser.add_argument("--threshold", type=int)
     parser.add_argument("--factor", type=int)
+    parser.add_argument("--modulus", type=int)
+    parser.add_argument("--residue", type=int)
     args = parser.parse_args()
     report = review_task(
         args.task_dir, args.source, function=args.function, contract=args.contract,
-        threshold=args.threshold, factor=args.factor,
+        threshold=args.threshold, factor=args.factor, modulus=args.modulus, residue=args.residue,
     )
     print(json.dumps(report, ensure_ascii=False, indent=2))
 

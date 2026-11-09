@@ -13,7 +13,9 @@ from safe_files import TASK_JSON_BYTES, read_text
 
 TASK_IDS = tuple(f"coding_d{number:02}" for number in range(1, 17))
 MAX_CONTRACT_BYTES = 8 * 1024
-CONTRACT_PARAMETERS = {"at_least": "threshold", "scale": "factor"}
+CONTRACT_PARAMETERS = {
+    "at_least": ("threshold",), "remainder_equals": ("modulus", "residue"), "scale": ("factor",),
+}
 
 
 def _validate_contracts(contracts: object) -> None:
@@ -25,15 +27,13 @@ def _validate_contracts(contracts: object) -> None:
         function, contract = options.get("function"), options.get("contract")
         if not isinstance(function, str) or not function.isidentifier() or contract not in CONTRACTS:
             raise ValueError("expected a function name and a supported contract")
-        parameter = CONTRACT_PARAMETERS.get(contract)
-        expected = {"function", "contract"}
-        if parameter is not None:
-            expected.add(parameter)
+        parameters = CONTRACT_PARAMETERS.get(contract, ())
+        if options.keys() != {"function", "contract", *parameters}:
+            raise ValueError("unexpected or missing contract fields")
+        for parameter in parameters:
             value = options.get(parameter)
             if type(value) is not int or value.bit_length() > 128:
                 raise ValueError("expected a bounded integer contract parameter")
-        if options.keys() != expected:
-            raise ValueError("unexpected or missing contract fields")
 
 
 def _task_reward(task: Path, task_id: str) -> int:

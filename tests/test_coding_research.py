@@ -224,3 +224,37 @@ class CodingResearchTests(unittest.TestCase):
                 result = review_task(self.task, Path("engine.py"), function="scale", contract="scale", factor=2)
                 self.assertFalse(result["independently_verified_under_contract"])
                 self.assertNotIn("patch", result)
+
+    def test_remainder_repair_preserves_the_explicit_divisor_and_residue(self):
+        original = "def qualifies(value):\n    return value % 3 != 1  # !=\n"
+        self.source.write_text(original, encoding="utf-8")
+        options = {"function": "qualifies", "contract": "remainder_equals", "modulus": 3, "residue": 1}
+        with patch("diagnostics.static_coding.review_source", side_effect=AssertionError("C3 invoked")):
+            report = review_task(self.task, Path("engine.py"), **options)
+        self.assertEqual(report["status"], "verified_under_supplied_contract")
+        candidate = apply_operator_edit(original, report["patch"])
+        self.assertEqual(candidate, original.replace("!= 1", "== 1"))
+        self.assertFalse(report["contest_solution_confirmed"])
+        self.assertFalse(verify_candidate(original, candidate.replace("% 3", "% 2"), **options))
+        self.assertFalse(verify_candidate(original, candidate.replace("== 1", "== 0"), **options))
+        for mismatched in ({"modulus": 4}, {"residue": 0}):
+            with self.subTest(mismatched=mismatched):
+                result = review_task(self.task, Path("engine.py"), **{**options, **mismatched})
+                self.assertEqual(result["status"], "contract_mismatch")
+        self.assertEqual(self.source.read_text(encoding="utf-8"), original)
+        self.assertFalse((self.task / "answer.txt").exists())
+
+    def test_remainder_repair_rejects_invalid_parameters_and_unsafe_source(self):
+        self.source.write_text("def qualifies(value):\n    return value % 3 != 1\n", encoding="utf-8")
+        options = {"function": "qualifies", "contract": "remainder_equals", "modulus": 3, "residue": 1}
+        for invalid in ({"modulus": 0}, {"modulus": -3}, {"modulus": True}, {"residue": -1}, {"residue": 3}):
+            with self.subTest(invalid=invalid):
+                result = review_task(self.task, Path("engine.py"), **{**options, **invalid})
+                self.assertEqual(result["status"], "missing_or_unsupported_contract")
+                self.assertNotIn("patch", result)
+        for expression in ("value % divisor() != 1", "value % 0 != 1", "value % 3 != False"):
+            with self.subTest(expression=expression):
+                self.source.write_text(f"def qualifies(value):\n    return {expression}\n", encoding="utf-8")
+                result = review_task(self.task, Path("engine.py"), **options)
+                self.assertEqual(result["status"], "unsupported_source")
+                self.assertNotIn("patch", result)

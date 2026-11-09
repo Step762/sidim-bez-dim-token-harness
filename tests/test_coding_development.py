@@ -65,6 +65,7 @@ class DevelopmentRunTests(unittest.TestCase):
             {"../coding_d01": {"function": "total", "contract": "add"}},
             {"coding_d01": {"function": "total", "contract": "at_least"}},
             {"coding_d01": {"function": "total", "contract": "scale", "factor": True}},
+            {"coding_d01": {"function": "total", "contract": "remainder_equals", "modulus": 2}},
             {"coding_d01": {"function": "total", "contract": "add", "threshold": 1}},
         ):
             with (

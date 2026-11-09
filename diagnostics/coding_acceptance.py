@@ -11,6 +11,7 @@ import sys
 from diagnostics.coding_research import (
     MAX_SOURCE_BYTES,
     OperatorReturn,
+    PREDICATE_EDITS,
     UnsupportedSource,
     apply_missing_colon,
     apply_operator_edit,
@@ -33,6 +34,8 @@ OPERATIONS = {
     ast.Div: operator.truediv,
     ast.Gt: operator.gt,
     ast.GtE: operator.ge,
+    ast.Eq: operator.eq,
+    ast.NotEq: operator.ne,
 }
 
 _SCAFFOLD = """
@@ -92,12 +95,12 @@ def _visible_examples(text: str, function: OperatorReturn) -> list[tuple[int, tu
                 keywords=[],
             )) if name == function.function and len(arguments) == len(function.parameters):
                 inputs = tuple(parse_int_literal(argument) for argument in arguments)
-                if function.operator not in (ast.Gt, ast.GtE):
+                if function.operator not in (ast.Gt, ast.GtE, ast.Eq, ast.NotEq):
                     value = parse_int_literal(expected)
                 elif isinstance(expected, ast.Constant) and type(expected.value) is bool:
                     value = expected.value
                 else:
-                    raise UnsupportedSource("expected a boolean result for the threshold comparison")
+                    raise UnsupportedSource("expected a boolean result for the comparison")
                 examples.append((statement.lineno, inputs, value))
             case _:
                 raise UnsupportedSource("unsupported visible assertion")
@@ -105,7 +108,10 @@ def _visible_examples(text: str, function: OperatorReturn) -> list[tuple[int, tu
 
 
 def _passes(function: OperatorReturn, inputs: tuple[int, ...], expected: int | bool) -> bool:
-    operands = inputs if function.literal is None else (*inputs, function.literal)
+    if function.modulus is not None:
+        operands = (inputs[0] % function.modulus, function.literal)
+    else:
+        operands = inputs if function.literal is None else (*inputs, function.literal)
     try:
         return OPERATIONS[function.operator](*operands) == expected
     except ZeroDivisionError:
@@ -125,7 +131,7 @@ def check_visible_examples(original: str, tests: str, edit: object) -> dict:
             if (
                 before.operator is after.operator
                 or replace(before, operator=after.operator) != after
-                or (before.literal is not None and (before.operator is not ast.Gt or after.operator is not ast.GtE))
+                or (before.literal is not None and PREDICATE_EDITS.get(before.operator) is not after.operator)
             ):
                 raise InvalidPatch("edit does not change the function's operator within its supported form")
         examples = _visible_examples(tests, after)

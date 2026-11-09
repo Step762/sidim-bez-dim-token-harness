@@ -181,3 +181,21 @@ class SyntaxAcceptanceTests(unittest.TestCase):
         result = check_visible_examples(original, suite.replace(")), 6)", ")), 7)"), edit)
         self.assertEqual(result["after_passed"], 2)
         self.assertEqual(check_visible_examples(original, suite, {**edit, "column": 12})["status"], "invalid_patch")
+
+
+class RemainderAcceptanceTests(unittest.TestCase):
+    def test_negative_zero_and_positive_operands_use_python_integer_remainders(self):
+        original = "def qualifies(n):\n    return n % 3 != 1\n"
+        suite = TESTS[:TESTS.index("        self.assertEqual")] + (
+            "        self.assertEqual(lib.qualifies(*(-2,)), True)\n"
+            "        self.assertEqual(lib.qualifies(*(0,)), False)\n"
+            "        self.assertEqual(lib.qualifies(*(4,)), True)"
+        ) + TESTS[TESTS.index("\n\nif __name__"):]
+        edit = {
+            **EDIT, "column": 18, "old": "!=", "new": "==",
+            "source_sha256": hashlib.sha256(original.encode("utf-8")).hexdigest(),
+        }
+        report = check_visible_examples(original, suite, edit)
+        self.assertEqual(report["status"], "visible_assertions_checked")
+        self.assertEqual((report["before_passed"], report["after_passed"]), (0, 3))
+        self.assertEqual(check_visible_examples(original, suite.replace("True", "1"), edit)["status"], "unsupported")
