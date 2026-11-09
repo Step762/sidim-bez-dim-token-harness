@@ -12,6 +12,7 @@ from diagnostics.coding_research import (
     MAX_SOURCE_BYTES,
     OperatorReturn,
     UnsupportedSource,
+    apply_missing_colon,
     apply_operator_edit,
     parse_bounded_module,
     parse_int_literal,
@@ -48,7 +49,7 @@ if __name__ == "__main__":
 
 
 class InvalidPatch(ValueError):
-    """The proposed edit does not change one supported operator."""
+    """The proposed edit is not a supported local change."""
 
 
 def _apply_patch(source: str, edit: object) -> str:
@@ -57,6 +58,8 @@ def _apply_patch(source: str, edit: object) -> str:
     if edit.get("source_sha256") != source_digest(source):
         raise InvalidPatch("patch source hash is absent or does not match engine.py")
     try:
+        if edit.get("old") == "" and edit.get("new") == ":":
+            return apply_missing_colon(source, edit)
         return apply_operator_edit(source, edit)
     except ValueError as exc:
         raise InvalidPatch(str(exc)) from exc
@@ -89,7 +92,7 @@ def _visible_examples(text: str, function: OperatorReturn) -> list[tuple[int, tu
                 keywords=[],
             )) if name == function.function and len(arguments) == len(function.parameters):
                 inputs = tuple(parse_int_literal(argument) for argument in arguments)
-                if function.threshold is None:
+                if function.operator not in (ast.Gt, ast.GtE):
                     value = parse_int_literal(expected)
                 elif isinstance(expected, ast.Constant) and type(expected.value) is bool:
                     value = expected.value
@@ -102,7 +105,7 @@ def _visible_examples(text: str, function: OperatorReturn) -> list[tuple[int, tu
 
 
 def _passes(function: OperatorReturn, inputs: tuple[int, ...], expected: int | bool) -> bool:
-    operands = inputs if function.threshold is None else (*inputs, function.threshold)
+    operands = inputs if function.literal is None else (*inputs, function.literal)
     try:
         return OPERATIONS[function.operator](*operands) == expected
     except ZeroDivisionError:
@@ -112,24 +115,36 @@ def _passes(function: OperatorReturn, inputs: tuple[int, ...], expected: int | b
 def check_visible_examples(original: str, tests: str, edit: object) -> dict:
     """Compare one proposed edit on every supported assertion, all or nothing."""
     try:
-        before = parse_operator_return(original)
         after = parse_operator_return(_apply_patch(original, edit))
-        if before.operator is after.operator or replace(before, operator=after.operator) != after:
-            raise InvalidPatch("edit does not change the function's operator")
-        examples = _visible_examples(tests, before)
+        if edit["new"] == ":":
+            if after.operator is not ast.Mult or after.literal is None:
+                raise InvalidPatch("colon repair must restore a unary scaling function")
+            before = None
+        else:
+            before = parse_operator_return(original)
+            if (
+                before.operator is after.operator
+                or replace(before, operator=after.operator) != after
+                or (before.literal is not None and (before.operator is not ast.Gt or after.operator is not ast.GtE))
+            ):
+                raise InvalidPatch("edit does not change the function's operator within its supported form")
+        examples = _visible_examples(tests, after)
     except InvalidPatch as exc:
         return {"status": "invalid_patch", "reason": str(exc)}
     except (SyntaxError, ValueError, RecursionError) as exc:
         return {"status": "unsupported", "reason": str(exc)}
 
     cases = [
-        {"line": line, "before_passed": _passes(before, inputs, expected),
+        {"line": line, "before_passed": before is not None and _passes(before, inputs, expected),
          "after_passed": _passes(after, inputs, expected)}
         for line, inputs, expected in examples
     ]
-    return {"status": "visible_assertions_checked", "cases": cases,
-            "before_passed": sum(case["before_passed"] for case in cases),
-            "after_passed": sum(case["after_passed"] for case in cases)}
+    result = {"status": "visible_assertions_checked", "cases": cases,
+              "before_passed": sum(case["before_passed"] for case in cases),
+              "after_passed": sum(case["after_passed"] for case in cases)}
+    if before is None:
+        result["before_status"] = "syntax_invalid"
+    return result
 
 
 def main() -> None:

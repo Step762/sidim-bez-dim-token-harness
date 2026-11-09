@@ -160,3 +160,24 @@ class ThresholdAcceptanceTests(unittest.TestCase):
         )
         for unsupported in (suite.replace("True", "1"), suite.replace("-3,", "True,")):
             self.assertEqual(check_visible_examples(original, unsupported, edit)["status"], "unsupported")
+
+
+class SyntaxAcceptanceTests(unittest.TestCase):
+    def test_missing_colon_marks_baseline_invalid_and_checks_repaired_body(self):
+        original = "def scale(n)\n    return n * -2\n"
+        suite = TESTS[:TESTS.index("        self.assertEqual")] + (
+            "        self.assertEqual(lib.scale(*(0,)), 0)\n"
+            "        self.assertEqual(lib.scale(*(-3,)), 6)\n"
+            "        self.assertEqual(lib.scale(*(4,)), -8)"
+        ) + TESTS[TESTS.index("\n\nif __name__"):]
+        edit = {
+            **EDIT, "line": 1, "column": 13, "old": "", "new": ":",
+            "source_sha256": hashlib.sha256(original.encode("utf-8")).hexdigest(),
+        }
+        result = check_visible_examples(original, suite, edit)
+        self.assertEqual(result["status"], "visible_assertions_checked")
+        self.assertEqual(result["before_status"], "syntax_invalid")
+        self.assertEqual((result["before_passed"], result["after_passed"]), (0, 3))
+        result = check_visible_examples(original, suite.replace(")), 6)", ")), 7)"), edit)
+        self.assertEqual(result["after_passed"], 2)
+        self.assertEqual(check_visible_examples(original, suite, {**edit, "column": 12})["status"], "invalid_patch")

@@ -7,7 +7,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from diagnostics.coding_research import apply_operator_edit, review_task, verify_candidate
+from diagnostics.coding_research import apply_missing_colon, apply_operator_edit, review_task, verify_candidate
 from runtime_limits import OperationTimeout
 
 
@@ -185,6 +185,42 @@ class CodingResearchTests(unittest.TestCase):
             original.replace("> 5", ">= limit()"),
             original.replace("> 5", ">= True"),
             original.replace("> 5", ">= 5.0"),
+            original.replace("> 5", "* 5"),
         ):
             with self.subTest(candidate=candidate):
                 self.assertFalse(verify_candidate(original, candidate, **options))
+        scale = original.replace("> 5", "* 5")
+        self.assertFalse(verify_candidate(scale, original.replace(">", ">="), **options))
+
+    def test_syntax_repair_preserves_source_and_requires_an_explicit_factor(self):
+        original = "def scale(value)  # keep comment\n    return value * -3\n"
+        self.source.write_text(original, encoding="utf-8")
+        options = {"function": "scale", "contract": "scale"}
+        self.assertEqual(self.review(**options)["status"], "missing_or_unsupported_contract")
+        self.assertEqual(
+            review_task(self.task, Path("engine.py"), factor=-2, **options)["status"],
+            "contract_mismatch",
+        )
+        report = review_task(self.task, Path("engine.py"), factor=-3, **options)
+        self.assertEqual(report["status"], "verified_under_supplied_contract")
+        self.assertFalse(report["contest_solution_confirmed"])
+        self.assertEqual(
+            apply_missing_colon(original, report["patch"]),
+            original.replace(")  #", "):  #"),
+        )
+        self.assertEqual(self.source.read_text(encoding="utf-8"), original)
+        self.assertFalse((self.task / "answer.txt").exists())
+
+    def test_syntax_repair_refuses_non_scaling_and_unsupported_headers(self):
+        for original in (
+            "def scale(x)\n    return x * other()\n",
+            "def scale(x)\n    return x * True\n",
+            "def scale(x)\n    return x * 2\nprint('unexpected')\n",
+            "def scale(x=run())\n    return x * 2\n",
+            "def scale(x)\n    return x > 2\n",
+        ):
+            with self.subTest(original=original):
+                self.source.write_text(original, encoding="utf-8")
+                result = review_task(self.task, Path("engine.py"), function="scale", contract="scale", factor=2)
+                self.assertFalse(result["independently_verified_under_contract"])
+                self.assertNotIn("patch", result)
