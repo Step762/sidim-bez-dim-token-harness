@@ -13,6 +13,7 @@ MAX_LITERAL_CHARS = 80
 MAX_AST_NODES = 256
 MAX_DEPTH = 32
 MAX_VALUE_BITS = 2048
+MAX_ROUND_PLACES = 100
 
 
 class UnsupportedMath(ValueError):
@@ -47,6 +48,11 @@ _SHIP = re.compile(
 )
 _RECEIVE = re.compile(
     r"It receives ([0-9]+) deliver(?:ies|y) of ([0-9]+) boxes each",
+    re.IGNORECASE,
+)
+_ROUND = re.compile(
+    r"Round (?P<value>[+-]?(?:[0-9]+(?:\.[0-9]*)?|\.[0-9]+)) to "
+    rf"(?P<places>[0-9]+|{'|'.join(WORDS)}) decimal places? using round-half-up",
     re.IGNORECASE,
 )
 
@@ -182,6 +188,14 @@ def _request(instruction):
             raise UnsupportedMath("unsupported or extended output directions")
         text = text[:suffix.start()]
     bare = text.rstrip(".?! ")
+    if rounded := _ROUND.fullmatch(bare):
+        value, places = rounded["value"], rounded["places"].lower()
+        if len(value) > MAX_LITERAL_CHARS or (places.isdecimal() and len(places) > 3):
+            raise UnsupportedMath("rounding literal or precision limit exceeded")
+        places = WORDS[places] if places in WORDS else int(places)
+        if places > MAX_ROUND_PLACES:
+            raise UnsupportedMath("rounding precision limit exceeded")
+        return "round", (_bounded(Fraction(value)), places)
     prefix = re.fullmatch(r"(?:what is|calculate|compute|evaluate) (.+)", bare, re.I)
     body = prefix[1] if prefix else bare
     if len(body) <= MAX_EXPRESSION_CHARS:
@@ -211,6 +225,13 @@ def solve_math(instruction: str) -> int | str:
     kind, parsed = _request(instruction)
     if kind == "warehouse":
         return _warehouse(parsed)
+    if kind == "round":
+        value, places = parsed
+        scale = 10 ** places
+        scaled = abs(value) * scale
+        whole, remainder = divmod(scaled.numerator, scaled.denominator)
+        whole += 2 * remainder >= scaled.denominator
+        return format_math(_bounded(Fraction(-whole if value < 0 else whole, scale)))
     if kind == "steps":
         initial, _, steps = parsed
         try:

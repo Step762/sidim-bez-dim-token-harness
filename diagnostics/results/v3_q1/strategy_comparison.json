@@ -1,0 +1,4459 @@
+{
+  "cheap": [
+    {
+      "source": "simulation",
+      "policy": "production",
+      "budget": 100000,
+      "deadline": 3540,
+      "correct": 63,
+      "wrong": 0,
+      "skipped": 37,
+      "reward": 216,
+      "spent": "49472.8",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 54,
+      "simulated_seconds": 425.909842,
+      "stop_reasons": {
+        "solved": 63,
+        "unsafe": 25,
+        "llm_failed": 12
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "465ec90de5ed6059257ecfd9fceb0978a54dc338c80dda4c7f058da7141fa2c4",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 17,
+        "1/2": 29,
+        "0/2": 4,
+        "pass_fraction": 0.34
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "reward_first",
+      "budget": 100000,
+      "deadline": 3540,
+      "correct": 63,
+      "wrong": 0,
+      "skipped": 37,
+      "reward": 216,
+      "spent": "49472.8",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 54,
+      "simulated_seconds": 425.909842,
+      "stop_reasons": {
+        "solved": 63,
+        "unsafe": 25,
+        "llm_failed": 12
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "02c8694d51c60d74c0a00135aff0d45535b512fd7c688a8b4e37769296cebcc2",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 17,
+        "1/2": 29,
+        "0/2": 4,
+        "pass_fraction": 0.34
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "cost_first",
+      "budget": 100000,
+      "deadline": 3540,
+      "correct": 63,
+      "wrong": 0,
+      "skipped": 37,
+      "reward": 216,
+      "spent": "49472.8",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 54,
+      "simulated_seconds": 425.909842,
+      "stop_reasons": {
+        "solved": 63,
+        "unsafe": 25,
+        "llm_failed": 12
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "fbebd581589d9e840cefa0a81b429f20d01a63c6e924748330b1e768ece0f32e",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 17,
+        "1/2": 29,
+        "0/2": 4,
+        "pass_fraction": 0.34
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "expected_reward",
+      "budget": 100000,
+      "deadline": 3540,
+      "correct": 63,
+      "wrong": 0,
+      "skipped": 37,
+      "reward": 216,
+      "spent": "49472.8",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 54,
+      "simulated_seconds": 425.909842,
+      "stop_reasons": {
+        "solved": 63,
+        "unsafe": 25,
+        "llm_failed": 12
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "0e5c47ad0382659a0e3804d9a3a4da850ae1116ee9334a46ca3854ea33329899",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 17,
+        "1/2": 29,
+        "0/2": 4,
+        "pass_fraction": 0.34
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "local_first",
+      "budget": 100000,
+      "deadline": 3540,
+      "correct": 63,
+      "wrong": 0,
+      "skipped": 37,
+      "reward": 216,
+      "spent": "49472.8",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 54,
+      "simulated_seconds": 425.909842,
+      "stop_reasons": {
+        "solved": 63,
+        "unsafe": 25,
+        "llm_failed": 12
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "8eb22dc90772e28f12087a41b5003f9c5d0818b12fcebdb6733f31f9b35b69cb",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 17,
+        "1/2": 29,
+        "0/2": 4,
+        "pass_fraction": 0.34
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "production",
+      "budget": 50000,
+      "deadline": 3540,
+      "correct": 62,
+      "wrong": 0,
+      "skipped": 38,
+      "reward": 216,
+      "spent": "48816.8",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 52,
+      "simulated_seconds": 419.219677,
+      "stop_reasons": {
+        "solved": 62,
+        "unsafe": 25,
+        "llm_failed": 11,
+        "budget_blocked": 2
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "76b773a1ba014f3757596a0ded18ce42ed916e23e7842abccba9a9e285d5c22c",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 16,
+        "1/2": 30,
+        "0/2": 4,
+        "pass_fraction": 0.32
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "reward_first",
+      "budget": 50000,
+      "deadline": 3540,
+      "correct": 62,
+      "wrong": 0,
+      "skipped": 38,
+      "reward": 216,
+      "spent": "48816.8",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 52,
+      "simulated_seconds": 419.219677,
+      "stop_reasons": {
+        "solved": 62,
+        "unsafe": 25,
+        "llm_failed": 11,
+        "budget_blocked": 2
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "bda335c5b60eca1b764b03df3a716528bb89b8823546c45fae2b1a3b2ffb5764",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 16,
+        "1/2": 30,
+        "0/2": 4,
+        "pass_fraction": 0.32
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "cost_first",
+      "budget": 50000,
+      "deadline": 3540,
+      "correct": 62,
+      "wrong": 0,
+      "skipped": 38,
+      "reward": 216,
+      "spent": "48175.4",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 53,
+      "simulated_seconds": 419.663737,
+      "stop_reasons": {
+        "solved": 62,
+        "unsafe": 25,
+        "llm_failed": 12,
+        "budget_blocked": 1
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "ddfae8c46bf64ac28ad60f04b545274f1ea348c11106d5742ec518d98b78fea2",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 17,
+        "1/2": 28,
+        "0/2": 5,
+        "pass_fraction": 0.34
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "expected_reward",
+      "budget": 50000,
+      "deadline": 3540,
+      "correct": 62,
+      "wrong": 0,
+      "skipped": 38,
+      "reward": 216,
+      "spent": "48816.8",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 52,
+      "simulated_seconds": 419.219677,
+      "stop_reasons": {
+        "solved": 62,
+        "unsafe": 25,
+        "llm_failed": 11,
+        "budget_blocked": 2
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "3ca0f8a72b0fc9d407c49710337d1d2399d9ec34fcf30a43f4cf53360831cf0d",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 16,
+        "1/2": 30,
+        "0/2": 4,
+        "pass_fraction": 0.32
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "local_first",
+      "budget": 50000,
+      "deadline": 3540,
+      "correct": 62,
+      "wrong": 0,
+      "skipped": 38,
+      "reward": 213,
+      "spent": "48518.1",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 52,
+      "simulated_seconds": 418.494426,
+      "stop_reasons": {
+        "solved": 62,
+        "unsafe": 25,
+        "llm_failed": 11,
+        "budget_blocked": 2
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "606fdf819e265e844fd9d089e8919930f5f876bd48edba494b678c1e30d266e2",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 17,
+        "1/2": 28,
+        "0/2": 5,
+        "pass_fraction": 0.34
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "production",
+      "budget": 20000,
+      "deadline": 3540,
+      "correct": 35,
+      "wrong": 0,
+      "skipped": 65,
+      "reward": 181,
+      "spent": "18955.0",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 19,
+      "simulated_seconds": 167.106437,
+      "stop_reasons": {
+        "budget_blocked": 35,
+        "solved": 35,
+        "unsafe": 25,
+        "llm_failed": 5
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "b126590518c569f20ba9ead27c754467df893f90bb8eea3dbf6885e4603b3d46",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 5,
+        "1/2": 25,
+        "0/2": 20,
+        "pass_fraction": 0.1
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "reward_first",
+      "budget": 20000,
+      "deadline": 3540,
+      "correct": 35,
+      "wrong": 0,
+      "skipped": 65,
+      "reward": 180,
+      "spent": "19575.0",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 19,
+      "simulated_seconds": 164.401524,
+      "stop_reasons": {
+        "budget_blocked": 35,
+        "solved": 35,
+        "unsafe": 25,
+        "llm_failed": 5
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "891e5f5d6ad12707f1f2bc5b5c4d64c2af74f933c9c4efbc35e1dc64e86f2f3c",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 5,
+        "1/2": 25,
+        "0/2": 20,
+        "pass_fraction": 0.1
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "cost_first",
+      "budget": 20000,
+      "deadline": 3540,
+      "correct": 42,
+      "wrong": 0,
+      "skipped": 58,
+      "reward": 146,
+      "spent": "18597.7",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 24,
+      "simulated_seconds": 187.272104,
+      "stop_reasons": {
+        "budget_blocked": 30,
+        "solved": 42,
+        "unsafe": 25,
+        "llm_failed": 3
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "b3ce2dd2b6f2993168631b394c7035727a28f05160edc8db66a7e6b6f658cf3e",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 9,
+        "1/2": 24,
+        "0/2": 17,
+        "pass_fraction": 0.18
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "expected_reward",
+      "budget": 20000,
+      "deadline": 3540,
+      "correct": 35,
+      "wrong": 0,
+      "skipped": 65,
+      "reward": 181,
+      "spent": "18706.8",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 19,
+      "simulated_seconds": 154.82937,
+      "stop_reasons": {
+        "budget_blocked": 35,
+        "solved": 35,
+        "unsafe": 25,
+        "llm_failed": 5
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "86aeacde8b21d8c3f3c6c5a3c42eb3b2c16d2067d34023a2d7743e09c3764708",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 5,
+        "1/2": 25,
+        "0/2": 20,
+        "pass_fraction": 0.1
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "local_first",
+      "budget": 20000,
+      "deadline": 3540,
+      "correct": 36,
+      "wrong": 0,
+      "skipped": 64,
+      "reward": 119,
+      "spent": "18880.0",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 21,
+      "simulated_seconds": 173.719573,
+      "stop_reasons": {
+        "solved": 36,
+        "unsafe": 25,
+        "llm_failed": 6,
+        "budget_blocked": 33
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "8df9e2666a1a4d400832852298deebcdefc5dd0d63bbafe35f5f561a05f4764d",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 8,
+        "1/2": 20,
+        "0/2": 22,
+        "pass_fraction": 0.16
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "production",
+      "budget": 10000,
+      "deadline": 3540,
+      "correct": 28,
+      "wrong": 0,
+      "skipped": 72,
+      "reward": 139,
+      "spent": "8923.9",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 10,
+      "simulated_seconds": 91.32547,
+      "stop_reasons": {
+        "budget_blocked": 44,
+        "unsafe": 25,
+        "solved": 28,
+        "llm_failed": 3
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "46e98bd7fde0f9cfbbcf48bdd9c38ffcdb80766e42f6b1ddcb86dc4ade3d7b60",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 4,
+        "1/2": 20,
+        "0/2": 26,
+        "pass_fraction": 0.08
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "reward_first",
+      "budget": 10000,
+      "deadline": 3540,
+      "correct": 28,
+      "wrong": 0,
+      "skipped": 72,
+      "reward": 148,
+      "spent": "8569.9",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 9,
+      "simulated_seconds": 84.756264,
+      "stop_reasons": {
+        "budget_blocked": 45,
+        "solved": 28,
+        "unsafe": 25,
+        "llm_failed": 2
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "4d050ffcfeabc547f3859f00cee69f0618d3db3282850fa5d0f118cfa2552608",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 3,
+        "1/2": 22,
+        "0/2": 25,
+        "pass_fraction": 0.06
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "cost_first",
+      "budget": 10000,
+      "deadline": 3540,
+      "correct": 31,
+      "wrong": 0,
+      "skipped": 69,
+      "reward": 113,
+      "spent": "8456.0",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 12,
+      "simulated_seconds": 83.181947,
+      "stop_reasons": {
+        "budget_blocked": 42,
+        "unsafe": 25,
+        "solved": 31,
+        "llm_failed": 2
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "3f25d83d07c5060c3532ff8e325c7df9a701592a208f2ee0994accfa5f1b0256",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 5,
+        "1/2": 21,
+        "0/2": 24,
+        "pass_fraction": 0.1
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "expected_reward",
+      "budget": 10000,
+      "deadline": 3540,
+      "correct": 27,
+      "wrong": 0,
+      "skipped": 73,
+      "reward": 140,
+      "spent": "8336.7",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 9,
+      "simulated_seconds": 92.278172,
+      "stop_reasons": {
+        "budget_blocked": 45,
+        "solved": 27,
+        "unsafe": 25,
+        "llm_failed": 3
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "2666b500e85a3529e1c18b7562b07f8e7065fa98a1c877225dd163217760aa87",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 3,
+        "1/2": 21,
+        "0/2": 26,
+        "pass_fraction": 0.06
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "local_first",
+      "budget": 10000,
+      "deadline": 3540,
+      "correct": 30,
+      "wrong": 0,
+      "skipped": 70,
+      "reward": 109,
+      "spent": "9071.8",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 10,
+      "simulated_seconds": 77.719386,
+      "stop_reasons": {
+        "solved": 30,
+        "unsafe": 25,
+        "llm_failed": 1,
+        "budget_blocked": 44
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "c2e806aa95f84691c143817eb4149b91a06efeb2483c25c396849392b1027b40",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 6,
+        "1/2": 18,
+        "0/2": 26,
+        "pass_fraction": 0.12
+      }
+    }
+  ],
+  "long_output": [
+    {
+      "source": "simulation",
+      "policy": "production",
+      "budget": 100000,
+      "deadline": 3540,
+      "correct": 44,
+      "wrong": 0,
+      "skipped": 56,
+      "reward": 201,
+      "spent": "97294.3",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 28,
+      "simulated_seconds": 227.266454,
+      "stop_reasons": {
+        "budget_blocked": 26,
+        "solved": 44,
+        "unsafe": 25,
+        "llm_failed": 5
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "f9201b1dd719b92a6c67bc378a144ce2f82dc8ccc2062a51ccdb6c888f4f2f96",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 6,
+        "1/2": 32,
+        "0/2": 12,
+        "pass_fraction": 0.12
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "reward_first",
+      "budget": 100000,
+      "deadline": 3540,
+      "correct": 44,
+      "wrong": 0,
+      "skipped": 56,
+      "reward": 201,
+      "spent": "96452.1",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 28,
+      "simulated_seconds": 225.429958,
+      "stop_reasons": {
+        "budget_blocked": 26,
+        "solved": 44,
+        "unsafe": 25,
+        "llm_failed": 5
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "da44215badc311fc8197e955d6929c7401080b3b8a62df9c4125af93a504eb47",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 9,
+        "1/2": 26,
+        "0/2": 15,
+        "pass_fraction": 0.18
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "cost_first",
+      "budget": 100000,
+      "deadline": 3540,
+      "correct": 46,
+      "wrong": 0,
+      "skipped": 54,
+      "reward": 163,
+      "spent": "98266.9",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 30,
+      "simulated_seconds": 231.859617,
+      "stop_reasons": {
+        "budget_blocked": 24,
+        "solved": 46,
+        "unsafe": 25,
+        "llm_failed": 5
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "e21909bbd6b136b522729cf0de501d5621b0cdbd86775396ec9a80e4d6fc3f1b",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 11,
+        "1/2": 24,
+        "0/2": 15,
+        "pass_fraction": 0.22
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "expected_reward",
+      "budget": 100000,
+      "deadline": 3540,
+      "correct": 44,
+      "wrong": 0,
+      "skipped": 56,
+      "reward": 201,
+      "spent": "96823.2",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 28,
+      "simulated_seconds": 227.104321,
+      "stop_reasons": {
+        "budget_blocked": 26,
+        "solved": 44,
+        "unsafe": 25,
+        "llm_failed": 5
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "fba4e9d5850578d8b2c6abaf6a3c3b516e9e5cff1b3aa7bb902dcdfc5f5b2cac",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 7,
+        "1/2": 30,
+        "0/2": 13,
+        "pass_fraction": 0.14
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "local_first",
+      "budget": 100000,
+      "deadline": 3540,
+      "correct": 41,
+      "wrong": 0,
+      "skipped": 59,
+      "reward": 138,
+      "spent": "97093.5",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 28,
+      "simulated_seconds": 215.573483,
+      "stop_reasons": {
+        "solved": 41,
+        "unsafe": 25,
+        "llm_failed": 8,
+        "budget_blocked": 26
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "9077a63ed39b69fa9f646ac16a8843bb92d23cbad7a632c1c796183d6597c0d8",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 9,
+        "1/2": 23,
+        "0/2": 18,
+        "pass_fraction": 0.18
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "production",
+      "budget": 50000,
+      "deadline": 3540,
+      "correct": 32,
+      "wrong": 0,
+      "skipped": 68,
+      "reward": 168,
+      "spent": "47852.8",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 14,
+      "simulated_seconds": 119.62779,
+      "stop_reasons": {
+        "budget_blocked": 40,
+        "solved": 32,
+        "unsafe": 25,
+        "llm_failed": 3
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "9692a2a6edde0b19f5778c296b0fb3c519a627ad5f4cc6f7f3b52c5de49c26f8",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 4,
+        "1/2": 24,
+        "0/2": 22,
+        "pass_fraction": 0.08
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "reward_first",
+      "budget": 50000,
+      "deadline": 3540,
+      "correct": 29,
+      "wrong": 0,
+      "skipped": 71,
+      "reward": 153,
+      "spent": "45971.3",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 13,
+      "simulated_seconds": 122.4422,
+      "stop_reasons": {
+        "budget_blocked": 41,
+        "solved": 29,
+        "unsafe": 25,
+        "llm_failed": 5
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "ad78c5290e85b0e4beb43ed22ac60ba98cdc1fcb58f663c36deff1733efc6492",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 3,
+        "1/2": 23,
+        "0/2": 24,
+        "pass_fraction": 0.06
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "cost_first",
+      "budget": 50000,
+      "deadline": 3540,
+      "correct": 34,
+      "wrong": 0,
+      "skipped": 66,
+      "reward": 123,
+      "spent": "47802.5",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 15,
+      "simulated_seconds": 105.019768,
+      "stop_reasons": {
+        "budget_blocked": 39,
+        "unsafe": 25,
+        "solved": 34,
+        "llm_failed": 2
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "a99dd7156a54e112f665ceda62d1187a28d5606ca579f7b18b2e0f548fbeeca1",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 6,
+        "1/2": 22,
+        "0/2": 22,
+        "pass_fraction": 0.12
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "expected_reward",
+      "budget": 50000,
+      "deadline": 3540,
+      "correct": 32,
+      "wrong": 0,
+      "skipped": 68,
+      "reward": 168,
+      "spent": "47852.8",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 14,
+      "simulated_seconds": 119.62779,
+      "stop_reasons": {
+        "budget_blocked": 40,
+        "solved": 32,
+        "unsafe": 25,
+        "llm_failed": 3
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "5969f6c731567af3fdc7f9da1fc7ad6a077bf4ef1bdf6a1e081d1e13a44a6a3d",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 4,
+        "1/2": 24,
+        "0/2": 22,
+        "pass_fraction": 0.08
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "local_first",
+      "budget": 50000,
+      "deadline": 3540,
+      "correct": 32,
+      "wrong": 0,
+      "skipped": 68,
+      "reward": 113,
+      "spent": "48128.6",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 14,
+      "simulated_seconds": 124.936448,
+      "stop_reasons": {
+        "solved": 32,
+        "unsafe": 25,
+        "llm_failed": 3,
+        "budget_blocked": 40
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "8e1c30b9b1283b403040d809aa6025883eed6042af319b9961c5608bb8b617d3",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 7,
+        "1/2": 18,
+        "0/2": 25,
+        "pass_fraction": 0.14
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "production",
+      "budget": 20000,
+      "deadline": 3540,
+      "correct": 24,
+      "wrong": 0,
+      "skipped": 76,
+      "reward": 116,
+      "spent": "17284.8",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 5,
+      "simulated_seconds": 53.413477,
+      "stop_reasons": {
+        "budget_blocked": 49,
+        "unsafe": 25,
+        "solved": 24,
+        "llm_failed": 2
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "b81e8616ebdc3d1fe59fc9b67f203d091b144d6e2b9a3146d292fa115167b35a",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 3,
+        "1/2": 18,
+        "0/2": 29,
+        "pass_fraction": 0.06
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "reward_first",
+      "budget": 20000,
+      "deadline": 3540,
+      "correct": 24,
+      "wrong": 0,
+      "skipped": 76,
+      "reward": 116,
+      "spent": "17947.1",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 5,
+      "simulated_seconds": 47.746544,
+      "stop_reasons": {
+        "budget_blocked": 49,
+        "solved": 24,
+        "unsafe": 25,
+        "llm_failed": 2
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "91f828edb0ac147ea4a14fd80d87a09e2e30d3d60b2492432592f5f9c7d5a099",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 2,
+        "1/2": 20,
+        "0/2": 28,
+        "pass_fraction": 0.04
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "cost_first",
+      "budget": 20000,
+      "deadline": 3540,
+      "correct": 25,
+      "wrong": 0,
+      "skipped": 75,
+      "reward": 90,
+      "spent": "16951.2",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 5,
+      "simulated_seconds": 35.083531,
+      "stop_reasons": {
+        "budget_blocked": 49,
+        "unsafe": 25,
+        "solved": 25,
+        "llm_failed": 1
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "b05b63abb416bbeab147333fc7661d4a1394542f3811ecb130d1378dcc892a7e",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 3,
+        "1/2": 19,
+        "0/2": 28,
+        "pass_fraction": 0.06
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "expected_reward",
+      "budget": 20000,
+      "deadline": 3540,
+      "correct": 24,
+      "wrong": 0,
+      "skipped": 76,
+      "reward": 116,
+      "spent": "17284.8",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 5,
+      "simulated_seconds": 53.413477,
+      "stop_reasons": {
+        "budget_blocked": 49,
+        "unsafe": 25,
+        "solved": 24,
+        "llm_failed": 2
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "a7a1aee6a27dd396a9acec6a688d53353a583d04cae8b96eb6d52ae457e58f71",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 3,
+        "1/2": 18,
+        "0/2": 29,
+        "pass_fraction": 0.06
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "local_first",
+      "budget": 20000,
+      "deadline": 3540,
+      "correct": 25,
+      "wrong": 0,
+      "skipped": 75,
+      "reward": 91,
+      "spent": "16872.7",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 5,
+      "simulated_seconds": 45.753042,
+      "stop_reasons": {
+        "solved": 25,
+        "unsafe": 25,
+        "llm_failed": 1,
+        "budget_blocked": 49
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "9146c083d520892c97f1c9f54c08c575754dbb20cf01999b91950ee989094b8c",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 4,
+        "1/2": 17,
+        "0/2": 29,
+        "pass_fraction": 0.08
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "production",
+      "budget": 10000,
+      "deadline": 3540,
+      "correct": 22,
+      "wrong": 0,
+      "skipped": 78,
+      "reward": 95,
+      "spent": "7311.7",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 2,
+      "simulated_seconds": 25.590679,
+      "stop_reasons": {
+        "budget_blocked": 52,
+        "unsafe": 25,
+        "solved": 22,
+        "llm_failed": 1
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "40f30709457ea2087f092cf957e02e1e70d52e0b556c7f95109833364588ed62",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 2,
+        "1/2": 18,
+        "0/2": 30,
+        "pass_fraction": 0.04
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "reward_first",
+      "budget": 10000,
+      "deadline": 3540,
+      "correct": 22,
+      "wrong": 0,
+      "skipped": 78,
+      "reward": 95,
+      "spent": "6928.5",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 2,
+      "simulated_seconds": 15.973402,
+      "stop_reasons": {
+        "budget_blocked": 52,
+        "unsafe": 25,
+        "solved": 22,
+        "llm_failed": 1
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "f9dcab09014847e6d328ce80ee01b868b0f671b5435093904d970a1843d4f6fd",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 2,
+        "1/2": 18,
+        "0/2": 30,
+        "pass_fraction": 0.04
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "cost_first",
+      "budget": 10000,
+      "deadline": 3540,
+      "correct": 23,
+      "wrong": 0,
+      "skipped": 77,
+      "reward": 87,
+      "spent": "7269.1",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 2,
+      "simulated_seconds": 8.064925,
+      "stop_reasons": {
+        "budget_blocked": 52,
+        "unsafe": 25,
+        "solved": 23
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "856ff9e4f077c156b2fa4898b2fa87aa35ffd2cb5067943897df4e3695b0592d",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 3,
+        "1/2": 17,
+        "0/2": 30,
+        "pass_fraction": 0.06
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "expected_reward",
+      "budget": 10000,
+      "deadline": 3540,
+      "correct": 22,
+      "wrong": 0,
+      "skipped": 78,
+      "reward": 95,
+      "spent": "7311.7",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 2,
+      "simulated_seconds": 25.590679,
+      "stop_reasons": {
+        "budget_blocked": 52,
+        "unsafe": 25,
+        "solved": 22,
+        "llm_failed": 1
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "bb123d73e142a74eddb5edbd83be95a53a6541df02d47c47ca3943203ee2eb61",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 2,
+        "1/2": 18,
+        "0/2": 30,
+        "pass_fraction": 0.04
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "local_first",
+      "budget": 10000,
+      "deadline": 3540,
+      "correct": 23,
+      "wrong": 0,
+      "skipped": 77,
+      "reward": 82,
+      "spent": "6430.5",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 2,
+      "simulated_seconds": 14.596054,
+      "stop_reasons": {
+        "solved": 23,
+        "budget_blocked": 52,
+        "unsafe": 25
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "6bb4e2aa5d53bb26a3f5d9fd069fa855beca4a6e02f17d4954c54c6398fe8b7e",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 3,
+        "1/2": 17,
+        "0/2": 30,
+        "pass_fraction": 0.06
+      }
+    }
+  ],
+  "time_pressure": [
+    {
+      "source": "simulation",
+      "policy": "production",
+      "budget": 100000,
+      "deadline": 3540,
+      "correct": 58,
+      "wrong": 0,
+      "skipped": 42,
+      "reward": 216,
+      "spent": "42916.0",
+      "reserved": "1786.3",
+      "cost_known": false,
+      "frozen": true,
+      "calls": 47,
+      "simulated_seconds": 3540.0,
+      "stop_reasons": {
+        "solved": 58,
+        "unsafe": 25,
+        "timed_out": 1,
+        "time_exhausted": 7,
+        "llm_failed": 9
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "af7d2388c0a6bd1a4db7750dbb4ee09a469548d88d64978adecad9e52cf633f8",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 16,
+        "1/2": 26,
+        "0/2": 8,
+        "pass_fraction": 0.32
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "reward_first",
+      "budget": 100000,
+      "deadline": 3540,
+      "correct": 58,
+      "wrong": 0,
+      "skipped": 42,
+      "reward": 216,
+      "spent": "42916.0",
+      "reserved": "1786.3",
+      "cost_known": false,
+      "frozen": true,
+      "calls": 47,
+      "simulated_seconds": 3540.0,
+      "stop_reasons": {
+        "solved": 58,
+        "unsafe": 25,
+        "timed_out": 1,
+        "time_exhausted": 7,
+        "llm_failed": 9
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "c6fc420f559d3d562c98a5a6c1fca12b68b73a40e7f385d7108415ecd9384408",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 16,
+        "1/2": 26,
+        "0/2": 8,
+        "pass_fraction": 0.32
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "cost_first",
+      "budget": 100000,
+      "deadline": 3540,
+      "correct": 59,
+      "wrong": 0,
+      "skipped": 41,
+      "reward": 208,
+      "spent": "40438.2",
+      "reserved": "1939.5",
+      "cost_known": false,
+      "frozen": true,
+      "calls": 47,
+      "simulated_seconds": 3540.0,
+      "stop_reasons": {
+        "timed_out": 1,
+        "solved": 59,
+        "unsafe": 25,
+        "llm_failed": 8,
+        "time_exhausted": 7
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "79c333650aa269710accac61c3d60c7b3eb3dbc95bb06c6a8d45bf1c4d5139b3",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 15,
+        "1/2": 29,
+        "0/2": 6,
+        "pass_fraction": 0.3
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "expected_reward",
+      "budget": 100000,
+      "deadline": 3540,
+      "correct": 58,
+      "wrong": 0,
+      "skipped": 42,
+      "reward": 216,
+      "spent": "42916.0",
+      "reserved": "1786.3",
+      "cost_known": false,
+      "frozen": true,
+      "calls": 47,
+      "simulated_seconds": 3540.0,
+      "stop_reasons": {
+        "solved": 58,
+        "unsafe": 25,
+        "timed_out": 1,
+        "time_exhausted": 7,
+        "llm_failed": 9
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "65616876eff2f2c0faac8ef7459498c3af67df5594363b02fad50127bf8e0f97",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 16,
+        "1/2": 26,
+        "0/2": 8,
+        "pass_fraction": 0.32
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "local_first",
+      "budget": 100000,
+      "deadline": 3540,
+      "correct": 58,
+      "wrong": 0,
+      "skipped": 42,
+      "reward": 200,
+      "spent": "41272.3",
+      "reserved": "1848.1",
+      "cost_known": false,
+      "frozen": true,
+      "calls": 47,
+      "simulated_seconds": 3540.0,
+      "stop_reasons": {
+        "solved": 58,
+        "unsafe": 25,
+        "llm_failed": 9,
+        "timed_out": 1,
+        "time_exhausted": 7
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "73fdf8a57e661d8e1dde4f8d3a36ba60590b9985e11852c94739eddcd99d8c7b",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 16,
+        "1/2": 26,
+        "0/2": 8,
+        "pass_fraction": 0.32
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "production",
+      "budget": 50000,
+      "deadline": 3540,
+      "correct": 58,
+      "wrong": 0,
+      "skipped": 42,
+      "reward": 216,
+      "spent": "42916.0",
+      "reserved": "1786.3",
+      "cost_known": false,
+      "frozen": true,
+      "calls": 47,
+      "simulated_seconds": 3540.0,
+      "stop_reasons": {
+        "solved": 58,
+        "unsafe": 25,
+        "timed_out": 1,
+        "time_exhausted": 7,
+        "llm_failed": 9
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "af7d2388c0a6bd1a4db7750dbb4ee09a469548d88d64978adecad9e52cf633f8",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 16,
+        "1/2": 26,
+        "0/2": 8,
+        "pass_fraction": 0.32
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "reward_first",
+      "budget": 50000,
+      "deadline": 3540,
+      "correct": 58,
+      "wrong": 0,
+      "skipped": 42,
+      "reward": 216,
+      "spent": "42916.0",
+      "reserved": "1786.3",
+      "cost_known": false,
+      "frozen": true,
+      "calls": 47,
+      "simulated_seconds": 3540.0,
+      "stop_reasons": {
+        "solved": 58,
+        "unsafe": 25,
+        "timed_out": 1,
+        "time_exhausted": 7,
+        "llm_failed": 9
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "c6fc420f559d3d562c98a5a6c1fca12b68b73a40e7f385d7108415ecd9384408",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 16,
+        "1/2": 26,
+        "0/2": 8,
+        "pass_fraction": 0.32
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "cost_first",
+      "budget": 50000,
+      "deadline": 3540,
+      "correct": 59,
+      "wrong": 0,
+      "skipped": 41,
+      "reward": 208,
+      "spent": "40438.2",
+      "reserved": "1939.5",
+      "cost_known": false,
+      "frozen": true,
+      "calls": 47,
+      "simulated_seconds": 3540.0,
+      "stop_reasons": {
+        "timed_out": 1,
+        "solved": 59,
+        "unsafe": 25,
+        "llm_failed": 8,
+        "time_exhausted": 7
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "79c333650aa269710accac61c3d60c7b3eb3dbc95bb06c6a8d45bf1c4d5139b3",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 15,
+        "1/2": 29,
+        "0/2": 6,
+        "pass_fraction": 0.3
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "expected_reward",
+      "budget": 50000,
+      "deadline": 3540,
+      "correct": 58,
+      "wrong": 0,
+      "skipped": 42,
+      "reward": 216,
+      "spent": "42916.0",
+      "reserved": "1786.3",
+      "cost_known": false,
+      "frozen": true,
+      "calls": 47,
+      "simulated_seconds": 3540.0,
+      "stop_reasons": {
+        "solved": 58,
+        "unsafe": 25,
+        "timed_out": 1,
+        "time_exhausted": 7,
+        "llm_failed": 9
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "65616876eff2f2c0faac8ef7459498c3af67df5594363b02fad50127bf8e0f97",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 16,
+        "1/2": 26,
+        "0/2": 8,
+        "pass_fraction": 0.32
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "local_first",
+      "budget": 50000,
+      "deadline": 3540,
+      "correct": 58,
+      "wrong": 0,
+      "skipped": 42,
+      "reward": 200,
+      "spent": "41272.3",
+      "reserved": "1848.1",
+      "cost_known": false,
+      "frozen": true,
+      "calls": 47,
+      "simulated_seconds": 3540.0,
+      "stop_reasons": {
+        "solved": 58,
+        "unsafe": 25,
+        "llm_failed": 9,
+        "timed_out": 1,
+        "time_exhausted": 7
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "73fdf8a57e661d8e1dde4f8d3a36ba60590b9985e11852c94739eddcd99d8c7b",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 16,
+        "1/2": 26,
+        "0/2": 8,
+        "pass_fraction": 0.32
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "production",
+      "budget": 20000,
+      "deadline": 3540,
+      "correct": 35,
+      "wrong": 0,
+      "skipped": 65,
+      "reward": 181,
+      "spent": "18955.0",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 19,
+      "simulated_seconds": 2735.5,
+      "stop_reasons": {
+        "budget_blocked": 35,
+        "solved": 35,
+        "unsafe": 25,
+        "llm_failed": 5
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "b126590518c569f20ba9ead27c754467df893f90bb8eea3dbf6885e4603b3d46",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 5,
+        "1/2": 25,
+        "0/2": 20,
+        "pass_fraction": 0.1
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "reward_first",
+      "budget": 20000,
+      "deadline": 3540,
+      "correct": 35,
+      "wrong": 0,
+      "skipped": 65,
+      "reward": 180,
+      "spent": "19575.0",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 19,
+      "simulated_seconds": 2735.5,
+      "stop_reasons": {
+        "budget_blocked": 35,
+        "solved": 35,
+        "unsafe": 25,
+        "llm_failed": 5
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "891e5f5d6ad12707f1f2bc5b5c4d64c2af74f933c9c4efbc35e1dc64e86f2f3c",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 5,
+        "1/2": 25,
+        "0/2": 20,
+        "pass_fraction": 0.1
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "cost_first",
+      "budget": 20000,
+      "deadline": 3540,
+      "correct": 42,
+      "wrong": 0,
+      "skipped": 58,
+      "reward": 146,
+      "spent": "18597.7",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 24,
+      "simulated_seconds": 2883.0,
+      "stop_reasons": {
+        "budget_blocked": 30,
+        "solved": 42,
+        "unsafe": 25,
+        "llm_failed": 3
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "b3ce2dd2b6f2993168631b394c7035727a28f05160edc8db66a7e6b6f658cf3e",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 9,
+        "1/2": 24,
+        "0/2": 17,
+        "pass_fraction": 0.18
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "expected_reward",
+      "budget": 20000,
+      "deadline": 3540,
+      "correct": 35,
+      "wrong": 0,
+      "skipped": 65,
+      "reward": 181,
+      "spent": "18706.8",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 19,
+      "simulated_seconds": 2735.5,
+      "stop_reasons": {
+        "budget_blocked": 35,
+        "solved": 35,
+        "unsafe": 25,
+        "llm_failed": 5
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "86aeacde8b21d8c3f3c6c5a3c42eb3b2c16d2067d34023a2d7743e09c3764708",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 5,
+        "1/2": 25,
+        "0/2": 20,
+        "pass_fraction": 0.1
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "local_first",
+      "budget": 20000,
+      "deadline": 3540,
+      "correct": 36,
+      "wrong": 0,
+      "skipped": 64,
+      "reward": 119,
+      "spent": "18880.0",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 21,
+      "simulated_seconds": 2794.5,
+      "stop_reasons": {
+        "solved": 36,
+        "unsafe": 25,
+        "llm_failed": 6,
+        "budget_blocked": 33
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "8df9e2666a1a4d400832852298deebcdefc5dd0d63bbafe35f5f561a05f4764d",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 8,
+        "1/2": 20,
+        "0/2": 22,
+        "pass_fraction": 0.16
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "production",
+      "budget": 10000,
+      "deadline": 3540,
+      "correct": 28,
+      "wrong": 0,
+      "skipped": 72,
+      "reward": 139,
+      "spent": "8923.9",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 10,
+      "simulated_seconds": 2470.0,
+      "stop_reasons": {
+        "budget_blocked": 44,
+        "unsafe": 25,
+        "solved": 28,
+        "llm_failed": 3
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "46e98bd7fde0f9cfbbcf48bdd9c38ffcdb80766e42f6b1ddcb86dc4ade3d7b60",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 4,
+        "1/2": 20,
+        "0/2": 26,
+        "pass_fraction": 0.08
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "reward_first",
+      "budget": 10000,
+      "deadline": 3540,
+      "correct": 28,
+      "wrong": 0,
+      "skipped": 72,
+      "reward": 148,
+      "spent": "8569.9",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 9,
+      "simulated_seconds": 2440.5,
+      "stop_reasons": {
+        "budget_blocked": 45,
+        "solved": 28,
+        "unsafe": 25,
+        "llm_failed": 2
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "4d050ffcfeabc547f3859f00cee69f0618d3db3282850fa5d0f118cfa2552608",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 3,
+        "1/2": 22,
+        "0/2": 25,
+        "pass_fraction": 0.06
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "cost_first",
+      "budget": 10000,
+      "deadline": 3540,
+      "correct": 31,
+      "wrong": 0,
+      "skipped": 69,
+      "reward": 113,
+      "spent": "8456.0",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 12,
+      "simulated_seconds": 2529.0,
+      "stop_reasons": {
+        "budget_blocked": 42,
+        "unsafe": 25,
+        "solved": 31,
+        "llm_failed": 2
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "3f25d83d07c5060c3532ff8e325c7df9a701592a208f2ee0994accfa5f1b0256",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 5,
+        "1/2": 21,
+        "0/2": 24,
+        "pass_fraction": 0.1
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "expected_reward",
+      "budget": 10000,
+      "deadline": 3540,
+      "correct": 27,
+      "wrong": 0,
+      "skipped": 73,
+      "reward": 140,
+      "spent": "8336.7",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 9,
+      "simulated_seconds": 2440.5,
+      "stop_reasons": {
+        "budget_blocked": 45,
+        "solved": 27,
+        "unsafe": 25,
+        "llm_failed": 3
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "2666b500e85a3529e1c18b7562b07f8e7065fa98a1c877225dd163217760aa87",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 3,
+        "1/2": 21,
+        "0/2": 26,
+        "pass_fraction": 0.06
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "local_first",
+      "budget": 10000,
+      "deadline": 3540,
+      "correct": 30,
+      "wrong": 0,
+      "skipped": 70,
+      "reward": 109,
+      "spent": "9071.8",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 10,
+      "simulated_seconds": 2470.0,
+      "stop_reasons": {
+        "solved": 30,
+        "unsafe": 25,
+        "llm_failed": 1,
+        "budget_blocked": 44
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "c2e806aa95f84691c143817eb4149b91a06efeb2483c25c396849392b1027b40",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 6,
+        "1/2": 18,
+        "0/2": 26,
+        "pass_fraction": 0.12
+      }
+    }
+  ],
+  "unknown_usage": [
+    {
+      "source": "simulation",
+      "policy": "production",
+      "budget": 100000,
+      "deadline": 3540,
+      "correct": 56,
+      "wrong": 0,
+      "skipped": 44,
+      "reward": 216,
+      "spent": "41485.5",
+      "reserved": "1939.5",
+      "cost_known": false,
+      "frozen": true,
+      "calls": 45,
+      "simulated_seconds": 353.740069,
+      "stop_reasons": {
+        "llm_failed": 10,
+        "budget_blocked": 9,
+        "solved": 56,
+        "unsafe": 25
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "1a463fd5aee8b24450af9b7c03135b3ac491c58a15288607cb798cc141ce6ca8",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 15,
+        "1/2": 26,
+        "0/2": 9,
+        "pass_fraction": 0.3
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "reward_first",
+      "budget": 100000,
+      "deadline": 3540,
+      "correct": 56,
+      "wrong": 0,
+      "skipped": 44,
+      "reward": 216,
+      "spent": "41485.5",
+      "reserved": "1939.5",
+      "cost_known": false,
+      "frozen": true,
+      "calls": 45,
+      "simulated_seconds": 353.740069,
+      "stop_reasons": {
+        "llm_failed": 10,
+        "budget_blocked": 9,
+        "solved": 56,
+        "unsafe": 25
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "bd6377015d47a91033f1d7c415fd124977e4efd0c1fd859d33d3c1f778e319d8",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 15,
+        "1/2": 26,
+        "0/2": 9,
+        "pass_fraction": 0.3
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "cost_first",
+      "budget": 100000,
+      "deadline": 3540,
+      "correct": 59,
+      "wrong": 0,
+      "skipped": 41,
+      "reward": 208,
+      "spent": "40438.2",
+      "reserved": "1939.5",
+      "cost_known": false,
+      "frozen": true,
+      "calls": 47,
+      "simulated_seconds": 357.259095,
+      "stop_reasons": {
+        "llm_failed": 9,
+        "solved": 59,
+        "unsafe": 25,
+        "budget_blocked": 7
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "79c333650aa269710accac61c3d60c7b3eb3dbc95bb06c6a8d45bf1c4d5139b3",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 15,
+        "1/2": 29,
+        "0/2": 6,
+        "pass_fraction": 0.3
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "expected_reward",
+      "budget": 100000,
+      "deadline": 3540,
+      "correct": 56,
+      "wrong": 0,
+      "skipped": 44,
+      "reward": 216,
+      "spent": "41485.5",
+      "reserved": "1939.5",
+      "cost_known": false,
+      "frozen": true,
+      "calls": 45,
+      "simulated_seconds": 353.740069,
+      "stop_reasons": {
+        "llm_failed": 10,
+        "budget_blocked": 9,
+        "solved": 56,
+        "unsafe": 25
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "1092bdd840f6e8f90c43ac59b75c94942a74bd7cd06b94eb87dfd2e94d94717e",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 15,
+        "1/2": 26,
+        "0/2": 9,
+        "pass_fraction": 0.3
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "local_first",
+      "budget": 100000,
+      "deadline": 3540,
+      "correct": 21,
+      "wrong": 0,
+      "skipped": 79,
+      "reward": 82,
+      "spent": "0.0",
+      "reserved": "1939.5",
+      "cost_known": false,
+      "frozen": true,
+      "calls": 1,
+      "simulated_seconds": 1.864278,
+      "stop_reasons": {
+        "llm_failed": 1,
+        "budget_blocked": 53,
+        "unsafe": 25,
+        "solved": 21
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "781e5bc33971bf4c029243254d2d867faefa64c4885cfb0d7f67775cb0840b1f",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 2,
+        "1/2": 17,
+        "0/2": 31,
+        "pass_fraction": 0.04
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "production",
+      "budget": 50000,
+      "deadline": 3540,
+      "correct": 56,
+      "wrong": 0,
+      "skipped": 44,
+      "reward": 216,
+      "spent": "41485.5",
+      "reserved": "1939.5",
+      "cost_known": false,
+      "frozen": true,
+      "calls": 45,
+      "simulated_seconds": 353.740069,
+      "stop_reasons": {
+        "llm_failed": 10,
+        "budget_blocked": 9,
+        "solved": 56,
+        "unsafe": 25
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "1a463fd5aee8b24450af9b7c03135b3ac491c58a15288607cb798cc141ce6ca8",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 15,
+        "1/2": 26,
+        "0/2": 9,
+        "pass_fraction": 0.3
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "reward_first",
+      "budget": 50000,
+      "deadline": 3540,
+      "correct": 56,
+      "wrong": 0,
+      "skipped": 44,
+      "reward": 216,
+      "spent": "41485.5",
+      "reserved": "1939.5",
+      "cost_known": false,
+      "frozen": true,
+      "calls": 45,
+      "simulated_seconds": 353.740069,
+      "stop_reasons": {
+        "llm_failed": 10,
+        "budget_blocked": 9,
+        "solved": 56,
+        "unsafe": 25
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "bd6377015d47a91033f1d7c415fd124977e4efd0c1fd859d33d3c1f778e319d8",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 15,
+        "1/2": 26,
+        "0/2": 9,
+        "pass_fraction": 0.3
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "cost_first",
+      "budget": 50000,
+      "deadline": 3540,
+      "correct": 59,
+      "wrong": 0,
+      "skipped": 41,
+      "reward": 208,
+      "spent": "40438.2",
+      "reserved": "1939.5",
+      "cost_known": false,
+      "frozen": true,
+      "calls": 47,
+      "simulated_seconds": 357.259095,
+      "stop_reasons": {
+        "llm_failed": 9,
+        "solved": 59,
+        "unsafe": 25,
+        "budget_blocked": 7
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "79c333650aa269710accac61c3d60c7b3eb3dbc95bb06c6a8d45bf1c4d5139b3",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 15,
+        "1/2": 29,
+        "0/2": 6,
+        "pass_fraction": 0.3
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "expected_reward",
+      "budget": 50000,
+      "deadline": 3540,
+      "correct": 56,
+      "wrong": 0,
+      "skipped": 44,
+      "reward": 216,
+      "spent": "41485.5",
+      "reserved": "1939.5",
+      "cost_known": false,
+      "frozen": true,
+      "calls": 45,
+      "simulated_seconds": 353.740069,
+      "stop_reasons": {
+        "llm_failed": 10,
+        "budget_blocked": 9,
+        "solved": 56,
+        "unsafe": 25
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "1092bdd840f6e8f90c43ac59b75c94942a74bd7cd06b94eb87dfd2e94d94717e",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 15,
+        "1/2": 26,
+        "0/2": 9,
+        "pass_fraction": 0.3
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "local_first",
+      "budget": 50000,
+      "deadline": 3540,
+      "correct": 21,
+      "wrong": 0,
+      "skipped": 79,
+      "reward": 82,
+      "spent": "0.0",
+      "reserved": "1939.5",
+      "cost_known": false,
+      "frozen": true,
+      "calls": 1,
+      "simulated_seconds": 1.864278,
+      "stop_reasons": {
+        "llm_failed": 1,
+        "budget_blocked": 53,
+        "unsafe": 25,
+        "solved": 21
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "781e5bc33971bf4c029243254d2d867faefa64c4885cfb0d7f67775cb0840b1f",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 2,
+        "1/2": 17,
+        "0/2": 31,
+        "pass_fraction": 0.04
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "production",
+      "budget": 20000,
+      "deadline": 3540,
+      "correct": 35,
+      "wrong": 0,
+      "skipped": 65,
+      "reward": 181,
+      "spent": "18955.0",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 19,
+      "simulated_seconds": 167.106437,
+      "stop_reasons": {
+        "budget_blocked": 35,
+        "solved": 35,
+        "unsafe": 25,
+        "llm_failed": 5
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "b126590518c569f20ba9ead27c754467df893f90bb8eea3dbf6885e4603b3d46",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 5,
+        "1/2": 25,
+        "0/2": 20,
+        "pass_fraction": 0.1
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "reward_first",
+      "budget": 20000,
+      "deadline": 3540,
+      "correct": 35,
+      "wrong": 0,
+      "skipped": 65,
+      "reward": 180,
+      "spent": "19575.0",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 19,
+      "simulated_seconds": 164.401524,
+      "stop_reasons": {
+        "budget_blocked": 35,
+        "solved": 35,
+        "unsafe": 25,
+        "llm_failed": 5
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "891e5f5d6ad12707f1f2bc5b5c4d64c2af74f933c9c4efbc35e1dc64e86f2f3c",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 5,
+        "1/2": 25,
+        "0/2": 20,
+        "pass_fraction": 0.1
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "cost_first",
+      "budget": 20000,
+      "deadline": 3540,
+      "correct": 42,
+      "wrong": 0,
+      "skipped": 58,
+      "reward": 146,
+      "spent": "18597.7",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 24,
+      "simulated_seconds": 187.272104,
+      "stop_reasons": {
+        "budget_blocked": 30,
+        "solved": 42,
+        "unsafe": 25,
+        "llm_failed": 3
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "b3ce2dd2b6f2993168631b394c7035727a28f05160edc8db66a7e6b6f658cf3e",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 9,
+        "1/2": 24,
+        "0/2": 17,
+        "pass_fraction": 0.18
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "expected_reward",
+      "budget": 20000,
+      "deadline": 3540,
+      "correct": 35,
+      "wrong": 0,
+      "skipped": 65,
+      "reward": 181,
+      "spent": "18706.8",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 19,
+      "simulated_seconds": 154.82937,
+      "stop_reasons": {
+        "budget_blocked": 35,
+        "solved": 35,
+        "unsafe": 25,
+        "llm_failed": 5
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "86aeacde8b21d8c3f3c6c5a3c42eb3b2c16d2067d34023a2d7743e09c3764708",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 5,
+        "1/2": 25,
+        "0/2": 20,
+        "pass_fraction": 0.1
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "local_first",
+      "budget": 20000,
+      "deadline": 3540,
+      "correct": 21,
+      "wrong": 0,
+      "skipped": 79,
+      "reward": 82,
+      "spent": "0.0",
+      "reserved": "1939.5",
+      "cost_known": false,
+      "frozen": true,
+      "calls": 1,
+      "simulated_seconds": 1.864278,
+      "stop_reasons": {
+        "llm_failed": 1,
+        "budget_blocked": 53,
+        "unsafe": 25,
+        "solved": 21
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "781e5bc33971bf4c029243254d2d867faefa64c4885cfb0d7f67775cb0840b1f",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 2,
+        "1/2": 17,
+        "0/2": 31,
+        "pass_fraction": 0.04
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "production",
+      "budget": 10000,
+      "deadline": 3540,
+      "correct": 28,
+      "wrong": 0,
+      "skipped": 72,
+      "reward": 139,
+      "spent": "8923.9",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 10,
+      "simulated_seconds": 91.32547,
+      "stop_reasons": {
+        "budget_blocked": 44,
+        "unsafe": 25,
+        "solved": 28,
+        "llm_failed": 3
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "46e98bd7fde0f9cfbbcf48bdd9c38ffcdb80766e42f6b1ddcb86dc4ade3d7b60",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 4,
+        "1/2": 20,
+        "0/2": 26,
+        "pass_fraction": 0.08
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "reward_first",
+      "budget": 10000,
+      "deadline": 3540,
+      "correct": 28,
+      "wrong": 0,
+      "skipped": 72,
+      "reward": 148,
+      "spent": "8569.9",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 9,
+      "simulated_seconds": 84.756264,
+      "stop_reasons": {
+        "budget_blocked": 45,
+        "solved": 28,
+        "unsafe": 25,
+        "llm_failed": 2
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "4d050ffcfeabc547f3859f00cee69f0618d3db3282850fa5d0f118cfa2552608",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 3,
+        "1/2": 22,
+        "0/2": 25,
+        "pass_fraction": 0.06
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "cost_first",
+      "budget": 10000,
+      "deadline": 3540,
+      "correct": 31,
+      "wrong": 0,
+      "skipped": 69,
+      "reward": 113,
+      "spent": "8456.0",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 12,
+      "simulated_seconds": 83.181947,
+      "stop_reasons": {
+        "budget_blocked": 42,
+        "unsafe": 25,
+        "solved": 31,
+        "llm_failed": 2
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "3f25d83d07c5060c3532ff8e325c7df9a701592a208f2ee0994accfa5f1b0256",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 5,
+        "1/2": 21,
+        "0/2": 24,
+        "pass_fraction": 0.1
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "expected_reward",
+      "budget": 10000,
+      "deadline": 3540,
+      "correct": 27,
+      "wrong": 0,
+      "skipped": 73,
+      "reward": 140,
+      "spent": "8336.7",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 9,
+      "simulated_seconds": 92.278172,
+      "stop_reasons": {
+        "budget_blocked": 45,
+        "solved": 27,
+        "unsafe": 25,
+        "llm_failed": 3
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "2666b500e85a3529e1c18b7562b07f8e7065fa98a1c877225dd163217760aa87",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 3,
+        "1/2": 21,
+        "0/2": 26,
+        "pass_fraction": 0.06
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "local_first",
+      "budget": 10000,
+      "deadline": 3540,
+      "correct": 21,
+      "wrong": 0,
+      "skipped": 79,
+      "reward": 82,
+      "spent": "0.0",
+      "reserved": "1939.5",
+      "cost_known": false,
+      "frozen": true,
+      "calls": 1,
+      "simulated_seconds": 1.864278,
+      "stop_reasons": {
+        "llm_failed": 1,
+        "budget_blocked": 53,
+        "unsafe": 25,
+        "solved": 21
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "781e5bc33971bf4c029243254d2d867faefa64c4885cfb0d7f67775cb0840b1f",
+      "pair_coverage_in_shared_run": {
+        "pairs": 50,
+        "2/2": 2,
+        "1/2": 17,
+        "0/2": 31,
+        "pass_fraction": 0.04
+      }
+    }
+  ],
+  "development_mock": [
+    {
+      "source": "simulation",
+      "policy": "production",
+      "budget": 100000,
+      "deadline": 3540,
+      "correct": 29,
+      "wrong": 0,
+      "skipped": 35,
+      "reward": 192,
+      "spent": "143.6",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 2,
+      "simulated_seconds": 0.39523,
+      "stop_reasons": {
+        "unsafe": 16,
+        "solved": 29,
+        "insufficient_evidence": 7,
+        "invalid_data": 2,
+        "unsupported": 10
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "9298c9fcc38133cef5213215ecd699a62c6a012fb801c9504e18b9d11441d577",
+      "pair_coverage_in_shared_run": {
+        "pairs": 32,
+        "2/2": 10,
+        "1/2": 9,
+        "0/2": 13,
+        "pass_fraction": 0.3125
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "reward_first",
+      "budget": 100000,
+      "deadline": 3540,
+      "correct": 29,
+      "wrong": 0,
+      "skipped": 35,
+      "reward": 192,
+      "spent": "143.6",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 2,
+      "simulated_seconds": 0.39523,
+      "stop_reasons": {
+        "unsafe": 16,
+        "solved": 29,
+        "insufficient_evidence": 7,
+        "invalid_data": 2,
+        "unsupported": 10
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "cffaa529f49a08995fef4873f6b9602d93e5d17f3ba46481136d81eebbde8fcd",
+      "pair_coverage_in_shared_run": {
+        "pairs": 32,
+        "2/2": 10,
+        "1/2": 9,
+        "0/2": 13,
+        "pass_fraction": 0.3125
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "cost_first",
+      "budget": 100000,
+      "deadline": 3540,
+      "correct": 29,
+      "wrong": 0,
+      "skipped": 35,
+      "reward": 192,
+      "spent": "143.6",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 2,
+      "simulated_seconds": 0.39523,
+      "stop_reasons": {
+        "unsafe": 16,
+        "solved": 29,
+        "insufficient_evidence": 7,
+        "invalid_data": 2,
+        "unsupported": 10
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "9298c9fcc38133cef5213215ecd699a62c6a012fb801c9504e18b9d11441d577",
+      "pair_coverage_in_shared_run": {
+        "pairs": 32,
+        "2/2": 10,
+        "1/2": 9,
+        "0/2": 13,
+        "pass_fraction": 0.3125
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "expected_reward",
+      "budget": 100000,
+      "deadline": 3540,
+      "correct": 29,
+      "wrong": 0,
+      "skipped": 35,
+      "reward": 192,
+      "spent": "143.6",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 2,
+      "simulated_seconds": 0.39523,
+      "stop_reasons": {
+        "unsafe": 16,
+        "solved": 29,
+        "insufficient_evidence": 7,
+        "invalid_data": 2,
+        "unsupported": 10
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "9298c9fcc38133cef5213215ecd699a62c6a012fb801c9504e18b9d11441d577",
+      "pair_coverage_in_shared_run": {
+        "pairs": 32,
+        "2/2": 10,
+        "1/2": 9,
+        "0/2": 13,
+        "pass_fraction": 0.3125
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "local_first",
+      "budget": 100000,
+      "deadline": 3540,
+      "correct": 29,
+      "wrong": 0,
+      "skipped": 35,
+      "reward": 192,
+      "spent": "143.6",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 2,
+      "simulated_seconds": 0.39523,
+      "stop_reasons": {
+        "unsafe": 16,
+        "solved": 29,
+        "insufficient_evidence": 7,
+        "invalid_data": 2,
+        "unsupported": 10
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "fe14b0cee362c1ec851f17459cb264ece23fc08c7e07aed30aa61e45b81af2be",
+      "pair_coverage_in_shared_run": {
+        "pairs": 32,
+        "2/2": 10,
+        "1/2": 9,
+        "0/2": 13,
+        "pass_fraction": 0.3125
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "production",
+      "budget": 50000,
+      "deadline": 3540,
+      "correct": 29,
+      "wrong": 0,
+      "skipped": 35,
+      "reward": 192,
+      "spent": "143.6",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 2,
+      "simulated_seconds": 0.39523,
+      "stop_reasons": {
+        "unsafe": 16,
+        "solved": 29,
+        "insufficient_evidence": 7,
+        "invalid_data": 2,
+        "unsupported": 10
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "9298c9fcc38133cef5213215ecd699a62c6a012fb801c9504e18b9d11441d577",
+      "pair_coverage_in_shared_run": {
+        "pairs": 32,
+        "2/2": 10,
+        "1/2": 9,
+        "0/2": 13,
+        "pass_fraction": 0.3125
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "reward_first",
+      "budget": 50000,
+      "deadline": 3540,
+      "correct": 29,
+      "wrong": 0,
+      "skipped": 35,
+      "reward": 192,
+      "spent": "143.6",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 2,
+      "simulated_seconds": 0.39523,
+      "stop_reasons": {
+        "unsafe": 16,
+        "solved": 29,
+        "insufficient_evidence": 7,
+        "invalid_data": 2,
+        "unsupported": 10
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "cffaa529f49a08995fef4873f6b9602d93e5d17f3ba46481136d81eebbde8fcd",
+      "pair_coverage_in_shared_run": {
+        "pairs": 32,
+        "2/2": 10,
+        "1/2": 9,
+        "0/2": 13,
+        "pass_fraction": 0.3125
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "cost_first",
+      "budget": 50000,
+      "deadline": 3540,
+      "correct": 29,
+      "wrong": 0,
+      "skipped": 35,
+      "reward": 192,
+      "spent": "143.6",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 2,
+      "simulated_seconds": 0.39523,
+      "stop_reasons": {
+        "unsafe": 16,
+        "solved": 29,
+        "insufficient_evidence": 7,
+        "invalid_data": 2,
+        "unsupported": 10
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "9298c9fcc38133cef5213215ecd699a62c6a012fb801c9504e18b9d11441d577",
+      "pair_coverage_in_shared_run": {
+        "pairs": 32,
+        "2/2": 10,
+        "1/2": 9,
+        "0/2": 13,
+        "pass_fraction": 0.3125
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "expected_reward",
+      "budget": 50000,
+      "deadline": 3540,
+      "correct": 29,
+      "wrong": 0,
+      "skipped": 35,
+      "reward": 192,
+      "spent": "143.6",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 2,
+      "simulated_seconds": 0.39523,
+      "stop_reasons": {
+        "unsafe": 16,
+        "solved": 29,
+        "insufficient_evidence": 7,
+        "invalid_data": 2,
+        "unsupported": 10
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "9298c9fcc38133cef5213215ecd699a62c6a012fb801c9504e18b9d11441d577",
+      "pair_coverage_in_shared_run": {
+        "pairs": 32,
+        "2/2": 10,
+        "1/2": 9,
+        "0/2": 13,
+        "pass_fraction": 0.3125
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "local_first",
+      "budget": 50000,
+      "deadline": 3540,
+      "correct": 29,
+      "wrong": 0,
+      "skipped": 35,
+      "reward": 192,
+      "spent": "143.6",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 2,
+      "simulated_seconds": 0.39523,
+      "stop_reasons": {
+        "unsafe": 16,
+        "solved": 29,
+        "insufficient_evidence": 7,
+        "invalid_data": 2,
+        "unsupported": 10
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "fe14b0cee362c1ec851f17459cb264ece23fc08c7e07aed30aa61e45b81af2be",
+      "pair_coverage_in_shared_run": {
+        "pairs": 32,
+        "2/2": 10,
+        "1/2": 9,
+        "0/2": 13,
+        "pass_fraction": 0.3125
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "production",
+      "budget": 20000,
+      "deadline": 3540,
+      "correct": 29,
+      "wrong": 0,
+      "skipped": 35,
+      "reward": 192,
+      "spent": "143.6",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 2,
+      "simulated_seconds": 0.39523,
+      "stop_reasons": {
+        "unsafe": 16,
+        "solved": 29,
+        "insufficient_evidence": 7,
+        "invalid_data": 2,
+        "unsupported": 10
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "9298c9fcc38133cef5213215ecd699a62c6a012fb801c9504e18b9d11441d577",
+      "pair_coverage_in_shared_run": {
+        "pairs": 32,
+        "2/2": 10,
+        "1/2": 9,
+        "0/2": 13,
+        "pass_fraction": 0.3125
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "reward_first",
+      "budget": 20000,
+      "deadline": 3540,
+      "correct": 29,
+      "wrong": 0,
+      "skipped": 35,
+      "reward": 192,
+      "spent": "143.6",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 2,
+      "simulated_seconds": 0.39523,
+      "stop_reasons": {
+        "unsafe": 16,
+        "solved": 29,
+        "insufficient_evidence": 7,
+        "invalid_data": 2,
+        "unsupported": 10
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "cffaa529f49a08995fef4873f6b9602d93e5d17f3ba46481136d81eebbde8fcd",
+      "pair_coverage_in_shared_run": {
+        "pairs": 32,
+        "2/2": 10,
+        "1/2": 9,
+        "0/2": 13,
+        "pass_fraction": 0.3125
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "cost_first",
+      "budget": 20000,
+      "deadline": 3540,
+      "correct": 29,
+      "wrong": 0,
+      "skipped": 35,
+      "reward": 192,
+      "spent": "143.6",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 2,
+      "simulated_seconds": 0.39523,
+      "stop_reasons": {
+        "unsafe": 16,
+        "solved": 29,
+        "insufficient_evidence": 7,
+        "invalid_data": 2,
+        "unsupported": 10
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "9298c9fcc38133cef5213215ecd699a62c6a012fb801c9504e18b9d11441d577",
+      "pair_coverage_in_shared_run": {
+        "pairs": 32,
+        "2/2": 10,
+        "1/2": 9,
+        "0/2": 13,
+        "pass_fraction": 0.3125
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "expected_reward",
+      "budget": 20000,
+      "deadline": 3540,
+      "correct": 29,
+      "wrong": 0,
+      "skipped": 35,
+      "reward": 192,
+      "spent": "143.6",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 2,
+      "simulated_seconds": 0.39523,
+      "stop_reasons": {
+        "unsafe": 16,
+        "solved": 29,
+        "insufficient_evidence": 7,
+        "invalid_data": 2,
+        "unsupported": 10
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "9298c9fcc38133cef5213215ecd699a62c6a012fb801c9504e18b9d11441d577",
+      "pair_coverage_in_shared_run": {
+        "pairs": 32,
+        "2/2": 10,
+        "1/2": 9,
+        "0/2": 13,
+        "pass_fraction": 0.3125
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "local_first",
+      "budget": 20000,
+      "deadline": 3540,
+      "correct": 29,
+      "wrong": 0,
+      "skipped": 35,
+      "reward": 192,
+      "spent": "143.6",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 2,
+      "simulated_seconds": 0.39523,
+      "stop_reasons": {
+        "unsafe": 16,
+        "solved": 29,
+        "insufficient_evidence": 7,
+        "invalid_data": 2,
+        "unsupported": 10
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "fe14b0cee362c1ec851f17459cb264ece23fc08c7e07aed30aa61e45b81af2be",
+      "pair_coverage_in_shared_run": {
+        "pairs": 32,
+        "2/2": 10,
+        "1/2": 9,
+        "0/2": 13,
+        "pass_fraction": 0.3125
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "production",
+      "budget": 10000,
+      "deadline": 3540,
+      "correct": 29,
+      "wrong": 0,
+      "skipped": 35,
+      "reward": 192,
+      "spent": "143.6",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 2,
+      "simulated_seconds": 0.39523,
+      "stop_reasons": {
+        "unsafe": 16,
+        "solved": 29,
+        "insufficient_evidence": 7,
+        "invalid_data": 2,
+        "unsupported": 10
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "9298c9fcc38133cef5213215ecd699a62c6a012fb801c9504e18b9d11441d577",
+      "pair_coverage_in_shared_run": {
+        "pairs": 32,
+        "2/2": 10,
+        "1/2": 9,
+        "0/2": 13,
+        "pass_fraction": 0.3125
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "reward_first",
+      "budget": 10000,
+      "deadline": 3540,
+      "correct": 29,
+      "wrong": 0,
+      "skipped": 35,
+      "reward": 192,
+      "spent": "143.6",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 2,
+      "simulated_seconds": 0.39523,
+      "stop_reasons": {
+        "unsafe": 16,
+        "solved": 29,
+        "insufficient_evidence": 7,
+        "invalid_data": 2,
+        "unsupported": 10
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "cffaa529f49a08995fef4873f6b9602d93e5d17f3ba46481136d81eebbde8fcd",
+      "pair_coverage_in_shared_run": {
+        "pairs": 32,
+        "2/2": 10,
+        "1/2": 9,
+        "0/2": 13,
+        "pass_fraction": 0.3125
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "cost_first",
+      "budget": 10000,
+      "deadline": 3540,
+      "correct": 29,
+      "wrong": 0,
+      "skipped": 35,
+      "reward": 192,
+      "spent": "143.6",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 2,
+      "simulated_seconds": 0.39523,
+      "stop_reasons": {
+        "unsafe": 16,
+        "solved": 29,
+        "insufficient_evidence": 7,
+        "invalid_data": 2,
+        "unsupported": 10
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "9298c9fcc38133cef5213215ecd699a62c6a012fb801c9504e18b9d11441d577",
+      "pair_coverage_in_shared_run": {
+        "pairs": 32,
+        "2/2": 10,
+        "1/2": 9,
+        "0/2": 13,
+        "pass_fraction": 0.3125
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "expected_reward",
+      "budget": 10000,
+      "deadline": 3540,
+      "correct": 29,
+      "wrong": 0,
+      "skipped": 35,
+      "reward": 192,
+      "spent": "143.6",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 2,
+      "simulated_seconds": 0.39523,
+      "stop_reasons": {
+        "unsafe": 16,
+        "solved": 29,
+        "insufficient_evidence": 7,
+        "invalid_data": 2,
+        "unsupported": 10
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "9298c9fcc38133cef5213215ecd699a62c6a012fb801c9504e18b9d11441d577",
+      "pair_coverage_in_shared_run": {
+        "pairs": 32,
+        "2/2": 10,
+        "1/2": 9,
+        "0/2": 13,
+        "pass_fraction": 0.3125
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "local_first",
+      "budget": 10000,
+      "deadline": 3540,
+      "correct": 29,
+      "wrong": 0,
+      "skipped": 35,
+      "reward": 192,
+      "spent": "143.6",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 2,
+      "simulated_seconds": 0.39523,
+      "stop_reasons": {
+        "unsafe": 16,
+        "solved": 29,
+        "insufficient_evidence": 7,
+        "invalid_data": 2,
+        "unsupported": 10
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "fe14b0cee362c1ec851f17459cb264ece23fc08c7e07aed30aa61e45b81af2be",
+      "pair_coverage_in_shared_run": {
+        "pairs": 32,
+        "2/2": 10,
+        "1/2": 9,
+        "0/2": 13,
+        "pass_fraction": 0.3125
+      }
+    }
+  ],
+  "frozen_evaluation_only": [
+    {
+      "source": "simulation",
+      "policy": "production",
+      "budget": 100000,
+      "deadline": 3540,
+      "correct": 51,
+      "wrong": 0,
+      "skipped": 77,
+      "reward": 286,
+      "spent": "454.2",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 6,
+      "simulated_seconds": 0.739056,
+      "stop_reasons": {
+        "unsafe": 32,
+        "solved": 51,
+        "insufficient_evidence": 17,
+        "invalid_data": 4,
+        "unsupported": 24
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "c42913d5091c8d6597824e6559697201ae1995d5947ba34b362bd61b9f58b6cd",
+      "pair_coverage_in_shared_run": {
+        "pairs": 64,
+        "2/2": 18,
+        "1/2": 15,
+        "0/2": 31,
+        "pass_fraction": 0.28125
+      },
+      "isolated_fixed_pair_reference": {
+        "pairs": 20,
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "pass_fraction": 0.45
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "reward_first",
+      "budget": 100000,
+      "deadline": 3540,
+      "correct": 51,
+      "wrong": 0,
+      "skipped": 77,
+      "reward": 286,
+      "spent": "454.2",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 6,
+      "simulated_seconds": 0.739056,
+      "stop_reasons": {
+        "unsafe": 32,
+        "solved": 51,
+        "insufficient_evidence": 17,
+        "invalid_data": 4,
+        "unsupported": 24
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "863be4d8d12eb685fea45e4545b0bb6a47512d5b611739fe146d49f399ec9caa",
+      "pair_coverage_in_shared_run": {
+        "pairs": 64,
+        "2/2": 18,
+        "1/2": 15,
+        "0/2": 31,
+        "pass_fraction": 0.28125
+      },
+      "isolated_fixed_pair_reference": {
+        "pairs": 20,
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "pass_fraction": 0.45
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "cost_first",
+      "budget": 100000,
+      "deadline": 3540,
+      "correct": 51,
+      "wrong": 0,
+      "skipped": 77,
+      "reward": 286,
+      "spent": "454.2",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 6,
+      "simulated_seconds": 0.739056,
+      "stop_reasons": {
+        "unsafe": 32,
+        "solved": 51,
+        "insufficient_evidence": 17,
+        "invalid_data": 4,
+        "unsupported": 24
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "cda4573006281ed9124a7ff9d9005cca21be86e938f7df03ea940527aeb5adc9",
+      "pair_coverage_in_shared_run": {
+        "pairs": 64,
+        "2/2": 18,
+        "1/2": 15,
+        "0/2": 31,
+        "pass_fraction": 0.28125
+      },
+      "isolated_fixed_pair_reference": {
+        "pairs": 20,
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "pass_fraction": 0.45
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "expected_reward",
+      "budget": 100000,
+      "deadline": 3540,
+      "correct": 51,
+      "wrong": 0,
+      "skipped": 77,
+      "reward": 286,
+      "spent": "454.2",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 6,
+      "simulated_seconds": 0.739056,
+      "stop_reasons": {
+        "unsafe": 32,
+        "solved": 51,
+        "insufficient_evidence": 17,
+        "invalid_data": 4,
+        "unsupported": 24
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "c42913d5091c8d6597824e6559697201ae1995d5947ba34b362bd61b9f58b6cd",
+      "pair_coverage_in_shared_run": {
+        "pairs": 64,
+        "2/2": 18,
+        "1/2": 15,
+        "0/2": 31,
+        "pass_fraction": 0.28125
+      },
+      "isolated_fixed_pair_reference": {
+        "pairs": 20,
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "pass_fraction": 0.45
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "local_first",
+      "budget": 100000,
+      "deadline": 3540,
+      "correct": 51,
+      "wrong": 0,
+      "skipped": 77,
+      "reward": 286,
+      "spent": "454.2",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 6,
+      "simulated_seconds": 0.739056,
+      "stop_reasons": {
+        "unsafe": 32,
+        "solved": 51,
+        "insufficient_evidence": 17,
+        "invalid_data": 4,
+        "unsupported": 24
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "a286766580f9dfb618c9bc904ead5579bcdd084e770df512bec0aa175e98b981",
+      "pair_coverage_in_shared_run": {
+        "pairs": 64,
+        "2/2": 18,
+        "1/2": 15,
+        "0/2": 31,
+        "pass_fraction": 0.28125
+      },
+      "isolated_fixed_pair_reference": {
+        "pairs": 20,
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "pass_fraction": 0.45
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "production",
+      "budget": 50000,
+      "deadline": 3540,
+      "correct": 51,
+      "wrong": 0,
+      "skipped": 77,
+      "reward": 286,
+      "spent": "454.2",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 6,
+      "simulated_seconds": 0.739056,
+      "stop_reasons": {
+        "unsafe": 32,
+        "solved": 51,
+        "insufficient_evidence": 17,
+        "invalid_data": 4,
+        "unsupported": 24
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "c42913d5091c8d6597824e6559697201ae1995d5947ba34b362bd61b9f58b6cd",
+      "pair_coverage_in_shared_run": {
+        "pairs": 64,
+        "2/2": 18,
+        "1/2": 15,
+        "0/2": 31,
+        "pass_fraction": 0.28125
+      },
+      "isolated_fixed_pair_reference": {
+        "pairs": 20,
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "pass_fraction": 0.45
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "reward_first",
+      "budget": 50000,
+      "deadline": 3540,
+      "correct": 51,
+      "wrong": 0,
+      "skipped": 77,
+      "reward": 286,
+      "spent": "454.2",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 6,
+      "simulated_seconds": 0.739056,
+      "stop_reasons": {
+        "unsafe": 32,
+        "solved": 51,
+        "insufficient_evidence": 17,
+        "invalid_data": 4,
+        "unsupported": 24
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "863be4d8d12eb685fea45e4545b0bb6a47512d5b611739fe146d49f399ec9caa",
+      "pair_coverage_in_shared_run": {
+        "pairs": 64,
+        "2/2": 18,
+        "1/2": 15,
+        "0/2": 31,
+        "pass_fraction": 0.28125
+      },
+      "isolated_fixed_pair_reference": {
+        "pairs": 20,
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "pass_fraction": 0.45
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "cost_first",
+      "budget": 50000,
+      "deadline": 3540,
+      "correct": 51,
+      "wrong": 0,
+      "skipped": 77,
+      "reward": 286,
+      "spent": "454.2",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 6,
+      "simulated_seconds": 0.739056,
+      "stop_reasons": {
+        "unsafe": 32,
+        "solved": 51,
+        "insufficient_evidence": 17,
+        "invalid_data": 4,
+        "unsupported": 24
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "cda4573006281ed9124a7ff9d9005cca21be86e938f7df03ea940527aeb5adc9",
+      "pair_coverage_in_shared_run": {
+        "pairs": 64,
+        "2/2": 18,
+        "1/2": 15,
+        "0/2": 31,
+        "pass_fraction": 0.28125
+      },
+      "isolated_fixed_pair_reference": {
+        "pairs": 20,
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "pass_fraction": 0.45
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "expected_reward",
+      "budget": 50000,
+      "deadline": 3540,
+      "correct": 51,
+      "wrong": 0,
+      "skipped": 77,
+      "reward": 286,
+      "spent": "454.2",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 6,
+      "simulated_seconds": 0.739056,
+      "stop_reasons": {
+        "unsafe": 32,
+        "solved": 51,
+        "insufficient_evidence": 17,
+        "invalid_data": 4,
+        "unsupported": 24
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "c42913d5091c8d6597824e6559697201ae1995d5947ba34b362bd61b9f58b6cd",
+      "pair_coverage_in_shared_run": {
+        "pairs": 64,
+        "2/2": 18,
+        "1/2": 15,
+        "0/2": 31,
+        "pass_fraction": 0.28125
+      },
+      "isolated_fixed_pair_reference": {
+        "pairs": 20,
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "pass_fraction": 0.45
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "local_first",
+      "budget": 50000,
+      "deadline": 3540,
+      "correct": 51,
+      "wrong": 0,
+      "skipped": 77,
+      "reward": 286,
+      "spent": "454.2",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 6,
+      "simulated_seconds": 0.739056,
+      "stop_reasons": {
+        "unsafe": 32,
+        "solved": 51,
+        "insufficient_evidence": 17,
+        "invalid_data": 4,
+        "unsupported": 24
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "a286766580f9dfb618c9bc904ead5579bcdd084e770df512bec0aa175e98b981",
+      "pair_coverage_in_shared_run": {
+        "pairs": 64,
+        "2/2": 18,
+        "1/2": 15,
+        "0/2": 31,
+        "pass_fraction": 0.28125
+      },
+      "isolated_fixed_pair_reference": {
+        "pairs": 20,
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "pass_fraction": 0.45
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "production",
+      "budget": 20000,
+      "deadline": 3540,
+      "correct": 51,
+      "wrong": 0,
+      "skipped": 77,
+      "reward": 286,
+      "spent": "454.2",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 6,
+      "simulated_seconds": 0.739056,
+      "stop_reasons": {
+        "unsafe": 32,
+        "solved": 51,
+        "insufficient_evidence": 17,
+        "invalid_data": 4,
+        "unsupported": 24
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "c42913d5091c8d6597824e6559697201ae1995d5947ba34b362bd61b9f58b6cd",
+      "pair_coverage_in_shared_run": {
+        "pairs": 64,
+        "2/2": 18,
+        "1/2": 15,
+        "0/2": 31,
+        "pass_fraction": 0.28125
+      },
+      "isolated_fixed_pair_reference": {
+        "pairs": 20,
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "pass_fraction": 0.45
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "reward_first",
+      "budget": 20000,
+      "deadline": 3540,
+      "correct": 51,
+      "wrong": 0,
+      "skipped": 77,
+      "reward": 286,
+      "spent": "454.2",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 6,
+      "simulated_seconds": 0.739056,
+      "stop_reasons": {
+        "unsafe": 32,
+        "solved": 51,
+        "insufficient_evidence": 17,
+        "invalid_data": 4,
+        "unsupported": 24
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "863be4d8d12eb685fea45e4545b0bb6a47512d5b611739fe146d49f399ec9caa",
+      "pair_coverage_in_shared_run": {
+        "pairs": 64,
+        "2/2": 18,
+        "1/2": 15,
+        "0/2": 31,
+        "pass_fraction": 0.28125
+      },
+      "isolated_fixed_pair_reference": {
+        "pairs": 20,
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "pass_fraction": 0.45
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "cost_first",
+      "budget": 20000,
+      "deadline": 3540,
+      "correct": 51,
+      "wrong": 0,
+      "skipped": 77,
+      "reward": 286,
+      "spent": "454.2",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 6,
+      "simulated_seconds": 0.739056,
+      "stop_reasons": {
+        "unsafe": 32,
+        "solved": 51,
+        "insufficient_evidence": 17,
+        "invalid_data": 4,
+        "unsupported": 24
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "cda4573006281ed9124a7ff9d9005cca21be86e938f7df03ea940527aeb5adc9",
+      "pair_coverage_in_shared_run": {
+        "pairs": 64,
+        "2/2": 18,
+        "1/2": 15,
+        "0/2": 31,
+        "pass_fraction": 0.28125
+      },
+      "isolated_fixed_pair_reference": {
+        "pairs": 20,
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "pass_fraction": 0.45
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "expected_reward",
+      "budget": 20000,
+      "deadline": 3540,
+      "correct": 51,
+      "wrong": 0,
+      "skipped": 77,
+      "reward": 286,
+      "spent": "454.2",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 6,
+      "simulated_seconds": 0.739056,
+      "stop_reasons": {
+        "unsafe": 32,
+        "solved": 51,
+        "insufficient_evidence": 17,
+        "invalid_data": 4,
+        "unsupported": 24
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "c42913d5091c8d6597824e6559697201ae1995d5947ba34b362bd61b9f58b6cd",
+      "pair_coverage_in_shared_run": {
+        "pairs": 64,
+        "2/2": 18,
+        "1/2": 15,
+        "0/2": 31,
+        "pass_fraction": 0.28125
+      },
+      "isolated_fixed_pair_reference": {
+        "pairs": 20,
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "pass_fraction": 0.45
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "local_first",
+      "budget": 20000,
+      "deadline": 3540,
+      "correct": 51,
+      "wrong": 0,
+      "skipped": 77,
+      "reward": 286,
+      "spent": "454.2",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 6,
+      "simulated_seconds": 0.739056,
+      "stop_reasons": {
+        "unsafe": 32,
+        "solved": 51,
+        "insufficient_evidence": 17,
+        "invalid_data": 4,
+        "unsupported": 24
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "a286766580f9dfb618c9bc904ead5579bcdd084e770df512bec0aa175e98b981",
+      "pair_coverage_in_shared_run": {
+        "pairs": 64,
+        "2/2": 18,
+        "1/2": 15,
+        "0/2": 31,
+        "pass_fraction": 0.28125
+      },
+      "isolated_fixed_pair_reference": {
+        "pairs": 20,
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "pass_fraction": 0.45
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "production",
+      "budget": 10000,
+      "deadline": 3540,
+      "correct": 51,
+      "wrong": 0,
+      "skipped": 77,
+      "reward": 286,
+      "spent": "454.2",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 6,
+      "simulated_seconds": 0.739056,
+      "stop_reasons": {
+        "unsafe": 32,
+        "solved": 51,
+        "insufficient_evidence": 17,
+        "invalid_data": 4,
+        "unsupported": 24
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "c42913d5091c8d6597824e6559697201ae1995d5947ba34b362bd61b9f58b6cd",
+      "pair_coverage_in_shared_run": {
+        "pairs": 64,
+        "2/2": 18,
+        "1/2": 15,
+        "0/2": 31,
+        "pass_fraction": 0.28125
+      },
+      "isolated_fixed_pair_reference": {
+        "pairs": 20,
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "pass_fraction": 0.45
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "reward_first",
+      "budget": 10000,
+      "deadline": 3540,
+      "correct": 51,
+      "wrong": 0,
+      "skipped": 77,
+      "reward": 286,
+      "spent": "454.2",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 6,
+      "simulated_seconds": 0.739056,
+      "stop_reasons": {
+        "unsafe": 32,
+        "solved": 51,
+        "insufficient_evidence": 17,
+        "invalid_data": 4,
+        "unsupported": 24
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "863be4d8d12eb685fea45e4545b0bb6a47512d5b611739fe146d49f399ec9caa",
+      "pair_coverage_in_shared_run": {
+        "pairs": 64,
+        "2/2": 18,
+        "1/2": 15,
+        "0/2": 31,
+        "pass_fraction": 0.28125
+      },
+      "isolated_fixed_pair_reference": {
+        "pairs": 20,
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "pass_fraction": 0.45
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "cost_first",
+      "budget": 10000,
+      "deadline": 3540,
+      "correct": 51,
+      "wrong": 0,
+      "skipped": 77,
+      "reward": 286,
+      "spent": "454.2",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 6,
+      "simulated_seconds": 0.739056,
+      "stop_reasons": {
+        "unsafe": 32,
+        "solved": 51,
+        "insufficient_evidence": 17,
+        "invalid_data": 4,
+        "unsupported": 24
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "cda4573006281ed9124a7ff9d9005cca21be86e938f7df03ea940527aeb5adc9",
+      "pair_coverage_in_shared_run": {
+        "pairs": 64,
+        "2/2": 18,
+        "1/2": 15,
+        "0/2": 31,
+        "pass_fraction": 0.28125
+      },
+      "isolated_fixed_pair_reference": {
+        "pairs": 20,
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "pass_fraction": 0.45
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "expected_reward",
+      "budget": 10000,
+      "deadline": 3540,
+      "correct": 51,
+      "wrong": 0,
+      "skipped": 77,
+      "reward": 286,
+      "spent": "454.2",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 6,
+      "simulated_seconds": 0.739056,
+      "stop_reasons": {
+        "unsafe": 32,
+        "solved": 51,
+        "insufficient_evidence": 17,
+        "invalid_data": 4,
+        "unsupported": 24
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "c42913d5091c8d6597824e6559697201ae1995d5947ba34b362bd61b9f58b6cd",
+      "pair_coverage_in_shared_run": {
+        "pairs": 64,
+        "2/2": 18,
+        "1/2": 15,
+        "0/2": 31,
+        "pass_fraction": 0.28125
+      },
+      "isolated_fixed_pair_reference": {
+        "pairs": 20,
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "pass_fraction": 0.45
+      }
+    },
+    {
+      "source": "simulation",
+      "policy": "local_first",
+      "budget": 10000,
+      "deadline": 3540,
+      "correct": 51,
+      "wrong": 0,
+      "skipped": 77,
+      "reward": 286,
+      "spent": "454.2",
+      "reserved": "0.0",
+      "cost_known": true,
+      "frozen": false,
+      "calls": 6,
+      "simulated_seconds": 0.739056,
+      "stop_reasons": {
+        "unsafe": 32,
+        "solved": 51,
+        "insufficient_evidence": 17,
+        "invalid_data": 4,
+        "unsupported": 24
+      },
+      "qualification_scope": "not isolated qualification; use the fixed-pair evaluation separately",
+      "order_sha256": "a286766580f9dfb618c9bc904ead5579bcdd084e770df512bec0aa175e98b981",
+      "pair_coverage_in_shared_run": {
+        "pairs": 64,
+        "2/2": 18,
+        "1/2": 15,
+        "0/2": 31,
+        "pass_fraction": 0.28125
+      },
+      "isolated_fixed_pair_reference": {
+        "pairs": 20,
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "pass_fraction": 0.45
+      }
+    }
+  ],
+  "fixed_pairs_evaluation_only": [
+    {
+      "source": "simulation",
+      "scope": "fixed pairs, independent budget per pair",
+      "policy": "production",
+      "budget": 100000,
+      "qualification": {
+        "pairs": 20,
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "pass_fraction": 0.45
+      },
+      "correct": 23,
+      "wrong": 0,
+      "skipped": 17,
+      "reward": 108,
+      "spent": "6439/10",
+      "reserved": "0",
+      "calls": 8,
+      "simulated_seconds": 0.574369,
+      "stop_reasons": {
+        "solved": 23,
+        "unsupported": 8,
+        "insufficient_evidence": 4,
+        "unsafe": 5
+      }
+    },
+    {
+      "source": "simulation",
+      "scope": "fixed pairs, independent budget per pair",
+      "policy": "reward_first",
+      "budget": 100000,
+      "qualification": {
+        "pairs": 20,
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "pass_fraction": 0.45
+      },
+      "correct": 23,
+      "wrong": 0,
+      "skipped": 17,
+      "reward": 108,
+      "spent": "6439/10",
+      "reserved": "0",
+      "calls": 8,
+      "simulated_seconds": 0.574369,
+      "stop_reasons": {
+        "solved": 23,
+        "unsupported": 8,
+        "insufficient_evidence": 4,
+        "unsafe": 5
+      }
+    },
+    {
+      "source": "simulation",
+      "scope": "fixed pairs, independent budget per pair",
+      "policy": "cost_first",
+      "budget": 100000,
+      "qualification": {
+        "pairs": 20,
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "pass_fraction": 0.45
+      },
+      "correct": 23,
+      "wrong": 0,
+      "skipped": 17,
+      "reward": 108,
+      "spent": "6439/10",
+      "reserved": "0",
+      "calls": 8,
+      "simulated_seconds": 0.574369,
+      "stop_reasons": {
+        "solved": 23,
+        "unsupported": 8,
+        "insufficient_evidence": 4,
+        "unsafe": 5
+      }
+    },
+    {
+      "source": "simulation",
+      "scope": "fixed pairs, independent budget per pair",
+      "policy": "expected_reward",
+      "budget": 100000,
+      "qualification": {
+        "pairs": 20,
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "pass_fraction": 0.45
+      },
+      "correct": 23,
+      "wrong": 0,
+      "skipped": 17,
+      "reward": 108,
+      "spent": "6439/10",
+      "reserved": "0",
+      "calls": 8,
+      "simulated_seconds": 0.574369,
+      "stop_reasons": {
+        "solved": 23,
+        "unsupported": 8,
+        "insufficient_evidence": 4,
+        "unsafe": 5
+      }
+    },
+    {
+      "source": "simulation",
+      "scope": "fixed pairs, independent budget per pair",
+      "policy": "local_first",
+      "budget": 100000,
+      "qualification": {
+        "pairs": 20,
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "pass_fraction": 0.45
+      },
+      "correct": 23,
+      "wrong": 0,
+      "skipped": 17,
+      "reward": 108,
+      "spent": "6439/10",
+      "reserved": "0",
+      "calls": 8,
+      "simulated_seconds": 0.574369,
+      "stop_reasons": {
+        "solved": 23,
+        "unsupported": 8,
+        "insufficient_evidence": 4,
+        "unsafe": 5
+      }
+    },
+    {
+      "source": "simulation",
+      "scope": "fixed pairs, independent budget per pair",
+      "policy": "production",
+      "budget": 50000,
+      "qualification": {
+        "pairs": 20,
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "pass_fraction": 0.45
+      },
+      "correct": 23,
+      "wrong": 0,
+      "skipped": 17,
+      "reward": 108,
+      "spent": "6439/10",
+      "reserved": "0",
+      "calls": 8,
+      "simulated_seconds": 0.574369,
+      "stop_reasons": {
+        "solved": 23,
+        "unsupported": 8,
+        "insufficient_evidence": 4,
+        "unsafe": 5
+      }
+    },
+    {
+      "source": "simulation",
+      "scope": "fixed pairs, independent budget per pair",
+      "policy": "reward_first",
+      "budget": 50000,
+      "qualification": {
+        "pairs": 20,
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "pass_fraction": 0.45
+      },
+      "correct": 23,
+      "wrong": 0,
+      "skipped": 17,
+      "reward": 108,
+      "spent": "6439/10",
+      "reserved": "0",
+      "calls": 8,
+      "simulated_seconds": 0.574369,
+      "stop_reasons": {
+        "solved": 23,
+        "unsupported": 8,
+        "insufficient_evidence": 4,
+        "unsafe": 5
+      }
+    },
+    {
+      "source": "simulation",
+      "scope": "fixed pairs, independent budget per pair",
+      "policy": "cost_first",
+      "budget": 50000,
+      "qualification": {
+        "pairs": 20,
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "pass_fraction": 0.45
+      },
+      "correct": 23,
+      "wrong": 0,
+      "skipped": 17,
+      "reward": 108,
+      "spent": "6439/10",
+      "reserved": "0",
+      "calls": 8,
+      "simulated_seconds": 0.574369,
+      "stop_reasons": {
+        "solved": 23,
+        "unsupported": 8,
+        "insufficient_evidence": 4,
+        "unsafe": 5
+      }
+    },
+    {
+      "source": "simulation",
+      "scope": "fixed pairs, independent budget per pair",
+      "policy": "expected_reward",
+      "budget": 50000,
+      "qualification": {
+        "pairs": 20,
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "pass_fraction": 0.45
+      },
+      "correct": 23,
+      "wrong": 0,
+      "skipped": 17,
+      "reward": 108,
+      "spent": "6439/10",
+      "reserved": "0",
+      "calls": 8,
+      "simulated_seconds": 0.574369,
+      "stop_reasons": {
+        "solved": 23,
+        "unsupported": 8,
+        "insufficient_evidence": 4,
+        "unsafe": 5
+      }
+    },
+    {
+      "source": "simulation",
+      "scope": "fixed pairs, independent budget per pair",
+      "policy": "local_first",
+      "budget": 50000,
+      "qualification": {
+        "pairs": 20,
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "pass_fraction": 0.45
+      },
+      "correct": 23,
+      "wrong": 0,
+      "skipped": 17,
+      "reward": 108,
+      "spent": "6439/10",
+      "reserved": "0",
+      "calls": 8,
+      "simulated_seconds": 0.574369,
+      "stop_reasons": {
+        "solved": 23,
+        "unsupported": 8,
+        "insufficient_evidence": 4,
+        "unsafe": 5
+      }
+    },
+    {
+      "source": "simulation",
+      "scope": "fixed pairs, independent budget per pair",
+      "policy": "production",
+      "budget": 20000,
+      "qualification": {
+        "pairs": 20,
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "pass_fraction": 0.45
+      },
+      "correct": 23,
+      "wrong": 0,
+      "skipped": 17,
+      "reward": 108,
+      "spent": "6439/10",
+      "reserved": "0",
+      "calls": 8,
+      "simulated_seconds": 0.574369,
+      "stop_reasons": {
+        "solved": 23,
+        "unsupported": 8,
+        "insufficient_evidence": 4,
+        "unsafe": 5
+      }
+    },
+    {
+      "source": "simulation",
+      "scope": "fixed pairs, independent budget per pair",
+      "policy": "reward_first",
+      "budget": 20000,
+      "qualification": {
+        "pairs": 20,
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "pass_fraction": 0.45
+      },
+      "correct": 23,
+      "wrong": 0,
+      "skipped": 17,
+      "reward": 108,
+      "spent": "6439/10",
+      "reserved": "0",
+      "calls": 8,
+      "simulated_seconds": 0.574369,
+      "stop_reasons": {
+        "solved": 23,
+        "unsupported": 8,
+        "insufficient_evidence": 4,
+        "unsafe": 5
+      }
+    },
+    {
+      "source": "simulation",
+      "scope": "fixed pairs, independent budget per pair",
+      "policy": "cost_first",
+      "budget": 20000,
+      "qualification": {
+        "pairs": 20,
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "pass_fraction": 0.45
+      },
+      "correct": 23,
+      "wrong": 0,
+      "skipped": 17,
+      "reward": 108,
+      "spent": "6439/10",
+      "reserved": "0",
+      "calls": 8,
+      "simulated_seconds": 0.574369,
+      "stop_reasons": {
+        "solved": 23,
+        "unsupported": 8,
+        "insufficient_evidence": 4,
+        "unsafe": 5
+      }
+    },
+    {
+      "source": "simulation",
+      "scope": "fixed pairs, independent budget per pair",
+      "policy": "expected_reward",
+      "budget": 20000,
+      "qualification": {
+        "pairs": 20,
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "pass_fraction": 0.45
+      },
+      "correct": 23,
+      "wrong": 0,
+      "skipped": 17,
+      "reward": 108,
+      "spent": "6439/10",
+      "reserved": "0",
+      "calls": 8,
+      "simulated_seconds": 0.574369,
+      "stop_reasons": {
+        "solved": 23,
+        "unsupported": 8,
+        "insufficient_evidence": 4,
+        "unsafe": 5
+      }
+    },
+    {
+      "source": "simulation",
+      "scope": "fixed pairs, independent budget per pair",
+      "policy": "local_first",
+      "budget": 20000,
+      "qualification": {
+        "pairs": 20,
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "pass_fraction": 0.45
+      },
+      "correct": 23,
+      "wrong": 0,
+      "skipped": 17,
+      "reward": 108,
+      "spent": "6439/10",
+      "reserved": "0",
+      "calls": 8,
+      "simulated_seconds": 0.574369,
+      "stop_reasons": {
+        "solved": 23,
+        "unsupported": 8,
+        "insufficient_evidence": 4,
+        "unsafe": 5
+      }
+    },
+    {
+      "source": "simulation",
+      "scope": "fixed pairs, independent budget per pair",
+      "policy": "production",
+      "budget": 10000,
+      "qualification": {
+        "pairs": 20,
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "pass_fraction": 0.45
+      },
+      "correct": 23,
+      "wrong": 0,
+      "skipped": 17,
+      "reward": 108,
+      "spent": "6439/10",
+      "reserved": "0",
+      "calls": 8,
+      "simulated_seconds": 0.574369,
+      "stop_reasons": {
+        "solved": 23,
+        "unsupported": 8,
+        "insufficient_evidence": 4,
+        "unsafe": 5
+      }
+    },
+    {
+      "source": "simulation",
+      "scope": "fixed pairs, independent budget per pair",
+      "policy": "reward_first",
+      "budget": 10000,
+      "qualification": {
+        "pairs": 20,
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "pass_fraction": 0.45
+      },
+      "correct": 23,
+      "wrong": 0,
+      "skipped": 17,
+      "reward": 108,
+      "spent": "6439/10",
+      "reserved": "0",
+      "calls": 8,
+      "simulated_seconds": 0.574369,
+      "stop_reasons": {
+        "solved": 23,
+        "unsupported": 8,
+        "insufficient_evidence": 4,
+        "unsafe": 5
+      }
+    },
+    {
+      "source": "simulation",
+      "scope": "fixed pairs, independent budget per pair",
+      "policy": "cost_first",
+      "budget": 10000,
+      "qualification": {
+        "pairs": 20,
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "pass_fraction": 0.45
+      },
+      "correct": 23,
+      "wrong": 0,
+      "skipped": 17,
+      "reward": 108,
+      "spent": "6439/10",
+      "reserved": "0",
+      "calls": 8,
+      "simulated_seconds": 0.574369,
+      "stop_reasons": {
+        "solved": 23,
+        "unsupported": 8,
+        "insufficient_evidence": 4,
+        "unsafe": 5
+      }
+    },
+    {
+      "source": "simulation",
+      "scope": "fixed pairs, independent budget per pair",
+      "policy": "expected_reward",
+      "budget": 10000,
+      "qualification": {
+        "pairs": 20,
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "pass_fraction": 0.45
+      },
+      "correct": 23,
+      "wrong": 0,
+      "skipped": 17,
+      "reward": 108,
+      "spent": "6439/10",
+      "reserved": "0",
+      "calls": 8,
+      "simulated_seconds": 0.574369,
+      "stop_reasons": {
+        "solved": 23,
+        "unsupported": 8,
+        "insufficient_evidence": 4,
+        "unsafe": 5
+      }
+    },
+    {
+      "source": "simulation",
+      "scope": "fixed pairs, independent budget per pair",
+      "policy": "local_first",
+      "budget": 10000,
+      "qualification": {
+        "pairs": 20,
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "pass_fraction": 0.45
+      },
+      "correct": 23,
+      "wrong": 0,
+      "skipped": 17,
+      "reward": 108,
+      "spent": "6439/10",
+      "reserved": "0",
+      "calls": 8,
+      "simulated_seconds": 0.574369,
+      "stop_reasons": {
+        "solved": 23,
+        "unsupported": 8,
+        "insufficient_evidence": 4,
+        "unsafe": 5
+      }
+    }
+  ]
+}

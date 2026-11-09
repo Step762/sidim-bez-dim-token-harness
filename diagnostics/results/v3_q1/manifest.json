@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "synthetic_seed": 20261109,
+  "real_requests_in_this_stage": 0,
+  "production_runtime_sha256": {
+    "Dockerfile": "fa31e22d5ca58014cdf56e0a83899dd6f96caf97f5421c0d6ae9aca4ebf00fe6",
+    ".dockerignore": "cf5e437662e0eabe0be727cf8e86d482c41e6768a4ef222b28540085e3eab9a5",
+    "requirements.txt": "d8c2924d446449dfd156153333b01a3ae0ef3fd0da64acfe36eae937663a3da3",
+    "run_agent.py": "88938b2c66ddcf2b7428976390433c6c719cbcdbdc8969a07346effbdbaf401c",
+    "harness.py": "2e08007cc5632db92f1f1d17e56374a14a03f0f81bbdff4075c2c10cd38b1a3a",
+    "planner.py": "4db10378746a8decbf556defbcbc207afc7fc472cb8827404ba89c15beec3b8d",
+    "budget_manager.py": "8259d00cf23cb1c5f0bd2162784f0c91dc005cf570e99d9a4cfb30929abcbb4f",
+    "llm_gateway.py": "d86450f235ed339dfc0766859b13a43b6f9a52d850a0fb7b06b8ff6a5d999331",
+    "llm_fallback.py": "d9c71832f892a3a1114d883eea39876caa5e98f3114c5533f5a0c943670e8020",
+    "math_solver.py": "5cff0d75ef690a58d53ce991f5c60898c005af7f5b699187bb5d55627d395c03",
+    "search_solver.py": "9e0a8c44c063391fe841806ab90c12d28d714a45dafe71c4f48328d4582badd9",
+    "data_solver.py": "9f3fb4a21a92170ba56bcb54f2ef4eba9c4211d7cb1601261677ba80d1c4a2b4",
+    "coding_solver.py": "e64d5913e831c72a2afd36e70512f290886d8fd7be577ed38d6a57ac3c30d9e7",
+    "safe_files.py": "04aa6c98f6da2555b80ab298d0937ea32f39a0deea0710fa78e97d849d6c7cfb",
+    "plan_semantics.py": "23bd5a40b73b66e7f16921065adf37be8286bb51cb5c1913b3211d784669c31c",
+    "runtime_limits.py": "cdd72e8fc6bc119b6cd76fe4560a910552c80e04edb27e2d3d29cb1d3821e669"
+  },
+  "research_sha256": "19337c2f00d77865b0a0b3869085eed4078bb54bf533039bcaab52af6d4e4bbe",
+  "frozen_manifest_sha256": "2861a8eb1c07abb199d39066a5b65fea2920298dd252904e564846cecd537049",
+  "holdout_tape_exported": false,
+  "forecasts_fitted_on_holdout": false,
+  "files_sha256": {
+    "cheap.jsonl": "ceee6cac86d728321ff6fd68bc194eb945f30f07caa9fffd6610d6fa95eb3be0",
+    "strategy_comparison.json": "fa827dc6c65352a5ebcadb2a1f09873d7afb7ab17f1fa8ecfea48e04b18ebaaf",
+    "time_pressure.jsonl": "7f3458359cea3b46b6655d546a03534a7d24dfa25a1e8449885665ce84fb7c3c",
+    "real_summaries.jsonl": "9497fee4d5f9ca03d2770629b298fbd3838d6462a9705a6b6dde1ca904b204f5",
+    "development_mock.jsonl": "06d96fea2309d2e697a9ddf332dd76c67396f49e05ad69999b24a63b0ad2831e",
+    "long_output.jsonl": "2529a074ddf7f89f8cca731afd9a41cb0afab02ba39afc15056934256d3a8b52",
+    "forecast_error.json": "3aaf00d2811eb3699ed8f7c33480e1ed56d276ad1e63ab208fe6ccbdb30a8428",
+    "strategy_comparison.csv": "eced988a8edf3e7ac6ea1f27b78662ca88bb64aba96dc0726d56c0efa83d332c",
+    "unknown_usage.jsonl": "fb6642cfe53e2c3d6b12032f1289e69b1be8dc44037285c0525d4951fd42d80d",
+    "qualification_causes.json": "4ed727c395b205cf5221a4b2d9627a89ae6454f28cdb739f18c70d40f31f029a",
+    "alias_controls.json": "fa5ca91980d60d142046c846b9f9b93b24aad4781e77b20d211e87287ac7fcf9"
+  },
+  "scope": "replay exact saved metadata; mock and synthetic costs are NOT measured Qwen cost"
+}

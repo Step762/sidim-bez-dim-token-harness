@@ -78,7 +78,7 @@ class DiagnosticTests(unittest.TestCase):
 
     def test_valid_mock_uses_real_workflow_ledger_and_immediate_publication(self):
         report=run_tasks_diagnostic()
-        self.assertEqual(report["counts"],{"solved":8,"skipped":4,"failed":0})
+        self.assertEqual(report["counts"],{"solved":9,"skipped":3,"failed":0})
         self.assertEqual(report["budget"]["spent"],"60.0")
         self.assertEqual(len(report["mock_requests"]),2)
         self.assertTrue(all(not request["reference_fields_present"] for request in report["mock_requests"]))
@@ -89,6 +89,8 @@ class DiagnosticTests(unittest.TestCase):
         self.assertEqual(json.loads(grouped["actual"]),{"east":57,"west":23})
         total=next(r for r in report["rows"] if r["task_id"]=="data_analysis_d14")
         self.assertEqual((total["actual"],total["request_sent"]),("35",False))
+        rounded=next(r for r in report["rows"] if r["task_id"]=="math_d09")
+        self.assertEqual((rounded["actual"],rounded["grade"],rounded["request_sent"]),("7.24","correct",False))
 
     def test_events_order_reservation_wire_validation_execution_and_answer(self):
         report=run_tasks_diagnostic(task_ids=["math_d15"])
@@ -181,8 +183,10 @@ class DiagnosticTests(unittest.TestCase):
     def test_failure_freezes_shared_state_for_all_later_llm_candidates(self):
         report=run_tasks_diagnostic(scenario="http_503",task_ids=list(CHOICES))
         self.assertEqual(len(report["mock_requests"]),1)
-        self.assertEqual(report["counts"]["solved"],6)
+        self.assertEqual(report["counts"]["solved"],7)
         self.assertEqual(report["budget"]["uncertain_calls"],1)
+        rounded=next(r for r in report["rows"] if r["task_id"]=="math_d09")
+        self.assertEqual((rounded["actual"],rounded["request_sent"]),("7.24",False))
 
     def test_timeout_is_distinguished_and_never_retried(self):
         report=run_tasks_diagnostic(scenario="timeout")
