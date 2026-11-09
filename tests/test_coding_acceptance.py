@@ -1,9 +1,12 @@
 """Independent visible assertions exercise the verifier with synthetic inputs."""
 
+from pathlib import Path
+import tempfile
 import unittest
 from unittest.mock import patch
 
 from diagnostics.coding_acceptance import check_visible_examples
+from diagnostics.coding_research import review_task
 
 
 SOURCE = "def combine(a, b):\n    return a/b\n"
@@ -75,3 +78,45 @@ class VisibleAcceptanceTests(unittest.TestCase):
         ):
             with self.subTest(suite=suite):
                 self.assertEqual(check_visible_examples(SOURCE, suite, EDIT)["status"], "unsupported")
+
+
+class FreshArithmeticContractsTests(unittest.TestCase):
+    def check_contract(self, name, source_operator, contract, examples):
+        original = f"def {name}(first, second):\n    return first {source_operator} second\n"
+        assertions = "\n".join(
+            f"        self.assertEqual(lib.{name}(*({left}, {right})), {expected})"
+            for left, right, expected in examples
+        )
+        start = TESTS.index("        self.assertEqual")
+        end = TESTS.index("\n\nif __name__")
+        suite = TESTS[:start] + assertions + TESTS[end:]
+        with tempfile.TemporaryDirectory() as directory:
+            task = Path(directory)
+            source = task / "workspace" / "engine.py"
+            source.parent.mkdir()
+            source.write_text(original, encoding="utf-8")
+            review = review_task(task, Path("engine.py"), function=name, contract=contract)
+            self.assertTrue(review["independently_verified_under_contract"])
+            self.assertFalse(review["contest_solution_confirmed"])
+            self.assertEqual(source.read_text(encoding="utf-8"), original)
+            self.assertFalse((task / "answer.txt").exists())
+        return check_visible_examples(original, suite, review["patch"])
+
+    def test_three_fresh_contracts_with_explicit_expected_values(self):
+        for name, original, contract, examples in (
+            ("credit", "-", "add", ((-7, -5, -12), (9, 0, 9), (11, -4, 7))),
+            ("delta", "+", "subtract", ((-2, -9, 7), (1, 8, -7), (7, 0, 7))),
+            ("scale", "/", "multiply", ((-9, -3, 27), (12, 0, 0), (1, 16, 16))),
+        ):
+            with self.subTest(contract=contract):
+                report = self.check_contract(name, original, contract, examples)
+                self.assertEqual(report["status"], "visible_assertions_checked")
+                self.assertLess(report["before_passed"], len(examples))
+                self.assertEqual(report["after_passed"], len(examples))
+
+    def test_external_expected_values_catch_a_wrong_supplied_contract(self):
+        report = self.check_contract(
+            "delta", "/", "add", ((5, 2, 3), (0, -7, 7), (-4, -3, -1)),
+        )
+        self.assertEqual(report["status"], "visible_assertions_checked")
+        self.assertEqual(report["after_passed"], 0)
