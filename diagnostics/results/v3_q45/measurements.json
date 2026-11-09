@@ -1,0 +1,3432 @@
+{
+  "acceptance": {
+    "all128_equal": true,
+    "checkpoint_ready": true,
+    "coding_untrusted_enabled": false,
+    "production_changed_during_acceptance": false,
+    "real_llm_requests": 0,
+    "status": "passed"
+  },
+  "all54_unchanged": true,
+  "baseline": {
+    "answer_precision": 1.0,
+    "answerable": 104,
+    "correct": 54,
+    "false_negative_skips": 50,
+    "false_positive_fraction": 0.0,
+    "justified_refusal_recall": 1.0,
+    "justified_refusals": 24,
+    "llm_calls": 0,
+    "llm_reserved": 0.0,
+    "llm_spent": 0.0,
+    "paid_correct_reward_per_unit": null,
+    "possible_reward": 503,
+    "reward": 300,
+    "seconds": 0.6652911169994695,
+    "skip_fraction": 0.578125,
+    "skipped": 74,
+    "total": 128,
+    "unanswerable": 24,
+    "unverified": 0,
+    "wrong": 0
+  },
+  "checkpoint": "bece4ef76e0d1c8946e9e7b09d9dfdecfd8135f8",
+  "coding_enabled": false,
+  "docker": {
+    "all128_status_answer_outcome_equal": true,
+    "audit": {
+      "app_read_only": true,
+      "cap_eff": "0000000000000000",
+      "cgroup_limits": {
+        "cpus": 8,
+        "memory.max": 17179869184,
+        "pids.max": 512
+      },
+      "no_credentials_in_image_environment": true,
+      "no_new_privileges": true,
+      "openjiuwen": "0.1.20.post1",
+      "python": "3.12.12",
+      "tmpfs_bytes": 2147483648,
+      "user_namespace_errno": 1
+    },
+    "benchmark": {
+      "all_published_modes_0644": true,
+      "budget_limit": 0,
+      "by_type": {
+        "coding": {
+          "answer_precision": null,
+          "answerable": 29,
+          "correct": 0,
+          "false_negative_skips": 29,
+          "false_positive_fraction": null,
+          "justified_refusal_recall": 1.0,
+          "justified_refusals": 3,
+          "llm_calls": 0,
+          "llm_reserved": 0.0,
+          "llm_spent": 0.0,
+          "paid_correct_reward_per_unit": null,
+          "possible_reward": 131,
+          "reward": 0,
+          "seconds": 0,
+          "skip_fraction": 1.0,
+          "skipped": 32,
+          "total": 32,
+          "unanswerable": 3,
+          "unverified": 0,
+          "wrong": 0
+        },
+        "data_analysis": {
+          "answer_precision": 1.0,
+          "answerable": 24,
+          "correct": 19,
+          "false_negative_skips": 5,
+          "false_positive_fraction": 0.0,
+          "justified_refusal_recall": 1.0,
+          "justified_refusals": 8,
+          "llm_calls": 0,
+          "llm_reserved": 0.0,
+          "llm_spent": 0.0,
+          "paid_correct_reward_per_unit": null,
+          "possible_reward": 167,
+          "reward": 139,
+          "seconds": 0.14501214900883497,
+          "skip_fraction": 0.40625,
+          "skipped": 13,
+          "total": 32,
+          "unanswerable": 8,
+          "unverified": 0,
+          "wrong": 0
+        },
+        "math": {
+          "answer_precision": 1.0,
+          "answerable": 27,
+          "correct": 17,
+          "false_negative_skips": 10,
+          "false_positive_fraction": 0.0,
+          "justified_refusal_recall": 1.0,
+          "justified_refusals": 5,
+          "llm_calls": 0,
+          "llm_reserved": 0.0,
+          "llm_spent": 0.0,
+          "paid_correct_reward_per_unit": null,
+          "possible_reward": 116,
+          "reward": 78,
+          "seconds": 0.131272929993429,
+          "skip_fraction": 0.46875,
+          "skipped": 15,
+          "total": 32,
+          "unanswerable": 5,
+          "unverified": 0,
+          "wrong": 0
+        },
+        "search": {
+          "answer_precision": 1.0,
+          "answerable": 24,
+          "correct": 18,
+          "false_negative_skips": 6,
+          "false_positive_fraction": 0.0,
+          "justified_refusal_recall": 1.0,
+          "justified_refusals": 8,
+          "llm_calls": 0,
+          "llm_reserved": 0.0,
+          "llm_spent": 0.0,
+          "paid_correct_reward_per_unit": null,
+          "possible_reward": 89,
+          "reward": 83,
+          "seconds": 0.16723962998366915,
+          "skip_fraction": 0.4375,
+          "skipped": 14,
+          "total": 32,
+          "unanswerable": 8,
+          "unverified": 0,
+          "wrong": 0
+        }
+      },
+      "coding_false_done": false,
+      "network": "none",
+      "summary": {
+        "answer_precision": 1.0,
+        "answerable": 104,
+        "correct": 54,
+        "false_negative_skips": 50,
+        "false_positive_fraction": 0.0,
+        "justified_refusal_recall": 1.0,
+        "justified_refusals": 24,
+        "llm_calls": 0,
+        "llm_reserved": 0.0,
+        "llm_spent": 0.0,
+        "paid_correct_reward_per_unit": null,
+        "possible_reward": 503,
+        "reward": 300,
+        "seconds": 0.4435247089859331,
+        "skip_fraction": 0.578125,
+        "skipped": 74,
+        "total": 128,
+        "unanswerable": 24,
+        "unverified": 0,
+        "wrong": 0
+      }
+    },
+    "build_command": "timeout 1000s docker build --no-cache --pull=false --progress=plain -t sidim-bez-dim:v3-q45-clean .",
+    "build_dependency_step_seconds": 340.6,
+    "build_export_step_seconds": 52.7,
+    "build_hash_verification_preserved": true,
+    "build_review_timeouts_before_retry": 2,
+    "clean_build": true,
+    "current_runtime_verified": true,
+    "dependencies": "No broken requirements found.",
+    "docker_images_size": "976MB",
+    "engine_version": "29.7.2",
+    "image": "sidim-bez-dim:v3-q45-clean",
+    "image_id": "sha256:92dd44fb7d15b1d0783507320c4330a32e9beaa5034a0e1ef534588d4567d3e3",
+    "initial_clean_attempt": {
+      "actual_sha256": "d831d2c559322974206f50cf7a7326c92cca7dc799ff595eee03ee96934cb708",
+      "expected_sha256": "89ce6362bb7be88558f4be99a98f5d1b4da93d19cd0323e5ee0bac05cf883dfb",
+      "package": "charset-normalizer==3.5.2",
+      "reason": "SHA-256 mismatch during metadata download",
+      "status": "failed"
+    },
+    "initial_offline_cache_attempt": {
+      "reason": "dependency RUN layer was not reused with network=none; DNS unavailable by construction",
+      "status": "failed"
+    },
+    "inspect_size_bytes": 207857246,
+    "isolation_research": {
+      "architecture": "x86_64",
+      "experiments": {
+        "cgroup": {
+          "result": {
+            "errno": 1,
+            "result": -1
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "chroot": {
+          "result": {
+            "allowed": false,
+            "errno": 1
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "combined": {
+          "result": {
+            "files": {
+              "list_outside": {
+                "allowed": false,
+                "errno": 13
+              },
+              "read_outside": {
+                "allowed": false,
+                "errno": 13
+              },
+              "read_own": {
+                "allowed": true,
+                "errno": 0
+              },
+              "read_via_symlink": {
+                "allowed": false,
+                "errno": 13
+              },
+              "readlink_outside": {
+                "allowed": true,
+                "errno": 0
+              },
+              "stat_outside": {
+                "allowed": true,
+                "errno": 0
+              },
+              "write_outside": {
+                "allowed": false,
+                "errno": 13
+              },
+              "write_own": {
+                "allowed": true,
+                "errno": 0
+              }
+            },
+            "invalid_clone": {
+              "errno": 1,
+              "result": -1
+            },
+            "invalid_clone3": {
+              "errno": 1,
+              "result": -1
+            },
+            "landlock": {
+              "abi": {
+                "errno": 0,
+                "result": 3
+              },
+              "installed": true,
+              "restrict": {
+                "errno": 0,
+                "result": 0
+              }
+            },
+            "parent_signal_zero": {
+              "allowed": false,
+              "errno": 1
+            },
+            "preopened_outside_fd": {
+              "allowed": true,
+              "errno": 0
+            },
+            "seccomp": {
+              "installed": true,
+              "policy": "diagnostic denylist; NOT a sandbox",
+              "prctl": {
+                "errno": 0,
+                "result": 0
+              }
+            },
+            "setsid": {
+              "errno": 1,
+              "result": -1
+            },
+            "socket": {
+              "allowed": false,
+              "errno": 1
+            }
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "cpu": {
+          "result": null,
+          "returncode": -9,
+          "stderr": "",
+          "timed_out": false
+        },
+        "ipc": {
+          "result": {
+            "errno": 1,
+            "result": -1
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "landlock": {
+          "result": {
+            "files": {
+              "list_outside": {
+                "allowed": false,
+                "errno": 13
+              },
+              "read_outside": {
+                "allowed": false,
+                "errno": 13
+              },
+              "read_own": {
+                "allowed": true,
+                "errno": 0
+              },
+              "read_via_symlink": {
+                "allowed": false,
+                "errno": 13
+              },
+              "readlink_outside": {
+                "allowed": true,
+                "errno": 0
+              },
+              "stat_outside": {
+                "allowed": true,
+                "errno": 0
+              },
+              "write_outside": {
+                "allowed": false,
+                "errno": 13
+              },
+              "write_own": {
+                "allowed": true,
+                "errno": 0
+              }
+            },
+            "landlock": {
+              "abi": {
+                "errno": 0,
+                "result": 3
+              },
+              "installed": true,
+              "restrict": {
+                "errno": 0,
+                "result": 0
+              }
+            },
+            "parent_signal_zero": {
+              "allowed": true,
+              "errno": 0
+            },
+            "preopened_outside_fd": {
+              "allowed": true,
+              "errno": 0
+            },
+            "socket": {
+              "allowed": true,
+              "errno": 0
+            }
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "mount": {
+          "result": {
+            "errno": 1,
+            "result": -1
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "network": {
+          "result": {
+            "errno": 1,
+            "result": -1
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "nproc": {
+          "result": {
+            "errno": 0,
+            "fork_allowed": true,
+            "uid": 0
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "pid": {
+          "result": {
+            "errno": 1,
+            "result": -1
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "rlimits": {
+          "result": {
+            "file_size": 1024,
+            "large_file": {
+              "allowed": false,
+              "errno": 27
+            },
+            "memory_allocation_denied": true,
+            "nofile": [
+              32,
+              32
+            ],
+            "nproc": [
+              1,
+              1
+            ],
+            "nproc_enforcement_proven": false
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "seccomp": {
+          "result": {
+            "files": {
+              "list_outside": {
+                "allowed": true,
+                "errno": 0
+              },
+              "read_outside": {
+                "allowed": true,
+                "errno": 0
+              },
+              "read_own": {
+                "allowed": true,
+                "errno": 0
+              },
+              "read_via_symlink": {
+                "allowed": true,
+                "errno": 0
+              },
+              "readlink_outside": {
+                "allowed": true,
+                "errno": 0
+              },
+              "stat_outside": {
+                "allowed": true,
+                "errno": 0
+              },
+              "write_outside": {
+                "allowed": true,
+                "errno": 0
+              },
+              "write_own": {
+                "allowed": true,
+                "errno": 0
+              }
+            },
+            "invalid_clone": {
+              "errno": 1,
+              "result": -1
+            },
+            "invalid_clone3": {
+              "errno": 1,
+              "result": -1
+            },
+            "parent_signal_zero": {
+              "allowed": false,
+              "errno": 1
+            },
+            "preopened_outside_fd": {
+              "allowed": true,
+              "errno": 0
+            },
+            "seccomp": {
+              "installed": true,
+              "policy": "diagnostic denylist; NOT a sandbox",
+              "prctl": {
+                "errno": 0,
+                "result": 0
+              }
+            },
+            "setsid": {
+              "errno": 1,
+              "result": -1
+            },
+            "socket": {
+              "allowed": false,
+              "errno": 1
+            }
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "session": {
+          "result": {
+            "child_group": 24,
+            "child_returncode": 0,
+            "parent_group": 23
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "uid": {
+          "result": {
+            "after": [
+              0,
+              0
+            ],
+            "before": [
+              0,
+              0
+            ],
+            "setgid": {
+              "allowed": false,
+              "errno": 1
+            },
+            "setgroups": {
+              "allowed": false,
+              "errno": 1
+            },
+            "setuid": {
+              "allowed": false,
+              "errno": 1
+            }
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "user": {
+          "result": {
+            "errno": 1,
+            "result": -1
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "uts": {
+          "result": {
+            "errno": 1,
+            "result": -1
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        }
+      },
+      "gid": 0,
+      "kernel": "6.6.87.2-microsoft-standard-WSL2",
+      "process_status": {
+        "CapEff": "0000000000000000",
+        "NoNewPrivs": "1",
+        "Seccomp": "2"
+      },
+      "sandbox_confirmed": false,
+      "task_code_executed": false,
+      "uid": 0
+    },
+    "malformed_task_exit": 1,
+    "matching_runtime_files": 16,
+    "missing_directory_exit": 2,
+    "persisted_repairs": [
+      "coding_0003/workspace/mylib.py",
+      "coding_0007/workspace/mylib.py"
+    ],
+    "prior_daemon_blocker": {
+      "cause": "daemon did not respond within bounded CLI and Unix socket probes",
+      "current_runtime_verified": false,
+      "new_image": null,
+      "previous_results_are_historical": true,
+      "previous_verified_image": {
+        "audit": {
+          "app_read_only": true,
+          "cap_eff": "0000000000000000",
+          "cgroup_limits": {
+            "cpus": 8,
+            "memory.max": 17179869184,
+            "pids.max": 512
+          },
+          "no_credentials_in_image_environment": true,
+          "no_new_privileges": true,
+          "openjiuwen": "0.1.20.post1",
+          "python": "3.12.12",
+          "tmpfs_bytes": 2147483648,
+          "user_namespace_errno": 1
+        },
+        "docker_images_size": "976MB",
+        "image": "sidim-bez-dim:v3-q4",
+        "image_id": "sha256:101b4d241d1c5cae0ac62fb3a4cec2fa1771a6838cebfd86f5f51843e657645f",
+        "matching_runtime_files": 16,
+        "safe_examples": "6/8",
+        "source_materials_unchanged": true,
+        "trusted_examples": "8/8"
+      },
+      "status": "blocked"
+    },
+    "runtime_sha256": {
+      ".dockerignore": "cf5e437662e0eabe0be727cf8e86d482c41e6768a4ef222b28540085e3eab9a5",
+      "Dockerfile": "fa31e22d5ca58014cdf56e0a83899dd6f96caf97f5421c0d6ae9aca4ebf00fe6",
+      "budget_manager.py": "8259d00cf23cb1c5f0bd2162784f0c91dc005cf570e99d9a4cfb30929abcbb4f",
+      "coding_solver.py": "e64d5913e831c72a2afd36e70512f290886d8fd7be577ed38d6a57ac3c30d9e7",
+      "data_solver.py": "c4a9b0b1e56c0b06685a5d88df0aafa2fc11644bf7c658c7e5da928de457712a",
+      "harness.py": "2e08007cc5632db92f1f1d17e56374a14a03f0f81bbdff4075c2c10cd38b1a3a",
+      "llm_fallback.py": "d9c71832f892a3a1114d883eea39876caa5e98f3114c5533f5a0c943670e8020",
+      "llm_gateway.py": "c17dbf2de2655965a88cc00f0ee709de81621770a44fa824b27cec560d923b13",
+      "math_solver.py": "a0f7ed37aea686536ef226260530dddbf611dd67da50b3784da593c32644bc29",
+      "plan_semantics.py": "569b9b35638f0f28e836e2cb68d862962ff1015d7b60f91a2a19c291663aa104",
+      "planner.py": "4db10378746a8decbf556defbcbc207afc7fc472cb8827404ba89c15beec3b8d",
+      "requirements.txt": "d8c2924d446449dfd156153333b01a3ae0ef3fd0da64acfe36eae937663a3da3",
+      "run_agent.py": "88938b2c66ddcf2b7428976390433c6c719cbcdbdc8969a07346effbdbaf401c",
+      "runtime_limits.py": "cdd72e8fc6bc119b6cd76fe4560a910552c80e04edb27e2d3d29cb1d3821e669",
+      "safe_files.py": "04aa6c98f6da2555b80ab298d0937ea32f39a0deea0710fa78e97d849d6c7cfb",
+      "search_solver.py": "01d75a73c61ece5a60e458dd317c8c6108d2e3fb63ec3adb0475e55f2ea494bd"
+    },
+    "safe_examples": "6/8",
+    "source_materials_unchanged": true,
+    "status": "passed",
+    "trusted_examples": "8/8"
+  },
+  "historical_reports_modified": false,
+  "holdout_policy": "No holdout inspection or rule selection. Required final full-128 evaluation and frozen pairs only, after rule freeze.",
+  "host_official_safe": {
+    "coding_trusted": false,
+    "expected_check_removed": true,
+    "rows": [
+      {
+        "actual": "389",
+        "mode": 420,
+        "task_id": "math_0000"
+      },
+      {
+        "actual": "1735",
+        "mode": 420,
+        "task_id": "math_0004"
+      },
+      {
+        "actual": "1983",
+        "mode": 420,
+        "task_id": "search_0001"
+      },
+      {
+        "actual": "Osaka",
+        "mode": 420,
+        "task_id": "search_0005"
+      },
+      {
+        "actual": "158",
+        "mode": 420,
+        "task_id": "data_analysis_0002"
+      },
+      {
+        "actual": "284",
+        "mode": 420,
+        "task_id": "data_analysis_0006"
+      },
+      {
+        "actual": null,
+        "mode": null,
+        "task_id": "coding_0003"
+      },
+      {
+        "actual": null,
+        "mode": null,
+        "task_id": "coding_0007"
+      }
+    ],
+    "safe": "6/8"
+  },
+  "independent": {
+    "after": {
+      "counts": {
+        "failed": 0,
+        "skipped": 18,
+        "solved": 18
+      },
+      "llm_requests": 0,
+      "rows": [
+        {
+          "actual": "Lübeck",
+          "answer_mode": 420,
+          "expected": "Lübeck",
+          "id": "s_alias_chain",
+          "instruction": "Which city is Kite's adviser's firm based in?",
+          "oracle": "Kite -> Nia -> Omri -> Reed Labs -> Lübeck, by the three explicit edges.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "",
+            "outcome": "solved"
+          },
+          "property": "Explicit alias and two directed links across unrelated filenames.",
+          "required": true,
+          "status": "correct",
+          "task_type": "search"
+        },
+        {
+          "actual": "Nuuk",
+          "answer_mode": 420,
+          "expected": "Nuuk",
+          "id": "s_three_links",
+          "instruction": "Where is the employer of the mentor of the mentor of Veda located?",
+          "oracle": "Veda -> Ivo -> Neve -> Snowline -> Nuuk; distractor employer not on path.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "",
+            "outcome": "solved"
+          },
+          "property": "Three links with OF nesting and a distractor branch.",
+          "required": true,
+          "status": "correct",
+          "task_type": "search"
+        },
+        {
+          "actual": "1937",
+          "answer_mode": 420,
+          "expected": "1937",
+          "id": "s_birth_prose",
+          "instruction": "What is the birth year of Rumi's coach?",
+          "oracle": "Rumi.Mentor=Tenzin; Tenzin was born in 1937.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "",
+            "outcome": "solved"
+          },
+          "property": "Subject-bound prose at end of a directed chain; other birth year is noise.",
+          "required": true,
+          "status": "correct",
+          "task_type": "search"
+        },
+        {
+          "actual": "Zuri",
+          "answer_mode": 420,
+          "expected": "Zuri",
+          "id": "s_inverse_noise",
+          "instruction": "Who is mentored by Oren?",
+          "oracle": "Only Zuri has Mentor Oren; the conflicting archive has no Mentor fact.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "",
+            "outcome": "solved"
+          },
+          "property": "Unrelated conflicting birth records must not hide a unique inverse Mentor.",
+          "required": true,
+          "status": "correct",
+          "task_type": "search"
+        },
+        {
+          "actual": "Zuri",
+          "answer_mode": 420,
+          "expected": "Zuri",
+          "id": "s_inverse_field_noise",
+          "instruction": "Who is mentored by Oren?",
+          "oracle": "Only Zuri has Mentor Oren; neither city belongs to the query path.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "",
+            "outcome": "solved"
+          },
+          "property": "Contradictory unrelated headquarters in one record is not Mentor evidence.",
+          "required": true,
+          "status": "correct",
+          "task_type": "search"
+        },
+        {
+          "actual": null,
+          "answer_mode": null,
+          "expected": null,
+          "id": "s_conflicting_edge",
+          "instruction": "Where is Nia's employer based?",
+          "oracle": "Both employers are explicit and disagree; no unique answer.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "insufficient_evidence",
+            "outcome": "insufficient_evidence"
+          },
+          "property": "Conflicting outgoing edges forbid choosing a convenient city.",
+          "required": true,
+          "status": "safe_refusal",
+          "task_type": "search"
+        },
+        {
+          "actual": null,
+          "answer_mode": null,
+          "expected": null,
+          "id": "s_alias_collision",
+          "instruction": "When was Kite born?",
+          "oracle": "Kite refers to two different headings.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "insufficient_evidence",
+            "outcome": "insufficient_evidence"
+          },
+          "property": "Shared alias does not prove identity.",
+          "required": true,
+          "status": "safe_refusal",
+          "task_type": "search"
+        },
+        {
+          "actual": null,
+          "answer_mode": null,
+          "expected": null,
+          "id": "s_inverse_lost_edge",
+          "instruction": "Who is mentored by Oren?",
+          "oracle": "Both Zuri and possibly Veda have Mentor Oren; Veda also has conflicting Mentor Ivo.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "insufficient_evidence",
+            "outcome": "insufficient_evidence"
+          },
+          "property": "A conflicting earlier Mentor record cannot be hidden by a later record.",
+          "required": true,
+          "status": "safe_refusal",
+          "task_type": "search"
+        },
+        {
+          "actual": "1942",
+          "answer_mode": 420,
+          "expected": "1942",
+          "id": "s_quoted_noise",
+          "instruction": "When was Neve born?",
+          "oracle": "Only the unquoted explicit Born field is evidence.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "",
+            "outcome": "solved"
+          },
+          "property": "Fenced and quoted pseudo-facts are inert.",
+          "required": true,
+          "status": "correct",
+          "task_type": "search"
+        },
+        {
+          "actual": null,
+          "answer_mode": null,
+          "expected": null,
+          "id": "s_missing_target",
+          "instruction": "Where is Neve's firm based?",
+          "oracle": "Missing Works has no profile.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "insufficient_evidence",
+            "outcome": "insufficient_evidence"
+          },
+          "property": "Absent endpoint cannot be inferred from a similarly named company.",
+          "required": true,
+          "status": "safe_refusal",
+          "task_type": "search"
+        },
+        {
+          "actual": null,
+          "answer_mode": null,
+          "expected": null,
+          "id": "s_inverse_missing",
+          "instruction": "Who is mentored by Oren?",
+          "oracle": "Veda has unknown Mentor; uniqueness is unproved.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "insufficient_evidence",
+            "outcome": "insufficient_evidence"
+          },
+          "property": "Unknown Mentor could add another inverse candidate.",
+          "required": true,
+          "status": "safe_refusal",
+          "task_type": "search"
+        },
+        {
+          "actual": null,
+          "answer_mode": null,
+          "expected": "Nia",
+          "id": "s_inverse_employer_boundary",
+          "instruction": "Who works for Reed Labs?",
+          "oracle": "One Employer edge to Reed Labs; not an inverse Mentor query.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "unsupported",
+            "outcome": "budget_blocked"
+          },
+          "property": "Coverage boundary: inverse Employer has a unique answer but no supported route.",
+          "required": false,
+          "status": "missed",
+          "task_type": "search"
+        },
+        {
+          "actual": "7.75",
+          "answer_mode": 420,
+          "expected": "31/4",
+          "id": "m_precedence",
+          "instruction": "Evaluate -3.25 + 2 * (7 - 1.5).",
+          "oracle": "Exact Fraction arithmetic, -13/4 + 2*(7-3/2).",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "",
+            "outcome": "solved"
+          },
+          "property": "Negative decimal, parentheses and conventional precedence.",
+          "required": true,
+          "status": "correct",
+          "task_type": "math"
+        },
+        {
+          "actual": "-5",
+          "answer_mode": 420,
+          "expected": "-5",
+          "id": "m_ltr",
+          "instruction": "Evaluate -3.25 + 2 * 4 from left to right.",
+          "oracle": "(-3.25+2)*4 = -1.25*4 = -5.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "",
+            "outcome": "solved"
+          },
+          "property": "Explicit LTR differs from standard precedence.",
+          "required": true,
+          "status": "correct",
+          "task_type": "math"
+        },
+        {
+          "actual": "32",
+          "answer_mode": 420,
+          "expected": "32",
+          "id": "m_steps_percent",
+          "instruction": "Start with 80 units. Increase by 25 percent. Subtract 4 units. Divide by 3.",
+          "oracle": "(80*1.25 - 4)/3 = 32.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "",
+            "outcome": "solved"
+          },
+          "property": "Ordered relative percentage then subtraction then division.",
+          "required": true,
+          "status": "correct",
+          "task_type": "math"
+        },
+        {
+          "actual": "-6",
+          "answer_mode": 420,
+          "expected": "-6",
+          "id": "m_floor_negative",
+          "instruction": "Start with -17 points. Divide by 3 rounded down.",
+          "oracle": "-17/3 lies strictly between -6 and -5; floor is -6.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "",
+            "outcome": "solved"
+          },
+          "property": "Floor is not truncation toward zero.",
+          "required": true,
+          "status": "correct",
+          "task_type": "math"
+        },
+        {
+          "actual": "-12.35",
+          "answer_mode": 420,
+          "expected": "-12.35",
+          "id": "m_half_up",
+          "instruction": "Round -12.345 to two decimal places using round-half-up.",
+          "oracle": "Independent decimal.ROUND_HALF_UP.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "",
+            "outcome": "solved"
+          },
+          "property": "Negative tie rounds away from zero.",
+          "required": true,
+          "status": "correct",
+          "task_type": "math"
+        },
+        {
+          "actual": null,
+          "answer_mode": null,
+          "expected": null,
+          "id": "m_unit_currency",
+          "instruction": "Start with 12 dollars. Add 3 euros.",
+          "oracle": "No exchange rate; 15 has no determined unit.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "unsupported",
+            "outcome": "budget_blocked"
+          },
+          "property": "Incompatible currencies need an exchange rule.",
+          "required": true,
+          "status": "safe_refusal",
+          "task_type": "math"
+        },
+        {
+          "actual": null,
+          "answer_mode": null,
+          "expected": null,
+          "id": "m_unit_dimensions",
+          "instruction": "Start with 6 meters. Add 4 litres.",
+          "oracle": "Length plus volume has no scalar total.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "unsupported",
+            "outcome": "budget_blocked"
+          },
+          "property": "Different physical dimensions cannot be added.",
+          "required": true,
+          "status": "safe_refusal",
+          "task_type": "math"
+        },
+        {
+          "actual": null,
+          "answer_mode": null,
+          "expected": null,
+          "id": "m_unit_binary",
+          "instruction": "Subtract 2 dollars from 9 euros.",
+          "oracle": "No exchange rate determines the difference.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "unsupported",
+            "outcome": "budget_blocked"
+          },
+          "property": "Operand units cannot be dropped in the initial binary clause.",
+          "required": true,
+          "status": "safe_refusal",
+          "task_type": "math"
+        },
+        {
+          "actual": "3.5",
+          "answer_mode": 420,
+          "expected": "3.5",
+          "id": "m_unit_plural",
+          "instruction": "Start with 1 box. Add 6 boxes. Divide by 2.",
+          "oracle": "(1+6)/2 = 3.5 boxes.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "",
+            "outcome": "solved"
+          },
+          "property": "Singular and plural denote the same unit.",
+          "required": true,
+          "status": "correct",
+          "task_type": "math"
+        },
+        {
+          "actual": null,
+          "answer_mode": null,
+          "expected": null,
+          "id": "m_zero_division",
+          "instruction": "Evaluate (3 - 3) / (2 - 2).",
+          "oracle": "Denominator is exactly zero.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "unsupported",
+            "outcome": "budget_blocked"
+          },
+          "property": "Zero numerator does not make division by zero valid.",
+          "required": true,
+          "status": "safe_refusal",
+          "task_type": "math"
+        },
+        {
+          "actual": null,
+          "answer_mode": null,
+          "expected": null,
+          "id": "m_conditional",
+          "instruction": "Start with 9 coins. Add 2 coins if the flag is true.",
+          "oracle": "Flag is not given; result could be 9 or 11.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "unsupported",
+            "outcome": "budget_blocked"
+          },
+          "property": "Missing condition is not assumed true.",
+          "required": true,
+          "status": "safe_refusal",
+          "task_type": "math"
+        },
+        {
+          "actual": null,
+          "answer_mode": null,
+          "expected": "100.5",
+          "id": "m_scientific_boundary",
+          "instruction": "Evaluate 1e2 + 0.5.",
+          "oracle": "10**2 + 1/2 = 100.5 by definition of base-10 exponent.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "unsupported",
+            "outcome": "budget_blocked"
+          },
+          "property": "Coverage boundary: explicit scientific notation is not currently supported.",
+          "required": false,
+          "status": "missed",
+          "task_type": "math"
+        },
+        {
+          "actual": "4",
+          "answer_mode": 420,
+          "expected": "4",
+          "id": "d_renamed_range",
+          "instruction": "The file observations.csv has columns period,load,part. What is the sum of load where part = 'clamp' and period between 8 and 10 inclusive?",
+          "oracle": "-2.5+.5+6=4; out-of-range and other part excluded.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "",
+            "outcome": "solved"
+          },
+          "property": "Renamed columns, exact decimals and both inclusive endpoints.",
+          "required": true,
+          "status": "correct",
+          "task_type": "data_analysis"
+        },
+        {
+          "actual": "11",
+          "answer_mode": 420,
+          "expected": "11",
+          "id": "d_quoted_delimiter",
+          "instruction": "The file observations.csv. What is the sum of amount where item = 'nut, \"large\"'?",
+          "oracle": "Only the two matching rows, 4+7=11.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "",
+            "outcome": "solved"
+          },
+          "property": "CSV quoted delimiters and doubled quotes must preserve exact category.",
+          "required": true,
+          "status": "correct",
+          "task_type": "data_analysis"
+        },
+        {
+          "actual": "2",
+          "answer_mode": 420,
+          "expected": "2",
+          "id": "d_duplicate_count",
+          "instruction": "The file observations.csv. How many rows are there where zone = 'west'?",
+          "oracle": "Two west rows, counted separately.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "",
+            "outcome": "solved"
+          },
+          "property": "Identical records are rows, not an implicit DISTINCT.",
+          "required": true,
+          "status": "correct",
+          "task_type": "data_analysis"
+        },
+        {
+          "actual": "{\"blue\":2,\"red\":1}",
+          "answer_mode": 420,
+          "expected": "{\"blue\":2,\"red\":1}",
+          "id": "d_group_mean",
+          "instruction": "Using observations.csv, return a JSON object mapping each depot to its average of mass.",
+          "oracle": "blue=(1.5+2.5)/2=2; red=(-2+4)/2=1.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "",
+            "outcome": "solved"
+          },
+          "property": "Exact grouped means with independent state.",
+          "required": true,
+          "status": "correct",
+          "task_type": "data_analysis"
+        },
+        {
+          "actual": "chosen",
+          "answer_mode": 420,
+          "expected": "chosen",
+          "id": "d_rank_numeric",
+          "instruction": "Using observations.csv, sort by rating descending and code lexicographically ascending to break ties. Return the result of the first row.",
+          "oracle": "10 > 9; within 10, a < b; selected result is chosen.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "",
+            "outcome": "solved"
+          },
+          "property": "Numeric primary key, lexical secondary key and separate output column.",
+          "required": true,
+          "status": "correct",
+          "task_type": "data_analysis"
+        },
+        {
+          "actual": null,
+          "answer_mode": null,
+          "expected": null,
+          "id": "d_rank_conflict",
+          "instruction": "Using observations.csv, sort by rating descending and code lexicographically ascending to break ties. Return the result of the first row.",
+          "oracle": "Two equally first rows have different outputs.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "unsupported",
+            "outcome": "budget_blocked"
+          },
+          "property": "Full sort tie with different output is ambiguous.",
+          "required": true,
+          "status": "safe_refusal",
+          "task_type": "data_analysis"
+        },
+        {
+          "actual": "same",
+          "answer_mode": 420,
+          "expected": "same",
+          "id": "d_rank_same_output",
+          "instruction": "Using observations.csv, sort by rating descending and code lexicographically ascending to break ties. Return the result of the first row.",
+          "oracle": "Every first row has result same.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "",
+            "outcome": "solved"
+          },
+          "property": "Duplicates with identical output do not create answer ambiguity.",
+          "required": true,
+          "status": "correct",
+          "task_type": "data_analysis"
+        },
+        {
+          "actual": null,
+          "answer_mode": null,
+          "expected": null,
+          "id": "d_decimal_comma",
+          "instruction": "The file observations.csv. What is the sum of amount?",
+          "oracle": "1,5 may be decimal or grouping notation; no declared locale.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "invalid_data",
+            "outcome": "invalid_data"
+          },
+          "property": "Unspecified decimal locale must not be guessed.",
+          "required": true,
+          "status": "safe_refusal",
+          "task_type": "data_analysis"
+        },
+        {
+          "actual": null,
+          "answer_mode": null,
+          "expected": null,
+          "id": "d_empty_avg",
+          "instruction": "The file observations.csv. What is the average of amount where zone = 'absent'?",
+          "oracle": "No selected rows, divisor zero.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "insufficient_evidence",
+            "outcome": "insufficient_evidence"
+          },
+          "property": "Mean of an empty selection is undefined.",
+          "required": true,
+          "status": "safe_refusal",
+          "task_type": "data_analysis"
+        },
+        {
+          "actual": null,
+          "answer_mode": null,
+          "expected": null,
+          "id": "d_malformed_width",
+          "instruction": "The file observations.csv. What is the sum of amount?",
+          "oracle": "Third row has 3 fields for 2 headers.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "invalid_data",
+            "outcome": "invalid_data"
+          },
+          "property": "A later damaged row invalidates the entire aggregate.",
+          "required": true,
+          "status": "safe_refusal",
+          "task_type": "data_analysis"
+        },
+        {
+          "actual": null,
+          "answer_mode": null,
+          "expected": null,
+          "id": "d_duplicate_header",
+          "instruction": "The file observations.csv. What is the sum of amount?",
+          "oracle": "amount denotes two different columns.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "invalid_data",
+            "outcome": "invalid_data"
+          },
+          "property": "Duplicate requested header has no unique column binding.",
+          "required": true,
+          "status": "safe_refusal",
+          "task_type": "data_analysis"
+        },
+        {
+          "actual": null,
+          "answer_mode": null,
+          "expected": "6",
+          "id": "d_boolean_boundary",
+          "instruction": "The file observations.csv. What is the sum of amount where (zone = 'west' and year = 2024) or zone = 'east'?",
+          "oracle": "The written parentheses select (west AND 2024) OR east, giving 4+2=6.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "unsupported",
+            "outcome": "budget_blocked"
+          },
+          "property": "Coverage boundary: explicitly grouped AND/OR is unambiguous but unsupported.",
+          "required": false,
+          "status": "missed",
+          "task_type": "data_analysis"
+        }
+      ],
+      "scope": "independent synthetic scenarios; no benchmark or holdout inputs",
+      "spent": "0.0",
+      "summary": {
+        "correct": 18,
+        "missed": 3,
+        "safe_refusal": 15,
+        "wrong": 0
+      }
+    },
+    "before": {
+      "counts": {
+        "failed": 0,
+        "skipped": 17,
+        "solved": 19
+      },
+      "llm_requests": 0,
+      "rows": [
+        {
+          "actual": "Lübeck",
+          "answer_mode": 420,
+          "expected": "Lübeck",
+          "id": "s_alias_chain",
+          "instruction": "Which city is Kite's adviser's firm based in?",
+          "oracle": "Kite -> Nia -> Omri -> Reed Labs -> Lübeck, by the three explicit edges.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "",
+            "outcome": "solved"
+          },
+          "property": "Explicit alias and two directed links across unrelated filenames.",
+          "required": true,
+          "status": "correct",
+          "task_type": "search"
+        },
+        {
+          "actual": "Nuuk",
+          "answer_mode": 420,
+          "expected": "Nuuk",
+          "id": "s_three_links",
+          "instruction": "Where is the employer of the mentor of the mentor of Veda located?",
+          "oracle": "Veda -> Ivo -> Neve -> Snowline -> Nuuk; distractor employer not on path.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "",
+            "outcome": "solved"
+          },
+          "property": "Three links with OF nesting and a distractor branch.",
+          "required": true,
+          "status": "correct",
+          "task_type": "search"
+        },
+        {
+          "actual": "1937",
+          "answer_mode": 420,
+          "expected": "1937",
+          "id": "s_birth_prose",
+          "instruction": "What is the birth year of Rumi's coach?",
+          "oracle": "Rumi.Mentor=Tenzin; Tenzin was born in 1937.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "",
+            "outcome": "solved"
+          },
+          "property": "Subject-bound prose at end of a directed chain; other birth year is noise.",
+          "required": true,
+          "status": "correct",
+          "task_type": "search"
+        },
+        {
+          "actual": null,
+          "answer_mode": null,
+          "expected": "Zuri",
+          "id": "s_inverse_noise",
+          "instruction": "Who is mentored by Oren?",
+          "oracle": "Only Zuri has Mentor Oren; the conflicting archive has no Mentor fact.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "insufficient_evidence",
+            "outcome": "insufficient_evidence"
+          },
+          "property": "Unrelated conflicting birth records must not hide a unique inverse Mentor.",
+          "required": true,
+          "status": "missed",
+          "task_type": "search"
+        },
+        {
+          "actual": null,
+          "answer_mode": null,
+          "expected": "Zuri",
+          "id": "s_inverse_field_noise",
+          "instruction": "Who is mentored by Oren?",
+          "oracle": "Only Zuri has Mentor Oren; neither city belongs to the query path.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "insufficient_evidence",
+            "outcome": "insufficient_evidence"
+          },
+          "property": "Contradictory unrelated headquarters in one record is not Mentor evidence.",
+          "required": true,
+          "status": "missed",
+          "task_type": "search"
+        },
+        {
+          "actual": null,
+          "answer_mode": null,
+          "expected": null,
+          "id": "s_conflicting_edge",
+          "instruction": "Where is Nia's employer based?",
+          "oracle": "Both employers are explicit and disagree; no unique answer.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "insufficient_evidence",
+            "outcome": "insufficient_evidence"
+          },
+          "property": "Conflicting outgoing edges forbid choosing a convenient city.",
+          "required": true,
+          "status": "safe_refusal",
+          "task_type": "search"
+        },
+        {
+          "actual": null,
+          "answer_mode": null,
+          "expected": null,
+          "id": "s_alias_collision",
+          "instruction": "When was Kite born?",
+          "oracle": "Kite refers to two different headings.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "insufficient_evidence",
+            "outcome": "insufficient_evidence"
+          },
+          "property": "Shared alias does not prove identity.",
+          "required": true,
+          "status": "safe_refusal",
+          "task_type": "search"
+        },
+        {
+          "actual": null,
+          "answer_mode": null,
+          "expected": null,
+          "id": "s_inverse_lost_edge",
+          "instruction": "Who is mentored by Oren?",
+          "oracle": "Both Zuri and possibly Veda have Mentor Oren; Veda also has conflicting Mentor Ivo.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "insufficient_evidence",
+            "outcome": "insufficient_evidence"
+          },
+          "property": "A conflicting earlier Mentor record cannot be hidden by a later record.",
+          "required": true,
+          "status": "safe_refusal",
+          "task_type": "search"
+        },
+        {
+          "actual": "1942",
+          "answer_mode": 420,
+          "expected": "1942",
+          "id": "s_quoted_noise",
+          "instruction": "When was Neve born?",
+          "oracle": "Only the unquoted explicit Born field is evidence.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "",
+            "outcome": "solved"
+          },
+          "property": "Fenced and quoted pseudo-facts are inert.",
+          "required": true,
+          "status": "correct",
+          "task_type": "search"
+        },
+        {
+          "actual": null,
+          "answer_mode": null,
+          "expected": null,
+          "id": "s_missing_target",
+          "instruction": "Where is Neve's firm based?",
+          "oracle": "Missing Works has no profile.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "insufficient_evidence",
+            "outcome": "insufficient_evidence"
+          },
+          "property": "Absent endpoint cannot be inferred from a similarly named company.",
+          "required": true,
+          "status": "safe_refusal",
+          "task_type": "search"
+        },
+        {
+          "actual": null,
+          "answer_mode": null,
+          "expected": null,
+          "id": "s_inverse_missing",
+          "instruction": "Who is mentored by Oren?",
+          "oracle": "Veda has unknown Mentor; uniqueness is unproved.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "insufficient_evidence",
+            "outcome": "insufficient_evidence"
+          },
+          "property": "Unknown Mentor could add another inverse candidate.",
+          "required": true,
+          "status": "safe_refusal",
+          "task_type": "search"
+        },
+        {
+          "actual": null,
+          "answer_mode": null,
+          "expected": "Nia",
+          "id": "s_inverse_employer_boundary",
+          "instruction": "Who works for Reed Labs?",
+          "oracle": "One Employer edge to Reed Labs; not an inverse Mentor query.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "unsupported",
+            "outcome": "budget_blocked"
+          },
+          "property": "Coverage boundary: inverse Employer has a unique answer but no supported route.",
+          "required": false,
+          "status": "missed",
+          "task_type": "search"
+        },
+        {
+          "actual": "7.75",
+          "answer_mode": 420,
+          "expected": "31/4",
+          "id": "m_precedence",
+          "instruction": "Evaluate -3.25 + 2 * (7 - 1.5).",
+          "oracle": "Exact Fraction arithmetic, -13/4 + 2*(7-3/2).",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "",
+            "outcome": "solved"
+          },
+          "property": "Negative decimal, parentheses and conventional precedence.",
+          "required": true,
+          "status": "correct",
+          "task_type": "math"
+        },
+        {
+          "actual": "-5",
+          "answer_mode": 420,
+          "expected": "-5",
+          "id": "m_ltr",
+          "instruction": "Evaluate -3.25 + 2 * 4 from left to right.",
+          "oracle": "(-3.25+2)*4 = -1.25*4 = -5.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "",
+            "outcome": "solved"
+          },
+          "property": "Explicit LTR differs from standard precedence.",
+          "required": true,
+          "status": "correct",
+          "task_type": "math"
+        },
+        {
+          "actual": "32",
+          "answer_mode": 420,
+          "expected": "32",
+          "id": "m_steps_percent",
+          "instruction": "Start with 80 units. Increase by 25 percent. Subtract 4 units. Divide by 3.",
+          "oracle": "(80*1.25 - 4)/3 = 32.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "",
+            "outcome": "solved"
+          },
+          "property": "Ordered relative percentage then subtraction then division.",
+          "required": true,
+          "status": "correct",
+          "task_type": "math"
+        },
+        {
+          "actual": "-6",
+          "answer_mode": 420,
+          "expected": "-6",
+          "id": "m_floor_negative",
+          "instruction": "Start with -17 points. Divide by 3 rounded down.",
+          "oracle": "-17/3 lies strictly between -6 and -5; floor is -6.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "",
+            "outcome": "solved"
+          },
+          "property": "Floor is not truncation toward zero.",
+          "required": true,
+          "status": "correct",
+          "task_type": "math"
+        },
+        {
+          "actual": "-12.35",
+          "answer_mode": 420,
+          "expected": "-12.35",
+          "id": "m_half_up",
+          "instruction": "Round -12.345 to two decimal places using round-half-up.",
+          "oracle": "Independent decimal.ROUND_HALF_UP.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "",
+            "outcome": "solved"
+          },
+          "property": "Negative tie rounds away from zero.",
+          "required": true,
+          "status": "correct",
+          "task_type": "math"
+        },
+        {
+          "actual": "15",
+          "answer_mode": 420,
+          "expected": null,
+          "id": "m_unit_currency",
+          "instruction": "Start with 12 dollars. Add 3 euros.",
+          "oracle": "No exchange rate; 15 has no determined unit.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "",
+            "outcome": "solved"
+          },
+          "property": "Incompatible currencies need an exchange rule.",
+          "required": true,
+          "status": "wrong",
+          "task_type": "math"
+        },
+        {
+          "actual": "10",
+          "answer_mode": 420,
+          "expected": null,
+          "id": "m_unit_dimensions",
+          "instruction": "Start with 6 meters. Add 4 litres.",
+          "oracle": "Length plus volume has no scalar total.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "",
+            "outcome": "solved"
+          },
+          "property": "Different physical dimensions cannot be added.",
+          "required": true,
+          "status": "wrong",
+          "task_type": "math"
+        },
+        {
+          "actual": "7",
+          "answer_mode": 420,
+          "expected": null,
+          "id": "m_unit_binary",
+          "instruction": "Subtract 2 dollars from 9 euros.",
+          "oracle": "No exchange rate determines the difference.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "",
+            "outcome": "solved"
+          },
+          "property": "Operand units cannot be dropped in the initial binary clause.",
+          "required": true,
+          "status": "wrong",
+          "task_type": "math"
+        },
+        {
+          "actual": "3.5",
+          "answer_mode": 420,
+          "expected": "3.5",
+          "id": "m_unit_plural",
+          "instruction": "Start with 1 box. Add 6 boxes. Divide by 2.",
+          "oracle": "(1+6)/2 = 3.5 boxes.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "",
+            "outcome": "solved"
+          },
+          "property": "Singular and plural denote the same unit.",
+          "required": true,
+          "status": "correct",
+          "task_type": "math"
+        },
+        {
+          "actual": null,
+          "answer_mode": null,
+          "expected": null,
+          "id": "m_zero_division",
+          "instruction": "Evaluate (3 - 3) / (2 - 2).",
+          "oracle": "Denominator is exactly zero.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "unsupported",
+            "outcome": "budget_blocked"
+          },
+          "property": "Zero numerator does not make division by zero valid.",
+          "required": true,
+          "status": "safe_refusal",
+          "task_type": "math"
+        },
+        {
+          "actual": null,
+          "answer_mode": null,
+          "expected": null,
+          "id": "m_conditional",
+          "instruction": "Start with 9 coins. Add 2 coins if the flag is true.",
+          "oracle": "Flag is not given; result could be 9 or 11.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "unsupported",
+            "outcome": "budget_blocked"
+          },
+          "property": "Missing condition is not assumed true.",
+          "required": true,
+          "status": "safe_refusal",
+          "task_type": "math"
+        },
+        {
+          "actual": null,
+          "answer_mode": null,
+          "expected": "100.5",
+          "id": "m_scientific_boundary",
+          "instruction": "Evaluate 1e2 + 0.5.",
+          "oracle": "10**2 + 1/2 = 100.5 by definition of base-10 exponent.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "unsupported",
+            "outcome": "budget_blocked"
+          },
+          "property": "Coverage boundary: explicit scientific notation is not currently supported.",
+          "required": false,
+          "status": "missed",
+          "task_type": "math"
+        },
+        {
+          "actual": "4",
+          "answer_mode": 420,
+          "expected": "4",
+          "id": "d_renamed_range",
+          "instruction": "The file observations.csv has columns period,load,part. What is the sum of load where part = 'clamp' and period between 8 and 10 inclusive?",
+          "oracle": "-2.5+.5+6=4; out-of-range and other part excluded.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "",
+            "outcome": "solved"
+          },
+          "property": "Renamed columns, exact decimals and both inclusive endpoints.",
+          "required": true,
+          "status": "correct",
+          "task_type": "data_analysis"
+        },
+        {
+          "actual": "11",
+          "answer_mode": 420,
+          "expected": "11",
+          "id": "d_quoted_delimiter",
+          "instruction": "The file observations.csv. What is the sum of amount where item = 'nut, \"large\"'?",
+          "oracle": "Only the two matching rows, 4+7=11.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "",
+            "outcome": "solved"
+          },
+          "property": "CSV quoted delimiters and doubled quotes must preserve exact category.",
+          "required": true,
+          "status": "correct",
+          "task_type": "data_analysis"
+        },
+        {
+          "actual": "2",
+          "answer_mode": 420,
+          "expected": "2",
+          "id": "d_duplicate_count",
+          "instruction": "The file observations.csv. How many rows are there where zone = 'west'?",
+          "oracle": "Two west rows, counted separately.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "",
+            "outcome": "solved"
+          },
+          "property": "Identical records are rows, not an implicit DISTINCT.",
+          "required": true,
+          "status": "correct",
+          "task_type": "data_analysis"
+        },
+        {
+          "actual": "{\"blue\":2,\"red\":1}",
+          "answer_mode": 420,
+          "expected": "{\"blue\":2,\"red\":1}",
+          "id": "d_group_mean",
+          "instruction": "Using observations.csv, return a JSON object mapping each depot to its average of mass.",
+          "oracle": "blue=(1.5+2.5)/2=2; red=(-2+4)/2=1.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "",
+            "outcome": "solved"
+          },
+          "property": "Exact grouped means with independent state.",
+          "required": true,
+          "status": "correct",
+          "task_type": "data_analysis"
+        },
+        {
+          "actual": "chosen",
+          "answer_mode": 420,
+          "expected": "chosen",
+          "id": "d_rank_numeric",
+          "instruction": "Using observations.csv, sort by rating descending and code lexicographically ascending to break ties. Return the result of the first row.",
+          "oracle": "10 > 9; within 10, a < b; selected result is chosen.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "",
+            "outcome": "solved"
+          },
+          "property": "Numeric primary key, lexical secondary key and separate output column.",
+          "required": true,
+          "status": "correct",
+          "task_type": "data_analysis"
+        },
+        {
+          "actual": null,
+          "answer_mode": null,
+          "expected": null,
+          "id": "d_rank_conflict",
+          "instruction": "Using observations.csv, sort by rating descending and code lexicographically ascending to break ties. Return the result of the first row.",
+          "oracle": "Two equally first rows have different outputs.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "unsupported",
+            "outcome": "budget_blocked"
+          },
+          "property": "Full sort tie with different output is ambiguous.",
+          "required": true,
+          "status": "safe_refusal",
+          "task_type": "data_analysis"
+        },
+        {
+          "actual": "same",
+          "answer_mode": 420,
+          "expected": "same",
+          "id": "d_rank_same_output",
+          "instruction": "Using observations.csv, sort by rating descending and code lexicographically ascending to break ties. Return the result of the first row.",
+          "oracle": "Every first row has result same.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "",
+            "outcome": "solved"
+          },
+          "property": "Duplicates with identical output do not create answer ambiguity.",
+          "required": true,
+          "status": "correct",
+          "task_type": "data_analysis"
+        },
+        {
+          "actual": null,
+          "answer_mode": null,
+          "expected": null,
+          "id": "d_decimal_comma",
+          "instruction": "The file observations.csv. What is the sum of amount?",
+          "oracle": "1,5 may be decimal or grouping notation; no declared locale.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "invalid_data",
+            "outcome": "invalid_data"
+          },
+          "property": "Unspecified decimal locale must not be guessed.",
+          "required": true,
+          "status": "safe_refusal",
+          "task_type": "data_analysis"
+        },
+        {
+          "actual": null,
+          "answer_mode": null,
+          "expected": null,
+          "id": "d_empty_avg",
+          "instruction": "The file observations.csv. What is the average of amount where zone = 'absent'?",
+          "oracle": "No selected rows, divisor zero.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "insufficient_evidence",
+            "outcome": "insufficient_evidence"
+          },
+          "property": "Mean of an empty selection is undefined.",
+          "required": true,
+          "status": "safe_refusal",
+          "task_type": "data_analysis"
+        },
+        {
+          "actual": null,
+          "answer_mode": null,
+          "expected": null,
+          "id": "d_malformed_width",
+          "instruction": "The file observations.csv. What is the sum of amount?",
+          "oracle": "Third row has 3 fields for 2 headers.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "invalid_data",
+            "outcome": "invalid_data"
+          },
+          "property": "A later damaged row invalidates the entire aggregate.",
+          "required": true,
+          "status": "safe_refusal",
+          "task_type": "data_analysis"
+        },
+        {
+          "actual": null,
+          "answer_mode": null,
+          "expected": null,
+          "id": "d_duplicate_header",
+          "instruction": "The file observations.csv. What is the sum of amount?",
+          "oracle": "amount denotes two different columns.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "invalid_data",
+            "outcome": "invalid_data"
+          },
+          "property": "Duplicate requested header has no unique column binding.",
+          "required": true,
+          "status": "safe_refusal",
+          "task_type": "data_analysis"
+        },
+        {
+          "actual": null,
+          "answer_mode": null,
+          "expected": "6",
+          "id": "d_boolean_boundary",
+          "instruction": "The file observations.csv. What is the sum of amount where (zone = 'west' and year = 2024) or zone = 'east'?",
+          "oracle": "The written parentheses select (west AND 2024) OR east, giving 4+2=6.",
+          "outcome": {
+            "llm_attempts": 0,
+            "local_attempts": 1,
+            "local_outcome": "unsupported",
+            "outcome": "budget_blocked"
+          },
+          "property": "Coverage boundary: explicitly grouped AND/OR is unambiguous but unsupported.",
+          "required": false,
+          "status": "missed",
+          "task_type": "data_analysis"
+        }
+      ],
+      "scope": "independent synthetic scenarios; no benchmark or holdout inputs",
+      "spent": "0.0",
+      "summary": {
+        "correct": 16,
+        "missed": 5,
+        "safe_refusal": 12,
+        "wrong": 3
+      }
+    }
+  },
+  "local": {
+    "by_split": {
+      "development": {
+        "answer_precision": 1.0,
+        "answerable": 52,
+        "correct": 33,
+        "false_negative_skips": 19,
+        "false_positive_fraction": 0.0,
+        "justified_refusal_recall": 1.0,
+        "justified_refusals": 12,
+        "llm_calls": 0,
+        "llm_reserved": 0.0,
+        "llm_spent": 0.0,
+        "paid_correct_reward_per_unit": null,
+        "possible_reward": 287,
+        "reward": 211,
+        "seconds": 0.3249225190047582,
+        "skip_fraction": 0.484375,
+        "skipped": 31,
+        "total": 64,
+        "unanswerable": 12,
+        "unverified": 0,
+        "wrong": 0
+      },
+      "holdout": {
+        "answer_precision": 1.0,
+        "answerable": 52,
+        "correct": 21,
+        "false_negative_skips": 31,
+        "false_positive_fraction": 0.0,
+        "justified_refusal_recall": 1.0,
+        "justified_refusals": 12,
+        "llm_calls": 0,
+        "llm_reserved": 0.0,
+        "llm_spent": 0.0,
+        "paid_correct_reward_per_unit": null,
+        "possible_reward": 216,
+        "reward": 89,
+        "seconds": 0.34271508299570996,
+        "skip_fraction": 0.671875,
+        "skipped": 43,
+        "total": 64,
+        "unanswerable": 12,
+        "unverified": 0,
+        "wrong": 0
+      }
+    },
+    "by_type": {
+      "coding": {
+        "answer_precision": null,
+        "answerable": 29,
+        "correct": 0,
+        "false_negative_skips": 29,
+        "false_positive_fraction": null,
+        "justified_refusal_recall": 1.0,
+        "justified_refusals": 3,
+        "llm_calls": 0,
+        "llm_reserved": 0.0,
+        "llm_spent": 0.0,
+        "paid_correct_reward_per_unit": null,
+        "possible_reward": 131,
+        "reward": 0,
+        "seconds": 0,
+        "skip_fraction": 1.0,
+        "skipped": 32,
+        "total": 32,
+        "unanswerable": 3,
+        "unverified": 0,
+        "wrong": 0
+      },
+      "data_analysis": {
+        "answer_precision": 1.0,
+        "answerable": 24,
+        "correct": 19,
+        "false_negative_skips": 5,
+        "false_positive_fraction": 0.0,
+        "justified_refusal_recall": 1.0,
+        "justified_refusals": 8,
+        "llm_calls": 0,
+        "llm_reserved": 0.0,
+        "llm_spent": 0.0,
+        "paid_correct_reward_per_unit": null,
+        "possible_reward": 167,
+        "reward": 139,
+        "seconds": 0.21701352300260623,
+        "skip_fraction": 0.40625,
+        "skipped": 13,
+        "total": 32,
+        "unanswerable": 8,
+        "unverified": 0,
+        "wrong": 0
+      },
+      "math": {
+        "answer_precision": 1.0,
+        "answerable": 27,
+        "correct": 17,
+        "false_negative_skips": 10,
+        "false_positive_fraction": 0.0,
+        "justified_refusal_recall": 1.0,
+        "justified_refusals": 5,
+        "llm_calls": 0,
+        "llm_reserved": 0.0,
+        "llm_spent": 0.0,
+        "paid_correct_reward_per_unit": null,
+        "possible_reward": 116,
+        "reward": 78,
+        "seconds": 0.20136952299981203,
+        "skip_fraction": 0.46875,
+        "skipped": 15,
+        "total": 32,
+        "unanswerable": 5,
+        "unverified": 0,
+        "wrong": 0
+      },
+      "search": {
+        "answer_precision": 1.0,
+        "answerable": 24,
+        "correct": 18,
+        "false_negative_skips": 6,
+        "false_positive_fraction": 0.0,
+        "justified_refusal_recall": 1.0,
+        "justified_refusals": 8,
+        "llm_calls": 0,
+        "llm_reserved": 0.0,
+        "llm_spent": 0.0,
+        "paid_correct_reward_per_unit": null,
+        "possible_reward": 89,
+        "reward": 83,
+        "seconds": 0.2492545559980499,
+        "skip_fraction": 0.4375,
+        "skipped": 14,
+        "total": 32,
+        "unanswerable": 8,
+        "unverified": 0,
+        "wrong": 0
+      }
+    },
+    "summary": {
+      "answer_precision": 1.0,
+      "answerable": 104,
+      "correct": 54,
+      "false_negative_skips": 50,
+      "false_positive_fraction": 0.0,
+      "justified_refusal_recall": 1.0,
+      "justified_refusals": 24,
+      "llm_calls": 0,
+      "llm_reserved": 0.0,
+      "llm_spent": 0.0,
+      "paid_correct_reward_per_unit": null,
+      "possible_reward": 503,
+      "reward": 300,
+      "seconds": 0.6676376020004682,
+      "skip_fraction": 0.578125,
+      "skipped": 74,
+      "total": 128,
+      "unanswerable": 24,
+      "unverified": 0,
+      "wrong": 0
+    }
+  },
+  "missing_answerable_non_coding": {
+    "local": {
+      "all": {
+        "data_analysis": 5,
+        "math": 10,
+        "search": 6
+      },
+      "development": {
+        "math": 3,
+        "search": 2
+      }
+    },
+    "mock-good": {
+      "all": {
+        "data_analysis": 4,
+        "math": 10,
+        "search": 6
+      },
+      "development": {
+        "math": 3,
+        "search": 2
+      }
+    }
+  },
+  "mock_good": {
+    "budget_state": {
+      "available": "99915.4",
+      "frozen": false,
+      "limit": 100000,
+      "reserved": "0.0",
+      "spent": "84.6",
+      "uncertain_calls": 0
+    },
+    "summary": {
+      "answer_precision": 1.0,
+      "answerable": 104,
+      "correct": 55,
+      "false_negative_skips": 49,
+      "false_positive_fraction": 0.0,
+      "justified_refusal_recall": 1.0,
+      "justified_refusals": 24,
+      "llm_calls": 1,
+      "llm_reserved": 0.0,
+      "llm_spent": 84.6,
+      "paid_correct_reward_per_unit": 0.0591016548463357,
+      "possible_reward": 503,
+      "reward": 305,
+      "seconds": 0.8571413449990359,
+      "skip_fraction": 0.5703125,
+      "skipped": 73,
+      "total": 128,
+      "unanswerable": 24,
+      "unverified": 0,
+      "wrong": 0
+    }
+  },
+  "qualification_pairs": [
+    {
+      "calls": 0,
+      "correct": 2,
+      "mode": "local",
+      "pair_id": "pair_01",
+      "spent": 0.0,
+      "tasks": [
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "math_d01",
+          "task_type": "math"
+        },
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "math_h02",
+          "task_type": "math"
+        }
+      ],
+      "wrong": 0
+    },
+    {
+      "calls": 0,
+      "correct": 1,
+      "mode": "local",
+      "pair_id": "pair_02",
+      "spent": 0.0,
+      "tasks": [
+        {
+          "cause": "fallback_disabled_local_mode",
+          "outcome": "budget_blocked",
+          "status": "skipped",
+          "task_id": "math_d08",
+          "task_type": "math"
+        },
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "math_h16",
+          "task_type": "math"
+        }
+      ],
+      "wrong": 0
+    },
+    {
+      "calls": 0,
+      "correct": 2,
+      "mode": "local",
+      "pair_id": "pair_03",
+      "spent": 0.0,
+      "tasks": [
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "math_d15",
+          "task_type": "math"
+        },
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "math_h15",
+          "task_type": "math"
+        }
+      ],
+      "wrong": 0
+    },
+    {
+      "calls": 0,
+      "correct": 1,
+      "mode": "local",
+      "pair_id": "pair_04",
+      "spent": 0.0,
+      "tasks": [
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "math_d09",
+          "task_type": "math"
+        },
+        {
+          "cause": "fallback_disabled_local_mode",
+          "outcome": "budget_blocked",
+          "status": "skipped",
+          "task_id": "math_h08",
+          "task_type": "math"
+        }
+      ],
+      "wrong": 0
+    },
+    {
+      "calls": 0,
+      "correct": 2,
+      "mode": "local",
+      "pair_id": "pair_05",
+      "spent": 0.0,
+      "tasks": [
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "math_d04",
+          "task_type": "math"
+        },
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "search_d01",
+          "task_type": "search"
+        }
+      ],
+      "wrong": 0
+    },
+    {
+      "calls": 0,
+      "correct": 0,
+      "mode": "local",
+      "pair_id": "pair_06",
+      "spent": 0.0,
+      "tasks": [
+        {
+          "cause": "fallback_disabled_local_mode",
+          "outcome": "budget_blocked",
+          "status": "skipped",
+          "task_id": "math_h07",
+          "task_type": "math"
+        },
+        {
+          "cause": "routing_or_grounding",
+          "outcome": "insufficient_evidence",
+          "status": "skipped",
+          "task_id": "search_h08",
+          "task_type": "search"
+        }
+      ],
+      "wrong": 0
+    },
+    {
+      "calls": 0,
+      "correct": 2,
+      "mode": "local",
+      "pair_id": "pair_07",
+      "spent": 0.0,
+      "tasks": [
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "math_d15",
+          "task_type": "math"
+        },
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "search_d15",
+          "task_type": "search"
+        }
+      ],
+      "wrong": 0
+    },
+    {
+      "calls": 0,
+      "correct": 2,
+      "mode": "local",
+      "pair_id": "pair_08",
+      "spent": 0.0,
+      "tasks": [
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "math_h04",
+          "task_type": "math"
+        },
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "search_h02",
+          "task_type": "search"
+        }
+      ],
+      "wrong": 0
+    },
+    {
+      "calls": 0,
+      "correct": 2,
+      "mode": "local",
+      "pair_id": "pair_09",
+      "spent": 0.0,
+      "tasks": [
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "data_analysis_d01",
+          "task_type": "data_analysis"
+        },
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "math_d07",
+          "task_type": "math"
+        }
+      ],
+      "wrong": 0
+    },
+    {
+      "calls": 0,
+      "correct": 0,
+      "mode": "local",
+      "pair_id": "pair_10",
+      "spent": 0.0,
+      "tasks": [
+        {
+          "cause": "fallback_disabled_local_mode",
+          "outcome": "budget_blocked",
+          "status": "skipped",
+          "task_id": "data_analysis_h08",
+          "task_type": "data_analysis"
+        },
+        {
+          "cause": "fallback_disabled_local_mode",
+          "outcome": "budget_blocked",
+          "status": "skipped",
+          "task_id": "math_h06",
+          "task_type": "math"
+        }
+      ],
+      "wrong": 0
+    },
+    {
+      "calls": 0,
+      "correct": 1,
+      "mode": "local",
+      "pair_id": "pair_11",
+      "spent": 0.0,
+      "tasks": [
+        {
+          "cause": "fallback_disabled_local_mode",
+          "outcome": "budget_blocked",
+          "status": "skipped",
+          "task_id": "data_analysis_h15",
+          "task_type": "data_analysis"
+        },
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "math_h15",
+          "task_type": "math"
+        }
+      ],
+      "wrong": 0
+    },
+    {
+      "calls": 0,
+      "correct": 1,
+      "mode": "local",
+      "pair_id": "pair_12",
+      "spent": 0.0,
+      "tasks": [
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "data_analysis_d12",
+          "task_type": "data_analysis"
+        },
+        {
+          "cause": "fallback_disabled_local_mode",
+          "outcome": "budget_blocked",
+          "status": "skipped",
+          "task_id": "math_d10",
+          "task_type": "math"
+        }
+      ],
+      "wrong": 0
+    },
+    {
+      "calls": 0,
+      "correct": 2,
+      "mode": "local",
+      "pair_id": "pair_13",
+      "spent": 0.0,
+      "tasks": [
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "data_analysis_h05",
+          "task_type": "data_analysis"
+        },
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "search_d03",
+          "task_type": "search"
+        }
+      ],
+      "wrong": 0
+    },
+    {
+      "calls": 0,
+      "correct": 2,
+      "mode": "local",
+      "pair_id": "pair_14",
+      "spent": 0.0,
+      "tasks": [
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "data_analysis_d13",
+          "task_type": "data_analysis"
+        },
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "search_d08",
+          "task_type": "search"
+        }
+      ],
+      "wrong": 0
+    },
+    {
+      "calls": 0,
+      "correct": 2,
+      "mode": "local",
+      "pair_id": "pair_15",
+      "spent": 0.0,
+      "tasks": [
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "data_analysis_d14",
+          "task_type": "data_analysis"
+        },
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "search_h15",
+          "task_type": "search"
+        }
+      ],
+      "wrong": 0
+    },
+    {
+      "calls": 0,
+      "correct": 1,
+      "mode": "local",
+      "pair_id": "pair_16",
+      "spent": 0.0,
+      "tasks": [
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "data_analysis_h14",
+          "task_type": "data_analysis"
+        },
+        {
+          "cause": "routing_or_grounding",
+          "outcome": "insufficient_evidence",
+          "status": "skipped",
+          "task_id": "search_d14",
+          "task_type": "search"
+        }
+      ],
+      "wrong": 0
+    },
+    {
+      "calls": 0,
+      "correct": 1,
+      "mode": "local",
+      "pair_id": "pair_17",
+      "spent": 0.0,
+      "tasks": [
+        {
+          "cause": "coding_disabled",
+          "outcome": "unsafe",
+          "status": "skipped",
+          "task_id": "coding_d01",
+          "task_type": "coding"
+        },
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "math_d01",
+          "task_type": "math"
+        }
+      ],
+      "wrong": 0
+    },
+    {
+      "calls": 0,
+      "correct": 1,
+      "mode": "local",
+      "pair_id": "pair_18",
+      "spent": 0.0,
+      "tasks": [
+        {
+          "cause": "coding_disabled",
+          "outcome": "unsafe",
+          "status": "skipped",
+          "task_id": "coding_h05",
+          "task_type": "coding"
+        },
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "search_d08",
+          "task_type": "search"
+        }
+      ],
+      "wrong": 0
+    },
+    {
+      "calls": 0,
+      "correct": 1,
+      "mode": "local",
+      "pair_id": "pair_19",
+      "spent": 0.0,
+      "tasks": [
+        {
+          "cause": "coding_disabled",
+          "outcome": "unsafe",
+          "status": "skipped",
+          "task_id": "coding_d07",
+          "task_type": "coding"
+        },
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "data_analysis_d01",
+          "task_type": "data_analysis"
+        }
+      ],
+      "wrong": 0
+    },
+    {
+      "calls": 0,
+      "correct": 0,
+      "mode": "local",
+      "pair_id": "pair_20",
+      "spent": 0.0,
+      "tasks": [
+        {
+          "cause": "coding_disabled",
+          "outcome": "unsafe",
+          "status": "skipped",
+          "task_id": "coding_d02",
+          "task_type": "coding"
+        },
+        {
+          "cause": "coding_disabled",
+          "outcome": "unsafe",
+          "status": "skipped",
+          "task_id": "coding_h13",
+          "task_type": "coding"
+        }
+      ],
+      "wrong": 0
+    },
+    {
+      "calls": 0,
+      "correct": 2,
+      "mode": "mock-good",
+      "pair_id": "pair_01",
+      "spent": 0.0,
+      "tasks": [
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "math_d01",
+          "task_type": "math"
+        },
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "math_h02",
+          "task_type": "math"
+        }
+      ],
+      "wrong": 0
+    },
+    {
+      "calls": 0,
+      "correct": 1,
+      "mode": "mock-good",
+      "pair_id": "pair_02",
+      "spent": 0.0,
+      "tasks": [
+        {
+          "cause": "unsupported_validated_route",
+          "outcome": "unsupported",
+          "status": "skipped",
+          "task_id": "math_d08",
+          "task_type": "math"
+        },
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "math_h16",
+          "task_type": "math"
+        }
+      ],
+      "wrong": 0
+    },
+    {
+      "calls": 0,
+      "correct": 2,
+      "mode": "mock-good",
+      "pair_id": "pair_03",
+      "spent": 0.0,
+      "tasks": [
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "math_d15",
+          "task_type": "math"
+        },
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "math_h15",
+          "task_type": "math"
+        }
+      ],
+      "wrong": 0
+    },
+    {
+      "calls": 0,
+      "correct": 1,
+      "mode": "mock-good",
+      "pair_id": "pair_04",
+      "spent": 0.0,
+      "tasks": [
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "math_d09",
+          "task_type": "math"
+        },
+        {
+          "cause": "unsupported_validated_route",
+          "outcome": "unsupported",
+          "status": "skipped",
+          "task_id": "math_h08",
+          "task_type": "math"
+        }
+      ],
+      "wrong": 0
+    },
+    {
+      "calls": 0,
+      "correct": 2,
+      "mode": "mock-good",
+      "pair_id": "pair_05",
+      "spent": 0.0,
+      "tasks": [
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "math_d04",
+          "task_type": "math"
+        },
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "search_d01",
+          "task_type": "search"
+        }
+      ],
+      "wrong": 0
+    },
+    {
+      "calls": 0,
+      "correct": 0,
+      "mode": "mock-good",
+      "pair_id": "pair_06",
+      "spent": 0.0,
+      "tasks": [
+        {
+          "cause": "unsupported_validated_route",
+          "outcome": "unsupported",
+          "status": "skipped",
+          "task_id": "math_h07",
+          "task_type": "math"
+        },
+        {
+          "cause": "routing_or_grounding",
+          "outcome": "insufficient_evidence",
+          "status": "skipped",
+          "task_id": "search_h08",
+          "task_type": "search"
+        }
+      ],
+      "wrong": 0
+    },
+    {
+      "calls": 0,
+      "correct": 2,
+      "mode": "mock-good",
+      "pair_id": "pair_07",
+      "spent": 0.0,
+      "tasks": [
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "math_d15",
+          "task_type": "math"
+        },
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "search_d15",
+          "task_type": "search"
+        }
+      ],
+      "wrong": 0
+    },
+    {
+      "calls": 0,
+      "correct": 2,
+      "mode": "mock-good",
+      "pair_id": "pair_08",
+      "spent": 0.0,
+      "tasks": [
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "math_h04",
+          "task_type": "math"
+        },
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "search_h02",
+          "task_type": "search"
+        }
+      ],
+      "wrong": 0
+    },
+    {
+      "calls": 0,
+      "correct": 2,
+      "mode": "mock-good",
+      "pair_id": "pair_09",
+      "spent": 0.0,
+      "tasks": [
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "data_analysis_d01",
+          "task_type": "data_analysis"
+        },
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "math_d07",
+          "task_type": "math"
+        }
+      ],
+      "wrong": 0
+    },
+    {
+      "calls": 0,
+      "correct": 0,
+      "mode": "mock-good",
+      "pair_id": "pair_10",
+      "spent": 0.0,
+      "tasks": [
+        {
+          "cause": "unsupported_validated_route",
+          "outcome": "unsupported",
+          "status": "skipped",
+          "task_id": "data_analysis_h08",
+          "task_type": "data_analysis"
+        },
+        {
+          "cause": "unsupported_validated_route",
+          "outcome": "unsupported",
+          "status": "skipped",
+          "task_id": "math_h06",
+          "task_type": "math"
+        }
+      ],
+      "wrong": 0
+    },
+    {
+      "calls": 1,
+      "correct": 2,
+      "mode": "mock-good",
+      "pair_id": "pair_11",
+      "spent": 84.6,
+      "tasks": [
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "data_analysis_h15",
+          "task_type": "data_analysis"
+        },
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "math_h15",
+          "task_type": "math"
+        }
+      ],
+      "wrong": 0
+    },
+    {
+      "calls": 0,
+      "correct": 1,
+      "mode": "mock-good",
+      "pair_id": "pair_12",
+      "spent": 0.0,
+      "tasks": [
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "data_analysis_d12",
+          "task_type": "data_analysis"
+        },
+        {
+          "cause": "unsupported_validated_route",
+          "outcome": "unsupported",
+          "status": "skipped",
+          "task_id": "math_d10",
+          "task_type": "math"
+        }
+      ],
+      "wrong": 0
+    },
+    {
+      "calls": 0,
+      "correct": 2,
+      "mode": "mock-good",
+      "pair_id": "pair_13",
+      "spent": 0.0,
+      "tasks": [
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "data_analysis_h05",
+          "task_type": "data_analysis"
+        },
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "search_d03",
+          "task_type": "search"
+        }
+      ],
+      "wrong": 0
+    },
+    {
+      "calls": 0,
+      "correct": 2,
+      "mode": "mock-good",
+      "pair_id": "pair_14",
+      "spent": 0.0,
+      "tasks": [
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "data_analysis_d13",
+          "task_type": "data_analysis"
+        },
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "search_d08",
+          "task_type": "search"
+        }
+      ],
+      "wrong": 0
+    },
+    {
+      "calls": 0,
+      "correct": 2,
+      "mode": "mock-good",
+      "pair_id": "pair_15",
+      "spent": 0.0,
+      "tasks": [
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "data_analysis_d14",
+          "task_type": "data_analysis"
+        },
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "search_h15",
+          "task_type": "search"
+        }
+      ],
+      "wrong": 0
+    },
+    {
+      "calls": 0,
+      "correct": 1,
+      "mode": "mock-good",
+      "pair_id": "pair_16",
+      "spent": 0.0,
+      "tasks": [
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "data_analysis_h14",
+          "task_type": "data_analysis"
+        },
+        {
+          "cause": "routing_or_grounding",
+          "outcome": "insufficient_evidence",
+          "status": "skipped",
+          "task_id": "search_d14",
+          "task_type": "search"
+        }
+      ],
+      "wrong": 0
+    },
+    {
+      "calls": 0,
+      "correct": 1,
+      "mode": "mock-good",
+      "pair_id": "pair_17",
+      "spent": 0.0,
+      "tasks": [
+        {
+          "cause": "coding_disabled",
+          "outcome": "unsafe",
+          "status": "skipped",
+          "task_id": "coding_d01",
+          "task_type": "coding"
+        },
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "math_d01",
+          "task_type": "math"
+        }
+      ],
+      "wrong": 0
+    },
+    {
+      "calls": 0,
+      "correct": 1,
+      "mode": "mock-good",
+      "pair_id": "pair_18",
+      "spent": 0.0,
+      "tasks": [
+        {
+          "cause": "coding_disabled",
+          "outcome": "unsafe",
+          "status": "skipped",
+          "task_id": "coding_h05",
+          "task_type": "coding"
+        },
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "search_d08",
+          "task_type": "search"
+        }
+      ],
+      "wrong": 0
+    },
+    {
+      "calls": 0,
+      "correct": 1,
+      "mode": "mock-good",
+      "pair_id": "pair_19",
+      "spent": 0.0,
+      "tasks": [
+        {
+          "cause": "coding_disabled",
+          "outcome": "unsafe",
+          "status": "skipped",
+          "task_id": "coding_d07",
+          "task_type": "coding"
+        },
+        {
+          "cause": "correct",
+          "outcome": "solved",
+          "status": "correct",
+          "task_id": "data_analysis_d01",
+          "task_type": "data_analysis"
+        }
+      ],
+      "wrong": 0
+    },
+    {
+      "calls": 0,
+      "correct": 0,
+      "mode": "mock-good",
+      "pair_id": "pair_20",
+      "spent": 0.0,
+      "tasks": [
+        {
+          "cause": "coding_disabled",
+          "outcome": "unsafe",
+          "status": "skipped",
+          "task_id": "coding_d02",
+          "task_type": "coding"
+        },
+        {
+          "cause": "coding_disabled",
+          "outcome": "unsafe",
+          "status": "skipped",
+          "task_id": "coding_h13",
+          "task_type": "coding"
+        }
+      ],
+      "wrong": 0
+    }
+  ],
+  "real_llm_requests": 0,
+  "scope": "offline independent stress test; no benchmark inputs used to generate scenarios; no LIVE calls",
+  "stages": {
+    "before": {
+      "development": {
+        "answer_precision": 1.0,
+        "answerable": 52,
+        "correct": 33,
+        "false_negative_skips": 19,
+        "false_positive_fraction": 0.0,
+        "justified_refusal_recall": 1.0,
+        "justified_refusals": 12,
+        "llm_calls": 0,
+        "llm_reserved": 0.0,
+        "llm_spent": 0.0,
+        "paid_correct_reward_per_unit": null,
+        "possible_reward": 287,
+        "reward": 211,
+        "seconds": 0.31134053000005224,
+        "skip_fraction": 0.484375,
+        "skipped": 31,
+        "total": 64,
+        "unanswerable": 12,
+        "unverified": 0,
+        "wrong": 0
+      },
+      "independent": {
+        "correct": 16,
+        "missed": 5,
+        "safe_refusal": 12,
+        "wrong": 3
+      },
+      "qualification": {
+        "local": {
+          "0/2": 3,
+          "1/2": 8,
+          "2/2": 9,
+          "causes": {
+            "coding_disabled": 5,
+            "correct": 26,
+            "fallback_disabled_local_mode": 7,
+            "routing_or_grounding": 2
+          }
+        },
+        "mock-good": {
+          "0/2": 3,
+          "1/2": 7,
+          "2/2": 10,
+          "causes": {
+            "coding_disabled": 5,
+            "correct": 27,
+            "routing_or_grounding": 2,
+            "unsupported_validated_route": 6
+          }
+        }
+      },
+      "runtime_sha256": {
+        ".dockerignore": "cf5e437662e0eabe0be727cf8e86d482c41e6768a4ef222b28540085e3eab9a5",
+        "Dockerfile": "fa31e22d5ca58014cdf56e0a83899dd6f96caf97f5421c0d6ae9aca4ebf00fe6",
+        "budget_manager.py": "8259d00cf23cb1c5f0bd2162784f0c91dc005cf570e99d9a4cfb30929abcbb4f",
+        "coding_solver.py": "e64d5913e831c72a2afd36e70512f290886d8fd7be577ed38d6a57ac3c30d9e7",
+        "data_solver.py": "c4a9b0b1e56c0b06685a5d88df0aafa2fc11644bf7c658c7e5da928de457712a",
+        "harness.py": "2e08007cc5632db92f1f1d17e56374a14a03f0f81bbdff4075c2c10cd38b1a3a",
+        "llm_fallback.py": "d9c71832f892a3a1114d883eea39876caa5e98f3114c5533f5a0c943670e8020",
+        "llm_gateway.py": "c17dbf2de2655965a88cc00f0ee709de81621770a44fa824b27cec560d923b13",
+        "math_solver.py": "a0f7ed37aea686536ef226260530dddbf611dd67da50b3784da593c32644bc29",
+        "plan_semantics.py": "23bd5a40b73b66e7f16921065adf37be8286bb51cb5c1913b3211d784669c31c",
+        "planner.py": "4db10378746a8decbf556defbcbc207afc7fc472cb8827404ba89c15beec3b8d",
+        "requirements.txt": "d8c2924d446449dfd156153333b01a3ae0ef3fd0da64acfe36eae937663a3da3",
+        "run_agent.py": "88938b2c66ddcf2b7428976390433c6c719cbcdbdc8969a07346effbdbaf401c",
+        "runtime_limits.py": "cdd72e8fc6bc119b6cd76fe4560a910552c80e04edb27e2d3d29cb1d3821e669",
+        "safe_files.py": "04aa6c98f6da2555b80ab298d0937ea32f39a0deea0710fa78e97d849d6c7cfb",
+        "search_solver.py": "8d738f7336686c5757b6ececde114eccbc2fb4468c050bb80fd1d54a03808535"
+      }
+    },
+    "inverse_scope": {
+      "development": {
+        "answer_precision": 1.0,
+        "answerable": 52,
+        "correct": 33,
+        "false_negative_skips": 19,
+        "false_positive_fraction": 0.0,
+        "justified_refusal_recall": 1.0,
+        "justified_refusals": 12,
+        "llm_calls": 0,
+        "llm_reserved": 0.0,
+        "llm_spent": 0.0,
+        "paid_correct_reward_per_unit": null,
+        "possible_reward": 287,
+        "reward": 211,
+        "seconds": 0.3249225190047582,
+        "skip_fraction": 0.484375,
+        "skipped": 31,
+        "total": 64,
+        "unanswerable": 12,
+        "unverified": 0,
+        "wrong": 0
+      },
+      "independent": {
+        "correct": 18,
+        "missed": 3,
+        "safe_refusal": 15,
+        "wrong": 0
+      },
+      "qualification": {
+        "local": {
+          "0/2": 3,
+          "1/2": 8,
+          "2/2": 9,
+          "calls": 0,
+          "causes": {
+            "coding_disabled": 5,
+            "correct": 26,
+            "fallback_disabled_local_mode": 7,
+            "routing_or_grounding": 2
+          }
+        },
+        "mock-good": {
+          "0/2": 3,
+          "1/2": 7,
+          "2/2": 10,
+          "calls": 1,
+          "causes": {
+            "coding_disabled": 5,
+            "correct": 27,
+            "routing_or_grounding": 2,
+            "unsupported_validated_route": 6
+          }
+        }
+      },
+      "runtime_sha256": {
+        ".dockerignore": "cf5e437662e0eabe0be727cf8e86d482c41e6768a4ef222b28540085e3eab9a5",
+        "Dockerfile": "fa31e22d5ca58014cdf56e0a83899dd6f96caf97f5421c0d6ae9aca4ebf00fe6",
+        "budget_manager.py": "8259d00cf23cb1c5f0bd2162784f0c91dc005cf570e99d9a4cfb30929abcbb4f",
+        "coding_solver.py": "e64d5913e831c72a2afd36e70512f290886d8fd7be577ed38d6a57ac3c30d9e7",
+        "data_solver.py": "c4a9b0b1e56c0b06685a5d88df0aafa2fc11644bf7c658c7e5da928de457712a",
+        "harness.py": "2e08007cc5632db92f1f1d17e56374a14a03f0f81bbdff4075c2c10cd38b1a3a",
+        "llm_fallback.py": "d9c71832f892a3a1114d883eea39876caa5e98f3114c5533f5a0c943670e8020",
+        "llm_gateway.py": "c17dbf2de2655965a88cc00f0ee709de81621770a44fa824b27cec560d923b13",
+        "math_solver.py": "a0f7ed37aea686536ef226260530dddbf611dd67da50b3784da593c32644bc29",
+        "plan_semantics.py": "569b9b35638f0f28e836e2cb68d862962ff1015d7b60f91a2a19c291663aa104",
+        "planner.py": "4db10378746a8decbf556defbcbc207afc7fc472cb8827404ba89c15beec3b8d",
+        "requirements.txt": "d8c2924d446449dfd156153333b01a3ae0ef3fd0da64acfe36eae937663a3da3",
+        "run_agent.py": "88938b2c66ddcf2b7428976390433c6c719cbcdbdc8969a07346effbdbaf401c",
+        "runtime_limits.py": "cdd72e8fc6bc119b6cd76fe4560a910552c80e04edb27e2d3d29cb1d3821e669",
+        "safe_files.py": "04aa6c98f6da2555b80ab298d0937ea32f39a0deea0710fa78e97d849d6c7cfb",
+        "search_solver.py": "01d75a73c61ece5a60e458dd317c8c6108d2e3fb63ec3adb0475e55f2ea494bd"
+      }
+    },
+    "units_guard": {
+      "development": {
+        "answer_precision": 1.0,
+        "answerable": 52,
+        "correct": 33,
+        "false_negative_skips": 19,
+        "false_positive_fraction": 0.0,
+        "justified_refusal_recall": 1.0,
+        "justified_refusals": 12,
+        "llm_calls": 0,
+        "llm_reserved": 0.0,
+        "llm_spent": 0.0,
+        "paid_correct_reward_per_unit": null,
+        "possible_reward": 287,
+        "reward": 211,
+        "seconds": 0.3389322590028314,
+        "skip_fraction": 0.484375,
+        "skipped": 31,
+        "total": 64,
+        "unanswerable": 12,
+        "unverified": 0,
+        "wrong": 0
+      },
+      "independent": {
+        "correct": 16,
+        "missed": 5,
+        "safe_refusal": 15,
+        "wrong": 0
+      },
+      "qualification": {
+        "local": {
+          "0/2": 3,
+          "1/2": 8,
+          "2/2": 9,
+          "calls": 0,
+          "causes": {
+            "coding_disabled": 5,
+            "correct": 26,
+            "fallback_disabled_local_mode": 7,
+            "routing_or_grounding": 2
+          }
+        },
+        "mock-good": {
+          "0/2": 3,
+          "1/2": 7,
+          "2/2": 10,
+          "calls": 1,
+          "causes": {
+            "coding_disabled": 5,
+            "correct": 27,
+            "routing_or_grounding": 2,
+            "unsupported_validated_route": 6
+          }
+        }
+      },
+      "runtime_sha256": {
+        ".dockerignore": "cf5e437662e0eabe0be727cf8e86d482c41e6768a4ef222b28540085e3eab9a5",
+        "Dockerfile": "fa31e22d5ca58014cdf56e0a83899dd6f96caf97f5421c0d6ae9aca4ebf00fe6",
+        "budget_manager.py": "8259d00cf23cb1c5f0bd2162784f0c91dc005cf570e99d9a4cfb30929abcbb4f",
+        "coding_solver.py": "e64d5913e831c72a2afd36e70512f290886d8fd7be577ed38d6a57ac3c30d9e7",
+        "data_solver.py": "c4a9b0b1e56c0b06685a5d88df0aafa2fc11644bf7c658c7e5da928de457712a",
+        "harness.py": "2e08007cc5632db92f1f1d17e56374a14a03f0f81bbdff4075c2c10cd38b1a3a",
+        "llm_fallback.py": "d9c71832f892a3a1114d883eea39876caa5e98f3114c5533f5a0c943670e8020",
+        "llm_gateway.py": "c17dbf2de2655965a88cc00f0ee709de81621770a44fa824b27cec560d923b13",
+        "math_solver.py": "a0f7ed37aea686536ef226260530dddbf611dd67da50b3784da593c32644bc29",
+        "plan_semantics.py": "569b9b35638f0f28e836e2cb68d862962ff1015d7b60f91a2a19c291663aa104",
+        "planner.py": "4db10378746a8decbf556defbcbc207afc7fc472cb8827404ba89c15beec3b8d",
+        "requirements.txt": "d8c2924d446449dfd156153333b01a3ae0ef3fd0da64acfe36eae937663a3da3",
+        "run_agent.py": "88938b2c66ddcf2b7428976390433c6c719cbcdbdc8969a07346effbdbaf401c",
+        "runtime_limits.py": "cdd72e8fc6bc119b6cd76fe4560a910552c80e04edb27e2d3d29cb1d3821e669",
+        "safe_files.py": "04aa6c98f6da2555b80ab298d0937ea32f39a0deea0710fa78e97d849d6c7cfb",
+        "search_solver.py": "8d738f7336686c5757b6ececde114eccbc2fb4468c050bb80fd1d54a03808535"
+      }
+    }
+  },
+  "tests": {
+    "docker": 643,
+    "docker_seconds": 445.955,
+    "new_targets": 46,
+    "new_targets_seconds": 1.833,
+    "old_tests": 597,
+    "wsl": 643,
+    "wsl_seconds": 367.635
+  }
+}

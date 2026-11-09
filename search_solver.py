@@ -51,6 +51,7 @@ class _Knowledge(dict):
         super().__init__()
         self.labels = {}
         self.aliases = {}
+        self.mentor_subjects = set()
 
 
 def _name(value: str) -> str:
@@ -141,6 +142,10 @@ def _load_kb(task_dir: Path) -> tuple[dict, set[str]]:
                 raise UnsupportedSearch("cannot read the complete knowledge base")
             for label, facts in _records(text):
                 entity = _name(label)
+                # Keep this across all records, including ones later replaced
+                # by conflicting profiles that omit their earlier Mentor field.
+                if "mentor" in facts:
+                    index.mentor_subjects.add(entity)
                 index.labels.setdefault(entity, set()).add(label)
                 # Preserve every alias binding, even from conflicting records.
                 for alias in facts.get("alias", ()):
@@ -164,7 +169,10 @@ def solve_search(instruction: str, task_dir: Path) -> str:
         index, ambiguous = _load_kb(task_dir)
         target = _resolve_entity(inverse[1], index)
         _check_literal_expression(inverse[1], index)
-        if target is None or ambiguous:
+        # Unrelated birth/employer/city conflicts cannot change the inverse
+        # Mentor answer. All conflicting Mentor-bearing profiles and the target
+        # remain blockers; never discard an earlier possible competing edge.
+        if target is None or ambiguous & (index.mentor_subjects | {target}):
             raise UnsupportedSearch("missing or ambiguous inverse relation evidence")
         candidates = set()
         for entity, facts in index.items():
