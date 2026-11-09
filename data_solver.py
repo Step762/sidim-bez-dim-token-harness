@@ -1,4 +1,4 @@
-"""Streaming CSV aggregates for explicitly supported instructions."""
+"""Streaming CSV aggregates and bounded first-row ranking for explicit instructions."""
 
 import csv
 from fractions import Fraction
@@ -72,8 +72,18 @@ _GROUPED = re.compile(
     rf"(?: where (?P<filters>.+?))?\.(?P<suffix>{_SUFFIX.pattern})",
     re.IGNORECASE | re.DOTALL,
 )
+_SORT_FIRST = re.compile(
+    rf"(?:In|Using) (?P<filename>[A-Za-z0-9_./-]+\.csv), sort by "
+    rf"(?P<primary>{_IDENT})(?: numerically)? (?P<order>ascending|descending) and "
+    rf"(?P<secondary>{_IDENT})(?P<lexical> lexicographically)? "
+    rf"(?P<tie_order>ascending|descending) to break ties\. "
+    rf"Return the (?P<result>{_IDENT}) of the first row\.(?P<suffix>{_SUFFIX.pattern})",
+    re.IGNORECASE,
+)
 MAX_GROUPS = 10000
 MAX_OR_BRANCHES = 8
+MAX_SORT_LITERAL = 80
+MAX_SORT_LABEL = 512
 
 
 def _number(value: str) -> Fraction:
@@ -277,6 +287,56 @@ def _analyze(stream, question: str, *, grouped=None) -> str:
                           for key in sorted(groups)) + "}"
 
 
+def _first_row(stream, specification) -> str:
+    """Select top-1 in one pass; a full tie must determine the same output."""
+    reader = csv.reader(stream, strict=True)
+    header = next(reader, [])
+    if not header or any(not name.strip() for name in header) or len(set(header)) != len(header):
+        raise UnsupportedData("missing, empty or duplicate CSV headers")
+    primary, secondary, result = (specification[k] for k in ("primary", "secondary", "result"))
+    if not {primary, secondary, result} <= set(header):
+        raise UnsupportedData("requested column is absent from CSV")
+    if primary == secondary:
+        raise UnsupportedData("ranking needs two distinct sort columns")
+    positions = {name: header.index(name) for name in (primary, secondary, result)}
+    descending = specification["order"].lower() == "descending"
+    tie_descending = specification["tie_order"].lower() == "descending"
+    best = None
+    answer = None
+    ambiguous = False
+    text_style = None
+    for row in reader:
+        if not row:
+            continue
+        if len(row) != len(header):
+            raise UnsupportedData("CSV row has the wrong number of fields")
+        raw_number, label, value = (row[positions[name]] for name in (primary, secondary, result))
+        if len(raw_number) > MAX_SORT_LITERAL:
+            raise UnsupportedData("sort numeric literal limit exceeded")
+        number = _number(raw_number)
+        if not label.strip() or len(label) > MAX_SORT_LABEL or not value.strip():
+            raise UnsupportedData("ranking needs nonempty bounded labels and output values")
+        if not specification["lexical"]:
+            # Without an explicit lexical rule, accept only an unambiguous ASCII
+            # text domain. Numeric IDs, mixed case and locale ordering need a rule.
+            style = "lower" if label == label.lower() else "upper" if label == label.upper() else None
+            if (not label.isascii() or not label.isprintable() or label != label.strip()
+                or re.search(r"[A-Za-z]", label) is None or style is None
+                or text_style is not None and text_style != style):
+                raise UnsupportedData("text sort order requires an explicit lexicographic rule")
+            text_style = style
+        key = (number, label)
+        better = (best is None or (number > best[0] if descending else number < best[0])
+                  or number == best[0] and (label > best[1] if tie_descending else label < best[1]))
+        if better:
+            best, answer, ambiguous = key, value, False
+        elif key == best and value != answer:
+            ambiguous = True
+    if best is None or ambiguous:
+        raise UnsupportedData("first row has no unique supported output")
+    return answer
+
+
 def solve_data(instruction: str, task_dir: Path) -> str:
     # Normalize formatting outside literals without changing quoted field values.
     statement = re.sub(
@@ -285,7 +345,8 @@ def solve_data(instruction: str, task_dir: Path) -> str:
     parsed = _INSTRUCTION.fullmatch(statement)
     grouped = _GROUPED.fullmatch(statement)
     total = _CALCULATE_TOTAL.fullmatch(statement)
-    if (parsed is None or _SUFFIX.fullmatch(parsed["suffix"]) is None) and grouped is None and total is None:
+    ranked = _SORT_FIRST.fullmatch(statement)
+    if (parsed is None or _SUFFIX.fullmatch(parsed["suffix"]) is None) and grouped is None and total is None and ranked is None:
         raise UnsupportedData("unsupported analysis instructions")
     query = None
     if total is not None:
@@ -301,6 +362,8 @@ def solve_data(instruction: str, task_dir: Path) -> str:
         )
         query = (operation, grouped["column"],
                  _filter_groups(grouped["filters"], allow_or=True) if grouped["filters"] else [[]], grouped["group"])
+    if ranked is not None:
+        parsed = ranked
     try:
         workspace = task_dir / "workspace"
         relative = Path(parsed["filename"])
@@ -314,6 +377,8 @@ def solve_data(instruction: str, task_dir: Path) -> str:
             raise UnsupportedData("CSV points outside the current workspace")
         with open_text(task_dir, Path("workspace") / relative, maximum=CSV_BYTES,
                        encoding="utf-8-sig", newline="") as stream:
+            if ranked is not None:
+                return _first_row(stream, ranked)
             return _analyze(stream, "" if query else parsed["question"], grouped=query)
     except UnsupportedData:
         raise

@@ -153,7 +153,7 @@ def _prepare_search(problem, task_dir):
 
     def validate(plan):
         _keys(plan, {"entity", "relations", "field", "answer"})
-        if not isinstance(plan["entity"], str) or search_solver._name(plan["entity"]) != root:
+        if not isinstance(plan["entity"], str):
             raise InvalidPlan("answer is about an unrelated entity")
         chain = plan["relations"]
         if not isinstance(chain, list) or any(not isinstance(r, str) for r in chain) or chain != required_chain:
@@ -164,8 +164,11 @@ def _prepare_search(problem, task_dir):
         current, conflicts = search_solver._load_kb(task_dir)
         try:
             current_spec = search_spec(problem, current)
+            plan_subject = search_solver._resolve_entity(plan["entity"], current)
         except (UnsupportedMeaning, search_solver.UnsupportedSearch):
             raise InvalidPlan("search subject became ambiguous") from None
+        if plan_subject != root:
+            raise InvalidPlan("answer is about an unrelated entity")
         if current_spec != (root, required_chain, field):
             raise InvalidPlan("search evidence changed since preparation")
         entity = root

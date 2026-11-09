@@ -1,0 +1,68 @@
+{
+  "cheap": {
+    "eligible_tape_rows": 54,
+    "known_cost_rows": 54,
+    "brier": 0.25209108120140683,
+    "mean_estimated_success": 0.5076668627687719,
+    "observed_pipeline_success_on_tape": 0.7777777777777778,
+    "mean_estimated_cost": 1078.0148148148148,
+    "mean_actual_cost_on_tape": 916.162962962963,
+    "cost_mae": 323.48148148148147,
+    "scope": "conditional eligible tape; NOT real Qwen calibration; no forecasts updated"
+  },
+  "long_output": {
+    "eligible_tape_rows": 54,
+    "known_cost_rows": 54,
+    "brier": 0.25209108120140683,
+    "mean_estimated_success": 0.5076668627687719,
+    "observed_pipeline_success_on_tape": 0.7777777777777778,
+    "mean_estimated_cost": 2358.0148148148146,
+    "mean_actual_cost_on_tape": 3416.162962962963,
+    "cost_mae": 1058.148148148148,
+    "scope": "conditional eligible tape; NOT real Qwen calibration; no forecasts updated"
+  },
+  "time_pressure": {
+    "eligible_tape_rows": 54,
+    "known_cost_rows": 54,
+    "brier": 0.25209108120140683,
+    "mean_estimated_success": 0.5076668627687719,
+    "observed_pipeline_success_on_tape": 0.7777777777777778,
+    "mean_estimated_cost": 1078.0148148148148,
+    "mean_actual_cost_on_tape": 916.162962962963,
+    "cost_mae": 323.48148148148147,
+    "scope": "conditional eligible tape; NOT real Qwen calibration; no forecasts updated"
+  },
+  "unknown_usage": {
+    "eligible_tape_rows": 54,
+    "known_cost_rows": 53,
+    "brier": 0.2549400840504097,
+    "mean_estimated_success": 0.5076668627687719,
+    "observed_pipeline_success_on_tape": 0.7592592592592593,
+    "mean_estimated_cost": 1076.2509433962264,
+    "mean_actual_cost_on_tape": 922.0433962264151,
+    "cost_mae": 318.8867924528302,
+    "scope": "conditional eligible tape; NOT real Qwen calibration; no forecasts updated"
+  },
+  "development_mock": {
+    "eligible_tape_rows": 2,
+    "known_cost_rows": 2,
+    "brier": 0.12586805555555555,
+    "mean_estimated_success": 0.6458333333333334,
+    "observed_pipeline_success_on_tape": 1.0,
+    "mean_estimated_cost": 313.15,
+    "mean_actual_cost_on_tape": 71.8,
+    "cost_mae": 241.35,
+    "scope": "conditional eligible tape; NOT real Qwen calibration; no forecasts updated"
+  },
+  "frozen_evaluation_only": {
+    "eligible_tape_rows": 6,
+    "known_cost_rows": 6,
+    "brier": 0.1320043693841771,
+    "mean_estimated_success": 0.6372863247863247,
+    "observed_pipeline_success_on_tape": 1.0,
+    "mean_estimated_cost": 315.6,
+    "mean_actual_cost_on_tape": 75.7,
+    "cost_mae": 239.9,
+    "scope": "conditional eligible tape; NOT real Qwen calibration; no forecasts updated"
+  }
+}

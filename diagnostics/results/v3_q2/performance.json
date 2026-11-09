@@ -1,0 +1,14 @@
+{
+  "source": "independent_local_stress_workflow",
+  "rows_per_csv": 50000,
+  "csv_files": 2,
+  "total_tasks": 3,
+  "run_seconds": 2.4390946889998304,
+  "deadline": 20,
+  "operation_limit": 10,
+  "correct": 3,
+  "wrong": 0,
+  "max_rss_kib_including_SDK": 236760,
+  "calls": 0,
+  "spent": "0.0"
+}
