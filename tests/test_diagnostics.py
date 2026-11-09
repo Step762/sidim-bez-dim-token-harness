@@ -82,7 +82,7 @@ class DiagnosticTests(unittest.TestCase):
 
     def test_valid_mock_uses_real_workflow_ledger_and_immediate_publication(self):
         report=run_tasks_diagnostic()
-        self.assertEqual(report["counts"],{"solved":9,"skipped":3,"failed":0})
+        self.assertEqual(report["counts"],{"solved":10,"skipped":2,"failed":0})
         self.assertEqual(report["budget"]["spent"],"60.0")
         self.assertEqual(len(report["mock_requests"]),2)
         self.assertTrue(all(not request["reference_fields_present"] for request in report["mock_requests"]))
@@ -95,6 +95,8 @@ class DiagnosticTests(unittest.TestCase):
         self.assertEqual((total["actual"],total["request_sent"]),("35",False))
         rounded=next(r for r in report["rows"] if r["task_id"]=="math_d09")
         self.assertEqual((rounded["actual"],rounded["grade"],rounded["request_sent"]),("7.24","correct",False))
+        powered=next(r for r in report['rows'] if r['task_id']=='math_d08')
+        self.assertEqual((powered['actual'],powered['grade'],powered['request_sent']),('29','correct',False))
 
     def test_events_order_reservation_wire_validation_execution_and_answer(self):
         report=run_tasks_diagnostic(task_ids=["math_d15"])
@@ -170,7 +172,9 @@ class DiagnosticTests(unittest.TestCase):
         self.assertEqual(report["mock_requests"],[])
         grouped=next(row for row in report["rows"] if row["task_id"]=="data_analysis_d12")
         self.assertEqual((grouped["category"],grouped["grade"]),("success","correct"))
-        self.assertEqual({row["category"] for row in report["rows"] if row is not grouped},{"routing"})
+        powered=next(row for row in report['rows'] if row['task_id']=='math_d08')
+        self.assertEqual((powered['category'],powered['grade'],powered['actual']),('success','correct','29'))
+        self.assertEqual({row["category"] for row in report["rows"] if row not in (grouped,powered)},{"routing"})
         self.assertTrue(all(row["request_sent"] is False for row in report["rows"]))
 
     def test_all_http_error_codes_preserve_local_results_and_unknown_cost(self):
@@ -187,10 +191,12 @@ class DiagnosticTests(unittest.TestCase):
     def test_failure_freezes_shared_state_for_all_later_llm_candidates(self):
         report=run_tasks_diagnostic(scenario="http_503",task_ids=list(CHOICES))
         self.assertEqual(len(report["mock_requests"]),1)
-        self.assertEqual(report["counts"]["solved"],7)
+        self.assertEqual(report["counts"]["solved"],8)
         self.assertEqual(report["budget"]["uncertain_calls"],1)
         rounded=next(r for r in report["rows"] if r["task_id"]=="math_d09")
         self.assertEqual((rounded["actual"],rounded["request_sent"]),("7.24",False))
+        powered=next(r for r in report['rows'] if r['task_id']=='math_d08')
+        self.assertEqual((powered['actual'],powered['request_sent']),('29',False))
 
     def test_timeout_is_distinguished_and_never_retried(self):
         report=run_tasks_diagnostic(scenario="timeout")

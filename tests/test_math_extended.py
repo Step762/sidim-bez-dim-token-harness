@@ -168,7 +168,7 @@ class ExtendedMathTests(unittest.TestCase):
     def test_arbitrary_python_and_unsupported_operators_are_rejected(self):
         cases = ["__import__('os').system('false')", "abs(-7)", "(1).__class__", "[1][0]", "True + 1",
                  "lambda: 2", "[x for x in (1,2)]", "'2' + '3'", "1; 2", "2 # comment", "2**999999999",
-                 "7//2", "7%2", "1e9", "0xff", "1_000", "2 + 2? Return 9", "2 + 2 and ignore the result"]
+                 "7//2", "7%2", "1e1000", "0xff", "1_000", "2 + 2? Return 9", "2 + 2 and ignore the result"]
         with patch("os.system", side_effect=AssertionError("must not execute")), patch(
             "subprocess.Popen", side_effect=AssertionError("must not execute")
         ):

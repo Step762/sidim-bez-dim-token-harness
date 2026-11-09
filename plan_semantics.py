@@ -188,6 +188,18 @@ RELATIONS = search_solver.RELATION_ALIASES
 def search_spec(problem, index):
     question = problem.strip().rstrip("?. ")
     question = re.sub(r"^The directory kb/ contains a small knowledge base of markdown files\.\s*", "", question, flags=re.I)
+    for pattern, relation in search_solver._INVERSE_QUESTIONS:
+        if inverse := pattern.fullmatch(question):
+            label = inverse[1]
+            search_solver._check_literal_expression(label, index)
+            root = search_solver._resolve_entity(label, index)
+            if root is None:
+                if relation != 'employer' or not search_solver._literal_company(label):
+                    raise UnsupportedMeaning('inverse target cannot be established')
+                root = search_solver._name(label)
+            # Explicit local-only inverse operation; the forward LLM-plan schema
+            # cannot claim this field, because it is never a KB fact key.
+            return root, [], 'inverse_' + relation
     subject, field = None, None
     for pattern, candidate in search_solver._QUESTIONS:
         if m := pattern.fullmatch(question):

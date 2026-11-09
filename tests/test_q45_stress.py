@@ -33,7 +33,7 @@ class QualificationStressTests(unittest.TestCase):
 def scenario_test(key):
     def test(self):
         row = self.rows[key]
-        if row['required']:
+        if row['required'] or key in {'s_inverse_employer_boundary', 'm_scientific_boundary'}:
             self.assertIn(row['status'], ('correct', 'safe_refusal'), row)
         else:
             # Known unsupported boundary; recorded as a miss, never a guess.
