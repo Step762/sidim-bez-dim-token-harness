@@ -55,6 +55,49 @@ _ROUND = re.compile(
     rf"(?P<places>[0-9]+|{'|'.join(WORDS)}) decimal places? using round-half-up",
     re.IGNORECASE,
 )
+_LEFT_TO_RIGHT = re.compile(
+    r"(?:Evaluate|Calculate|Compute) (?P<expression>.+?) "
+    r"(?:(?:strictly )?from left to right(?:, ignoring (?:the )?usual precedence)?"
+    r"|using left-to-right order)", re.IGNORECASE,
+)
+
+
+def _ordered_expression(text):
+    """A flat sequence; parentheses and implicit precedence are unsupported."""
+    if not text or len(text)>MAX_EXPRESSION_CHARS:
+        raise UnsupportedMath("expression length limit exceeded")
+    position=0;values=[];operations=[]
+    while True:
+        match=re.match(r"\s*([+-]?\s*(?:[0-9]+(?:\.[0-9]*)?|\.[0-9]+))\s*",text[position:])
+        if match is None:
+            raise UnsupportedMath("invalid left-to-right operand")
+        literal=''.join(match[1].split())
+        if len(literal)>MAX_LITERAL_CHARS:
+            raise UnsupportedMath("numeric literal limit exceeded")
+        values.append(_bounded(Fraction(literal)));position+=match.end()
+        if len(values)>64:
+            raise UnsupportedMath("expression complexity limit exceeded")
+        if position==len(text):break
+        if text[position] not in '+-*/':
+            raise UnsupportedMath("unsupported left-to-right operator")
+        operations.append(text[position]);position+=1
+    if not operations:
+        raise UnsupportedMath("left-to-right request needs an operation")
+    return values,operations
+
+
+def _evaluate_ordered(parsed):
+    values,operations=parsed
+    result=values[0]
+    for op,value in zip(operations,values[1:]):
+        if op=='+':result+=value
+        elif op=='-':result-=value
+        elif op=='*':result*=value
+        elif value:
+            result/=value
+        else:raise UnsupportedMath("division by zero")
+        _bounded(result)
+    return result
 
 
 def _warehouse(problem):
@@ -187,7 +230,12 @@ def _request(instruction):
         if _SUFFIX.fullmatch(text[suffix.start():]) is None:
             raise UnsupportedMath("unsupported or extended output directions")
         text = text[:suffix.start()]
+    wrapper = re.match(r"Solve the following arithmetic: ",text,re.I)
+    if wrapper:
+        text=text[wrapper.end():]
     bare = text.rstrip(".?! ")
+    if ordered := _LEFT_TO_RIGHT.fullmatch(bare):
+        return "left_to_right", _ordered_expression(ordered['expression'])
     if rounded := _ROUND.fullmatch(bare):
         value, places = rounded["value"], rounded["places"].lower()
         if len(value) > MAX_LITERAL_CHARS or (places.isdecimal() and len(places) > 3):
@@ -232,6 +280,8 @@ def solve_math(instruction: str) -> int | str:
         whole, remainder = divmod(scaled.numerator, scaled.denominator)
         whole += 2 * remainder >= scaled.denominator
         return format_math(_bounded(Fraction(-whole if value < 0 else whole, scale)))
+    if kind == "left_to_right":
+        return format_math(_evaluate_ordered(parsed))
     if kind == "steps":
         initial, _, steps = parsed
         try:

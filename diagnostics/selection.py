@@ -67,17 +67,26 @@ def experiment_plan():
     rows = []
     for task_id,case in selection.items():
         task = case["task"]
+        # The historical baseline is evidence about that version only. A paid
+        # experiment must not keep calling a task already solved by this code.
+        try:
+            solver=harness.SOLVERS[task['task_type']]
+            if task['task_type']=='math':solver(task['instruction'])
+            else:solver(task['instruction'],DATASET/'tasks'/task_id)
+            local_status,local_result='solved','solved'
+        except ValueError as error:
+            local_status,local_result='skipped',harness.local_outcome(str(error))
         row = {"task_id":task_id,"task_type":task["task_type"],"reward":task["reward"],
                "reason":case["reason"],"expected":case["reference"]["answer"],
-               "local_status":case["local_status"],"local_answer":case["local_answer"],
-               "local_outcome":case["local_outcome"],"context_supported":False,
+               "historical_local_status":case["local_status"],"local_status":local_status,
+               "local_outcome":local_result,"context_supported":False,
                "natural_llm_candidate":False,"estimated_input":None,"reservation":None}
         try:
             prepared = prepare(task["task_type"],task["instruction"],DATASET/"tasks"/task_id)
             estimated = gateway.estimate_input(prepared.system,prepared.payload)
             row.update(context_supported=True,estimated_input=estimated,
                        reservation=str(Decimal(estimated)/10+A2_MAX_TOKENS))
-            row["natural_llm_candidate"] = case["local_status"]!="correct" and case["local_outcome"]=="budget_blocked"
+            row["natural_llm_candidate"] = local_status=='skipped' and local_result=='unsupported'
         except (ValueError,OSError,UnicodeError):
             pass
         rows.append(row)

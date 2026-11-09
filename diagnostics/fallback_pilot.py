@@ -1,7 +1,8 @@
 """Explicitly approved one-task pilot, independent of the blocked A2 gate.
 
-Default is offline preflight. The only live task is math_d15, one attempt, 512
-output tokens, cumulative budget 900 including the two reviewed A1 requests.
+Default is offline preflight. The original math_d15 experiment stays sealed.
+--search selects an independent one-time search_d15 experiment with all three
+team-confirmed historical requests charged against the same limit of 900.
 """
 
 import argparse
@@ -10,6 +11,9 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import sys
+import harness
+from search_solver import UnsupportedSearch
 
 from benchmark.evaluate import DATASET, runtime_fingerprint
 from budget_manager import BudgetManager, cost_tenths, units
@@ -37,6 +41,155 @@ HISTORY_DIAGNOSTICS = {
     "selection.py":"4a215126eec1bf072a73fa42f0dcb77bc93a364f9ccab3cfacf0117ed0b37d0c",
     "trace.py":"3ec61482774dc321073262ddc90b1def8ee2dd16dab16511a1093ba9344997d8",
 }
+
+# Independent, separately approved experiment; old A1/math journals are untouched.
+SEARCH_TASK = "search_d15"
+SEARCH_STATE = Path(__file__).resolve().parent/".search-pilot-state"
+SEARCH_INTENT = "search_d15.intent.json"
+SEARCH_RESULT = "search_d15.result.json"
+SEARCH_MAX_RESERVE = Decimal("694.3")
+
+
+def search_history_manager():
+    """Team-confirmed historical usage, not a new API receipt or A1 pass."""
+    manager = BudgetManager(LIMIT)
+    for task, inputs, outputs in (("a1_ack",35,11),("a1_math",53,7),("math_d15",181,111)):
+        request = "historical:"+task
+        manager.reserve(request,task,inputs,outputs)
+        manager.settle(request,inputs,outputs)
+    return manager
+
+
+def search_unclaimed():
+    if os.path.lexists(SEARCH_STATE):
+        with a1_resume.state_directory(root=SEARCH_STATE) as parent:
+            if os.listdir(parent):
+                raise a1_resume.ResumeBlocked("search pilot already claimed; inspect with --recover, never retry")
+
+
+def search_preflight(offline, *, task_id=SEARCH_TASK, model=DEFAULT_MODEL):
+    if task_id != SEARCH_TASK or model != DEFAULT_MODEL:
+        raise a1_resume.ResumeBlocked("only search_d15 and qwen3.6-35b-a3b-noreason are permitted")
+    validate_offline_receipt(offline)
+    search_unclaimed()
+    case = load_selection()[SEARCH_TASK]
+    if case["reference"]["split"] != "development" or case["task"]["task_type"] != "search":
+        raise a1_resume.ResumeBlocked("search pilot requires the frozen development task")
+    prepared = prepare("search",case["task"]["instruction"],DATASET/"tasks"/SEARCH_TASK)
+    try:
+        harness.SOLVERS['search'](case['task']['instruction'],DATASET/'tasks'/SEARCH_TASK)
+    except UnsupportedSearch:
+        pass
+    else:
+        raise a1_resume.ResumeBlocked("search task is already locally solvable; no paid pilot is needed")
+    manager = search_history_manager()
+    gateway = LLMGateway(a1_resume.BASE_URL,"synthetic-preflight",manager=manager,max_tokens=512,timeout=20)
+    estimate = gateway.estimate_input(prepared.system,prepared.payload)
+    reserve = Decimal(estimate)/10+512
+    if estimate > 2000 or reserve > min(manager.available, SEARCH_MAX_RESERVE):
+        raise a1_resume.ResumeBlocked("search input or full historical budget reservation exceeded")
+    return {"mode":"search_pilot_check","ready":True,"live":False,"task_id":SEARCH_TASK,
+            "model":DEFAULT_MODEL,"max_new_requests":1,"max_tokens":512,"http_timeout":20,
+            "input_limit":2000,"estimated_input":estimate,"reservation":str(reserve),
+            "budget_before":budget_summary(manager),"historical_attempts":3,
+            "runtime_sha256":runtime_fingerprint(),"diagnostic_sha256":diagnostic_fingerprint(),
+            "prompt_sha256":hashlib.sha256(json.dumps(gateway._messages(prepared.system,prepared.payload),
+                                                       ensure_ascii=False).encode()).hexdigest(),
+            "A1_contract_observed":False,"A2_permitted":False}
+
+
+def validate_search_config(config,scenario="valid"):
+    if (set(config)!={"base_url","api_key"} or scenario!="valid"
+            or BudgetManager.from_env().limit!=900 or config["base_url"]!=a1_resume.BASE_URL
+            or not isinstance(config["api_key"],str) or not config["api_key"].strip()
+            or any(c in config["api_key"] for c in "\r\n")):
+        raise a1_resume.ResumeBlocked("search configuration, budget or endpoint is not permitted")
+
+
+def run_search(offline, *, config=None, scenario="valid", workspace=None, task_id=SEARCH_TASK, model=DEFAULT_MODEL):
+    plan = search_preflight(offline,task_id=task_id,model=model)
+    if config is not None:
+        validate_search_config(config,scenario)
+    manager = search_history_manager()
+    intent = {**plan,"mode":"search_pilot_intent","live":config is not None,
+              "request_status":"may_have_been_sent","total_attempts_upper_bound":4}
+    with a1_resume.state_directory(root=SEARCH_STATE,create=True) as parent:
+        a1_resume.write_once(parent,SEARCH_INTENT,intent)
+        report = run_tasks_diagnostic(scenario=scenario,task_ids=[SEARCH_TASK],live_config=config,
+                                     search_manager=manager,search_forecast=plan,pilot_workspace=workspace)
+        row = report["rows"][0]
+        if row["usage_state"]!="confirmed": row["confirmed_cost"] = None
+        report.update(task_id=SEARCH_TASK,historical_confirmed_cost="155.9",historical_attempts=3,
+                      total_attempts_upper_bound=4,A1_contract_observed=False,A2_permitted=False,
+                      retry_permitted=False,forecast=plan,
+                      safety_stop=manager.snapshot()["frozen"] or row["response_contract_rejected"])
+        a1_resume.write_once(parent,SEARCH_RESULT,report)
+    return report
+
+
+def recover_search():
+    """Read-only analysis; never calls the runner, transport or credentials."""
+    with a1_resume.state_directory(root=SEARCH_STATE) as parent:
+        names = set(os.listdir(parent))
+        if SEARCH_INTENT not in names or names-{SEARCH_INTENT,SEARCH_RESULT}:
+            raise a1_resume.ResumeBlocked("unrecognised search state; manual review required")
+        if SEARCH_RESULT not in names:
+            return {"mode":"search_pilot_recovery","state":"uncertain","retry_permitted":False,
+                    "historical_confirmed_cost":"155.9","new_cost":None,
+                    "available_for_new_requests":"0.0","A2_permitted":False}
+        intent = read_record(SEARCH_STATE/SEARCH_INTENT)
+        report = read_record(SEARCH_STATE/SEARCH_RESULT)
+        if not isinstance(intent,dict) or not isinstance(report,dict):
+            raise a1_resume.ResumeBlocked("search state must contain JSON objects; manual review required")
+        expected = {k:v for k,v in intent.items() if k not in {"request_status","total_attempts_upper_bound"}}
+        expected.update(mode="search_pilot_check",live=False)
+        if (intent.get("mode")!="search_pilot_intent" or report.get("mode")!="search_pilot"
+            or report.get("task_id")!=SEARCH_TASK or report.get("model")!=DEFAULT_MODEL
+            or report.get("forecast")!=expected):
+            raise a1_resume.ResumeBlocked("search result or intent is inconsistent")
+        return {"mode":"search_pilot_recovery","state":"blocked" if report.get("safety_stop") else "completed","retry_permitted":False,
+                "A2_permitted":False,"result":report}
+
+
+def search_main(argv):
+    parser = argparse.ArgumentParser(description="One-time independent search_d15 pilot; no A2 permission.")
+    action = parser.add_mutually_exclusive_group()
+    action.add_argument("--live",action="store_true")
+    action.add_argument("--recover",action="store_true")
+    parser.add_argument("--offline-report",type=Path)
+    parser.add_argument("--output",type=Path)
+    parser.add_argument("--task-id",choices=(SEARCH_TASK,),default=SEARCH_TASK)
+    parser.add_argument("--model",choices=(DEFAULT_MODEL,),default=DEFAULT_MODEL)
+    args = parser.parse_args(argv)
+    stage = "recovery" if args.recover else "offline_receipt"
+    try:
+        if args.recover:
+            print(json.dumps(recover_search(),ensure_ascii=False)); return 0
+        if args.offline_report is None: raise a1_resume.ResumeBlocked("fresh offline receipt is required")
+        offline = read_receipt(args.offline_report)
+        stage = "task_preflight"
+        plan = search_preflight(offline,task_id=args.task_id,model=args.model)
+        if not args.live:
+            print(json.dumps(plan,ensure_ascii=False)); return 0
+        stage = "live_budget"
+        if args.output is None or BudgetManager.from_env().limit!=900:
+            raise a1_resume.ResumeBlocked("search live requires BUDGET=900 and a new private output directory")
+        stage = "output_directory"
+        with open_directory(args.output.absolute().parent) as parent:
+            os.mkdir(args.output.name,0o700,dir_fd=parent)
+        stage = "output_receipt"
+        with output_files(args.output/"report",live=True) as write:
+            stage = "live_configuration"
+            config = {"base_url":os.environ.get("LLM_BASE_URL",""),"api_key":os.environ.get("LLM_API_KEY","")}
+            validate_search_config(config)
+            stage = "one_shot_execution"
+            report = run_search(offline,config=config,workspace=args.output/"tasks")
+            write(report)
+        print(json.dumps({"mode":"search_pilot","grade":report["rows"][0]["grade"],"output":str(args.output)}))
+        return 0 if report["rows"][0]["grade"]=="correct" and not report["safety_stop"] else 1
+    except (ValueError,OSError,UnicodeError):
+        print(json.dumps({"ready":False,"stage":stage,"error":"search preflight/state/budget check failed; never retry automatically"}))
+        return 2
 
 
 def read_record(path,expected_sha=None):
@@ -140,6 +293,9 @@ def run_pilot(original,math_report,offline,*,config=None,scenario="valid",worksp
 
 
 def main(argv=None):
+    argv = list(sys.argv[1:] if argv is None else argv)
+    if "--search" in argv:
+        return search_main([arg for arg in argv if arg!="--search"])
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--a1-report",type=Path,required=True)
     parser.add_argument("--a1-resume-report",type=Path,required=True)

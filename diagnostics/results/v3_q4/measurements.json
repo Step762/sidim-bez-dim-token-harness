@@ -1,0 +1,795 @@
+{
+  "baseline_head": "7468e5f0cd057af435fc90ded19a33950250c4d0",
+  "coding_sandbox_confirmed": false,
+  "dataset_manifest_sha256": "2861a8eb1c07abb199d39066a5b65fea2920298dd252904e564846cecd537049",
+  "development_trials": {
+    "math": {
+      "answer_precision": 1.0,
+      "answerable": 52,
+      "correct": 33,
+      "false_negative_skips": 19,
+      "false_positive_fraction": 0.0,
+      "justified_refusal_recall": 1.0,
+      "justified_refusals": 12,
+      "llm_calls": 0,
+      "llm_reserved": 0.0,
+      "llm_spent": 0.0,
+      "paid_correct_reward_per_unit": null,
+      "possible_reward": 287,
+      "reward": 211,
+      "seconds": 0.28109696800038364,
+      "skip_fraction": 0.484375,
+      "skipped": 31,
+      "total": 64,
+      "unanswerable": 12,
+      "unverified": 0,
+      "wrong": 0
+    },
+    "search1": {
+      "answer_precision": 1.0,
+      "answerable": 52,
+      "correct": 30,
+      "false_negative_skips": 22,
+      "false_positive_fraction": 0.0,
+      "justified_refusal_recall": 1.0,
+      "justified_refusals": 12,
+      "llm_calls": 0,
+      "llm_reserved": 0.0,
+      "llm_spent": 0.0,
+      "paid_correct_reward_per_unit": null,
+      "possible_reward": 287,
+      "reward": 201,
+      "seconds": 0.22743930000206092,
+      "skip_fraction": 0.53125,
+      "skipped": 34,
+      "total": 64,
+      "unanswerable": 12,
+      "unverified": 0,
+      "wrong": 0
+    },
+    "search2": {
+      "answer_precision": 1.0,
+      "answerable": 52,
+      "correct": 31,
+      "false_negative_skips": 21,
+      "false_positive_fraction": 0.0,
+      "justified_refusal_recall": 1.0,
+      "justified_refusals": 12,
+      "llm_calls": 0,
+      "llm_reserved": 0.0,
+      "llm_spent": 0.0,
+      "paid_correct_reward_per_unit": null,
+      "possible_reward": 287,
+      "reward": 201,
+      "seconds": 0.28342570599988903,
+      "skip_fraction": 0.515625,
+      "skipped": 33,
+      "total": 64,
+      "unanswerable": 12,
+      "unverified": 0,
+      "wrong": 0
+    }
+  },
+  "docker": {
+    "audit": {
+      "app_read_only": true,
+      "cap_eff": "0000000000000000",
+      "cgroup_limits": {
+        "cpus": 8,
+        "memory.max": 17179869184,
+        "pids.max": 512
+      },
+      "no_credentials_in_image_environment": true,
+      "no_new_privileges": true,
+      "openjiuwen": "0.1.20.post1",
+      "python": "3.12.12",
+      "tmpfs_bytes": 2147483648,
+      "user_namespace_errno": 1
+    },
+    "docker_images_size": "976MB",
+    "image": "sidim-bez-dim:v3-q4",
+    "image_id": "sha256:101b4d241d1c5cae0ac62fb3a4cec2fa1771a6838cebfd86f5f51843e657645f",
+    "matching_runtime_files": 16,
+    "safe_examples": "6/8",
+    "source_materials_unchanged": true,
+    "trusted_examples": "8/8"
+  },
+  "fault_pairs": [
+    {
+      "calls": 0,
+      "case": "api_unavailable",
+      "correct": 2,
+      "frozen": false
+    },
+    {
+      "calls": 0,
+      "case": "unknown_usage",
+      "correct": 2,
+      "frozen": false
+    },
+    {
+      "calls": 0,
+      "case": "api_timeout",
+      "correct": 2,
+      "frozen": false
+    },
+    {
+      "calls": 0,
+      "case": "scarce_budget",
+      "correct": 2,
+      "frozen": false
+    }
+  ],
+  "final_local": {
+    "by_split": {
+      "development": {
+        "answer_precision": 1.0,
+        "answerable": 52,
+        "correct": 33,
+        "false_negative_skips": 19,
+        "false_positive_fraction": 0.0,
+        "justified_refusal_recall": 1.0,
+        "justified_refusals": 12,
+        "llm_calls": 0,
+        "llm_reserved": 0.0,
+        "llm_spent": 0.0,
+        "paid_correct_reward_per_unit": null,
+        "possible_reward": 287,
+        "reward": 211,
+        "seconds": 0.31134053000005224,
+        "skip_fraction": 0.484375,
+        "skipped": 31,
+        "total": 64,
+        "unanswerable": 12,
+        "unverified": 0,
+        "wrong": 0
+      },
+      "holdout": {
+        "answer_precision": 1.0,
+        "answerable": 52,
+        "correct": 21,
+        "false_negative_skips": 31,
+        "false_positive_fraction": 0.0,
+        "justified_refusal_recall": 1.0,
+        "justified_refusals": 12,
+        "llm_calls": 0,
+        "llm_reserved": 0.0,
+        "llm_spent": 0.0,
+        "paid_correct_reward_per_unit": null,
+        "possible_reward": 216,
+        "reward": 89,
+        "seconds": 0.3539505869994173,
+        "skip_fraction": 0.671875,
+        "skipped": 43,
+        "total": 64,
+        "unanswerable": 12,
+        "unverified": 0,
+        "wrong": 0
+      }
+    },
+    "by_type": {
+      "coding": {
+        "answer_precision": null,
+        "answerable": 29,
+        "correct": 0,
+        "false_negative_skips": 29,
+        "false_positive_fraction": null,
+        "justified_refusal_recall": 1.0,
+        "justified_refusals": 3,
+        "llm_calls": 0,
+        "llm_reserved": 0.0,
+        "llm_spent": 0.0,
+        "paid_correct_reward_per_unit": null,
+        "possible_reward": 131,
+        "reward": 0,
+        "seconds": 0,
+        "skip_fraction": 1.0,
+        "skipped": 32,
+        "total": 32,
+        "unanswerable": 3,
+        "unverified": 0,
+        "wrong": 0
+      },
+      "data_analysis": {
+        "answer_precision": 1.0,
+        "answerable": 24,
+        "correct": 19,
+        "false_negative_skips": 5,
+        "false_positive_fraction": 0.0,
+        "justified_refusal_recall": 1.0,
+        "justified_refusals": 8,
+        "llm_calls": 0,
+        "llm_reserved": 0.0,
+        "llm_spent": 0.0,
+        "paid_correct_reward_per_unit": null,
+        "possible_reward": 167,
+        "reward": 139,
+        "seconds": 0.20638142000007065,
+        "skip_fraction": 0.40625,
+        "skipped": 13,
+        "total": 32,
+        "unanswerable": 8,
+        "unverified": 0,
+        "wrong": 0
+      },
+      "math": {
+        "answer_precision": 1.0,
+        "answerable": 27,
+        "correct": 17,
+        "false_negative_skips": 10,
+        "false_positive_fraction": 0.0,
+        "justified_refusal_recall": 1.0,
+        "justified_refusals": 5,
+        "llm_calls": 0,
+        "llm_reserved": 0.0,
+        "llm_spent": 0.0,
+        "paid_correct_reward_per_unit": null,
+        "possible_reward": 116,
+        "reward": 78,
+        "seconds": 0.2105656069993529,
+        "skip_fraction": 0.46875,
+        "skipped": 15,
+        "total": 32,
+        "unanswerable": 5,
+        "unverified": 0,
+        "wrong": 0
+      },
+      "search": {
+        "answer_precision": 1.0,
+        "answerable": 24,
+        "correct": 18,
+        "false_negative_skips": 6,
+        "false_positive_fraction": 0.0,
+        "justified_refusal_recall": 1.0,
+        "justified_refusals": 8,
+        "llm_calls": 0,
+        "llm_reserved": 0.0,
+        "llm_spent": 0.0,
+        "paid_correct_reward_per_unit": null,
+        "possible_reward": 89,
+        "reward": 83,
+        "seconds": 0.24834409000004598,
+        "skip_fraction": 0.4375,
+        "skipped": 14,
+        "total": 32,
+        "unanswerable": 8,
+        "unverified": 0,
+        "wrong": 0
+      }
+    },
+    "summary": {
+      "answer_precision": 1.0,
+      "answerable": 104,
+      "correct": 54,
+      "false_negative_skips": 50,
+      "false_positive_fraction": 0.0,
+      "justified_refusal_recall": 1.0,
+      "justified_refusals": 24,
+      "llm_calls": 0,
+      "llm_reserved": 0.0,
+      "llm_spent": 0.0,
+      "paid_correct_reward_per_unit": null,
+      "possible_reward": 503,
+      "reward": 300,
+      "seconds": 0.6652911169994695,
+      "skip_fraction": 0.578125,
+      "skipped": 74,
+      "total": 128,
+      "unanswerable": 24,
+      "unverified": 0,
+      "wrong": 0
+    }
+  },
+  "final_mock": {
+    "budget": {
+      "available": "99915.4",
+      "frozen": false,
+      "limit": 100000,
+      "reserved": "0.0",
+      "spent": "84.6",
+      "uncertain_calls": 0
+    },
+    "summary": {
+      "answer_precision": 1.0,
+      "answerable": 104,
+      "correct": 55,
+      "false_negative_skips": 49,
+      "false_positive_fraction": 0.0,
+      "justified_refusal_recall": 1.0,
+      "justified_refusals": 24,
+      "llm_calls": 1,
+      "llm_reserved": 0.0,
+      "llm_spent": 84.6,
+      "paid_correct_reward_per_unit": 0.0591016548463357,
+      "possible_reward": 503,
+      "reward": 305,
+      "seconds": 0.785060921002696,
+      "skip_fraction": 0.5703125,
+      "skipped": 73,
+      "total": 128,
+      "unanswerable": 24,
+      "unverified": 0,
+      "wrong": 0
+    }
+  },
+  "historical_live_remaining": "744.1",
+  "historical_live_spent": "155.9",
+  "holdout_used_for_rule_selection": false,
+  "host_docker_all128_equal": true,
+  "independent": {
+    "2/2": 4,
+    "correct": 8,
+    "forced_local_refusal": false,
+    "mode": "independent_local_controls",
+    "pairs": [
+      {
+        "calls": 0,
+        "correct": 2,
+        "counts": {
+          "failed": 0,
+          "skipped": 0,
+          "solved": 2
+        },
+        "pair_id": "q4_independent_1",
+        "spent": "0.0",
+        "types": [
+          "math",
+          "search"
+        ],
+        "wrong": 0
+      },
+      {
+        "calls": 0,
+        "correct": 2,
+        "counts": {
+          "failed": 0,
+          "skipped": 0,
+          "solved": 2
+        },
+        "pair_id": "q4_independent_2",
+        "spent": "0.0",
+        "types": [
+          "search",
+          "math"
+        ],
+        "wrong": 0
+      },
+      {
+        "calls": 0,
+        "correct": 2,
+        "counts": {
+          "failed": 0,
+          "skipped": 0,
+          "solved": 2
+        },
+        "pair_id": "q4_independent_3",
+        "spent": "0.0",
+        "types": [
+          "search",
+          "search"
+        ],
+        "wrong": 0
+      },
+      {
+        "calls": 0,
+        "correct": 2,
+        "counts": {
+          "failed": 0,
+          "skipped": 0,
+          "solved": 2
+        },
+        "pair_id": "q4_independent_4",
+        "spent": "0.0",
+        "types": [
+          "math",
+          "math"
+        ],
+        "wrong": 0
+      }
+    ],
+    "real_requests": 0,
+    "wrong": 0
+  },
+  "offline_suite": {
+    "forced_local_refusal": true,
+    "passed": true,
+    "scenarios": 22
+  },
+  "old47_preserved": true,
+  "pairs": [
+    {
+      "category": "math+math",
+      "correct": 2,
+      "llm_calls": 0,
+      "mode": "local",
+      "pair_id": "pair_01",
+      "spent": 0.0
+    },
+    {
+      "category": "math+math",
+      "correct": 1,
+      "llm_calls": 0,
+      "mode": "local",
+      "pair_id": "pair_02",
+      "spent": 0.0
+    },
+    {
+      "category": "math+math",
+      "correct": 2,
+      "llm_calls": 0,
+      "mode": "local",
+      "pair_id": "pair_03",
+      "spent": 0.0
+    },
+    {
+      "category": "math+math",
+      "correct": 1,
+      "llm_calls": 0,
+      "mode": "local",
+      "pair_id": "pair_04",
+      "spent": 0.0
+    },
+    {
+      "category": "math+search",
+      "correct": 2,
+      "llm_calls": 0,
+      "mode": "local",
+      "pair_id": "pair_05",
+      "spent": 0.0
+    },
+    {
+      "category": "math+search",
+      "correct": 0,
+      "llm_calls": 0,
+      "mode": "local",
+      "pair_id": "pair_06",
+      "spent": 0.0
+    },
+    {
+      "category": "math+search",
+      "correct": 2,
+      "llm_calls": 0,
+      "mode": "local",
+      "pair_id": "pair_07",
+      "spent": 0.0
+    },
+    {
+      "category": "math+search",
+      "correct": 2,
+      "llm_calls": 0,
+      "mode": "local",
+      "pair_id": "pair_08",
+      "spent": 0.0
+    },
+    {
+      "category": "math+data_analysis",
+      "correct": 2,
+      "llm_calls": 0,
+      "mode": "local",
+      "pair_id": "pair_09",
+      "spent": 0.0
+    },
+    {
+      "category": "math+data_analysis",
+      "correct": 0,
+      "llm_calls": 0,
+      "mode": "local",
+      "pair_id": "pair_10",
+      "spent": 0.0
+    },
+    {
+      "category": "math+data_analysis",
+      "correct": 1,
+      "llm_calls": 0,
+      "mode": "local",
+      "pair_id": "pair_11",
+      "spent": 0.0
+    },
+    {
+      "category": "math+data_analysis",
+      "correct": 1,
+      "llm_calls": 0,
+      "mode": "local",
+      "pair_id": "pair_12",
+      "spent": 0.0
+    },
+    {
+      "category": "search+data_analysis",
+      "correct": 2,
+      "llm_calls": 0,
+      "mode": "local",
+      "pair_id": "pair_13",
+      "spent": 0.0
+    },
+    {
+      "category": "search+data_analysis",
+      "correct": 2,
+      "llm_calls": 0,
+      "mode": "local",
+      "pair_id": "pair_14",
+      "spent": 0.0
+    },
+    {
+      "category": "search+data_analysis",
+      "correct": 2,
+      "llm_calls": 0,
+      "mode": "local",
+      "pair_id": "pair_15",
+      "spent": 0.0
+    },
+    {
+      "category": "search+data_analysis",
+      "correct": 1,
+      "llm_calls": 0,
+      "mode": "local",
+      "pair_id": "pair_16",
+      "spent": 0.0
+    },
+    {
+      "category": "coding+any",
+      "correct": 1,
+      "llm_calls": 0,
+      "mode": "local",
+      "pair_id": "pair_17",
+      "spent": 0.0
+    },
+    {
+      "category": "coding+any",
+      "correct": 1,
+      "llm_calls": 0,
+      "mode": "local",
+      "pair_id": "pair_18",
+      "spent": 0.0
+    },
+    {
+      "category": "coding+any",
+      "correct": 1,
+      "llm_calls": 0,
+      "mode": "local",
+      "pair_id": "pair_19",
+      "spent": 0.0
+    },
+    {
+      "category": "coding+any",
+      "correct": 0,
+      "llm_calls": 0,
+      "mode": "local",
+      "pair_id": "pair_20",
+      "spent": 0.0
+    },
+    {
+      "category": "math+math",
+      "correct": 2,
+      "llm_calls": 0,
+      "mode": "mock-good",
+      "pair_id": "pair_01",
+      "spent": 0.0
+    },
+    {
+      "category": "math+math",
+      "correct": 1,
+      "llm_calls": 0,
+      "mode": "mock-good",
+      "pair_id": "pair_02",
+      "spent": 0.0
+    },
+    {
+      "category": "math+math",
+      "correct": 2,
+      "llm_calls": 0,
+      "mode": "mock-good",
+      "pair_id": "pair_03",
+      "spent": 0.0
+    },
+    {
+      "category": "math+math",
+      "correct": 1,
+      "llm_calls": 0,
+      "mode": "mock-good",
+      "pair_id": "pair_04",
+      "spent": 0.0
+    },
+    {
+      "category": "math+search",
+      "correct": 2,
+      "llm_calls": 0,
+      "mode": "mock-good",
+      "pair_id": "pair_05",
+      "spent": 0.0
+    },
+    {
+      "category": "math+search",
+      "correct": 0,
+      "llm_calls": 0,
+      "mode": "mock-good",
+      "pair_id": "pair_06",
+      "spent": 0.0
+    },
+    {
+      "category": "math+search",
+      "correct": 2,
+      "llm_calls": 0,
+      "mode": "mock-good",
+      "pair_id": "pair_07",
+      "spent": 0.0
+    },
+    {
+      "category": "math+search",
+      "correct": 2,
+      "llm_calls": 0,
+      "mode": "mock-good",
+      "pair_id": "pair_08",
+      "spent": 0.0
+    },
+    {
+      "category": "math+data_analysis",
+      "correct": 2,
+      "llm_calls": 0,
+      "mode": "mock-good",
+      "pair_id": "pair_09",
+      "spent": 0.0
+    },
+    {
+      "category": "math+data_analysis",
+      "correct": 0,
+      "llm_calls": 0,
+      "mode": "mock-good",
+      "pair_id": "pair_10",
+      "spent": 0.0
+    },
+    {
+      "category": "math+data_analysis",
+      "correct": 2,
+      "llm_calls": 1,
+      "mode": "mock-good",
+      "pair_id": "pair_11",
+      "spent": 84.6
+    },
+    {
+      "category": "math+data_analysis",
+      "correct": 1,
+      "llm_calls": 0,
+      "mode": "mock-good",
+      "pair_id": "pair_12",
+      "spent": 0.0
+    },
+    {
+      "category": "search+data_analysis",
+      "correct": 2,
+      "llm_calls": 0,
+      "mode": "mock-good",
+      "pair_id": "pair_13",
+      "spent": 0.0
+    },
+    {
+      "category": "search+data_analysis",
+      "correct": 2,
+      "llm_calls": 0,
+      "mode": "mock-good",
+      "pair_id": "pair_14",
+      "spent": 0.0
+    },
+    {
+      "category": "search+data_analysis",
+      "correct": 2,
+      "llm_calls": 0,
+      "mode": "mock-good",
+      "pair_id": "pair_15",
+      "spent": 0.0
+    },
+    {
+      "category": "search+data_analysis",
+      "correct": 1,
+      "llm_calls": 0,
+      "mode": "mock-good",
+      "pair_id": "pair_16",
+      "spent": 0.0
+    },
+    {
+      "category": "coding+any",
+      "correct": 1,
+      "llm_calls": 0,
+      "mode": "mock-good",
+      "pair_id": "pair_17",
+      "spent": 0.0
+    },
+    {
+      "category": "coding+any",
+      "correct": 1,
+      "llm_calls": 0,
+      "mode": "mock-good",
+      "pair_id": "pair_18",
+      "spent": 0.0
+    },
+    {
+      "category": "coding+any",
+      "correct": 1,
+      "llm_calls": 0,
+      "mode": "mock-good",
+      "pair_id": "pair_19",
+      "spent": 0.0
+    },
+    {
+      "category": "coding+any",
+      "correct": 0,
+      "llm_calls": 0,
+      "mode": "mock-good",
+      "pair_id": "pair_20",
+      "spent": 0.0
+    }
+  ],
+  "previous_local": {
+    "answer_precision": 1.0,
+    "answerable": 104,
+    "correct": 47,
+    "false_negative_skips": 57,
+    "false_positive_fraction": 0.0,
+    "justified_refusal_recall": 1.0,
+    "justified_refusals": 24,
+    "llm_calls": 0,
+    "llm_reserved": 0.0,
+    "llm_spent": 0.0,
+    "paid_correct_reward_per_unit": null,
+    "possible_reward": 503,
+    "reward": 275,
+    "seconds": 0.4391443749998416,
+    "skip_fraction": 0.6328125,
+    "skipped": 81,
+    "total": 128,
+    "unanswerable": 24,
+    "unverified": 0,
+    "wrong": 0
+  },
+  "qualification": {
+    "local": {
+      "0/2": 3,
+      "1/2": 8,
+      "2/2": 9,
+      "causes": {
+        "coding_disabled": 5,
+        "correct": 26,
+        "fallback_disabled_local_mode": 7,
+        "routing_or_grounding": 2
+      }
+    },
+    "mock-good": {
+      "0/2": 3,
+      "1/2": 7,
+      "2/2": 10,
+      "causes": {
+        "coding_disabled": 5,
+        "correct": 27,
+        "routing_or_grounding": 2,
+        "unsupported_validated_route": 6
+      }
+    }
+  },
+  "real_requests": 0,
+  "runtime_sha256": {
+    ".dockerignore": "cf5e437662e0eabe0be727cf8e86d482c41e6768a4ef222b28540085e3eab9a5",
+    "Dockerfile": "fa31e22d5ca58014cdf56e0a83899dd6f96caf97f5421c0d6ae9aca4ebf00fe6",
+    "budget_manager.py": "8259d00cf23cb1c5f0bd2162784f0c91dc005cf570e99d9a4cfb30929abcbb4f",
+    "coding_solver.py": "e64d5913e831c72a2afd36e70512f290886d8fd7be577ed38d6a57ac3c30d9e7",
+    "data_solver.py": "c4a9b0b1e56c0b06685a5d88df0aafa2fc11644bf7c658c7e5da928de457712a",
+    "harness.py": "2e08007cc5632db92f1f1d17e56374a14a03f0f81bbdff4075c2c10cd38b1a3a",
+    "llm_fallback.py": "d9c71832f892a3a1114d883eea39876caa5e98f3114c5533f5a0c943670e8020",
+    "llm_gateway.py": "c17dbf2de2655965a88cc00f0ee709de81621770a44fa824b27cec560d923b13",
+    "math_solver.py": "a0f7ed37aea686536ef226260530dddbf611dd67da50b3784da593c32644bc29",
+    "plan_semantics.py": "23bd5a40b73b66e7f16921065adf37be8286bb51cb5c1913b3211d784669c31c",
+    "planner.py": "4db10378746a8decbf556defbcbc207afc7fc472cb8827404ba89c15beec3b8d",
+    "requirements.txt": "d8c2924d446449dfd156153333b01a3ae0ef3fd0da64acfe36eae937663a3da3",
+    "run_agent.py": "88938b2c66ddcf2b7428976390433c6c719cbcdbdc8969a07346effbdbaf401c",
+    "runtime_limits.py": "cdd72e8fc6bc119b6cd76fe4560a910552c80e04edb27e2d3d29cb1d3821e669",
+    "safe_files.py": "04aa6c98f6da2555b80ab298d0937ea32f39a0deea0710fa78e97d849d6c7cfb",
+    "search_solver.py": "8d738f7336686c5757b6ececde114eccbc2fb4468c050bb80fd1d54a03808535"
+  },
+  "schema_version": 1,
+  "scope": "offline synthetic benchmark; no real LLM quality measurement",
+  "search_slot_intent_present": false,
+  "tests": {
+    "docker": 597,
+    "docker_seconds": 549.868,
+    "wsl": 597,
+    "wsl_seconds": 302.322
+  }
+}

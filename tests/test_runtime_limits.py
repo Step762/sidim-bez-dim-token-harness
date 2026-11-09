@@ -25,6 +25,8 @@ from test_llm import MATH, MATH_PLAN, envelope
 
 class RuntimeLimitTests(unittest.TestCase):
     def setUp(self):
+        from diagnostics.trace import fallback_controls
+        self.enterContext(fallback_controls())
         self.temporary=tempfile.TemporaryDirectory()
         self.addCleanup(self.temporary.cleanup)
         self.root=Path(self.temporary.name)

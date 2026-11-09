@@ -16,6 +16,7 @@ import httpx
 import harness
 from budget_manager import BudgetManager
 from llm_gateway import LLMGateway
+from diagnostics.trace import fallback_controls
 
 
 # Explicit independent answers; no solver/reference-file lookup constructs them.
@@ -55,7 +56,7 @@ def run_probe():
             gateway=LLMGateway('http://q1-alias.invalid/v1','synthetic-only',manager=manager,
                                max_tokens=128,transport=httpx.MockTransport(reply))
             report={}
-            with redirect_stdout(io.StringIO()):
+            with fallback_controls(),redirect_stdout(io.StringIO()):
                 counts=asyncio.run(harness.run_tasks(root,manager=manager,llm=gateway,budget=2000,report=report))
             correct=sum((root/str(i)/'answer.txt').is_file() and
                         (root/str(i)/'answer.txt').read_text().strip()==case[-1] for i,case in enumerate(cases))
@@ -64,7 +65,7 @@ def run_probe():
                           'correct':correct,'wrong':emitted-correct,'counts':counts,'calls':len(calls),
                           'spent':str(manager.snapshot()['spent']),'reserved':str(manager.snapshot()['reserved']),
                           'frozen':manager.snapshot()['frozen']})
-    return {'source':'synthetic','real_requests':0,'pairs':pairs,'2/2':sum(p['correct']==2 for p in pairs),
+    return {'source':'synthetic','forced_local_refusal':True,'real_requests':0,'pairs':pairs,'2/2':sum(p['correct']==2 for p in pairs),
             'correct':sum(p['correct'] for p in pairs),'wrong':sum(p['wrong'] for p in pairs)}
 
 

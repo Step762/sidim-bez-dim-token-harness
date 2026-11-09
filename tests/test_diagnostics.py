@@ -56,6 +56,10 @@ def artificial_a1_factory(ack, calls, *, failure=None):
 
 
 class DiagnosticTests(unittest.TestCase):
+    def setUp(self):
+        from diagnostics.trace import fallback_controls
+        self.enterContext(fallback_controls())
+
     def test_selection_is_development_only_and_covers_routing_and_evidence(self):
         selected=load_selection()
         self.assertEqual(len(selected),12)
@@ -64,9 +68,9 @@ class DiagnosticTests(unittest.TestCase):
         self.assertTrue(any(r["task"]["reward"]==0 for r in selected.values()))
         self.assertTrue(any(not r["reference"]["answerable"] for r in selected.values()))
         plan=experiment_plan()
-        self.assertEqual(sum(r["natural_llm_candidate"] for r in plan["selection"]),3)
+        self.assertEqual(sum(r["natural_llm_candidate"] for r in plan["selection"]),2)
         self.assertEqual(plan["A1"]["planned_reservation"],"493.1")
-        self.assertEqual(plan["A2"]["planned_reservation"],"2115.1")
+        self.assertEqual(plan["A2"]["planned_reservation"],"1394.3")
 
     def test_preflight_never_reads_credentials_or_constructs_http_transport(self):
         original=os.environ.get

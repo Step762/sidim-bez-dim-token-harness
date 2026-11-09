@@ -2,7 +2,7 @@
 
 import asyncio
 import copy
-from contextlib import redirect_stdout
+from contextlib import redirect_stdout, nullcontext
 from dataclasses import dataclass
 from fractions import Fraction
 import io
@@ -25,6 +25,7 @@ import httpx
 from llm_gateway import LLMGateway
 from llm_fallback import prepare
 from test_llm import FALLBACK_PREFIX, MATH, MATH_PLAN, envelope, local_server
+from diagnostics.trace import fallback_controls
 
 
 @dataclass(frozen=True)
@@ -106,7 +107,7 @@ def run_pair(pair):
         llm = LLMGateway("http://qualification.invalid/v1", "local-mock-key", manager=manager,
                          max_tokens=64, transport=httpx.MockTransport(respond))
         report = {}
-        with redirect_stdout(io.StringIO()):
+        with fallback_controls() if pair.plan is not None else nullcontext(),redirect_stdout(io.StringIO()):
             counts = asyncio.run(run_tasks(root, llm=llm, manager=manager, report=report))
         actual = tuple((root / str(i) / "answer.txt").read_text().strip()
                        if (root / str(i) / "answer.txt").exists() else None for i in range(2))
@@ -127,6 +128,11 @@ def run_pair(pair):
 
 
 class ExtendedMathTests(unittest.TestCase):
+    def setUp(self):
+        # These older mixed controls test validator/budget failures even after
+        # their example prefix has acquired a free production route.
+        self.enterContext(fallback_controls())
+
     def test_simple_qualification_expressions(self):
         self.assertEqual(str(solve_math("What is 2 + 2?")), "4")
         self.assertEqual(str(solve_math("What is 3 * 4?")), "12")

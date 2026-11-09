@@ -306,6 +306,9 @@ class LLMGateway:
             usage = _usage(raw.get("usage"))
             self.usage_records[position] = usage
             self.manager.settle(request_id, usage.prompt_tokens, self._output_tokens(usage))
+            if "model" in raw and raw["model"] != self.model:
+                self.blocked = True
+                raise LLMError("LLM response model differs from the requested model")
             choices = raw.get("choices")
             if not isinstance(choices, list) or len(choices) != 1 or not isinstance(choices[0], dict):
                 raise LLMError("invalid completion choices")
@@ -313,6 +316,9 @@ class LLMGateway:
             message = choice.get("message")
             if choice.get("finish_reason") != "stop" or not isinstance(message, dict):
                 raise LLMError("incomplete LLM response")
+            if self.model.endswith("-noreason") and message.get("reasoning_content"):
+                self.blocked = True
+                raise LLMError("unexpected reasoning content from a noreason model")
             content = message.get("content")
             if (
                 message.get("role") != "assistant" or message.get("tool_calls")

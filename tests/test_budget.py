@@ -132,6 +132,8 @@ class ManagerTests(unittest.TestCase):
 
 class GatewayBudgetTests(unittest.TestCase):
     def setUp(self):
+        from diagnostics.trace import fallback_controls
+        self.enterContext(fallback_controls())
         environment = patch.dict(os.environ, {}, clear=True)
         environment.start()
         self.addCleanup(environment.stop)
@@ -144,6 +146,7 @@ class GatewayBudgetTests(unittest.TestCase):
             if handler is not None:
                 return await handler(request)
             data = envelope("{}")
+            data["model"] = kwargs.get("model", data["model"])
             if usage is not None:
                 data["usage"] = usage
             return httpx.Response(status, json=data)

@@ -95,6 +95,8 @@ def local_server(content):
 
 class LLMTests(unittest.TestCase):
     def setUp(self):
+        from diagnostics.trace import fallback_controls
+        self.enterContext(fallback_controls())
         self.environment = patch.dict(os.environ, {"BUDGET": "100000"})
         self.environment.start()
         self.addCleanup(self.environment.stop)
@@ -110,7 +112,7 @@ class LLMTests(unittest.TestCase):
             requests.append(request)
             if handler is not None:
                 return await handler(request)
-            return httpx.Response(200, json=envelope(json.dumps(plan)))
+            return httpx.Response(200, json={**envelope(json.dumps(plan)),"model":model})
 
         gateway = LLMGateway(
             "https://" + uuid.uuid4().hex + ".invalid/v1", key,
@@ -168,6 +170,52 @@ class LLMTests(unittest.TestCase):
         self.assertEqual(reply.usage.completion_tokens, 20)
         self.assertEqual(reply.usage.reasoning_tokens, 7)
         self.assertIn("llm_completion_tokens=20", gateway.summary())
+
+    def test_mismatched_reported_model_blocks_later_calls_without_leaking_values(self):
+        for reported in ('qwen3.8-27b',None,123,'SYNTHETIC_PROVIDER_SECRET'):
+            async def handler(request):
+                return httpx.Response(200,json={**envelope('{}'),'model':reported})
+            gateway,requests,_=self.gateway(handler=handler)
+            with self.subTest(kind=type(reported).__name__):
+                with self.assertRaises(LLMError) as error:asyncio.run(gateway.complete('JSON',{}))
+                self.assertNotIn('SYNTHETIC_PROVIDER_SECRET',str(error.exception))
+                self.assertEqual(str(gateway.manager.snapshot()['spent']),'30.0')
+                self.assertFalse(gateway.available)
+                with self.assertRaises(LLMError):asyncio.run(gateway.complete('JSON',{}))
+                self.assertEqual(len(requests),1)
+
+    def test_noreason_with_reasoning_content_blocks_later_calls(self):
+        async def handler(request):
+            raw=envelope('{}')
+            raw['choices'][0]['message']['reasoning_content']='SYNTHETIC_PRIVATE_REASONING'
+            return httpx.Response(200,json=raw)
+        gateway,requests,_=self.gateway(handler=handler)
+        with self.assertRaises(LLMError) as error:asyncio.run(gateway.complete('JSON',{}))
+        self.assertNotIn('SYNTHETIC_PRIVATE_REASONING',str(error.exception))
+        self.assertEqual(str(gateway.manager.snapshot()['spent']),'30.0')
+        self.assertFalse(gateway.available)
+        with self.assertRaises(LLMError):asyncio.run(gateway.complete('JSON',{}))
+        self.assertEqual(len(requests),1)
+
+    def test_optional_model_tag_and_unknown_metadata_stay_compatible(self):
+        async def handler(request):
+            raw=envelope('{}');raw.pop('model')
+            return httpx.Response(200,json=raw)
+        gateway,requests,_=self.gateway(handler=handler)
+        self.assertEqual(asyncio.run(gateway.complete('JSON',{})).content,'{}')
+        self.assertEqual(len(requests),1)
+
+    def test_model_mismatch_cannot_publish_but_keeps_independent_local_answer(self):
+        fallback=self.make_task()
+        local=self.make_task(instruction='A warehouse starts with 100 boxes. It ships 7 boxes per day for 3 days. How many boxes does it have at the end?')
+        async def handler(request):
+            return httpx.Response(200,json={**envelope(json.dumps(MATH_PLAN)),'model':'qwen3.8-27b'})
+        gateway,requests,_=self.gateway(handler=handler)
+        counts=self.run_tasks(gateway)
+        self.assertEqual(counts,{'solved':1,'skipped':1,'failed':0})
+        self.assertFalse((fallback/'answer.txt').exists());self.assert_answer(local,'79')
+        self.assertEqual(len(requests),1)
+        self.assertEqual(str(gateway.manager.snapshot()['spent']),'30.0')
 
     def test_http_failures_are_not_retried_or_logged_with_secrets(self):
         for status in (401, 429, 500):
@@ -505,8 +553,8 @@ class LocalHTTPTests(unittest.TestCase):
             )
             self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
             self.assertEqual((task / "answer.txt").read_bytes(), b"45\n")
-            self.assertIn("llm_calls=1", result.stdout)
-            self.assertEqual(len(server["requests"]), 1)
+            self.assertIn("llm_tokens_used=0", result.stdout)
+            self.assertEqual(len(server["requests"]), 0)
             self.assertNotIn(server["key"], result.stdout + result.stderr)
 
     def test_same_contract_is_compatible_with_installed_openjiuwen_client(self):

@@ -83,7 +83,7 @@ def _check_literal_expression(text, index):
 
 
 def _records(text: str):
-    """Read only headings and known fields; prose and fenced code are inert."""
+    """Headings, explicit fields and bounded subject-bound birth assertions."""
     entity = None
     facts = {}
     fence = None
@@ -103,6 +103,25 @@ def _records(text: str):
             facts = {}
         elif entity and (match := _FIELD.fullmatch(line)):
             facts.setdefault(match[1].lower(), set()).add(match[2].strip())
+        elif entity:
+            # Consume the complete sentence: a prefix match could hide a denial
+            # or a second, contradictory assertion. Quotes/code stay inert.
+            subject = re.escape(" ".join(entity.split()))
+            normalized = " ".join(line.split())
+            born = re.fullmatch(
+                rf"{subject} was born in ([0-9]{{1,4}})"
+                r"(?: and (?:later )?(?:moved|relocated) (?:abroad|to ([^.!?]+)))?\.",
+                normalized,re.I)
+            destination = born[2] if born else None
+            safe_destination = destination is None or (
+                len(destination)<=80 and re.fullmatch(r"[^\W\d_]+(?:[ '-][^\W\d_]+){0,5}",destination)
+                and not re.search(r"\b(?:not|never|but|born|false|incorrect|ignore|instead)\b",destination,re.I))
+            if born and safe_destination:
+                facts.setdefault("born",set()).add(born[1])
+            elif re.match(rf"{subject}\s+.*\bborn\b",normalized,re.I):
+                # An unsupported birth statement about this subject prevents
+                # selecting an earlier convenient year from the same profile.
+                facts.setdefault("born",set()).add("unknown")
     if entity is not None:
         yield entity, facts
 
@@ -160,14 +179,13 @@ def solve_search(instruction: str, task_dir: Path) -> str:
         if len(labels) != 1:
             raise UnsupportedSearch("missing or ambiguous inverse entity spelling")
         return next(iter(labels))
-    for pattern, field in _QUESTIONS:
-        if match := pattern.fullmatch(parsed["question"]):
-            subject = match[1]
-            break
-    else:
-        raise UnsupportedSearch("unsupported search question")
-
     index, ambiguous = _load_kb(task_dir)
+    # Imported here because plan_semantics also uses this module's KB primitives.
+    from plan_semantics import search_spec, UnsupportedMeaning
+    try:
+        subject, relations, field = search_spec(parsed["question"], index)
+    except UnsupportedMeaning as exc:
+        raise UnsupportedSearch("unsupported search question or relation") from exc
 
     def fact(entity: str, key: str) -> str:
         entity = _resolve_entity(entity, index)
@@ -178,16 +196,7 @@ def solve_search(instruction: str, task_dir: Path) -> str:
             raise UnsupportedSearch(f"missing or ambiguous {key} fact")
         return next(iter(values))
 
-    relations = []
-    while (resolved := _resolve_entity(subject, index)) is None:
-        match = _RELATION.fullmatch(subject)
-        if match is None:
-            raise UnsupportedSearch("entity or relation cannot be resolved")
-        subject = match[1]
-        relations.append(match[2].lower())
-    _check_literal_expression(subject, index)
-    subject = resolved
-    for relation in reversed(relations):
+    for relation in relations:
         subject = fact(subject, relation)
     answer = fact(subject, field)
     if field in {"born", "founded"} and not re.fullmatch(r"[0-9]{1,4}", answer):

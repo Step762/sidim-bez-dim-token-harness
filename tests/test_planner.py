@@ -147,6 +147,8 @@ def experiments():
 
 class PlannerTests(unittest.TestCase):
     def setUp(self):
+        from diagnostics.trace import fallback_controls
+        self.enterContext(fallback_controls())
         environment = patch.dict(os.environ, {}, clear=True)
         environment.start()
         self.addCleanup(environment.stop)
@@ -235,9 +237,10 @@ class PlannerTests(unittest.TestCase):
         local = write_task(self.root, "z_local", LOCAL, 1)
         llm, requests = gateway(BudgetManager(100000))
         calls = []
+        local_solver = SOLVERS['math']
         def checked(instruction):
             calls.append(instruction)
-            return solve_math(instruction)
+            return local_solver(instruction)
         with patch.dict(SOLVERS, {"math": checked}):
             counts, report = run(self.root, llm.manager, llm)
         self.assertEqual(counts["solved"], 2)
