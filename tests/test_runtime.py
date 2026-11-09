@@ -95,7 +95,7 @@ class RuntimeTests(unittest.TestCase):
         expected = {"Dockerfile", ".dockerignore", "requirements.txt", "run_agent.py", "harness.py",
                     "planner.py", "budget_manager.py", "llm_gateway.py", "llm_fallback.py",
                     "math_solver.py", "search_solver.py", "data_solver.py", "coding_solver.py", "safe_files.py",
-                    "plan_semantics.py"}
+                    "plan_semantics.py", "runtime_limits.py"}
         self.assertEqual(allowed, expected)
         self.assertTrue(all((ROOT / name).is_file() for name in allowed))
         self.assertTrue(all(line.startswith("!") for line in rules[1:]))

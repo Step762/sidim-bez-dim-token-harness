@@ -17,7 +17,7 @@ RUN python -m pip install --no-compile --only-binary=:all: -r requirements.txt \
     && python -m pip check
 
 COPY run_agent.py harness.py planner.py budget_manager.py llm_gateway.py llm_fallback.py \
-     math_solver.py search_solver.py data_solver.py coding_solver.py safe_files.py plan_semantics.py /app/
+     math_solver.py search_solver.py data_solver.py coding_solver.py safe_files.py plan_semantics.py runtime_limits.py /app/
 COPY Dockerfile .dockerignore /app/
 
 ENTRYPOINT ["python"]

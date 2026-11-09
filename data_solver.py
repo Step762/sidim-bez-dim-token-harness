@@ -2,6 +2,7 @@
 
 import csv
 from fractions import Fraction
+import json
 import operator
 from pathlib import Path
 import re
@@ -45,6 +46,12 @@ _AGGREGATE = re.compile(
 _COUNT_ROWS = re.compile(
     r"How many rows are there(?: where (?P<filters>.+))?", re.IGNORECASE | re.DOTALL
 )
+_CALCULATE_TOTAL = re.compile(
+    rf"Calculate the total (?P<column>{_IDENT}) in (?P<filename>[A-Za-z0-9_./-]+\.csv) "
+    rf"where (?P<field>{_IDENT}) is (?P<value>{_QUOTED}) and "
+    rf"(?P<lower_field>{_IDENT}) at least (?P<lower>{_NUMBER})\.",
+    re.IGNORECASE | re.DOTALL,
+)
 _TOKEN = re.compile(
     rf"(?P<string>{_QUOTED})|(?P<number>{_NUMBER})|"
     rf"(?P<identifier>{_IDENT})|(?P<comparison>!=|<=|>=|=|<|>)"
@@ -57,6 +64,16 @@ _OPERATIONS = {
     "sum": "sum", "count": "count", "min": "min", "minimum": "min",
     "max": "max", "maximum": "max", "avg": "avg", "average": "avg",
 }
+_GROUPED = re.compile(
+    rf"Using (?P<filename>[A-Za-z0-9_./-]+\.csv), return a JSON object mapping each "
+    rf"(?P<group>{_IDENT}) to its (?:"
+    rf"(?P<rows>row count)|(?P<op>total|sum|count|min|minimum|max|maximum|avg|average)"
+    rf"(?: of)? (?P<column>{_IDENT}))"
+    rf"(?: where (?P<filters>.+?))?\.(?P<suffix>{_SUFFIX.pattern})",
+    re.IGNORECASE | re.DOTALL,
+)
+MAX_GROUPS = 10000
+MAX_OR_BRANCHES = 8
 
 
 def _number(value: str) -> Fraction:
@@ -77,8 +94,8 @@ def _range(column, lower, upper):
     return [(column, ">=", lower), (column, "<=", upper)]
 
 
-def _filters(text: str) -> list[tuple]:
-    """Tokenize quoted literals intact; support conjunctions, not arbitrary code."""
+def _filter_groups(text: str, *, allow_or=False) -> list[list[tuple]]:
+    """Keep BETWEEN atomic; reject mixed Boolean operators rather than guess precedence."""
     tokens = []
     position = 0
     while position < len(text):
@@ -91,7 +108,8 @@ def _filters(text: str) -> list[tuple]:
         tokens.append((match.lastgroup, match[0]))
         position = match.end()
 
-    conditions = []
+    groups = [[]]
+    conjunctions = set()
     position = 0
     try:
         while position < len(tokens):
@@ -107,7 +125,7 @@ def _filters(text: str) -> list[tuple]:
                     or tokens[position + 5][1].lower() != "inclusive"
                 ):
                     raise UnsupportedData("range must specify inclusive bounds")
-                conditions.extend(_range(
+                groups[-1].extend(_range(
                     column, tokens[position + 2][1], tokens[position + 4][1]
                 ))
                 position += 6
@@ -118,20 +136,33 @@ def _filters(text: str) -> list[tuple]:
                 if kind == "string" and relation not in {"=", "!="}:
                     raise UnsupportedData("string ordering is unsupported")
                 value = _unquote(raw) if kind == "string" else _number(raw)
-                conditions.append((column, relation, value))
+                groups[-1].append((column, relation, value))
                 position += 3
             if position < len(tokens):
-                if tokens[position][1].lower() != "and" or position + 1 == len(tokens):
+                join = tokens[position][1].lower()
+                if join not in ({"and", "or"} if allow_or else {"and"}) or position + 1 == len(tokens):
                     raise UnsupportedData("filters must be joined with AND")
+                conjunctions.add(join)
+                if len(conjunctions) > 1:
+                    raise UnsupportedData("mixed AND/OR needs an explicit supported grouping rule")
+                if join == "or":
+                    if len(groups) >= MAX_OR_BRANCHES:
+                        raise UnsupportedData("OR branch limit exceeded")
+                    groups.append([])
                 position += 1
     except IndexError as exc:
         raise UnsupportedData("incomplete filter") from exc
-    if not conditions:
+    if not groups[0]:
         raise UnsupportedData("empty filter")
-    return conditions
+    return groups
 
 
-def _question(question: str, header: list[str]):
+def _filters(text: str) -> list[tuple]:
+    """The unchanged conjunction-only interface used by semantic LLM validation."""
+    return _filter_groups(text)[0]
+
+
+def _question(question: str, header: list[str], *, allow_or=False):
     if match := _SALES.fullmatch(question):
         conditions = [(match["field"], "=", _unquote(match["value"]))]
         if match["range"]:
@@ -140,13 +171,13 @@ def _question(question: str, header: list[str]):
             if len(candidates) != 1:
                 raise UnsupportedData("range column is missing or ambiguous")
             conditions.extend(_range(next(iter(candidates)), match["lower"], match["upper"]))
-        return "sum", match["column"], conditions
+        return "sum", match["column"], [conditions] if allow_or else conditions
     if match := _AGGREGATE.fullmatch(question):
-        conditions = _filters(match["filters"]) if match["filters"] is not None else []
-        return _OPERATIONS[match["op"].lower()], match["column"], conditions
+        groups = _filter_groups(match["filters"], allow_or=allow_or) if match["filters"] is not None else [[]]
+        return _OPERATIONS[match["op"].lower()], match["column"], groups if allow_or else groups[0]
     if match := _COUNT_ROWS.fullmatch(question):
-        conditions = _filters(match["filters"]) if match["filters"] is not None else []
-        return "count", None, conditions
+        groups = _filter_groups(match["filters"], allow_or=allow_or) if match["filters"] is not None else [[]]
+        return "count", None, groups if allow_or else groups[0]
     raise UnsupportedData("unsupported or ambiguous analysis question")
 
 
@@ -169,13 +200,20 @@ def _format(value: Fraction) -> str:
     return ("-" if value < 0 else "") + f"{whole}.{decimal}"
 
 
-def _analyze(stream, question: str) -> str:
+def _analyze(stream, question: str, *, grouped=None) -> str:
     reader = csv.reader(stream, strict=True)
     header = next(reader, [])
     if not header or any(not name.strip() for name in header) or len(set(header)) != len(header):
         raise UnsupportedData("missing, empty or duplicate CSV headers")
-    operation, column, conditions = _question(question, header)
+    if grouped is None:
+        operation, column, alternatives = _question(question, header, allow_or=True)
+        group_column = None
+    else:
+        operation, column, alternatives, group_column = grouped
+    conditions = [condition for branch in alternatives for condition in branch]
     referenced = {name for name, _, _ in conditions}
+    if group_column is not None:
+        referenced.add(group_column)
     if column is not None:
         referenced.add(column)
     if not referenced <= set(header):
@@ -185,9 +223,10 @@ def _analyze(stream, question: str) -> str:
     if operation != "count":
         numeric.add(column)
 
-    count = 0
-    total = Fraction(0)
-    extreme = None
+    # Each observed group holds the same aggregate state as the scalar route.
+    # CSV has no type declarations: group keys retain their exact string spelling.
+    empty = (0, Fraction(0), None)
+    groups = {None: empty} if group_column is None else {}
     for row in reader:
         if not row:  # Empty physical lines are allowed, including trailing lines.
             continue
@@ -196,13 +235,19 @@ def _analyze(stream, question: str) -> str:
         numbers = {name: _number(row[positions[name]]) for name in numeric}
         if operation == "count" and column is not None and not row[positions[column]].strip():
             raise UnsupportedData("COUNT column contains missing values")
-        if not all(
-            _COMPARISONS[relation](
-                numbers[name] if isinstance(value, Fraction) else row[positions[name]], value
-            )
-            for name, relation, value in conditions
+        key = row[positions[group_column]] if group_column is not None else None
+        if group_column is not None and not key.strip():
+            raise UnsupportedData("group column contains missing values")
+        if not any(
+            all(_COMPARISONS[relation](
+                    numbers[name] if isinstance(value, Fraction) else row[positions[name]], value
+                ) for name, relation, value in branch)
+            for branch in alternatives
         ):
             continue
+        if key not in groups and len(groups) >= MAX_GROUPS:
+            raise UnsupportedData("group count limit exceeded")
+        count, total, extreme = groups.get(key, empty)
         count += 1
         if operation in {"sum", "avg"}:
             total += numbers[column]
@@ -212,13 +257,24 @@ def _analyze(stream, question: str) -> str:
         elif operation == "max":
             value = numbers[column]
             extreme = value if extreme is None else max(extreme, value)
-    if operation == "count":
-        return str(count)
-    if operation == "sum":
-        return _format(total)
-    if count == 0:
-        raise UnsupportedData("aggregate is undefined for an empty selection")
-    return _format(total / count if operation == "avg" else extreme)
+        groups[key] = count, total, extreme
+
+    def result(state):
+        count, total, extreme = state
+        if operation == "count":
+            return str(count)
+        if operation == "sum":
+            return _format(total)
+        if count == 0:
+            raise UnsupportedData("aggregate is undefined for an empty selection")
+        return _format(total / count if operation == "avg" else extreme)
+
+    if group_column is None:
+        return result(groups[None])
+    # Emit exact JSON numbers, avoiding float rounding and quoted numeric values.
+    # Object member order is not a requested sort; keep serialization deterministic.
+    return "{" + ",".join(json.dumps(key, ensure_ascii=False) + ":" + result(groups[key])
+                          for key in sorted(groups)) + "}"
 
 
 def solve_data(instruction: str, task_dir: Path) -> str:
@@ -227,8 +283,24 @@ def solve_data(instruction: str, task_dir: Path) -> str:
         _QUOTED + r"|\s+", lambda m: " " if m[0].isspace() else m[0], instruction
     ).strip()
     parsed = _INSTRUCTION.fullmatch(statement)
-    if parsed is None or _SUFFIX.fullmatch(parsed["suffix"]) is None:
+    grouped = _GROUPED.fullmatch(statement)
+    total = _CALCULATE_TOTAL.fullmatch(statement)
+    if (parsed is None or _SUFFIX.fullmatch(parsed["suffix"]) is None) and grouped is None and total is None:
         raise UnsupportedData("unsupported analysis instructions")
+    query = None
+    if total is not None:
+        parsed = total
+        query = ("sum", total["column"], [[
+            (total["field"], "=", _unquote(total["value"])),
+            (total["lower_field"], ">=", _number(total["lower"])),
+        ]], None)
+    if grouped is not None:
+        parsed = grouped
+        operation = "count" if grouped["rows"] else (
+            "sum" if grouped["op"].lower() == "total" else _OPERATIONS[grouped["op"].lower()]
+        )
+        query = (operation, grouped["column"],
+                 _filter_groups(grouped["filters"], allow_or=True) if grouped["filters"] else [[]], grouped["group"])
     try:
         workspace = task_dir / "workspace"
         relative = Path(parsed["filename"])
@@ -242,7 +314,7 @@ def solve_data(instruction: str, task_dir: Path) -> str:
             raise UnsupportedData("CSV points outside the current workspace")
         with open_text(task_dir, Path("workspace") / relative, maximum=CSV_BYTES,
                        encoding="utf-8-sig", newline="") as stream:
-            return _analyze(stream, parsed["question"])
+            return _analyze(stream, "" if query else parsed["question"], grouped=query)
     except UnsupportedData:
         raise
     except (OSError, UnicodeError, csv.Error, ValueError) as exc:

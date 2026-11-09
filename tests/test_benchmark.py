@@ -179,7 +179,7 @@ class BenchmarkTests(unittest.TestCase):
     def test_mock_request_never_receives_hidden_reference_keys(self):
         result=evaluate(task_ids=["search_d15","data_analysis_d14"],mode="mock-good")
         self.assertEqual(result["summary"]["correct"],2)
-        self.assertEqual(result["summary"]["llm_calls"],2)
+        self.assertEqual(result["summary"]["llm_calls"],1)
         # Worker observes only the current request; fixtures stay in the parent.
         for request in result["mock_requests"]:
             self.assertTrue(request["fixture_available"])

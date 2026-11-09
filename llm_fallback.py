@@ -2,6 +2,7 @@
 
 import ast
 import csv
+from contextlib import nullcontext
 from dataclasses import dataclass
 from pathlib import Path
 import re
@@ -140,7 +141,7 @@ def _prepare_search(problem, task_dir):
         if search_solver._name(value) in search_solver._UNKNOWN:
             raise InvalidPlan("unknown cited fact")
         if position < len(required_chain):
-            entity = search_solver._name(value)
+            entity = search_solver._resolve_entity(value, index) or search_solver._name(value)
             selected.add(entity)
     fields = {field}
     relations = set(required_chain)
@@ -161,6 +162,12 @@ def _prepare_search(problem, task_dir):
         if field not in fields:
             raise InvalidPlan("requested fact is not grounded in the question")
         current, conflicts = search_solver._load_kb(task_dir)
+        try:
+            current_spec = search_spec(problem, current)
+        except (UnsupportedMeaning, search_solver.UnsupportedSearch):
+            raise InvalidPlan("search subject became ambiguous") from None
+        if current_spec != (root, required_chain, field):
+            raise InvalidPlan("search evidence changed since preparation")
         entity = root
         for key in [*chain, field]:
             if entity not in selected or entity in conflicts:
@@ -171,7 +178,7 @@ def _prepare_search(problem, task_dir):
             answer = next(iter(values))
             if search_solver._name(answer) in search_solver._UNKNOWN:
                 raise InvalidPlan("unknown cited fact")
-            entity = search_solver._name(answer)
+            entity = search_solver._resolve_entity(answer, current) or search_solver._name(answer)
         if not isinstance(plan["answer"], str) or plan["answer"] != answer:
             raise InvalidPlan("answer differs from source evidence")
         if field in {"born", "founded"} and not re.fullmatch(r"[0-9]{1,4}", answer):
@@ -293,14 +300,16 @@ def prepare(task_type, instruction, task_dir=None) -> Prepared:
         raise InvalidPlan(str(exc)) from None
 
 
-async def solve_fallback(gateway, task_type, instruction, task_dir=None, *, task_id=None) -> str:
-    prepared = prepare(task_type, instruction, task_dir)
+async def solve_fallback(gateway, task_type, instruction, task_dir=None, *, task_id=None, limits=None) -> str:
+    with limits.sync() if limits is not None else nullcontext():
+        prepared = prepare(task_type, instruction, task_dir)
     result = await gateway.complete(prepared.system, prepared.payload,
                                     task_id=task_id or str(task_dir or "fallback"))
-    plan = strict_json(result.content)
-    if plan == {"status": "unsolvable"}:
-        raise InvalidPlan("model could not establish a solution")
-    return prepared.validate(plan)
+    with limits.sync() if limits is not None else nullcontext():
+        plan = strict_json(result.content)
+        if plan == {"status": "unsolvable"}:
+            raise InvalidPlan("model could not establish a solution")
+        return prepared.validate(plan)
 
 
 async def propose_coding(gateway, instruction, task_dir, *, trusted=False) -> dict:

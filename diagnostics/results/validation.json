@@ -1,0 +1,487 @@
+{
+  "baseline": {
+    "answer_precision": 1.0,
+    "answerable": 104,
+    "correct": 40,
+    "false_negative_skips": 64,
+    "false_positive_fraction": 0.0,
+    "justified_refusal_recall": 1.0,
+    "justified_refusals": 24,
+    "llm_calls": 0,
+    "llm_reserved": 0.0,
+    "llm_spent": 0.0,
+    "paid_correct_reward_per_unit": null,
+    "possible_reward": 503,
+    "reward": 217,
+    "seconds": 0.36203867399581213,
+    "skip_fraction": 0.6875,
+    "skipped": 88,
+    "total": 128,
+    "unanswerable": 24,
+    "unverified": 0,
+    "wrong": 0
+  },
+  "benchmark_files_unchanged": 390,
+  "diagnostic_sha256": {
+    "cycle_a.py": "283490d7c50beb79a761d22f7d7fdd68f8f04fe5a1990199d88a4220eff16351",
+    "selection.py": "4a215126eec1bf072a73fa42f0dcb77bc93a364f9ccab3cfacf0117ed0b37d0c",
+    "trace.py": "42c5b064b2d9304b903d08380b133f975e1b003ba8d100586427229fc31e7fb0"
+  },
+  "docker": {
+    "audit": {
+      "app_read_only": true,
+      "cap_eff": "0000000000000000",
+      "cgroup_limits": {
+        "cpus": 8,
+        "memory.max": 17179869184,
+        "pids.max": 512
+      },
+      "no_credentials_in_image_environment": true,
+      "no_new_privileges": true,
+      "openjiuwen": "0.1.20.post1",
+      "python": "3.12.12",
+      "tmpfs_bytes": 2147483648,
+      "user_namespace_errno": 1
+    },
+    "dependencies": "No broken requirements found.",
+    "docker_images_size": "976MB",
+    "image": "sidim-bez-dim:harness-v2-math",
+    "image_id": "sha256:d82149f5aeb66f0a69a594df3277cf664419f98440195b1dd4422d280d6a90af",
+    "inspect_size_bytes": 207953112,
+    "isolation_research": {
+      "architecture": "x86_64",
+      "experiments": {
+        "cgroup": {
+          "result": {
+            "errno": 1,
+            "result": -1
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "chroot": {
+          "result": {
+            "allowed": false,
+            "errno": 1
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "combined": {
+          "result": {
+            "files": {
+              "list_outside": {
+                "allowed": false,
+                "errno": 13
+              },
+              "read_outside": {
+                "allowed": false,
+                "errno": 13
+              },
+              "read_own": {
+                "allowed": true,
+                "errno": 0
+              },
+              "read_via_symlink": {
+                "allowed": false,
+                "errno": 13
+              },
+              "readlink_outside": {
+                "allowed": true,
+                "errno": 0
+              },
+              "stat_outside": {
+                "allowed": true,
+                "errno": 0
+              },
+              "write_outside": {
+                "allowed": false,
+                "errno": 13
+              },
+              "write_own": {
+                "allowed": true,
+                "errno": 0
+              }
+            },
+            "invalid_clone": {
+              "errno": 1,
+              "result": -1
+            },
+            "invalid_clone3": {
+              "errno": 1,
+              "result": -1
+            },
+            "landlock": {
+              "abi": {
+                "errno": 0,
+                "result": 3
+              },
+              "installed": true,
+              "restrict": {
+                "errno": 0,
+                "result": 0
+              }
+            },
+            "parent_signal_zero": {
+              "allowed": false,
+              "errno": 1
+            },
+            "preopened_outside_fd": {
+              "allowed": true,
+              "errno": 0
+            },
+            "seccomp": {
+              "installed": true,
+              "policy": "diagnostic denylist; NOT a sandbox",
+              "prctl": {
+                "errno": 0,
+                "result": 0
+              }
+            },
+            "setsid": {
+              "errno": 1,
+              "result": -1
+            },
+            "socket": {
+              "allowed": false,
+              "errno": 1
+            }
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "cpu": {
+          "result": null,
+          "returncode": -9,
+          "stderr": "",
+          "timed_out": false
+        },
+        "ipc": {
+          "result": {
+            "errno": 1,
+            "result": -1
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "landlock": {
+          "result": {
+            "files": {
+              "list_outside": {
+                "allowed": false,
+                "errno": 13
+              },
+              "read_outside": {
+                "allowed": false,
+                "errno": 13
+              },
+              "read_own": {
+                "allowed": true,
+                "errno": 0
+              },
+              "read_via_symlink": {
+                "allowed": false,
+                "errno": 13
+              },
+              "readlink_outside": {
+                "allowed": true,
+                "errno": 0
+              },
+              "stat_outside": {
+                "allowed": true,
+                "errno": 0
+              },
+              "write_outside": {
+                "allowed": false,
+                "errno": 13
+              },
+              "write_own": {
+                "allowed": true,
+                "errno": 0
+              }
+            },
+            "landlock": {
+              "abi": {
+                "errno": 0,
+                "result": 3
+              },
+              "installed": true,
+              "restrict": {
+                "errno": 0,
+                "result": 0
+              }
+            },
+            "parent_signal_zero": {
+              "allowed": true,
+              "errno": 0
+            },
+            "preopened_outside_fd": {
+              "allowed": true,
+              "errno": 0
+            },
+            "socket": {
+              "allowed": true,
+              "errno": 0
+            }
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "mount": {
+          "result": {
+            "errno": 1,
+            "result": -1
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "network": {
+          "result": {
+            "errno": 1,
+            "result": -1
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "nproc": {
+          "result": {
+            "errno": 0,
+            "fork_allowed": true,
+            "uid": 0
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "pid": {
+          "result": {
+            "errno": 1,
+            "result": -1
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "rlimits": {
+          "result": {
+            "file_size": 1024,
+            "large_file": {
+              "allowed": false,
+              "errno": 27
+            },
+            "memory_allocation_denied": true,
+            "nofile": [
+              32,
+              32
+            ],
+            "nproc": [
+              1,
+              1
+            ],
+            "nproc_enforcement_proven": false
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "seccomp": {
+          "result": {
+            "files": {
+              "list_outside": {
+                "allowed": true,
+                "errno": 0
+              },
+              "read_outside": {
+                "allowed": true,
+                "errno": 0
+              },
+              "read_own": {
+                "allowed": true,
+                "errno": 0
+              },
+              "read_via_symlink": {
+                "allowed": true,
+                "errno": 0
+              },
+              "readlink_outside": {
+                "allowed": true,
+                "errno": 0
+              },
+              "stat_outside": {
+                "allowed": true,
+                "errno": 0
+              },
+              "write_outside": {
+                "allowed": true,
+                "errno": 0
+              },
+              "write_own": {
+                "allowed": true,
+                "errno": 0
+              }
+            },
+            "invalid_clone": {
+              "errno": 1,
+              "result": -1
+            },
+            "invalid_clone3": {
+              "errno": 1,
+              "result": -1
+            },
+            "parent_signal_zero": {
+              "allowed": false,
+              "errno": 1
+            },
+            "preopened_outside_fd": {
+              "allowed": true,
+              "errno": 0
+            },
+            "seccomp": {
+              "installed": true,
+              "policy": "diagnostic denylist; NOT a sandbox",
+              "prctl": {
+                "errno": 0,
+                "result": 0
+              }
+            },
+            "setsid": {
+              "errno": 1,
+              "result": -1
+            },
+            "socket": {
+              "allowed": false,
+              "errno": 1
+            }
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "session": {
+          "result": {
+            "child_group": 24,
+            "child_returncode": 0,
+            "parent_group": 23
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "uid": {
+          "result": {
+            "after": [
+              0,
+              0
+            ],
+            "before": [
+              0,
+              0
+            ],
+            "setgid": {
+              "allowed": false,
+              "errno": 1
+            },
+            "setgroups": {
+              "allowed": false,
+              "errno": 1
+            },
+            "setuid": {
+              "allowed": false,
+              "errno": 1
+            }
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "user": {
+          "result": {
+            "errno": 1,
+            "result": -1
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "uts": {
+          "result": {
+            "errno": 1,
+            "result": -1
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        }
+      },
+      "gid": 0,
+      "kernel": "6.6.87.2-microsoft-standard-WSL2",
+      "process_status": {
+        "CapEff": "0000000000000000",
+        "NoNewPrivs": "1",
+        "Seccomp": "2"
+      },
+      "sandbox_confirmed": false,
+      "task_code_executed": false,
+      "uid": 0
+    },
+    "malformed_task_exit": 1,
+    "matching_runtime_files": 15,
+    "missing_directory_exit": 2,
+    "persisted_repairs": [
+      "coding_0003/workspace/mylib.py",
+      "coding_0007/workspace/mylib.py"
+    ],
+    "safe_examples": "6/8",
+    "source_materials_unchanged": true,
+    "trusted_examples": "8/8"
+  },
+  "git_diff_check": "passed",
+  "head": "854b4da0736777572f9d26cc43fd83438f977244",
+  "offline_receipt_passed": true,
+  "offline_scenarios": 22,
+  "real_account_quota_used_by_this_work": 0,
+  "real_api_requests": 0,
+  "runtime_sha256": {
+    ".dockerignore": "0e096a456572ac8160ba05043dc4319b027e0e3b2cd42d18b004a582f889cca2",
+    "Dockerfile": "eff987a6a8cf4203ad887d582b3a491af5754206671d67be40827abc57f99a77",
+    "budget_manager.py": "8259d00cf23cb1c5f0bd2162784f0c91dc005cf570e99d9a4cfb30929abcbb4f",
+    "coding_solver.py": "e64d5913e831c72a2afd36e70512f290886d8fd7be577ed38d6a57ac3c30d9e7",
+    "data_solver.py": "c4be03febb1852211d8fd6329ea45a6f459cf596ca801d2d448590ced9cb9b0d",
+    "harness.py": "678339926da05c11dfeccb532158325842b9aea3822caf5c921a984acf4fec58",
+    "llm_fallback.py": "8d2ae2b53c057c117932393740a76d51312f0b4000749a4a40e650e7c710e354",
+    "llm_gateway.py": "d86450f235ed339dfc0766859b13a43b6f9a52d850a0fb7b06b8ff6a5d999331",
+    "math_solver.py": "5cff0d75ef690a58d53ce991f5c60898c005af7f5b699187bb5d55627d395c03",
+    "plan_semantics.py": "ed61b70aa4812dc259dbd81fce91c6ee160d5bd7a0186c9e04ea1487d3d9ee7c",
+    "planner.py": "a7503feccfca59b610b6473ea19e97e35c4f6c95eb116fc349e5eea848037c29",
+    "requirements.txt": "d8c2924d446449dfd156153333b01a3ae0ef3fd0da64acfe36eae937663a3da3",
+    "run_agent.py": "0b51035f9e3707b72c043fca5c63e460869b4df19e82b6fd8180ec05b3f878be",
+    "safe_files.py": "04aa6c98f6da2555b80ab298d0937ea32f39a0deea0710fa78e97d849d6c7cfb",
+    "search_solver.py": "1aa9987c50646a689d3f37c68b7111df51d57bd0fdaa9425d129dadd8cbf7cb6"
+  },
+  "source_materials_unchanged": 199,
+  "tests": {
+    "docker_all": {
+      "passed": 346,
+      "seconds": 352.936
+    },
+    "docker_diagnostics_final": {
+      "passed": 32,
+      "seconds": 25.459
+    },
+    "host_all": {
+      "passed": 346,
+      "seconds": 173.618
+    },
+    "host_diagnostics_final": {
+      "passed": 32,
+      "seconds": 24.796
+    }
+  }
+}

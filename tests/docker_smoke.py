@@ -28,7 +28,7 @@ from pathlib import Path
 assert importlib.metadata.version("openjiuwen") == "0.1.20.post1"
 assert os.environ["HOME"] == "/tmp"
 assert not Path("/var/run/docker.sock").exists()
-for name in (".venv", ".git", "codex-local", "AGENTS.md", ".env", "tests", "benchmark", "__pycache__"):
+for name in (".venv", ".git", "codex-local", "AGENTS.md", ".env", "tests", "benchmark", "diagnostics", "__pycache__"):
     assert not Path("/app", name).exists(), name
 assert not any(key in os.environ for key in ("LLM_API_KEY", "LLM_BASE_URL"))
 try:
@@ -179,9 +179,15 @@ def main():
         container(["/app/run_agent.py", "--tasks-dir", "/does-not-exist"], expected=2)
 
         # Verification inputs are read-only mounts, never image/build contents.
+        # Private LIVE state must be absent, not merely ignored by the tests.
+        public_diagnostics = base / "diagnostics"
+        public_diagnostics.mkdir(mode=0o755)
+        for module in (ROOT / "diagnostics").glob("*.py"):
+            shutil.copy2(module, public_diagnostics / module.name)
         suite = container(["-B", "-m", "unittest", "discover", "-s", "/app/tests", "-v"],
                           [(ROOT / "tests", "/app/tests", True),
                            (ROOT / "benchmark", "/app/benchmark", True),
+                           (public_diagnostics, "/app/diagnostics", True),
                            (ROOT / "codex-local", "/app/codex-local", True)], timeout=600)
         print(suite.stderr, end="")
 

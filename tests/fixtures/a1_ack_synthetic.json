@@ -1,0 +1,37 @@
+{
+  "budget": {
+    "available": "580.3",
+    "frozen": false,
+    "limit": 600,
+    "reserved": "0.0",
+    "spent": "19.7",
+    "uncertain_calls": 0
+  },
+  "contract_observed": false,
+  "diagnostic_sha256": {
+    "cycle_a.py": "4f1ff56587598725e1d7921379c42066da25fa78ed7b60598ea2c8c422fb3f29",
+    "selection.py": "58b73fc1c92f49925a51fd1984e1755d886392567d9a4c93268dfa4c7f7ab2a2",
+    "trace.py": "04d35046cb0aac17841a274b68b9be8622a71c8a9123ce24e775a7aa796a32b9"
+  },
+  "endpoint_digest": "03581b9441dfaf81a779164505b88b41feefeec7b316787f388a2efe0f4299bd",
+  "live": true,
+  "mode": "A1",
+  "model": "qwen3.6-35b-a3b-noreason",
+  "probes": [
+    {
+      "completion_tokens": 18,
+      "finish_reason": "stop",
+      "id": "a1_ack",
+      "max_tokens": 32,
+      "prompt_tokens": 17,
+      "request_sent": true,
+      "usage_state": "confirmed"
+    }
+  ],
+  "request_attempts": 1,
+  "runtime_sha256": {
+    "harness.py": "08c68e2b11335a0d2cb2526390abc599e658ff79be4506a49d08f282ad39b3ef",
+    "run_agent.py": "75112f060c7f7ab9ec5a3a2b81bee81b4195a4005bdba6603639e2e6cf97e835"
+  },
+  "synthetic_fixture": true
+}

@@ -38,12 +38,48 @@ _QUESTIONS = [
     )
 ]
 _RELATION = re.compile(r"(.+)['’]s (employer|mentor)", re.IGNORECASE)
-_FIELD = re.compile(r"(Born|Founded|Headquarters|Employer|Mentor):\s*(.*)", re.IGNORECASE)
+_FIELD = re.compile(r"(Born|Founded|Headquarters|Employer|Mentor|Alias):\s*(.*)", re.IGNORECASE)
 _UNKNOWN = {"", "?", "unknown", "not known", "not specified", "n/a", "none", "null"}
+_INVERSE_MENTOR = re.compile(r"Who is mentored by (.+)", re.IGNORECASE)
+RELATION_ALIASES = {"mentor": "mentor", "coach": "mentor", "advisor": "mentor", "adviser": "mentor",
+                    "employer": "employer", "company": "employer", "workplace": "employer", "firm": "employer"}
+
+
+class _Knowledge(dict):
+    """Canonical facts plus exact heading labels for entity-valued answers."""
+    def __init__(self):
+        super().__init__()
+        self.labels = {}
+        self.aliases = {}
 
 
 def _name(value: str) -> str:
     return " ".join(value.split()).casefold()
+
+
+def _resolve_entity(value, index):
+    """Resolve only explicit headings/aliases; a collision is never a preference."""
+    name = _name(value)
+    if name in _UNKNOWN:
+        return None
+    candidates = {name} if name in index else set()
+    if isinstance(index, _Knowledge):
+        candidates.update(index.aliases.get(name, ()))
+    else:
+        candidates.update(entity for entity, facts in index.items()
+                          if any(_name(alias) == name for alias in facts.get("alias", ())))
+    if len(candidates) > 1:
+        raise UnsupportedSearch("conflicting or ambiguous entity definitions")
+    return next(iter(candidates), None)
+
+
+def _check_literal_expression(text, index):
+    words = "|".join(RELATION_ALIASES)
+    possessive = re.fullmatch(rf"(.+)['’]s ({words})", text, re.I)
+    nested = re.fullmatch(rf"(?:the )?({words}) of (.+)", text, re.I)
+    base = possessive[1] if possessive else nested[2] if nested else None
+    if base is not None and _resolve_entity(base, index) is not None:
+        raise UnsupportedSearch("literal entity and relation expression are ambiguous")
 
 
 def _records(text: str):
@@ -63,7 +99,7 @@ def _records(text: str):
         if line.startswith("# "):
             if entity is not None:
                 yield entity, facts
-            entity = _name(line[2:])
+            entity = line[2:].strip()
             facts = {}
         elif entity and (match := _FIELD.fullmatch(line)):
             facts.setdefault(match[1].lower(), set()).add(match[2].strip())
@@ -73,7 +109,7 @@ def _records(text: str):
 
 def _load_kb(task_dir: Path) -> tuple[dict, set[str]]:
     kb = task_dir / "workspace" / "kb"
-    index = {}
+    index = _Knowledge()
     ambiguous = set()
     try:
         if not kb.is_dir() or not kb.resolve().is_relative_to(task_dir.resolve()):
@@ -84,10 +120,15 @@ def _load_kb(task_dir: Path) -> tuple[dict, set[str]]:
             total += len(text.encode("utf-8"))
             if total > KB_BYTES:
                 raise UnsupportedSearch("cannot read the complete knowledge base")
-            for entity, facts in _records(text):
+            for label, facts in _records(text):
+                entity = _name(label)
+                index.labels.setdefault(entity, set()).add(label)
+                # Preserve every alias binding, even from conflicting records.
+                for alias in facts.get("alias", ()):
+                    index.aliases.setdefault(_name(alias), set()).add(entity)
                 if entity in index and facts != index[entity]:
                     ambiguous.add(entity)
-                if any(len(values) != 1 for values in facts.values()):
+                if any(len(values) != 1 for key, values in facts.items() if key != "alias"):
                     ambiguous.add(entity)
                 index[entity] = facts
     except (OSError, UnicodeError, UnsafeFile) as exc:
@@ -100,6 +141,25 @@ def solve_search(instruction: str, task_dir: Path) -> str:
     parsed = _INSTRUCTION.fullmatch(" ".join(instruction.split()))
     if parsed is None or _SUFFIX.fullmatch(parsed["suffix"]) is None:
         raise UnsupportedSearch("unsupported search instructions")
+    if inverse := _INVERSE_MENTOR.fullmatch(parsed["question"]):
+        index, ambiguous = _load_kb(task_dir)
+        target = _resolve_entity(inverse[1], index)
+        _check_literal_expression(inverse[1], index)
+        if target is None or ambiguous:
+            raise UnsupportedSearch("missing or ambiguous inverse relation evidence")
+        candidates = set()
+        for entity, facts in index.items():
+            for mentor in facts.get("mentor", ()):
+                if _name(mentor) in _UNKNOWN:
+                    raise UnsupportedSearch("missing or ambiguous inverse relation evidence")
+                if _resolve_entity(mentor, index) == target:
+                    candidates.add(entity)
+        if len(candidates) != 1:
+            raise UnsupportedSearch("missing or ambiguous inverse relation answer")
+        labels = index.labels[next(iter(candidates))]
+        if len(labels) != 1:
+            raise UnsupportedSearch("missing or ambiguous inverse entity spelling")
+        return next(iter(labels))
     for pattern, field in _QUESTIONS:
         if match := pattern.fullmatch(parsed["question"]):
             subject = match[1]
@@ -110,7 +170,7 @@ def solve_search(instruction: str, task_dir: Path) -> str:
     index, ambiguous = _load_kb(task_dir)
 
     def fact(entity: str, key: str) -> str:
-        entity = _name(entity)
+        entity = _resolve_entity(entity, index)
         if entity in ambiguous:
             raise UnsupportedSearch("conflicting or ambiguous entity definitions")
         values = index.get(entity, {}).get(key, set())
@@ -119,12 +179,14 @@ def solve_search(instruction: str, task_dir: Path) -> str:
         return next(iter(values))
 
     relations = []
-    while _name(subject) not in index:
+    while (resolved := _resolve_entity(subject, index)) is None:
         match = _RELATION.fullmatch(subject)
         if match is None:
             raise UnsupportedSearch("entity or relation cannot be resolved")
         subject = match[1]
         relations.append(match[2].lower())
+    _check_literal_expression(subject, index)
+    subject = resolved
     for relation in reversed(relations):
         subject = fact(subject, relation)
     answer = fact(subject, field)

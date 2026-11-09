@@ -267,7 +267,7 @@ class DataTests(unittest.TestCase):
             "What is the median of units?",
             "What is the sum of units where month between 4 and 5?",
             "What is the sum of units where month between 5 and 4 inclusive?",
-            "What is the sum of units where product = 'gizmo' or month = 4?",
+            "What is the sum of units where product = 'gizmo' or month = 4 and units > 2?",
             "What is the sum of units where?",
             "What is the sum of units where month >= ?",
             "What is the sum of units where month = 4 and?",

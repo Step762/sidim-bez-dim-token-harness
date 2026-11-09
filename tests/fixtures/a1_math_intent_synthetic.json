@@ -1,0 +1,34 @@
+{
+  "budget_before": {
+    "available": "580.3",
+    "frozen": false,
+    "limit": 600,
+    "reserved": "0.0",
+    "spent": "19.7",
+    "uncertain_calls": 0
+  },
+  "diagnostic_sha256": {
+    "a1_resume.py": "3994a934522e609fdf6baa6d647f2de4f11250061d9d65b6ac478e8cada03a23",
+    "cycle_a.py": "d59fa641bef989e94005f67976b638882e67d6324bd44ebb15e0f3e9660513fb",
+    "selection.py": "d029a0ce2fd3d151f82b71bdf76b76df1f763d37d33684cbcb0229daa30f475b",
+    "trace.py": "d8997a57df35fd5bb1d28b9b5ac9cc030d43096eadcbf871988b57bd390588af"
+  },
+  "endpoint_digest": "03581b9441dfaf81a779164505b88b41feefeec7b316787f388a2efe0f4299bd",
+  "estimated_input": 900,
+  "historical_confirmed_cost": "19.7",
+  "max_tokens": 64,
+  "mode": "A1_resume_intent",
+  "model": "qwen3.6-35b-a3b-noreason",
+  "parameters_sha256": "18aa12323a106dab258e9b27971c0776b1d7fee9dfd317774178fff80e08507d",
+  "pending_reserve": "154.0",
+  "probe_id": "a1_math",
+  "request_status": "may_have_been_sent",
+  "runtime_sha256": {
+    "harness.py": "08c68e2b11335a0d2cb2526390abc599e658ff79be4506a49d08f282ad39b3ef",
+    "run_agent.py": "75112f060c7f7ab9ec5a3a2b81bee81b4195a4005bdba6603639e2e6cf97e835"
+  },
+  "series_attempts_upper_bound": 2,
+  "source_sha256": "32497db04d67929834814906b91174aec250629605a72a9d4db8fff07aab9e7b",
+  "synthetic_fixture": true,
+  "version": 1
+}

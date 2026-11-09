@@ -1,6 +1,7 @@
 """Task loading, openJiuwen execution and immediate answer persistence."""
 
 from dataclasses import dataclass
+import asyncio
 import json
 import math
 import os
@@ -42,6 +43,7 @@ from llm_gateway import install_openjiuwen_budget_guard
 from budget_manager import BudgetManager
 from llm_fallback import InvalidPlan, solve_fallback
 from planner import Planner, local_outcome
+from runtime_limits import RuntimeLimits, OperationTimeout
 import csv
 
 
@@ -88,6 +90,10 @@ SOLVERS = {
 
 
 class SolveTask(WorkflowComponent):
+    def __init__(self,limits):
+        super().__init__()
+        self.limits = limits
+
     async def invoke(self, inputs, session, context):
         if inputs.get("route") == "fallback":
             return {"status": "skipped", "answer": "", "reason": inputs.get("local_reason") or "unsupported local formulation"}
@@ -97,24 +103,28 @@ class SolveTask(WorkflowComponent):
         try:
             if inputs["task_type"] == "coding" and inputs.get("trusted_code") is not True:
                 raise UnsupportedCoding("coding execution requires --trusted-code for trusted copies")
-            if inputs["task_type"] in {"search", "data_analysis", "coding"}:
-                if not inputs.get("task_dir"):
-                    return {"status": "skipped", "answer": "", "reason": "missing task directory"}
-                if inputs["task_type"] == "coding":
-                    answer = solver(inputs["instruction"], Path(inputs["task_dir"]), trusted=True)
+            with self.limits.sync():
+                if inputs["task_type"] in {"search", "data_analysis", "coding"}:
+                    if not inputs.get("task_dir"):
+                        return {"status": "skipped", "answer": "", "reason": "missing task directory"}
+                    if inputs["task_type"] == "coding":
+                        answer = solver(inputs["instruction"], Path(inputs["task_dir"]), trusted=True)
+                    else:
+                        answer = solver(inputs["instruction"], Path(inputs["task_dir"]))
                 else:
-                    answer = solver(inputs["instruction"], Path(inputs["task_dir"]))
-            else:
-                answer = solver(inputs["instruction"])
+                    answer = solver(inputs["instruction"])
+        except OperationTimeout:
+            return {"status":"skipped","answer":"","reason":"local operation time limit reached"}
         except (UnsupportedMath, UnsupportedSearch, UnsupportedData, UnsupportedCoding) as exc:
             return {"status": "skipped", "answer": "", "reason": str(exc)}
         return {"status": "solved", "answer": str(answer), "reason": ""}
 
 
 class FallbackTask(WorkflowComponent):
-    def __init__(self, gateway=None, budget=None):
+    def __init__(self, gateway=None, budget=None, limits=None):
         super().__init__()
         self.gateway = gateway
+        self.limits = limits
         self.budget = budget if budget is not None else getattr(gateway, "budget", None)
 
     async def invoke(self, inputs, session, context):
@@ -137,8 +147,11 @@ class FallbackTask(WorkflowComponent):
             answer = await solve_fallback(
                 self.gateway, inputs["task_type"], inputs["instruction"], task_dir,
                 task_id=inputs.get("task_id") or str(task_dir or "workflow"),
+                limits=self.limits,
             )
             return {"status": "solved", "answer": answer, "reason": ""}
+        except OperationTimeout:
+            return {"status": "skipped", "answer": "", "reason": "local operation time limit reached"}
         except LLMError as exc:
             return {"status": "skipped", "answer": "", "reason": str(exc)}
         except (
@@ -148,11 +161,12 @@ class FallbackTask(WorkflowComponent):
             return {"status": "skipped", "answer": "", "reason": "LLM plan or local evidence could not be validated"}
 
 
-def build_workflow(*, llm=None, budget=None, manager=None) -> Workflow:
+def build_workflow(*, llm=None, budget=None, manager=None, limits=None) -> Workflow:
     """Local solving precedes the optional, bounded LLM translation node."""
     if manager is not None and llm is not None and manager is not llm.manager:
         raise ValueError("workflow and gateway must share one BudgetManager")
     install_openjiuwen_budget_guard()
+    limits = limits or RuntimeLimits()
     workflow = Workflow()
     workflow.set_start_comp(
         "start", Start(),
@@ -165,7 +179,7 @@ def build_workflow(*, llm=None, budget=None, manager=None) -> Workflow:
         },
     )
     workflow.add_workflow_comp(
-        "solve", SolveTask(),
+        "solve", SolveTask(limits),
         inputs_schema={
             "task_type": "${start.task_type}",
             "instruction": "${start.instruction}",
@@ -183,7 +197,7 @@ def build_workflow(*, llm=None, budget=None, manager=None) -> Workflow:
         },
     )
     workflow.add_workflow_comp(
-        "fallback", FallbackTask(llm, budget),
+        "fallback", FallbackTask(llm, budget, limits),
         inputs_schema={
             "status": "${solve.status}", "answer": "${solve.answer}", "reason": "${solve.reason}",
             "task_type": "${start.task_type}", "instruction": "${start.instruction}",
@@ -226,54 +240,68 @@ async def run_tasks(
     tasks_dir: Path, *, allow_trusted_code: bool = False, llm=None, budget=None,
     manager=None,
     strategy="priority", report=None,
+    limits=None,
 ) -> dict[str, int]:
     """Schedule local and fallback passes through the same openJiuwen workflow."""
     if not tasks_dir.is_dir():
         raise ValueError(f"tasks directory does not exist: {tasks_dir}")
     manager = manager if manager is not None else (llm.manager if llm is not None else BudgetManager(0))
-    workflow = build_workflow(llm=llm, budget=budget, manager=manager)
+    limits = limits or RuntimeLimits()
+    workflow = build_workflow(llm=llm, budget=budget, manager=manager,limits=limits)
     tasks_dir = tasks_dir.resolve(strict=True)
     with open_directory(tasks_dir) as root:
         with directory_guards({tasks_dir: identity(os.fstat(root))}) as guards:
             tasks, malformed, seen = [], 0, set()
-            for name in sorted(os.listdir(root)):
+            try:
+                with limits.sync(): names = sorted(os.listdir(root))
+            except OperationTimeout:
+                names = []
+            for name in names:
+                if limits.expired: break
                 directory = tasks_dir / name
                 try:
-                    info = os.stat(name, dir_fd=root, follow_symlinks=False)
-                    if stat.S_ISLNK(info.st_mode):
-                        raise ValueError("symbolic task directory links are unsupported")
-                    if not stat.S_ISDIR(info.st_mode):
-                        continue
-                    with open_directory(directory) as child:
-                        try:
-                            os.stat("task.json", dir_fd=child, follow_symlinks=False)
-                        except FileNotFoundError:
+                    with limits.sync():
+                        info = os.stat(name, dir_fd=root, follow_symlinks=False)
+                        if stat.S_ISLNK(info.st_mode):
+                            raise ValueError("symbolic task directory links are unsupported")
+                        if not stat.S_ISDIR(info.st_mode):
                             continue
-                        key = identity(os.fstat(child))
-                        if key in seen:
-                            raise ValueError("duplicate task directory")
-                        guards[directory] = key
-                        task = load_task(directory / "task.json")
+                        with open_directory(directory) as child:
+                            try:
+                                os.stat("task.json", dir_fd=child, follow_symlinks=False)
+                            except FileNotFoundError:
+                                continue
+                            key = identity(os.fstat(child))
+                            if key in seen:
+                                raise ValueError("duplicate task directory")
+                            guards[directory] = key
+                            task = load_task(directory / "task.json")
                     seen.add(key)
                     tasks.append(task)
                 except Exception as exc:
                     malformed += 1
                     print(f"{name}: failed: {exc}", flush=True)
             return await _execute_tasks(tasks, malformed, workflow, allow_trusted_code,
-                                        llm, budget, manager, strategy, report)
+                                        llm, budget, manager, strategy, report,limits)
 
 
 async def _execute_tasks(tasks, malformed, workflow, allow_trusted_code,
-                         llm, budget, manager, strategy, report):
+                         llm, budget, manager, strategy, report,limits):
     planner = Planner(tasks, manager, llm, strategy=strategy, trusted_code=allow_trusted_code,
-                      llm_enabled=budget is None or (type(budget) is int and budget > 0))
+                      llm_enabled=budget is None or (type(budget) is int and budget > 0),limits=limits)
     printed = set()
-    while (decision := planner.next()) is not None:
+    while not limits.expired:
+        try:
+            with limits.sync(): decision = planner.next()
+        except OperationTimeout:
+            break
+        if decision is None: break
         task = decision.entry.task
         try:
             with open_directory(task.directory):
                 pass  # Guards reject replacement since discovery, before any solver runs.
-            output = await workflow.invoke(
+            async with asyncio.timeout(min(limits.operation,limits.remaining)):
+                output = await workflow.invoke(
                 {
                     "task_type": task.task_type, "instruction": task.instruction,
                     "task_dir": str(task.directory),
@@ -288,23 +316,33 @@ async def _execute_tasks(tasks, malformed, workflow, allow_trusted_code,
             result = output.result["output"]
             status = result["status"]
             if status == "solved":
-                save_answer(task.directory, result["answer"])
+                with limits.sync(): save_answer(task.directory, result["answer"])
             elif status != "skipped":
                 raise RuntimeError(f"unexpected solver status: {status}")
-            planner.finish(decision, status, result["reason"])
+            with limits.sync(): planner.finish(decision, status, result["reason"])
             if status == "solved":
                 print(f"{task.task_id}: solved: {result['answer']}", flush=True)
                 printed.add(decision.entry.key)
+        except (OperationTimeout,TimeoutError):
+            if decision.entry.state!="solved":
+                decision.entry.state = "timed_out"
+                decision.entry.reason = "operation or run deadline reached"
+            print(f"{task.task_id}: skipped [timed_out]",flush=True)
+            printed.add(decision.entry.key)
         except Exception as exc:
             if not decision.entry.terminal:
                 planner.finish(decision, "failed", str(exc))
             print(f"{task.task_id}: failed: {exc}", flush=True)
             printed.add(decision.entry.key)
     for entry in planner.entries:
+        if not entry.terminal:
+            entry.state = "time_exhausted"
+            entry.reason = "run deadline reached"
         if entry.key not in printed:
             print(f"{entry.task.task_id}: skipped [{entry.state}]: {entry.reason}", flush=True)
     if report is not None:
         report.update(planner.report())
+        report["time_exhausted"] = limits.expired
     return {
         "solved": sum(entry.state == "solved" for entry in planner.entries),
         "skipped": sum(entry.state not in {"solved", "failed"} for entry in planner.entries),

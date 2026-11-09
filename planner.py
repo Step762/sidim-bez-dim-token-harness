@@ -13,6 +13,7 @@ from budget_manager import cost_tenths
 from llm_fallback import prepare, InvalidPlan
 from llm_gateway import LLMError
 from safe_files import UnsafeFile, markdown_files, open_directory
+from runtime_limits import OperationTimeout
 
 
 STRATEGIES = ("priority", "original", "reward")
@@ -24,6 +25,8 @@ def local_outcome(reason: str) -> str:
     Missing/contradictory inputs do not prove a problem universally impossible.
     Only the supported division-by-zero case is explicitly unsolvable here.
     """
+    if reason == "local operation time limit reached":
+        return "timed_out"
     if reason == "cannot split into zero warehouses":
         return "unsolvable"
     if any(word in reason for word in ("outside", "external", "symbolic link", "trusted", "repair targets")):
@@ -156,14 +159,23 @@ class Planner:
     original/reward are controlled ordering baselines: they retain the same
     local-first execution, budget admission and safety checks as priority.
     """
-    def __init__(self, tasks, manager, gateway=None, *, strategy="priority", trusted_code=False, llm_enabled=True):
+    def __init__(self, tasks, manager, gateway=None, *, strategy="priority", trusted_code=False, llm_enabled=True,limits=None):
         if strategy not in STRATEGIES:
             raise ValueError("unknown planning strategy")
         if gateway is not None and gateway.manager is not manager:
             raise ValueError("planner and gateway must share one BudgetManager")
         self.manager, self.gateway = manager, gateway
         self.strategy, self.llm_enabled = strategy, llm_enabled
-        self.entries = [Entry(task, features(task, trusted_code)) for task in tasks]
+        self.entries = []
+        for task in tasks:
+            try:
+                if limits is None:
+                    value = features(task,trusted_code)
+                else:
+                    with limits.sync(): value = features(task,trusted_code)
+            except OperationTimeout:
+                value = Features(1,False,False,"timed_out")
+            self.entries.append(Entry(task,value))
         keys = [entry.key for entry in self.entries]
         if len(set(keys)) != len(keys):
             raise ValueError("duplicate task directory")
@@ -254,6 +266,9 @@ class Planner:
             return
         if status == "failed":
             entry.state = "failed"
+            return
+        if reason == "local operation time limit reached":
+            entry.state = "timed_out"
             return
         if decision.phase == "fallback":
             if reason in {"LLM is disabled or budget is zero", "insufficient or uncertain LLM budget"}:

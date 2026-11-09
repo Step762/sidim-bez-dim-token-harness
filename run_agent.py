@@ -3,10 +3,12 @@
 import argparse
 import asyncio
 import os
+import time
 from pathlib import Path
 
 
 def main() -> int:
+    started = time.monotonic()
     from llm_gateway import DEFAULT_MODEL, MODELS
     from planner import STRATEGIES
 
@@ -25,9 +27,15 @@ def main() -> int:
     parser.add_argument("--llm-model", choices=sorted(MODELS), default=DEFAULT_MODEL)
     parser.add_argument("--llm-timeout", type=float, default=20)
     parser.add_argument("--llm-max-tokens", type=int, default=1024)
+    parser.add_argument("--time-limit",type=float,default=3540,help="total seconds including startup; maximum 3540")
+    parser.add_argument("--operation-timeout",type=float,default=30,help="seconds per synchronous operation or workflow attempt")
     parser.add_argument("--strategy", choices=STRATEGIES, default="priority",
                         help="task ordering: priority (default), original, reward")
     args = parser.parse_args()
+    from runtime_limits import RuntimeLimits
+    try:
+        limits = RuntimeLimits(args.time_limit,args.operation_timeout,started=started)
+    except ValueError as exc: parser.error(str(exc))
     if not args.tasks_dir.is_dir():
         parser.error("--tasks-dir must name an existing directory")
 
@@ -68,7 +76,7 @@ def main() -> int:
         args.tasks_dir, allow_trusted_code=args.trusted_code, llm=gateway,
         budget=int(budget) if budget is not None else None,
         manager=manager,
-        strategy=args.strategy, report=report,
+        strategy=args.strategy, report=report,limits=limits,
     ))
     usage = gateway.summary() if gateway is not None else "llm_tokens_used=0"
     print(

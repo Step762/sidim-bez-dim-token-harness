@@ -166,8 +166,7 @@ def calculate_math(value, steps):
     return format_math(value)
 
 
-RELATIONS = {"mentor": "mentor", "coach": "mentor", "advisor": "mentor", "adviser": "mentor",
-             "employer": "employer", "company": "employer", "workplace": "employer", "firm": "employer"}
+RELATIONS = search_solver.RELATION_ALIASES
 
 
 def search_spec(problem, index):
@@ -198,14 +197,14 @@ def search_spec(problem, index):
         text = text.strip()
         if depth > 3:
             raise UnsupportedMeaning("search chain is too long")
-        if search_solver._name(text) in index:
+        if (canonical := search_solver._resolve_entity(text, index)) is not None:
             # A literal entity name must not hide another valid expression.
             possessive = _match(rf"(.+)['’]s ({relation_words})", text)
             nested = _match(rf"(?:the )?({relation_words}) of (.+)", text)
             alternative = possessive[1] if possessive else nested[2] if nested else None
-            if alternative is not None and search_solver._name(alternative) in index:
+            if alternative is not None and search_solver._resolve_entity(alternative, index) is not None:
                 raise UnsupportedMeaning("literal entity and relation expression are ambiguous")
-            return search_solver._name(text), []
+            return canonical, []
         if m := _match(rf"(.+)['’]s ({relation_words})", text):
             root, chain = expression(m[1], depth + 1)
             return root, chain + [RELATIONS[m[2].lower()]]

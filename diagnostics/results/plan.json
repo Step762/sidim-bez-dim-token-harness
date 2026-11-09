@@ -1,0 +1,230 @@
+{
+  "live": false,
+  "mode": "plan",
+  "plan": {
+    "A1": {
+      "budget": 600,
+      "max_requests": 3,
+      "planned_reservation": "493.1",
+      "probes": [
+        {
+          "estimated_input": 1170,
+          "id": "a1_ack",
+          "max_tokens": 32,
+          "reservation": "149"
+        },
+        {
+          "estimated_input": 1241,
+          "id": "a1_math",
+          "max_tokens": 64,
+          "reservation": "188.1"
+        },
+        {
+          "estimated_input": 1240,
+          "id": "a1_limit",
+          "max_tokens": 32,
+          "reservation": "156"
+        }
+      ]
+    },
+    "A2": {
+      "budget": 2500,
+      "max_requests": 3,
+      "max_tokens": 512,
+      "planned_reservation": "2115.1",
+      "requires_successful_live_A1": true,
+      "tasks": 12
+    },
+    "configuration": "LLM_BASE_URL and LLM_API_KEY only; not read by offline preflight",
+    "endpoint_assumption": "https://api.neuraldeep.ru/v1/chat/completions",
+    "limits_note": "Reservations use a heuristic, not a proven tokenizer bound. max_tokens enforcement and remote quota remain unverified. No absolute remote cost guarantee.",
+    "model": "qwen3.6-35b-a3b-noreason",
+    "runtime_sha256": {
+      ".dockerignore": "0e096a456572ac8160ba05043dc4319b027e0e3b2cd42d18b004a582f889cca2",
+      "Dockerfile": "eff987a6a8cf4203ad887d582b3a491af5754206671d67be40827abc57f99a77",
+      "budget_manager.py": "8259d00cf23cb1c5f0bd2162784f0c91dc005cf570e99d9a4cfb30929abcbb4f",
+      "coding_solver.py": "e64d5913e831c72a2afd36e70512f290886d8fd7be577ed38d6a57ac3c30d9e7",
+      "data_solver.py": "c4be03febb1852211d8fd6329ea45a6f459cf596ca801d2d448590ced9cb9b0d",
+      "harness.py": "678339926da05c11dfeccb532158325842b9aea3822caf5c921a984acf4fec58",
+      "llm_fallback.py": "8d2ae2b53c057c117932393740a76d51312f0b4000749a4a40e650e7c710e354",
+      "llm_gateway.py": "d86450f235ed339dfc0766859b13a43b6f9a52d850a0fb7b06b8ff6a5d999331",
+      "math_solver.py": "5cff0d75ef690a58d53ce991f5c60898c005af7f5b699187bb5d55627d395c03",
+      "plan_semantics.py": "ed61b70aa4812dc259dbd81fce91c6ee160d5bd7a0186c9e04ea1487d3d9ee7c",
+      "planner.py": "a7503feccfca59b610b6473ea19e97e35c4f6c95eb116fc349e5eea848037c29",
+      "requirements.txt": "d8c2924d446449dfd156153333b01a3ae0ef3fd0da64acfe36eae937663a3da3",
+      "run_agent.py": "0b51035f9e3707b72c043fca5c63e460869b4df19e82b6fd8180ec05b3f878be",
+      "safe_files.py": "04aa6c98f6da2555b80ab298d0937ea32f39a0deea0710fa78e97d849d6c7cfb",
+      "search_solver.py": "1aa9987c50646a689d3f37c68b7111df51d57bd0fdaa9425d129dadd8cbf7cb6"
+    },
+    "selection": [
+      {
+        "context_supported": false,
+        "estimated_input": null,
+        "expected": "163",
+        "local_answer": "163",
+        "local_outcome": "solved",
+        "local_status": "correct",
+        "natural_llm_candidate": false,
+        "reason": "Дешёвый локальный контроль; LLM не должен вызываться.",
+        "reservation": null,
+        "reward": 1,
+        "task_id": "math_d01",
+        "task_type": "math"
+      },
+      {
+        "context_supported": false,
+        "estimated_input": null,
+        "expected": "29",
+        "local_answer": null,
+        "local_outcome": "budget_blocked",
+        "local_status": "skipped",
+        "natural_llm_candidate": false,
+        "reason": "Нулевая награда, степень словами: неподдерживаемая операция.",
+        "reservation": null,
+        "reward": 0,
+        "task_id": "math_d08",
+        "task_type": "math"
+      },
+      {
+        "context_supported": false,
+        "estimated_input": null,
+        "expected": "7.24",
+        "local_answer": null,
+        "local_outcome": "budget_blocked",
+        "local_status": "skipped",
+        "natural_llm_candidate": false,
+        "reason": "Явное round-half-up; модель потенциально понимает, грамматика нет.",
+        "reservation": null,
+        "reward": 3,
+        "task_id": "math_d09",
+        "task_type": "math"
+      },
+      {
+        "context_supported": true,
+        "estimated_input": 1880,
+        "expected": "76",
+        "local_answer": null,
+        "local_outcome": "budget_blocked",
+        "local_status": "skipped",
+        "natural_llm_candidate": true,
+        "reason": "Локальный отказ, проверяемая арифметика; также эквивалентный план add(-8).",
+        "reservation": "700",
+        "reward": 2,
+        "task_id": "math_d15",
+        "task_type": "math"
+      },
+      {
+        "context_supported": true,
+        "estimated_input": 1692,
+        "expected": "1974",
+        "local_answer": "1974",
+        "local_outcome": "solved",
+        "local_status": "correct",
+        "natural_llm_candidate": false,
+        "reason": "Прямой факт из собственной Markdown-базы.",
+        "reservation": "681.2",
+        "reward": 13,
+        "task_id": "search_d01",
+        "task_type": "search"
+      },
+      {
+        "context_supported": true,
+        "estimated_input": 1839,
+        "expected": "Porto",
+        "local_answer": "Porto",
+        "local_outcome": "solved",
+        "local_status": "correct",
+        "natural_llm_candidate": false,
+        "reason": "Цепочка Mentor → Employer → Headquarters в разных документах.",
+        "reservation": "695.9",
+        "reward": 3,
+        "task_id": "search_d05",
+        "task_type": "search"
+      },
+      {
+        "context_supported": false,
+        "estimated_input": null,
+        "expected": "1978",
+        "local_answer": null,
+        "local_outcome": "insufficient_evidence",
+        "local_status": "skipped",
+        "natural_llm_candidate": false,
+        "reason": "Непротиворечивые части профиля, отклонённые индексом как конфликт.",
+        "reservation": null,
+        "reward": 2,
+        "task_id": "search_d14",
+        "task_type": "search"
+      },
+      {
+        "context_supported": true,
+        "estimated_input": 1823,
+        "expected": "Porto",
+        "local_answer": null,
+        "local_outcome": "budget_blocked",
+        "local_status": "skipped",
+        "natural_llm_candidate": true,
+        "reason": "Непривычная формулировка и цепочка связей, доступные fallback.",
+        "reservation": "694.3",
+        "reward": 5,
+        "task_id": "search_d15",
+        "task_type": "search"
+      },
+      {
+        "context_supported": true,
+        "estimated_input": 2091,
+        "expected": "12",
+        "local_answer": "12",
+        "local_outcome": "solved",
+        "local_status": "correct",
+        "natural_llm_candidate": false,
+        "reason": "CSV с несколькими фильтрами и включёнными границами.",
+        "reservation": "721.1",
+        "reward": 8,
+        "task_id": "data_analysis_d06",
+        "task_type": "data_analysis"
+      },
+      {
+        "context_supported": true,
+        "estimated_input": 1986,
+        "expected": null,
+        "local_answer": null,
+        "local_outcome": "invalid_data",
+        "local_status": "skipped",
+        "natural_llm_candidate": false,
+        "reason": "Повреждённое число: разумный отказ без запроса модели.",
+        "reservation": "710.6",
+        "reward": 1,
+        "task_id": "data_analysis_d11",
+        "task_type": "data_analysis"
+      },
+      {
+        "context_supported": false,
+        "estimated_input": null,
+        "expected": "{\"east\":57,\"west\":23}",
+        "local_answer": null,
+        "local_outcome": "budget_blocked",
+        "local_status": "skipped",
+        "natural_llm_candidate": false,
+        "reason": "Группировка: необходимой операции нет в текущей схеме.",
+        "reservation": null,
+        "reward": 13,
+        "task_id": "data_analysis_d12",
+        "task_type": "data_analysis"
+      },
+      {
+        "context_supported": true,
+        "estimated_input": 2088,
+        "expected": "35",
+        "local_answer": null,
+        "local_outcome": "budget_blocked",
+        "local_status": "skipped",
+        "natural_llm_candidate": true,
+        "reason": "Сложная словесная фильтрация CSV, доступная fallback.",
+        "reservation": "720.8",
+        "reward": 8,
+        "task_id": "data_analysis_d14",
+        "task_type": "data_analysis"
+      }
+    ]
+  }
+}
