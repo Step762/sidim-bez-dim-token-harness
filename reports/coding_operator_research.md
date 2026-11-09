@@ -236,13 +236,59 @@ JSON
 и Docker smoke в этом окружении не запускались. В доступном Python WSL
 отсутствуют `httpx` и `openjiuwen`, а Docker Engine не запущен.
 
+## Регрессии на общей ветке
+
+Рабочая ветка синхронизирована с командной `feature/harness-v1` на
+`7468e5f`. Проверка для checkout без материалов организатора запускает
+штатный CLI на четырёх собственных синтетических задачах. Она сверяет
+результаты Math, Search и CSV, пропуск Coding, права ответов и неизменность
+входов. Отдельный режим запускает обнаруженные unit-тесты и помечает
+тест оригинальных восьми задач как skipped, если каталог
+`codex-local/examples/task-dir` отсутствует.
+
+Команды для PowerShell с Docker Desktop из корня репозитория. `git archive`
+сохраняет байты файлов из Git, включая переводы строк, которые проверяет
+манифест benchmark.
+
+```powershell
+$image = 'sidim-bez-dim:coding-review'
+$scratch = Join-Path ([IO.Path]::GetTempPath()) ("coding-review-" + [guid]::NewGuid())
+$repo = Join-Path $scratch 'repo'
+$archive = Join-Path $scratch 'checkout.tar'
+New-Item -ItemType Directory -Path $repo -Force | Out-Null
+git archive --format=tar --output=$archive HEAD
+tar -xf $archive -C $repo
+docker build --tag $image $repo
+$runtime = @(
+    '--rm', '--network', 'none', '--read-only', '--tmpfs', '/tmp:rw,size=2g',
+    '--cap-drop', 'ALL', '--security-opt', 'no-new-privileges', '--pids-limit', '512',
+    '--memory', '16g', '--cpus', '8', '--workdir', '/app', '--env', 'BUDGET=0'
+)
+$mounts = @()
+foreach ($dir in 'tests', 'benchmark', 'diagnostics') {
+    $mounts += @('--mount', "type=bind,source=$repo/$dir,target=/app/$dir,readonly")
+}
+docker run @runtime @mounts $image -B /app/tests/coding_review_validation.py smoke
+docker run @runtime @mounts $image -B /app/tests/coding_review_validation.py regressions
+```
+
+Для официального `tests/docker_smoke.py` требуется исходный каталог
+примеров организатора. Отдельный синтетический smoke не использует эти материалы.
+
 ## Независимая приёмка
 
-Интегратору нужно отдельно подтвердить источник и полноту контрактов,
-проверить замороженный модуль на свежих приёмочных примерах, подготовленных
-другим участником, и повторить регрессии. Для приёмки стоит заранее зафиксировать
-домен, независимые ожидаемые значения и случаи обязательного отказа. Отдельно
-фиксируются подтверждённые исправления, ложные подтверждения и пропуски.
+Целевая ветка будущего PR — `feature/harness-v1`, рабочая —
+`codex/ilya-coding-research`. Кандидаты заморожены в `5c66752`.
+Для первого зачёта проверяющий может взять `d05` или `d02` и заранее
+зафиксировать источник полного контракта, домен и свежие ожидаемые значения.
+Ту же правку следует проверить на отрицательных и пограничных примерах,
+включая обязательный отказ при несовпадающем контракте.
+
+Результат приёмки фиксируется отдельно по каждому кандидату. Нужны commit
+проверяемого кода, версия контракта, количество подтверждённых исправлений,
+ложных подтверждений, пропусков и начисленный reward. Видимые проверки из
+пакетного прогона сохраняются отдельной строкой.
+
 Поле `independently_verified_under_contract` подтверждает только
 свойство кандидата на заданном домене. Публикация `DONE` требует независимой
 приёмки полного контракта задачи и согласованного production-маршрута.
