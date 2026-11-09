@@ -232,9 +232,8 @@ JSON
 | Конкурсные correct / wrong / skipped / unverified | 0 / 0 / 11 / 5 |
 | Начисленные баллы | 0 |
 
-В WSL прошли 43 из 43 диагностических тестов. Полный регрессионный набор
-и Docker smoke в этом окружении не запускались. В доступном Python WSL
-отсутствуют `httpx` и `openjiuwen`, а Docker Engine не запущен.
+В WSL прошли 43 из 43 диагностических тестов. Общие регрессии отдельно
+выполнены в Docker с закреплёнными зависимостями.
 
 ## Регрессии на общей ветке
 
@@ -246,9 +245,23 @@ JSON
 тест оригинальных восьми задач как skipped, если каталог
 `codex-local/examples/task-dir` отсутствует.
 
-Команды для PowerShell с Docker Desktop из корня репозитория. `git archive`
-сохраняет байты файлов из Git, включая переводы строк, которые проверяет
-манифест benchmark.
+Для снимка `cfe5aba` собран образ с Python 3.12.12 и
+openJiuwen 0.1.20.post1. Установка выполнена без сети из локального
+кэша 169 закреплённых пакетов, сверенных по SHA-256. `pip check` прошёл.
+Размер образа — 976 MB. Все 16 файлов из allowlist Docker совпали со
+снимком по SHA-256. Синтетический smoke завершился с 3 решёнными задачами,
+1 безопасным пропуском Coding и 0 ошибками. В том же образе пакетная
+диагностика повторила 9/9 видимых совпадений без регрессий.
+
+Общий набор регрессий в Docker завершился за 179,391 с. Из 579 обнаруженных
+тестов 578 прошли и один пропущен. Единственный пропуск —
+`PlannerTests.test_original_eight_examples_and_material_integrity`, для
+которого требуется исходный каталог примеров организатора. Прогон выполнялся
+без сети. Архив Git был смонтирован только для чтения и распакован в tmpfs.
+
+Команды для PowerShell с Docker Desktop из корня репозитория. Перед
+архивированием отключается преобразование CRLF, чтобы манифест benchmark
+и синтетические квитанции проверялись на ожидаемых байтах.
 
 ```powershell
 $image = 'sidim-bez-dim:coding-review'
@@ -256,7 +269,7 @@ $scratch = Join-Path ([IO.Path]::GetTempPath()) ("coding-review-" + [guid]::NewG
 $repo = Join-Path $scratch 'repo'
 $archive = Join-Path $scratch 'checkout.tar'
 New-Item -ItemType Directory -Path $repo -Force | Out-Null
-git archive --format=tar --output=$archive HEAD
+git -c core.autocrlf=false -c core.eol=lf archive --format=tar --output=$archive HEAD
 tar -xf $archive -C $repo
 docker build --tag $image $repo
 $runtime = @(
@@ -269,7 +282,20 @@ foreach ($dir in 'tests', 'benchmark', 'diagnostics') {
     $mounts += @('--mount', "type=bind,source=$repo/$dir,target=/app/$dir,readonly")
 }
 docker run @runtime @mounts $image -B /app/tests/coding_review_validation.py smoke
-docker run @runtime @mounts $image -B /app/tests/coding_review_validation.py regressions
+$regressions = @'
+from pathlib import Path
+import subprocess
+import sys
+import tarfile
+import tempfile
+with tempfile.TemporaryDirectory() as directory:
+    with tarfile.open("/checkout.tar") as archive:
+        archive.extractall(directory, filter="data")
+    script = Path(directory) / "tests" / "coding_review_validation.py"
+    raise SystemExit(subprocess.run([sys.executable, "-B", str(script), "regressions"],
+                                    cwd=directory, timeout=600).returncode)
+'@
+$regressions | docker run -i @runtime --mount "type=bind,source=$archive,target=/checkout.tar,readonly" $image -B -
 ```
 
 Для официального `tests/docker_smoke.py` требуется исходный каталог
