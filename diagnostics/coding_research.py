@@ -3,6 +3,7 @@
 import argparse
 import ast
 from dataclasses import dataclass, replace
+import hashlib
 import io
 import json
 from pathlib import Path
@@ -171,6 +172,11 @@ def apply_operator_edit(source: str, edit: dict) -> str:
     return "\n".join(lines)
 
 
+def source_digest(source: str) -> str:
+    """Bind a patch to the UTF-8 text read by the diagnostic."""
+    return hashlib.sha256(source.encode("utf-8")).hexdigest()
+
+
 def review_task(
     task_dir: Path, source: Path, *, function: str | None, contract: str | None,
     threshold: int | None = None,
@@ -228,7 +234,7 @@ def review_task(
         "status": "verified_under_supplied_contract",
         "independently_verified_under_contract": True,
         "unverified": ["the supplied contract is complete and authoritative for this task"],
-        "patch": {"file": f"workspace/{source.name}", **patch},
+        "patch": {"file": f"workspace/{source.name}", "source_sha256": source_digest(original), **patch},
     }
 
 

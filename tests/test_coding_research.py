@@ -1,5 +1,6 @@
 """Exercise the review-only pipeline without running task source or tests."""
 
+import hashlib
 import os
 from pathlib import Path
 import tempfile
@@ -41,6 +42,7 @@ class CodingResearchTests(unittest.TestCase):
         edit = report["patch"]
         self.assertEqual(edit, {
             "file": "workspace/engine.py", "line": 2, "column": 18, "old": "/", "new": "*",
+            "source_sha256": hashlib.sha256(original.encode("utf-8")).hexdigest(),
         })
         lines = original.splitlines(keepends=True)
         row, column = edit["line"] - 1, edit["column"] - 1

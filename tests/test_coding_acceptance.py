@@ -1,5 +1,6 @@
 """Independent visible assertions exercise the verifier with synthetic inputs."""
 
+import hashlib
 from pathlib import Path
 import tempfile
 import unittest
@@ -10,7 +11,10 @@ from diagnostics.coding_research import review_task
 
 
 SOURCE = "def combine(a, b):\n    return a/b\n"
-EDIT = {"file": "workspace/engine.py", "line": 2, "column": 13, "old": "/", "new": "*"}
+EDIT = {
+    "file": "workspace/engine.py", "line": 2, "column": 13, "old": "/", "new": "*",
+    "source_sha256": hashlib.sha256(SOURCE.encode("utf-8")).hexdigest(),
+}
 TESTS = """import unittest
 import engine as lib
 
@@ -57,8 +61,19 @@ class VisibleAcceptanceTests(unittest.TestCase):
             with self.subTest(edit=edit):
                 self.assertEqual(check_visible_examples(SOURCE, TESTS, edit)["status"], "invalid_patch")
         source = SOURCE.rstrip() + "  # /\n"
-        edit = {**EDIT, "column": source.splitlines()[1].rindex("/") + 1}
+        edit = {
+            **EDIT, "column": source.splitlines()[1].rindex("/") + 1,
+            "source_sha256": hashlib.sha256(source.encode("utf-8")).hexdigest(),
+        }
         self.assertEqual(check_visible_examples(source, TESTS, edit)["status"], "invalid_patch")
+
+    def test_patch_rejects_changed_source_even_if_operator_has_not_moved(self):
+        changed = SOURCE + "# changed since review\n"
+        result = check_visible_examples(changed, TESTS, EDIT)
+        self.assertEqual(result["status"], "invalid_patch")
+        self.assertIn("hash", result["reason"])
+        unbound = {key: value for key, value in EDIT.items() if key != "source_sha256"}
+        self.assertEqual(check_visible_examples(SOURCE, TESTS, unbound)["status"], "invalid_patch")
 
     def test_unsupported_assertion_discards_all_partial_results(self):
         for expression in ("danger()", "True", "1.0", str(2**129)):
@@ -132,7 +147,10 @@ class ThresholdAcceptanceTests(unittest.TestCase):
             "        self.assertEqual(lib.qualifies(*(-3,)), True)\n"
             "        self.assertEqual(lib.qualifies(*(-2,)), True)"
         ) + TESTS[end:]
-        edit = {**EDIT, "column": 14, "old": ">", "new": ">="}
+        edit = {
+            **EDIT, "column": 14, "old": ">", "new": ">=",
+            "source_sha256": hashlib.sha256(original.encode("utf-8")).hexdigest(),
+        }
         report = check_visible_examples(original, suite, edit)
         self.assertEqual(report["status"], "visible_assertions_checked")
         self.assertEqual(report["before_passed"], 2)

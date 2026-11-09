@@ -16,6 +16,7 @@ from diagnostics.coding_research import (
     parse_bounded_module,
     parse_int_literal,
     parse_operator_return,
+    source_digest,
 )
 from runtime_limits import OperationTimeout, RuntimeLimits
 from safe_files import read_text
@@ -53,6 +54,8 @@ class InvalidPatch(ValueError):
 def _apply_patch(source: str, edit: object) -> str:
     if not isinstance(edit, dict) or edit.get("file") != SOURCE:
         raise InvalidPatch("expected an edit to engine.py")
+    if edit.get("source_sha256") != source_digest(source):
+        raise InvalidPatch("patch source hash is absent or does not match engine.py")
     try:
         return apply_operator_edit(source, edit)
     except ValueError as exc:
