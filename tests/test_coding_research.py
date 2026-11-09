@@ -6,7 +6,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from diagnostics.coding_research import review_task, verify_candidate
+from diagnostics.coding_research import apply_operator_edit, review_task, verify_candidate
 from runtime_limits import OperationTimeout
 
 
@@ -142,3 +142,47 @@ class CodingResearchTests(unittest.TestCase):
             report = self.review()
         self.assertEqual(report["status"], "analysis_limit")
         self.assertNotIn("patch", report)
+
+    def test_threshold_repair_uses_an_explicit_matching_limit(self):
+        original = "def qualifies(amount):\n    return amount > -4  # inclusive limit\n"
+        self.source.write_text(original, encoding="utf-8")
+        options = {"function": "qualifies", "contract": "at_least"}
+        self.assertEqual(
+            review_task(self.task, Path("engine.py"), **options)["status"],
+            "missing_or_unsupported_contract",
+        )
+        self.assertEqual(
+            review_task(self.task, Path("engine.py"), threshold=True, **options)["status"],
+            "missing_or_unsupported_contract",
+        )
+        self.assertEqual(
+            review_task(self.task, Path("engine.py"), threshold=-3, **options)["status"],
+            "contract_mismatch",
+        )
+        with patch("diagnostics.static_coding.review_source", side_effect=AssertionError("C3 invoked")):
+            result = review_task(self.task, Path("engine.py"), threshold=-4, **options)
+        self.assertEqual(result["status"], "verified_under_supplied_contract")
+        self.assertFalse(result["contest_solution_confirmed"])
+        candidate = apply_operator_edit(original, result["patch"])
+        self.assertEqual(candidate, original.replace("> -4", ">= -4"))
+        self.assertEqual(self.source.read_text(encoding="utf-8"), original)
+        self.assertFalse((self.task / "answer.txt").exists())
+        self.source.write_text(candidate, encoding="utf-8")
+        self.assertEqual(
+            review_task(self.task, Path("engine.py"), threshold=-4, **options)["status"],
+            "already_conforms",
+        )
+
+    def test_threshold_verifier_rejects_changed_limit_and_unsupported_shapes(self):
+        original = "def qualifies(value):\n    return value > 5\n"
+        options = {"function": "qualifies", "contract": "at_least", "threshold": 5}
+        self.assertTrue(verify_candidate(original, original.replace(">", ">="), **options))
+        for candidate in (
+            original.replace("> 5", ">= 6"),
+            original.replace("> 5", ">= 5 >= 0"),
+            original.replace("> 5", ">= limit()"),
+            original.replace("> 5", ">= True"),
+            original.replace("> 5", ">= 5.0"),
+        ):
+            with self.subTest(candidate=candidate):
+                self.assertFalse(verify_candidate(original, candidate, **options))

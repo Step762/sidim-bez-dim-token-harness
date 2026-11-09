@@ -1,8 +1,8 @@
-"""Review one binary arithmetic repair against a supplied exact-int contract."""
+"""Review one operator repair against a supplied exact-int contract."""
 
 import argparse
 import ast
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 import io
 import json
 from pathlib import Path
@@ -16,8 +16,13 @@ from safe_files import read_text
 MAX_SOURCE_BYTES = 64 * 1024
 MAX_NODES = 256
 EXPECTED_OPERATORS = {"add": ast.Add, "subtract": ast.Sub, "multiply": ast.Mult}
-OPERATOR_TEXT = {ast.Add: "+", ast.Sub: "-", ast.Mult: "*", ast.Div: "/"}
+ARITHMETIC_OPERATORS = (*EXPECTED_OPERATORS.values(), ast.Div)
+OPERATOR_TEXT = {
+    ast.Add: "+", ast.Sub: "-", ast.Mult: "*", ast.Div: "/", ast.Gt: ">", ast.GtE: ">=",
+}
+REPLACEMENT_TEXT = ("+", "-", "*", ">=")
 DOMAIN = "two exact built-in int arguments, assuming sufficient resources"
+THRESHOLD_DOMAIN = "one exact built-in int argument, assuming sufficient resources"
 
 
 class UnsupportedSource(ValueError):
@@ -25,10 +30,11 @@ class UnsupportedSource(ValueError):
 
 
 @dataclass(frozen=True)
-class BinaryReturn:
+class OperatorReturn:
     function: str
-    parameters: tuple[str, str]
-    operator: type[ast.operator]
+    parameters: tuple[str, ...]
+    operator: type[ast.operator] | type[ast.cmpop]
+    threshold: int | None = None
 
 
 def parse_bounded_module(source: str) -> ast.Module:
@@ -47,8 +53,22 @@ def parse_bounded_module(source: str) -> ast.Module:
     return tree
 
 
-def parse_binary_return(source: str) -> BinaryReturn:
-    """Recognize one plain function that applies an operator to its parameters."""
+def parse_int_literal(node: ast.expr) -> int:
+    """Read a signed integer literal as data."""
+    match node:
+        case ast.UnaryOp(op=ast.USub(), operand=ast.Constant(value=value)) if type(value) is int:
+            value = -value
+        case ast.Constant(value=value) if type(value) is int:
+            pass
+        case _:
+            raise UnsupportedSource("expected a literal integer")
+    if value.bit_length() > 128:
+        raise UnsupportedSource("integer bit limit")
+    return value
+
+
+def parse_operator_return(source: str) -> OperatorReturn:
+    """Recognize a binary arithmetic return or a unary threshold comparison."""
     tree = parse_bounded_module(source)
     if len(tree.body) != 1 or not isinstance(tree.body[0], ast.FunctionDef) or tree.type_ignores:
         raise UnsupportedSource("expected one plain function")
@@ -66,48 +86,62 @@ def parse_binary_return(source: str) -> BinaryReturn:
         or args.vararg is not None
         or args.kwarg is not None
         or args.defaults
-        or len(args.args) != 2
+        or len(args.args) not in (1, 2)
         or any(arg.annotation is not None or arg.type_comment is not None for arg in args.args)
     ):
-        raise UnsupportedSource("expected two plain parameters")
-    left, right = (arg.arg for arg in args.args)
-    if left == right or len(function.body) != 1 or not isinstance(function.body[0], ast.Return):
+        raise UnsupportedSource("expected one or two plain parameters")
+    parameters = tuple(arg.arg for arg in args.args)
+    if (
+        len(set(parameters)) != len(parameters)
+        or len(function.body) != 1
+        or not isinstance(function.body[0], ast.Return)
+    ):
         raise UnsupportedSource("expected distinct parameters and one return")
 
-    value = function.body[0].value
-    if (
-        not isinstance(value, ast.BinOp)
-        or type(value.op) not in OPERATOR_TEXT
-        or not isinstance(value.left, ast.Name)
-        or value.left.id != left
-        or not isinstance(value.right, ast.Name)
-        or value.right.id != right
-    ):
-        raise UnsupportedSource("expected one binary operation on parameters in signature order")
-    return BinaryReturn(function.name, (left, right), type(value.op))
+    match function.body[0].value:
+        case ast.BinOp(
+            left=ast.Name(id=left), op=op, right=ast.Name(id=right),
+        ) if parameters == (left, right) and type(op) in ARITHMETIC_OPERATORS:
+            return OperatorReturn(function.name, parameters, type(op))
+        case ast.Compare(
+            left=ast.Name(id=name), ops=[ast.Gt() | ast.GtE() as op], comparators=[limit],
+        ) if parameters == (name,):
+            return OperatorReturn(function.name, parameters, type(op), parse_int_literal(limit))
+        case _:
+            raise UnsupportedSource("expected one arithmetic operator or a comparison with a literal threshold")
 
 
-def verify_candidate(original: str, candidate: str, *, function: str, contract: str) -> bool:
-    """Prove an operator-only edit without using C3's polynomial normalization."""
-    expected = EXPECTED_OPERATORS.get(contract)
+def _contract_operator(contract: str | None, threshold: int | None):
+    if contract == "at_least":
+        if type(threshold) is int and threshold.bit_length() <= 128:
+            return ast.GtE
+        return None
+    return EXPECTED_OPERATORS.get(contract) if threshold is None else None
+
+
+def verify_candidate(
+    original: str, candidate: str, *, function: str, contract: str, threshold: int | None = None,
+) -> bool:
+    """Prove an operator-only edit on the declared exact-int domain."""
+    expected = _contract_operator(contract, threshold)
     if expected is None:
         return False
     try:
-        before = parse_binary_return(original)
-        after = parse_binary_return(candidate)
+        before = parse_operator_return(original)
+        after = parse_operator_return(candidate)
     except (SyntaxError, ValueError, RecursionError):
         return False
-    # On exact ints, these AST operators directly implement the supplied operation
-    # for every pair of inputs. Division is allowed only as the original defect.
+    # The approved arithmetic operator implements the contract directly. For a
+    # threshold, >= is false below the fixed limit and true at or above it.
     return (
-        before.function == after.function == function
-        and before.parameters == after.parameters
+        before.function == function
+        and before.threshold == threshold
         and before.operator is not expected
-        and after.operator is expected
+        and replace(before, operator=expected) == after
     )
 
 
-def _operator_patch(source: str, before: type[ast.operator], after: type[ast.operator]) -> dict:
+def _operator_patch(source: str, before, after) -> dict:
     old, new = OPERATOR_TEXT[before], OPERATOR_TEXT[after]
     tokens = [
         token for token in tokenize.generate_tokens(io.StringIO(source).readline)
@@ -119,16 +153,40 @@ def _operator_patch(source: str, before: type[ast.operator], after: type[ast.ope
     return {"line": line, "column": column + 1, "old": old, "new": new}
 
 
-def review_task(task_dir: Path, source: Path, *, function: str | None, contract: str | None) -> dict:
+def apply_operator_edit(source: str, edit: dict) -> str:
+    """Apply a structured operator edit in memory, rejecting stale coordinates."""
+    line, column = edit.get("line"), edit.get("column")
+    old, new = edit.get("old"), edit.get("new")
+    if (
+        type(line) is not int or type(column) is not int or line < 1 or column < 1
+        or old not in OPERATOR_TEXT.values() or new not in REPLACEMENT_TEXT or old == new
+    ):
+        raise ValueError("invalid edit coordinates or operator")
+    lines = source.split("\n")
+    start = column - 1
+    end = start + len(old)
+    if line > len(lines) or lines[line - 1][start:end] != old:
+        raise ValueError("edit does not match the source")
+    lines[line - 1] = lines[line - 1][:start] + new + lines[line - 1][end:]
+    return "\n".join(lines)
+
+
+def review_task(
+    task_dir: Path, source: Path, *, function: str | None, contract: str | None,
+    threshold: int | None = None,
+) -> dict:
     """Read one workspace file and return a one-token edit or a reason to skip."""
     report = {
         "function": function,
         "contract": contract,
-        "domain": DOMAIN,
+        "domain": THRESHOLD_DOMAIN if contract == "at_least" else DOMAIN,
         "independently_verified_under_contract": False,
         "contest_solution_confirmed": False,
     }
-    if not function or contract not in EXPECTED_OPERATORS:
+    if contract == "at_least":
+        report["threshold"] = threshold
+    expected = _contract_operator(contract, threshold)
+    if not function or expected is None:
         return {**report, "status": "missing_or_unsupported_contract"}
     if source.suffix != ".py" or source != Path(source.name):
         return {**report, "status": "invalid_source_path"}
@@ -136,20 +194,26 @@ def review_task(task_dir: Path, source: Path, *, function: str | None, contract:
     try:
         with RuntimeLimits(5, 2).sync():
             original = read_text(task_dir, Path("workspace") / source, maximum=MAX_SOURCE_BYTES)
-            before = parse_binary_return(original)
+            before = parse_operator_return(original)
             if before.function != function:
                 return {**report, "status": "function_mismatch"}
-            if before.operator is EXPECTED_OPERATORS[contract]:
+            if before.threshold != threshold:
+                return {**report, "status": "contract_mismatch"}
+            if before.operator is expected:
                 return {**report, "status": "already_conforms"}
-            proposal = static_coding.review_source(
-                original, experimental=True, function=function, contract=contract,
-            )
-            candidate = proposal.get("proposal_source")
-            if not isinstance(candidate, str):
-                return {**report, "status": "no_candidate"}
-            if not verify_candidate(original, candidate, function=function, contract=contract):
+            if contract != "at_least":
+                proposal = static_coding.review_source(
+                    original, experimental=True, function=function, contract=contract,
+                )
+                candidate = proposal.get("proposal_source")
+                if not isinstance(candidate, str):
+                    return {**report, "status": "no_candidate"}
+                if not verify_candidate(original, candidate, function=function, contract=contract):
+                    return {**report, "status": "candidate_rejected"}
+            patch = _operator_patch(original, before.operator, expected)
+            candidate = apply_operator_edit(original, patch)
+            if not verify_candidate(original, candidate, function=function, contract=contract, threshold=threshold):
                 return {**report, "status": "candidate_rejected"}
-            patch = _operator_patch(original, before.operator, EXPECTED_OPERATORS[contract])
     except SyntaxError:
         return {**report, "status": "syntax_invalid"}
     except (UnsupportedSource, tokenize.TokenError) as exc:
@@ -174,9 +238,12 @@ def main() -> None:
     parser.add_argument("--task-dir", type=Path, required=True)
     parser.add_argument("--source", type=Path, required=True)
     parser.add_argument("--function", required=True)
-    parser.add_argument("--contract", choices=EXPECTED_OPERATORS, required=True)
+    parser.add_argument("--contract", choices=(*EXPECTED_OPERATORS, "at_least"), required=True)
+    parser.add_argument("--threshold", type=int)
     args = parser.parse_args()
-    report = review_task(args.task_dir, args.source, function=args.function, contract=args.contract)
+    report = review_task(
+        args.task_dir, args.source, function=args.function, contract=args.contract, threshold=args.threshold,
+    )
     print(json.dumps(report, ensure_ascii=False, indent=2))
 
 

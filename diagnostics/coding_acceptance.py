@@ -1,7 +1,8 @@
-"""Check visible arithmetic assertions from AST data, without running task Python."""
+"""Check visible operator assertions from AST data, without running task Python."""
 
 import argparse
 import ast
+from dataclasses import replace
 import json
 import operator
 from pathlib import Path
@@ -9,9 +10,12 @@ import sys
 
 from diagnostics.coding_research import (
     MAX_SOURCE_BYTES,
+    OperatorReturn,
     UnsupportedSource,
-    parse_binary_return,
+    apply_operator_edit,
     parse_bounded_module,
+    parse_int_literal,
+    parse_operator_return,
 )
 from runtime_limits import OperationTimeout, RuntimeLimits
 from safe_files import read_text
@@ -25,6 +29,8 @@ OPERATIONS = {
     ast.Sub: operator.sub,
     ast.Mult: operator.mul,
     ast.Div: operator.truediv,
+    ast.Gt: operator.gt,
+    ast.GtE: operator.ge,
 }
 
 _SCAFFOLD = """
@@ -41,40 +47,19 @@ if __name__ == "__main__":
 
 
 class InvalidPatch(ValueError):
-    """The proposed edit does not change one arithmetic operator."""
+    """The proposed edit does not change one supported operator."""
 
 
 def _apply_patch(source: str, edit: object) -> str:
     if not isinstance(edit, dict) or edit.get("file") != SOURCE:
         raise InvalidPatch("expected an edit to engine.py")
-    line, column = edit.get("line"), edit.get("column")
-    old, new = edit.get("old"), edit.get("new")
-    if (
-        type(line) is not int or type(column) is not int or line < 1 or column < 1
-        or old not in ("+", "-", "*", "/") or new not in ("+", "-", "*") or old == new
-    ):
-        raise InvalidPatch("invalid edit coordinates or operator")
-    lines = source.split("\n")
-    if line > len(lines) or lines[line - 1][column - 1:column] != old:
-        raise InvalidPatch("edit does not match the source")
-    lines[line - 1] = lines[line - 1][:column - 1] + new + lines[line - 1][column:]
-    return "\n".join(lines)
+    try:
+        return apply_operator_edit(source, edit)
+    except ValueError as exc:
+        raise InvalidPatch(str(exc)) from exc
 
 
-def _small_int(node: ast.expr) -> int:
-    match node:
-        case ast.UnaryOp(op=ast.USub(), operand=ast.Constant(value=value)) if type(value) is int:
-            value = -value
-        case ast.Constant(value=value) if type(value) is int:
-            pass
-        case _:
-            raise UnsupportedSource("expected a literal integer")
-    if value.bit_length() > 128:
-        raise UnsupportedSource("integer bit limit")
-    return value
-
-
-def _visible_examples(text: str, function: str) -> list[tuple[int, int, int, int]]:
+def _visible_examples(text: str, function: OperatorReturn) -> list[tuple[int, tuple[int, ...], int | bool]]:
     tree = parse_bounded_module(text)
     # Validate the entire surrounding module as well as each assertion. An
     # unsupported fixture, hook or extra statement invalidates the whole suite.
@@ -95,20 +80,28 @@ def _visible_examples(text: str, function: str) -> list[tuple[int, int, int, int
                 func=ast.Attribute(value=ast.Name(id="self"), attr="assertEqual"),
                 args=[
                     ast.Call(func=ast.Attribute(value=ast.Name(id="lib"), attr=name),
-                             args=[ast.Starred(value=ast.Tuple(elts=[left, right]))], keywords=[]),
+                             args=[ast.Starred(value=ast.Tuple(elts=arguments))], keywords=[]),
                     expected,
                 ],
                 keywords=[],
-            )) if name == function:
-                examples.append((statement.lineno, _small_int(left), _small_int(right), _small_int(expected)))
+            )) if name == function.function and len(arguments) == len(function.parameters):
+                inputs = tuple(parse_int_literal(argument) for argument in arguments)
+                if function.threshold is None:
+                    value = parse_int_literal(expected)
+                elif isinstance(expected, ast.Constant) and type(expected.value) is bool:
+                    value = expected.value
+                else:
+                    raise UnsupportedSource("expected a boolean result for the threshold comparison")
+                examples.append((statement.lineno, inputs, value))
             case _:
                 raise UnsupportedSource("unsupported visible assertion")
     return examples
 
 
-def _passes(operation: type[ast.operator], left: int, right: int, expected: int) -> bool:
+def _passes(function: OperatorReturn, inputs: tuple[int, ...], expected: int | bool) -> bool:
+    operands = inputs if function.threshold is None else (*inputs, function.threshold)
     try:
-        return OPERATIONS[operation](left, right) == expected
+        return OPERATIONS[function.operator](*operands) == expected
     except ZeroDivisionError:
         return False
 
@@ -116,24 +109,20 @@ def _passes(operation: type[ast.operator], left: int, right: int, expected: int)
 def check_visible_examples(original: str, tests: str, edit: object) -> dict:
     """Compare one proposed edit on every supported assertion, all or nothing."""
     try:
-        before = parse_binary_return(original)
-        after = parse_binary_return(_apply_patch(original, edit))
-        if (
-            before.operator is after.operator
-            or before.parameters != after.parameters
-            or before.function != after.function
-        ):
+        before = parse_operator_return(original)
+        after = parse_operator_return(_apply_patch(original, edit))
+        if before.operator is after.operator or replace(before, operator=after.operator) != after:
             raise InvalidPatch("edit does not change the function's operator")
-        examples = _visible_examples(tests, before.function)
+        examples = _visible_examples(tests, before)
     except InvalidPatch as exc:
         return {"status": "invalid_patch", "reason": str(exc)}
     except (SyntaxError, ValueError, RecursionError) as exc:
         return {"status": "unsupported", "reason": str(exc)}
 
     cases = [
-        {"line": line, "before_passed": _passes(before.operator, left, right, expected),
-         "after_passed": _passes(after.operator, left, right, expected)}
-        for line, left, right, expected in examples
+        {"line": line, "before_passed": _passes(before, inputs, expected),
+         "after_passed": _passes(after, inputs, expected)}
+        for line, inputs, expected in examples
     ]
     return {"status": "visible_assertions_checked", "cases": cases,
             "before_passed": sum(case["before_passed"] for case in cases),

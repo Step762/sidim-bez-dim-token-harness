@@ -120,3 +120,25 @@ class FreshArithmeticContractsTests(unittest.TestCase):
         )
         self.assertEqual(report["status"], "visible_assertions_checked")
         self.assertEqual(report["after_passed"], 0)
+
+
+class ThresholdAcceptanceTests(unittest.TestCase):
+    def test_predicate_preserves_values_on_both_sides_and_fixes_equality(self):
+        original = "def qualifies(n):\n    return n > -3\n"
+        start = TESTS.index("        self.assertEqual")
+        end = TESTS.index("\n\nif __name__")
+        suite = TESTS[:start] + (
+            "        self.assertEqual(lib.qualifies(*(-4,)), False)\n"
+            "        self.assertEqual(lib.qualifies(*(-3,)), True)\n"
+            "        self.assertEqual(lib.qualifies(*(-2,)), True)"
+        ) + TESTS[end:]
+        edit = {**EDIT, "column": 14, "old": ">", "new": ">="}
+        report = check_visible_examples(original, suite, edit)
+        self.assertEqual(report["status"], "visible_assertions_checked")
+        self.assertEqual(report["before_passed"], 2)
+        self.assertEqual(report["after_passed"], 3)
+        self.assertEqual(
+            [case["before_passed"] for case in report["cases"]], [True, False, True],
+        )
+        for unsupported in (suite.replace("True", "1"), suite.replace("-3,", "True,")):
+            self.assertEqual(check_visible_examples(original, unsupported, edit)["status"], "unsupported")
