@@ -31,7 +31,8 @@ class BinaryReturn:
     operator: type[ast.operator]
 
 
-def _parse_binary_return(source: str) -> BinaryReturn:
+def parse_bounded_module(source: str) -> ast.Module:
+    """Parse UTF-8 text within the diagnostic's byte and AST limits."""
     if len(source) > MAX_SOURCE_BYTES:
         raise UnsupportedSource("source byte limit")
     encoded = source.encode("utf-8")
@@ -43,6 +44,12 @@ def _parse_binary_return(source: str) -> BinaryReturn:
     tree = ast.parse(encoded, type_comments=True)
     if sum(1 for _ in ast.walk(tree)) > MAX_NODES:
         raise UnsupportedSource("AST node limit")
+    return tree
+
+
+def parse_binary_return(source: str) -> BinaryReturn:
+    """Recognize one plain function that applies an operator to its parameters."""
+    tree = parse_bounded_module(source)
     if len(tree.body) != 1 or not isinstance(tree.body[0], ast.FunctionDef) or tree.type_ignores:
         raise UnsupportedSource("expected one plain function")
 
@@ -86,8 +93,8 @@ def verify_candidate(original: str, candidate: str, *, function: str, contract: 
     if expected is None:
         return False
     try:
-        before = _parse_binary_return(original)
-        after = _parse_binary_return(candidate)
+        before = parse_binary_return(original)
+        after = parse_binary_return(candidate)
     except (SyntaxError, ValueError, RecursionError):
         return False
     # On exact ints, these AST operators directly implement the supplied operation
@@ -129,7 +136,7 @@ def review_task(task_dir: Path, source: Path, *, function: str | None, contract:
     try:
         with RuntimeLimits(5, 2).sync():
             original = read_text(task_dir, Path("workspace") / source, maximum=MAX_SOURCE_BYTES)
-            before = _parse_binary_return(original)
+            before = parse_binary_return(original)
             if before.function != function:
                 return {**report, "status": "function_mismatch"}
             if before.operator is EXPECTED_OPERATORS[contract]:
