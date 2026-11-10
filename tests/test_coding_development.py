@@ -7,6 +7,7 @@ import unittest
 from unittest.mock import patch
 
 from diagnostics.coding_development import TASK_IDS, run_development
+from diagnostics.coding_research import review_task
 
 
 VISIBLE_SUITE = """import unittest
@@ -88,6 +89,34 @@ class DevelopmentRunTests(unittest.TestCase):
             )
             with self.assertRaisesRegex(ValueError, "duplicate JSON key"):
                 run_development(root, {})
+
+    def test_changed_test_declaration_does_not_credit_the_old_test_file(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            for task_id in TASK_IDS:
+                task = root / task_id
+                task.mkdir()
+                (task / "task.json").write_text(json.dumps({
+                    "task_id": task_id, "task_type": "coding", "instruction": INSTRUCTION, "reward": 3,
+                }), encoding="utf-8")
+            task = root / TASK_IDS[0]
+            workspace = task / "workspace"
+            workspace.mkdir()
+            (workspace / "engine.py").write_text("def total(a,b):\n    return a-b\n", encoding="utf-8")
+            (workspace / "test_engine.py").write_text(VISIBLE_SUITE, encoding="utf-8")
+            metadata = task / "task.json"
+
+            def change_test_declaration(path, source, **options):
+                if path == task:
+                    original = metadata.read_text(encoding="utf-8")
+                    metadata.write_text(original.replace("test_engine.py", "other_tests.py"), encoding="utf-8")
+                return review_task(path, source, **options)
+
+            with patch("diagnostics.coding_development.review_task", side_effect=change_test_declaration):
+                result = run_development(root, {TASK_IDS[0]: {"function": "total", "contract": "add"}})
+            self.assertEqual(result["tasks"][0]["review"]["status"], "task_declaration_changed")
+            self.assertNotIn("visible", result["tasks"][0])
+            self.assertEqual(result["summary"]["visible_improved"], 0)
 
     def test_out_of_scope_ids_and_malformed_contracts_fail_before_reads(self):
         for contracts in (

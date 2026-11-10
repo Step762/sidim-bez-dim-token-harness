@@ -1,12 +1,13 @@
 """Independent visible assertions exercise the verifier with synthetic inputs."""
 
 import hashlib
+import json
 from pathlib import Path
 import tempfile
 import unittest
 from unittest.mock import patch
 
-from diagnostics.coding_acceptance import check_visible_examples
+from diagnostics.coding_acceptance import check_task_examples, check_visible_examples
 from diagnostics.coding_research import review_task
 
 
@@ -40,6 +41,7 @@ class VisibleAcceptanceTests(unittest.TestCase):
             "status": "visible_assertions_checked",
             "before_passed": 1,
             "after_passed": 3,
+            "tests_sha256": hashlib.sha256(TESTS.encode("utf-8")).hexdigest(),
             "cases": [
                 {"line": 6, "before_passed": False, "after_passed": True},
                 {"line": 7, "before_passed": False, "after_passed": True},
@@ -93,6 +95,78 @@ class VisibleAcceptanceTests(unittest.TestCase):
         ):
             with self.subTest(suite=suite):
                 self.assertEqual(check_visible_examples(SOURCE, suite, EDIT)["status"], "unsupported")
+
+
+class VisibleWorkspaceTests(unittest.TestCase):
+    def setUp(self):
+        temp = tempfile.TemporaryDirectory()
+        self.addCleanup(temp.cleanup)
+        self.task = Path(temp.name)
+        self.workspace = self.task / "workspace"
+        self.workspace.mkdir()
+        (self.workspace / "engine.py").write_text(SOURCE, encoding="utf-8")
+        (self.workspace / "test_engine.py").write_text(TESTS, encoding="utf-8")
+
+    def test_additional_import_targets_and_bytecode_are_not_graded(self):
+        for name in ("unittest.py", "engine", "__pycache__"):
+            with self.subTest(name=name):
+                extra = self.workspace / name
+                if name.endswith(".py"):
+                    extra.write_text("raise AssertionError('must not execute')", encoding="utf-8")
+                else:
+                    extra.mkdir()
+                result = check_task_examples(self.task, EDIT)
+                self.assertEqual(result, {"status": "unsupported_workspace_files"})
+                if extra.is_dir():
+                    extra.rmdir()
+                else:
+                    extra.unlink()
+
+    def test_review_is_bound_to_existing_task_and_result_to_observed_tests(self):
+        metadata = self.task / "task.json"
+        declaration = {
+            "task_id": "synthetic",
+            "task_type": "coding",
+            "reward": 1,
+            "instruction": (
+                "Run python3 test_engine.py in the current directory; some tests fail. "
+                "Fix the bugs in engine.py (do not edit the tests) until all tests pass. "
+                "Work only inside the current directory. When you are done, write ONLY "
+                "the word DONE to the file answer.txt in the current directory."
+            ),
+        }
+        metadata.write_text(json.dumps(declaration), encoding="utf-8")
+        report = review_task(self.task, Path("engine.py"), function="combine", contract="multiply")
+        edit = report["patch"]
+        result = check_task_examples(self.task, edit)
+        self.assertEqual(result["status"], "visible_assertions_checked")
+        self.assertEqual(result["tests_sha256"], hashlib.sha256(TESTS.encode("utf-8")).hexdigest())
+        self.assertEqual(check_task_examples(self.task, EDIT)["status"], "invalid_patch")
+
+        def change_task_during_check(*args):
+            metadata.write_text(json.dumps({**declaration, "reward": 2}), encoding="utf-8")
+            return check_visible_examples(*args)
+
+        with patch("diagnostics.coding_acceptance.check_visible_examples", side_effect=change_task_during_check):
+            self.assertEqual(check_task_examples(self.task, edit)["status"], "visible_inputs_changed")
+        self.assertEqual(check_task_examples(self.task, edit)["status"], "invalid_patch")
+        metadata.unlink()
+        self.assertEqual(check_task_examples(self.task, edit)["status"], "invalid_patch")
+
+    def test_tests_changed_during_grading_do_not_publish_pass_counts(self):
+        test_file = self.workspace / "test_engine.py"
+        updated = TESTS + "\n# Updated suite\n"
+
+        def change_tests_during_check(*args):
+            test_file.write_text(updated, encoding="utf-8")
+            return check_visible_examples(*args)
+
+        with patch("diagnostics.coding_acceptance.check_visible_examples", side_effect=change_tests_during_check):
+            result = check_task_examples(self.task, EDIT)
+        self.assertEqual(result["status"], "source_or_tests_unavailable")
+        self.assertNotIn("after_passed", result)
+        observed = check_task_examples(self.task, EDIT)
+        self.assertEqual(observed["tests_sha256"], hashlib.sha256(updated.encode("utf-8")).hexdigest())
 
 
 class FreshArithmeticContractsTests(unittest.TestCase):

@@ -6,6 +6,8 @@ from dataclasses import dataclass, replace
 import hashlib
 import io
 import json
+import math
+import os
 from pathlib import Path
 import re
 import tokenize
@@ -13,7 +15,7 @@ import tokenize
 from coding_solver import _INSTRUCTION
 from diagnostics import static_coding
 from runtime_limits import OperationTimeout, RuntimeLimits
-from safe_files import TASK_JSON_BYTES, read_text
+from safe_files import TASK_JSON_BYTES, directory_guards, identity, open_directory, read_text
 
 
 MAX_SOURCE_BYTES = 64 * 1024
@@ -58,7 +60,18 @@ def parse_review_json(text: str | bytes) -> object:
     def reject_constant(_):
         raise ValueError("non-finite JSON constant")
 
-    return json.loads(text, object_pairs_hook=unique, parse_constant=reject_constant)
+    def finite_float(text):
+        value = float(text)
+        if not math.isfinite(value):
+            raise ValueError("non-finite JSON number")
+        return value
+
+    try:
+        return json.loads(
+            text, object_pairs_hook=unique, parse_constant=reject_constant, parse_float=finite_float,
+        )
+    except RecursionError as exc:
+        raise ValueError("JSON nesting exceeds the parser limit") from exc
 
 
 def supports_task_instruction(instruction: object, source: str, *, test: str | None = None) -> bool:
@@ -73,14 +86,18 @@ def supports_task_instruction(instruction: object, source: str, *, test: str | N
     )
 
 
-def workspace_allows_review(task_dir: Path, source: str, *, test: str | None = None) -> bool:
-    """Check an existing task declaration, or allow an explicit standalone fixture."""
+def read_task_declaration(task_dir: Path) -> str | None:
     try:
-        text = read_text(task_dir, "task.json", maximum=TASK_JSON_BYTES)
+        return read_text(task_dir, "task.json", maximum=TASK_JSON_BYTES)
     except FileNotFoundError:
         # Standalone synthetic fixtures can consist of workspace files only.
+        return None
+
+
+def task_allows_review(declaration: str | None, source: str, *, test: str | None = None) -> bool:
+    if declaration is None:
         return True
-    data = parse_review_json(text)
+    data = parse_review_json(declaration)
     return (
         isinstance(data, dict)
         and data.get("task_type") == "coding"
@@ -355,16 +372,21 @@ def review_task(
         return {**report, "status": "invalid_source_path"}
 
     try:
-        with RuntimeLimits(5, 2).sync():
-            if not workspace_allows_review(task_dir, source.name):
-                return {**report, "status": "unsupported_task_instruction"}
-            original = read_text(task_dir, Path("workspace") / source, maximum=MAX_SOURCE_BYTES)
-            if contract == "scale":
-                proposal = _scale_proposal(original, function, factor)
-            else:
-                proposal = _operator_proposal(
-                    original, function, contract, expected, threshold=threshold, modulus=modulus, residue=residue,
-                )
+        task_dir = task_dir.absolute()
+        with RuntimeLimits(5, 2).sync(), open_directory(task_dir) as directory:
+            with directory_guards({task_dir: identity(os.fstat(directory))}):
+                declaration = read_task_declaration(task_dir)
+                if not task_allows_review(declaration, source.name):
+                    return {**report, "status": "unsupported_task_instruction"}
+                original = read_text(task_dir, Path("workspace") / source, maximum=MAX_SOURCE_BYTES)
+                if contract == "scale":
+                    proposal = _scale_proposal(original, function, factor)
+                else:
+                    proposal = _operator_proposal(
+                        original, function, contract, expected, threshold=threshold, modulus=modulus, residue=residue,
+                    )
+                if "patch" in proposal and read_task_declaration(task_dir) != declaration:
+                    return {**report, "status": "task_declaration_changed"}
     except SyntaxError:
         return {**report, "status": "syntax_invalid"}
     except (UnsupportedSource, tokenize.TokenError) as exc:
@@ -376,16 +398,19 @@ def review_task(
 
     if "patch" not in proposal:
         return {**report, **proposal}
+    patch = {
+        "file": f"workspace/{source.name}",
+        "source_sha256": source_digest(original),
+        **proposal["patch"],
+    }
+    if declaration is not None:
+        patch["task_sha256"] = source_digest(declaration)
     return {
         **report,
         "status": "verified_under_supplied_contract",
         "independently_verified_under_contract": True,
         "unverified": ["the supplied contract is complete and authoritative for this task"],
-        "patch": {
-            "file": f"workspace/{source.name}",
-            "source_sha256": source_digest(original),
-            **proposal["patch"],
-        },
+        "patch": patch,
     }
 
 

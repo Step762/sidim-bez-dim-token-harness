@@ -285,8 +285,12 @@ class CodingResearchTests(unittest.TestCase):
         ):
             with self.subTest(text=text), self.assertRaisesRegex(ValueError, "duplicate JSON key"):
                 parse_review_json(text)
-        with self.assertRaisesRegex(ValueError, "non-finite"):
-            parse_review_json(b'{"reward": Infinity}')
+        for text in (b'{"reward": Infinity}', b'{"reward": 1e999}'):
+            with self.subTest(text=text), self.assertRaisesRegex(ValueError, "non-finite"):
+                parse_review_json(text)
+        with patch("diagnostics.coding_research.json.loads", side_effect=RecursionError):
+            with self.assertRaisesRegex(ValueError, "JSON nesting"):
+                parse_review_json(b"[]")
 
     def test_standalone_review_obeys_task_declaration_when_present(self):
         self.source.write_text(SOURCE, encoding="utf-8")

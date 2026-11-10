@@ -5,12 +5,12 @@ import json
 from pathlib import Path
 import sys
 
-from diagnostics.coding_acceptance import SOURCE, TESTS, check_visible_examples
+from diagnostics.coding_acceptance import SOURCE, TESTS, check_task_examples
 from diagnostics.coding_research import (
     CONTRACTS,
-    MAX_SOURCE_BYTES,
     parse_review_json,
     review_task,
+    source_digest,
     supports_task_instruction,
 )
 from runtime_limits import OperationTimeout, RuntimeLimits
@@ -43,14 +43,16 @@ def _validate_contracts(contracts: object) -> None:
                 raise ValueError("expected a bounded integer contract parameter")
 
 
-def _read_task(task: Path, task_id: str) -> tuple[int, bool]:
-    data = parse_review_json(read_text(task, "task.json", maximum=TASK_JSON_BYTES))
+def _read_task(task: Path, task_id: str) -> tuple[int, bool, str]:
+    declaration = read_text(task, "task.json", maximum=TASK_JSON_BYTES)
+    data = parse_review_json(declaration)
     if not isinstance(data, dict) or data.get("task_id") != task_id or data.get("task_type") != "coding":
         raise ValueError(f"unexpected task metadata for {task_id}")
     reward = data.get("reward")
     if type(reward) is not int or reward < 0:
         raise ValueError(f"invalid reward for {task_id}")
-    return reward, supports_task_instruction(data.get("instruction"), SOURCE_NAME, test=Path(TESTS).name)
+    supports_edit = supports_task_instruction(data.get("instruction"), SOURCE_NAME, test=Path(TESTS).name)
+    return reward, supports_edit, source_digest(declaration)
 
 
 def run_development(tasks_dir: Path, contracts: dict) -> dict:
@@ -61,7 +63,7 @@ def run_development(tasks_dir: Path, contracts: dict) -> dict:
     for task_id in TASK_IDS:
         task = tasks_dir / task_id
         with limits.sync():
-            reward, supports_edit = _read_task(task, task_id)
+            reward, supports_edit, task_sha256 = _read_task(task, task_id)
         row = {"task_id": task_id, "reward": reward}
         options = contracts.get(task_id, {"function": None, "contract": None})
         if task_id in contracts and not supports_edit:
@@ -72,15 +74,18 @@ def run_development(tasks_dir: Path, contracts: dict) -> dict:
             }
         else:
             review = review_task(task, Path(SOURCE_NAME), **options)
-        row["review"] = review
-        if "patch" in review:
-            try:
+        edit = review.get("patch")
+        if edit is not None:
+            if edit.get("task_sha256") != task_sha256:
+                review = {
+                    "status": "task_declaration_changed",
+                    "independently_verified_under_contract": False,
+                    "contest_solution_confirmed": False,
+                }
+            else:
                 with limits.sync():
-                    source = read_text(task, SOURCE, maximum=MAX_SOURCE_BYTES)
-                    tests = read_text(task, TESTS, maximum=MAX_SOURCE_BYTES)
-                    row["visible"] = check_visible_examples(source, tests, review["patch"])
-            except (OSError, ValueError):
-                row["visible"] = {"status": "source_or_tests_unavailable"}
+                    row["visible"] = check_task_examples(task, edit)
+        row["review"] = review
         rows.append(row)
 
     candidates = [row for row in rows if "patch" in row["review"]]

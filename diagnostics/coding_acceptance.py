@@ -5,6 +5,7 @@ import ast
 from dataclasses import replace
 import json
 import operator
+import os
 from pathlib import Path
 import sys
 
@@ -19,15 +20,17 @@ from diagnostics.coding_research import (
     parse_int_literal,
     parse_operator_return,
     parse_review_json,
+    read_task_declaration,
     source_digest,
-    workspace_allows_review,
+    task_allows_review,
 )
 from runtime_limits import OperationTimeout, RuntimeLimits
-from safe_files import read_text
+from safe_files import directory_guards, identity, open_directory, open_text
 
 
 SOURCE = "workspace/engine.py"
 TESTS = "workspace/test_engine.py"
+VISIBLE_FILES = frozenset((Path(SOURCE).name, Path(TESTS).name))
 MAX_REPORT_BYTES = 8 * 1024
 OPERATIONS = {
     ast.Add: operator.add,
@@ -148,11 +151,45 @@ def check_visible_examples(original: str, tests: str, edit: object) -> dict:
         for line, inputs, expected in examples
     ]
     result = {"status": "visible_assertions_checked", "cases": cases,
+              "tests_sha256": source_digest(tests),
               "before_passed": sum(case["before_passed"] for case in cases),
               "after_passed": sum(case["after_passed"] for case in cases)}
     if before is None:
         result["before_status"] = "syntax_invalid"
     return result
+
+
+def _only_visible_files(workspace: Path) -> bool:
+    with open_directory(workspace) as directory, os.scandir(directory) as entries:
+        return all(entry.name in VISIBLE_FILES and entry.is_file(follow_symlinks=False) for entry in entries)
+
+
+def check_task_examples(task_dir: Path, edit: object) -> dict:
+    """Validate the bound declaration and read one isolated visible-test snapshot."""
+    root = task_dir.absolute()
+    workspace = root / "workspace"
+    try:
+        with open_directory(root) as task_fd, open_directory(workspace) as workspace_fd:
+            guards = {root: identity(os.fstat(task_fd)), workspace: identity(os.fstat(workspace_fd))}
+            with directory_guards(guards):
+                declaration = read_task_declaration(root)
+                if not task_allows_review(declaration, Path(SOURCE).name, test=Path(TESTS).name):
+                    return {"status": "unsupported_task_instruction"}
+                task_sha256 = source_digest(declaration) if declaration is not None else None
+                if not isinstance(edit, dict) or edit.get("task_sha256") != task_sha256:
+                    return {"status": "invalid_patch", "reason": "patch does not match the task declaration"}
+                if not _only_visible_files(workspace):
+                    return {"status": "unsupported_workspace_files"}
+                with (
+                    open_text(root, SOURCE, maximum=MAX_SOURCE_BYTES) as source,
+                    open_text(root, TESTS, maximum=MAX_SOURCE_BYTES) as tests,
+                ):
+                    result = check_visible_examples(source.read(), tests.read(), edit)
+                    if read_task_declaration(root) != declaration or not _only_visible_files(workspace):
+                        return {"status": "visible_inputs_changed"}
+                return result
+    except (OSError, ValueError):
+        return {"status": "source_or_tests_unavailable"}
 
 
 def main() -> None:
@@ -171,12 +208,7 @@ def main() -> None:
                 parser.error(f"invalid review JSON on stdin: {exc}")
             if not isinstance(report, dict):
                 parser.error("expected a review JSON object")
-            if not workspace_allows_review(args.task_dir, Path(SOURCE).name, test=Path(TESTS).name):
-                result = {"status": "unsupported_task_instruction"}
-            else:
-                original = read_text(args.task_dir, SOURCE, maximum=MAX_SOURCE_BYTES)
-                tests = read_text(args.task_dir, TESTS, maximum=MAX_SOURCE_BYTES)
-                result = check_visible_examples(original, tests, report.get("patch"))
+            result = check_task_examples(args.task_dir, report.get("patch"))
     except (TimeoutError, OperationTimeout):
         result = {"status": "analysis_limit"}
     except (OSError, ValueError):
