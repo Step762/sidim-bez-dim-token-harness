@@ -18,7 +18,9 @@ from diagnostics.coding_research import (
     parse_bounded_module,
     parse_int_literal,
     parse_operator_return,
+    parse_review_json,
     source_digest,
+    workspace_allows_review,
 )
 from runtime_limits import OperationTimeout, RuntimeLimits
 from safe_files import read_text
@@ -164,14 +166,17 @@ def main() -> None:
             if len(raw) > MAX_REPORT_BYTES:
                 parser.error("review JSON exceeds size limit")
             try:
-                report = json.loads(raw)
-            except (ValueError, RecursionError):
-                parser.error("expected review JSON on stdin")
+                report = parse_review_json(raw)
+            except (ValueError, RecursionError) as exc:
+                parser.error(f"invalid review JSON on stdin: {exc}")
             if not isinstance(report, dict):
                 parser.error("expected a review JSON object")
-            original = read_text(args.task_dir, SOURCE, maximum=MAX_SOURCE_BYTES)
-            tests = read_text(args.task_dir, TESTS, maximum=MAX_SOURCE_BYTES)
-            result = check_visible_examples(original, tests, report.get("patch"))
+            if not workspace_allows_review(args.task_dir, Path(SOURCE).name, test=Path(TESTS).name):
+                result = {"status": "unsupported_task_instruction"}
+            else:
+                original = read_text(args.task_dir, SOURCE, maximum=MAX_SOURCE_BYTES)
+                tests = read_text(args.task_dir, TESTS, maximum=MAX_SOURCE_BYTES)
+                result = check_visible_examples(original, tests, report.get("patch"))
     except (TimeoutError, OperationTimeout):
         result = {"status": "analysis_limit"}
     except (OSError, ValueError):

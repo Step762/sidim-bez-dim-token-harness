@@ -1,13 +1,20 @@
 """Exercise the review-only pipeline without running task source or tests."""
 
 import hashlib
+import json
 import os
 from pathlib import Path
 import tempfile
 import unittest
 from unittest.mock import patch
 
-from diagnostics.coding_research import apply_missing_colon, apply_operator_edit, review_task, verify_candidate
+from diagnostics.coding_research import (
+    apply_missing_colon,
+    apply_operator_edit,
+    parse_review_json,
+    review_task,
+    verify_candidate,
+)
 from runtime_limits import OperationTimeout
 
 
@@ -258,3 +265,38 @@ class CodingResearchTests(unittest.TestCase):
                 result = review_task(self.task, Path("engine.py"), **options)
                 self.assertEqual(result["status"], "unsupported_source")
                 self.assertNotIn("patch", result)
+
+    def test_debug_binding_is_rejected_even_though_ast_parse_accepts_it(self):
+        for name in ("__debug__", "__debuℊ__"):
+            with self.subTest(name=name):
+                original = f"def product({name}, right):\n    return {name} - right\n"
+                self.source.write_text(original, encoding="utf-8")
+                report = self.review(contract="add")
+                self.assertEqual(report["status"], "unsupported_source")
+                self.assertNotIn("patch", report)
+                candidate = original.replace("- right", "+ right")
+                self.assertFalse(verify_candidate(original, candidate, function="product", contract="add"))
+
+    def test_json_rejects_duplicate_keys_and_nonfinite_values(self):
+        for text in (
+            b'{"coding_d01": {}, "coding_d01": {}}',
+            b'{"coding_d01": {"contract": "add", "\\u0063ontract": "multiply"}}',
+            b'{"patch": {"line": 2, "line": 3}}',
+        ):
+            with self.subTest(text=text), self.assertRaisesRegex(ValueError, "duplicate JSON key"):
+                parse_review_json(text)
+        with self.assertRaisesRegex(ValueError, "non-finite"):
+            parse_review_json(b'{"reward": Infinity}')
+
+    def test_standalone_review_obeys_task_declaration_when_present(self):
+        self.source.write_text(SOURCE, encoding="utf-8")
+        metadata = self.task / "task.json"
+        metadata.write_text(json.dumps({
+            "task_type": "coding",
+            "instruction": "Fix another.py and leave engine.py unchanged.",
+        }), encoding="utf-8")
+        result = self.review()
+        self.assertEqual(result["status"], "unsupported_task_instruction")
+        self.assertNotIn("patch", result)
+        metadata.write_text('{"task_type":"math","task_type":"coding"}', encoding="utf-8")
+        self.assertNotIn("patch", self.review())

@@ -10,9 +10,10 @@ from pathlib import Path
 import re
 import tokenize
 
+from coding_solver import _INSTRUCTION
 from diagnostics import static_coding
 from runtime_limits import OperationTimeout, RuntimeLimits
-from safe_files import read_text
+from safe_files import TASK_JSON_BYTES, read_text
 
 
 MAX_SOURCE_BYTES = 64 * 1024
@@ -42,6 +43,49 @@ class OperatorReturn:
     operator: type[ast.operator] | type[ast.cmpop]
     literal: int | None = None
     modulus: int | None = None
+
+
+def parse_review_json(text: str | bytes) -> object:
+    """Read diagnostic JSON without silently choosing among conflicting keys."""
+    def unique(pairs):
+        fields = {}
+        for key, value in pairs:
+            if key in fields:
+                raise ValueError("duplicate JSON key")
+            fields[key] = value
+        return fields
+
+    def reject_constant(_):
+        raise ValueError("non-finite JSON constant")
+
+    return json.loads(text, object_pairs_hook=unique, parse_constant=reject_constant)
+
+
+def supports_task_instruction(instruction: object, source: str, *, test: str | None = None) -> bool:
+    if not isinstance(instruction, str):
+        return False
+    parsed = _INSTRUCTION.fullmatch(" ".join(instruction.split()))
+    return (
+        parsed is not None
+        and parsed["source"] == source
+        and parsed["test"] != source
+        and (test is None or parsed["test"] == test)
+    )
+
+
+def workspace_allows_review(task_dir: Path, source: str, *, test: str | None = None) -> bool:
+    """Check an existing task declaration, or allow an explicit standalone fixture."""
+    try:
+        text = read_text(task_dir, "task.json", maximum=TASK_JSON_BYTES)
+    except FileNotFoundError:
+        # Standalone synthetic fixtures can consist of workspace files only.
+        return True
+    data = parse_review_json(text)
+    return (
+        isinstance(data, dict)
+        and data.get("task_type") == "coding"
+        and supports_task_instruction(data.get("instruction"), source, test=test)
+    )
 
 
 def parse_bounded_module(source: str) -> ast.Module:
@@ -105,6 +149,9 @@ def parse_operator_return(source: str) -> OperatorReturn:
     ):
         raise UnsupportedSource("expected one or two plain parameters")
     parameters = tuple(arg.arg for arg in args.args)
+    # CPython rejects this binding after ast.parse has already accepted it.
+    if "__debug__" in parameters:
+        raise UnsupportedSource("cannot bind __debug__ as a parameter")
     if (
         len(set(parameters)) != len(parameters)
         or len(function.body) != 1
@@ -309,6 +356,8 @@ def review_task(
 
     try:
         with RuntimeLimits(5, 2).sync():
+            if not workspace_allows_review(task_dir, source.name):
+                return {**report, "status": "unsupported_task_instruction"}
             original = read_text(task_dir, Path("workspace") / source, maximum=MAX_SOURCE_BYTES)
             if contract == "scale":
                 proposal = _scale_proposal(original, function, factor)

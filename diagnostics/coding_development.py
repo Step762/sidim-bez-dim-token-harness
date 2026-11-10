@@ -6,12 +6,19 @@ from pathlib import Path
 import sys
 
 from diagnostics.coding_acceptance import SOURCE, TESTS, check_visible_examples
-from diagnostics.coding_research import CONTRACTS, MAX_SOURCE_BYTES, review_task
+from diagnostics.coding_research import (
+    CONTRACTS,
+    MAX_SOURCE_BYTES,
+    parse_review_json,
+    review_task,
+    supports_task_instruction,
+)
 from runtime_limits import OperationTimeout, RuntimeLimits
 from safe_files import TASK_JSON_BYTES, read_text
 
 
 TASK_IDS = tuple(f"coding_d{number:02}" for number in range(1, 17))
+SOURCE_NAME = Path(SOURCE).name
 MAX_CONTRACT_BYTES = 8 * 1024
 CONTRACT_PARAMETERS = {
     "at_least": ("threshold",), "remainder_equals": ("modulus", "residue"), "scale": ("factor",),
@@ -36,14 +43,14 @@ def _validate_contracts(contracts: object) -> None:
                 raise ValueError("expected a bounded integer contract parameter")
 
 
-def _task_reward(task: Path, task_id: str) -> int:
-    data = json.loads(read_text(task, "task.json", maximum=TASK_JSON_BYTES))
+def _read_task(task: Path, task_id: str) -> tuple[int, bool]:
+    data = parse_review_json(read_text(task, "task.json", maximum=TASK_JSON_BYTES))
     if not isinstance(data, dict) or data.get("task_id") != task_id or data.get("task_type") != "coding":
         raise ValueError(f"unexpected task metadata for {task_id}")
     reward = data.get("reward")
     if type(reward) is not int or reward < 0:
         raise ValueError(f"invalid reward for {task_id}")
-    return reward
+    return reward, supports_task_instruction(data.get("instruction"), SOURCE_NAME, test=Path(TESTS).name)
 
 
 def run_development(tasks_dir: Path, contracts: dict) -> dict:
@@ -54,9 +61,17 @@ def run_development(tasks_dir: Path, contracts: dict) -> dict:
     for task_id in TASK_IDS:
         task = tasks_dir / task_id
         with limits.sync():
-            row = {"task_id": task_id, "reward": _task_reward(task, task_id)}
+            reward, supports_edit = _read_task(task, task_id)
+        row = {"task_id": task_id, "reward": reward}
         options = contracts.get(task_id, {"function": None, "contract": None})
-        review = review_task(task, Path("engine.py"), **options)
+        if task_id in contracts and not supports_edit:
+            review = {
+                "status": "unsupported_task_instruction",
+                "independently_verified_under_contract": False,
+                "contest_solution_confirmed": False,
+            }
+        else:
+            review = review_task(task, Path(SOURCE_NAME), **options)
         row["review"] = review
         if "patch" in review:
             try:
@@ -71,6 +86,7 @@ def run_development(tasks_dir: Path, contracts: dict) -> dict:
     candidates = [row for row in rows if "patch" in row["review"]]
     checked = [row for row in candidates if row["visible"]["status"] == "visible_assertions_checked"]
     passed = [row for row in checked if row["visible"]["after_passed"] == len(row["visible"]["cases"])]
+    improved = [row for row in passed if row["visible"]["before_passed"] < row["visible"]["after_passed"]]
     regressions = sum(
         any(case["before_passed"] and not case["after_passed"] for case in row["visible"]["cases"])
         for row in checked
@@ -84,6 +100,8 @@ def run_development(tasks_dir: Path, contracts: dict) -> dict:
             "contest_unverified": len(candidates),
             "contest_points": 0,
             "visible_all_passed": len(passed),
+            "visible_improved": len(improved),
+            "visible_already_passed": len(passed) - len(improved),
             "visible_failed": len(checked) - len(passed),
             "visible_unavailable": len(candidates) - len(checked),
             "visible_regressions": regressions,
@@ -91,6 +109,7 @@ def run_development(tasks_dir: Path, contracts: dict) -> dict:
             "visible_assertions_before": sum(row["visible"]["before_passed"] for row in checked),
             "visible_assertions_after": sum(row["visible"]["after_passed"] for row in checked),
             "potential_reward_of_visible_passes": sum(row["reward"] for row in passed),
+            "potential_reward_of_visible_improvements": sum(row["reward"] for row in improved),
         },
         "tasks": rows,
     }
@@ -106,7 +125,7 @@ def main() -> None:
             raw = sys.stdin.buffer.read(MAX_CONTRACT_BYTES + 1)
             if len(raw) > MAX_CONTRACT_BYTES:
                 parser.error("contract JSON exceeds size limit")
-            contracts = json.loads(raw)
+            contracts = parse_review_json(raw)
         result = run_development(args.tasks_dir, contracts)
     except (OSError, ValueError, OperationTimeout, RecursionError) as exc:
         parser.error(str(exc))
