@@ -29,7 +29,7 @@ from budget_manager import BudgetManager
 from llm_gateway import DEFAULT_MODEL, LLMError, strict_json
 from diagnostics.selection import (A1_PROBES, A1_BUDGET, A2_BUDGET, A2_MAX_TOKENS,
                                    A2_MAX_CALLS, experiment_plan, load_selection)
-from diagnostics.trace import DiagnosticGateway, Trace, classify, _SCOPE
+from diagnostics.trace import DiagnosticGateway, Trace, classify, _SCOPE, fallback_controls
 
 
 SUITE_VERSION = 1
@@ -119,8 +119,19 @@ def mock_factory(trace, scenario, plans, requests):
 
 
 def run_tasks_diagnostic(*, scenario="valid", task_ids=None, trace_enabled=True,
-                         live_config=None, pilot_manager=None, pilot_workspace=None):
-    if pilot_manager is not None and (task_ids!=["math_d15"] or pilot_manager.limit!=900):
+                         live_config=None, pilot_manager=None, pilot_workspace=None, search_manager=None,
+                         search_forecast=None):
+    if search_manager is not None:
+        if (pilot_manager is not None or task_ids != ["search_d15"] or search_manager.limit != 900
+            or search_manager.snapshot()["spent"] != Decimal("155.9") or search_manager.snapshot()["frozen"]):
+            raise ValueError("search pilot only permits search_d15 with reviewed history and limit 900")
+        if (not isinstance(search_forecast,dict)
+            or type(search_forecast.get("estimated_input")) is not int
+            or not 0 < search_forecast["estimated_input"] <= 1823
+            or not isinstance(search_forecast.get("prompt_sha256"),str)):
+            raise ValueError("search pilot requires its bounded preflight forecast")
+        pilot_manager = search_manager
+    if search_manager is None and pilot_manager is not None and (task_ids!=["math_d15"] or pilot_manager.limit!=900):
         raise ValueError("pilot only permits math_d15 with a shared limit of 900")
     if pilot_workspace is not None and pilot_manager is None:
         raise ValueError("persistent diagnostic workspace is pilot-only")
@@ -144,7 +155,9 @@ def run_tasks_diagnostic(*, scenario="valid", task_ids=None, trace_enabled=True,
     gateway = DiagnosticGateway(live_config["base_url"] if live_config else "http://cycle-a.invalid/v1",key,
         model=DEFAULT_MODEL,manager=manager,max_tokens=A2_MAX_TOKENS,timeout=20 if live_config else 0.03 if scenario=="timeout" else 2,
         trace=trace,transport_factory=factory,max_calls=1 if pilot_manager is not None else A2_MAX_CALLS,
-        strict_response=pilot_manager is not None)
+        strict_response=pilot_manager is not None,
+        input_limit=search_forecast["estimated_input"] if search_manager is not None else None,
+        messages_sha256=search_forecast["prompt_sha256"] if search_manager is not None else None)
     started = time.perf_counter()
     with (nullcontext(pilot_workspace) if pilot_workspace is not None else tempfile.TemporaryDirectory(prefix="cycle-a-tasks-")) as temporary:
         tasks = Path(temporary)
@@ -190,7 +203,7 @@ def run_tasks_diagnostic(*, scenario="valid", task_ids=None, trace_enabled=True,
                          "confirmed_cost":str(Decimal(cost.get("spent_tenths",0))/10),
                          "reserved":str(Decimal(cost.get("reserved_tenths",0))/10),
                          "answer_mode":stat.S_IMODE(answer.stat().st_mode) if answer.exists() else None})
-    return {"mode":"fallback_pilot" if pilot_manager is not None else "A2" if live_config else "offline_scenario","scenario":scenario,"live":live_config is not None,
+    return {"mode":"search_pilot" if search_manager is not None else "fallback_pilot" if pilot_manager is not None else "A2" if live_config else "offline_scenario","scenario":scenario,"live":live_config is not None,
             "runtime_sha256":runtime_fingerprint(),"model":DEFAULT_MODEL,"budget":budget_summary(manager),
             "max_requests":1 if pilot_manager is not None else A2_MAX_CALLS,"counts":counts,"seconds":time.perf_counter()-started,
             "fault_injected":fault is not None,"rows":rows,"events":trace.events,
@@ -376,6 +389,13 @@ def run_a1(*,live_config=None,trace_enabled=True,capture_response=False,continue
 
 
 def offline_suite(*,trace_enabled=True):
+    with fallback_controls():
+        report = _offline_suite(trace_enabled=trace_enabled)
+    report['forced_local_refusal'] = True
+    return report
+
+
+def _offline_suite(*,trace_enabled=True):
     experiments = [run_tasks_diagnostic(scenario=scenario,trace_enabled=trace_enabled) for scenario in SCENARIOS]
     expected = {"valid":("math_d15","success"),"wrong_plan":("math_d15","model_meaning"),
                 "equivalent_rejected":("math_d15","validator_rejection"),"execution_error":("math_d15","execution"),

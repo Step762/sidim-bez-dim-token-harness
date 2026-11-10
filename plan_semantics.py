@@ -17,6 +17,15 @@ WORDS = dict(zip(
 ))
 NUMBER = rf"(?:{data_solver._NUMBER}|{'|'.join(WORDS)})"
 UNIT = r"(?: (?:coins?|box(?:es)?|units?|items?|dollars?|euros?|points?|apples?|litres?|meters?))?"
+_UNIT_NAMES = {
+    spelling: singular
+    for singular, plural in (
+        ("coin", "coins"), ("box", "boxes"), ("unit", "units"),
+        ("item", "items"), ("dollar", "dollars"), ("euro", "euros"),
+        ("point", "points"), ("apple", "apples"), ("litre", "litres"),
+        ("meter", "meters"),
+    ) for spelling in (singular, plural)
+}
 CURRENT = r"(?:it|them|the (?:result|balance|value|amount|stock|total))"
 PERCENT = r"(?:percent|per cent|%)"
 MATH_MARKERS = (
@@ -54,6 +63,13 @@ def _match(pattern, text):
 
 def math_spec(problem):
     """Return the initial value and ordered operations stated by whole clauses."""
+    # The scalar step language has no conversion rates or dimensional algebra.
+    # Preserve explicit units instead of silently adding dollars to euros, etc.
+    units = {_UNIT_NAMES[m[1].lower()] for m in re.finditer(
+        rf"(?<![\w.]){NUMBER} ({'|'.join(_UNIT_NAMES)})(?!\w)", problem, re.I
+    )}
+    if len(units) > 1:
+        raise UnsupportedMeaning("incompatible explicit arithmetic units")
     if has(problem, ("if", "unless", "otherwise", "except", "ignore", "not", "never", "instead",
                      "hundred", "thousand", "million", "billion")):
         raise UnsupportedMeaning("conditional or unsupported arithmetic wording")
@@ -172,6 +188,18 @@ RELATIONS = search_solver.RELATION_ALIASES
 def search_spec(problem, index):
     question = problem.strip().rstrip("?. ")
     question = re.sub(r"^The directory kb/ contains a small knowledge base of markdown files\.\s*", "", question, flags=re.I)
+    for pattern, relation in search_solver._INVERSE_QUESTIONS:
+        if inverse := pattern.fullmatch(question):
+            label = inverse[1]
+            search_solver._check_literal_expression(label, index)
+            root = search_solver._resolve_entity(label, index)
+            if root is None:
+                if relation != 'employer' or not search_solver._literal_company(label):
+                    raise UnsupportedMeaning('inverse target cannot be established')
+                root = search_solver._name(label)
+            # Explicit local-only inverse operation; the forward LLM-plan schema
+            # cannot claim this field, because it is never a KB fact key.
+            return root, [], 'inverse_' + relation
     subject, field = None, None
     for pattern, candidate in search_solver._QUESTIONS:
         if m := pattern.fullmatch(question):

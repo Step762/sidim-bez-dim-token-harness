@@ -10,6 +10,7 @@ from contextlib import contextmanager, ExitStack
 from contextvars import ContextVar
 from collections import Counter
 import asyncio
+import hashlib
 from fractions import Fraction
 import json
 from pathlib import Path
@@ -21,6 +22,8 @@ import harness
 import llm_fallback
 import planner
 import data_solver
+import math_solver
+import search_solver
 from budget_manager import BudgetError
 from llm_gateway import LLMError, LLMGateway, MAX_RESPONSE_BYTES, MODELS
 from openjiuwen.core.workflow import Workflow
@@ -38,6 +41,30 @@ _FIELDS = _FIELDS | {"accounted_output_tokens","reasoning_conflict","model_repor
 _FIELDS = _FIELDS | {"reason_code","plan_schema_valid","operations_supported"}
 
 
+@contextmanager
+def fallback_controls():
+    """Inject legacy local refusals ONLY for offline gateway/validator regression.
+
+    Promoted local forms must not silently bypass tests of invalid model plans.
+    Never used by production, qualification measurements or a LIVE entrypoint.
+    """
+    original = dict(harness.SOLVERS)
+    local_form = math_solver.local_form
+    def arithmetic(text):
+        if text.startswith("Solve the following arithmetic: "):
+            raise math_solver.UnsupportedMath("unsupported math statement or instructions")
+        return original["math"](text)
+    def search(text,directory):
+        parsed=search_solver._INSTRUCTION.fullmatch(" ".join(text.split()))
+        if parsed and not any(p.fullmatch(parsed['question']) for p,_ in search_solver._QUESTIONS):
+            raise search_solver.UnsupportedSearch("unsupported search question")
+        return original["search"](text,directory)
+    def legacy_form(text):
+        return not text.startswith("Solve the following arithmetic: ") and local_form(text)
+    with patch.dict(harness.SOLVERS,{"math":arithmetic,"search":search}),patch.object(math_solver,'local_form',legacy_form):
+        yield
+
+
 def math_plan_shape(plan):
     """Read-only checks of the documented production math plan fields."""
     operations = {"add","sub","mul","div","floordiv","increase_percent","decrease_percent","percent"}
@@ -53,6 +80,15 @@ def math_plan_shape(plan):
             llm_fallback._scalar(item["value"])
         return supported,supported
     except (ValueError,TypeError,KeyError): return False,supported
+
+
+def search_plan_shape(plan):
+    """Schema observation only; source grounding remains the production validator."""
+    if not isinstance(plan,dict) or set(plan)!={"entity","relations","field","answer"}:
+        return False
+    return (all(isinstance(plan[key],str) for key in ("entity","field","answer"))
+            and isinstance(plan["relations"],list)
+            and all(isinstance(key,str) and key in {"mentor","employer"} for key in plan["relations"]))
 
 
 def exception_code(error):
@@ -313,7 +349,16 @@ class Trace:
                                    "invalid numeric operand":"numeric_operand",
                                    "initial quantity differs from instruction":"initial_quantity_or_evidence",
                                    "arithmetic plan changes the step count":"step_count",
-                                   "arithmetic operation, operand order or evidence differs":"operation_order_or_evidence"}
+                                   "arithmetic operation, operand order or evidence differs":"operation_order_or_evidence",
+                                   "answer is about an unrelated entity":"search_subject",
+                                   "unsupported or ungrounded relations":"search_relations",
+                                   "requested fact is not grounded in the question":"search_field",
+                                   "search subject became ambiguous":"search_subject_ambiguous",
+                                   "search evidence changed since preparation":"search_evidence_changed",
+                                   "missing or conflicting cited entity":"search_entity_conflict",
+                                   "missing or ambiguous cited fact":"search_fact_missing_or_ambiguous",
+                                   "unknown cited fact":"search_fact_unknown",
+                                   "answer differs from source evidence":"search_answer_not_grounded"}
                         reason = reasons.get(str(error),"unclassified_validation_failure")
                         self.nodes[key]["validation_reason"] = reason
                         self.emit("semantic_validation","rejected",error_code=exception_code(error),
@@ -343,6 +388,8 @@ class Trace:
             if self.reviewed.get(key,{}).get("initial") is not None:
                 shape,supported = math_plan_shape(plan)
                 self.nodes[key].update(plan_schema_valid=shape,operations_supported=supported)
+            elif "relations" in self.reviewed.get(key,{}):
+                self.nodes[key]["plan_schema_valid"] = search_plan_shape(plan)
             known = {"initial","steps","entity","relations","field","answer","file","operation","column","filters","status"}
             self.emit("parsed_plan","parsed",independent=verdict,
                       unknown_fields=len(set(plan)-known) if isinstance(plan,dict) else 0,
@@ -490,16 +537,24 @@ class RecordingTransport(httpx.AsyncBaseTransport):
 
 class DiagnosticGateway(LLMGateway):
     """Same complete() and manager; adds observers and an explicit request cap."""
-    def __init__(self,*args,trace,transport_factory,max_calls,strict_response=False,**kwargs):
+    def __init__(self,*args,trace,transport_factory,max_calls,strict_response=False,input_limit=None,
+                 messages_sha256=None,**kwargs):
         super().__init__(*args,**kwargs)
         self.trace,self.factory,self.max_calls = trace,transport_factory,max_calls
         self.strict_response = strict_response
+        self.input_limit = input_limit
+        self.messages_sha256 = messages_sha256
         self.attempts = 0
 
     async def complete(self,system,payload,*,task_id="direct"):
         key = Path(task_id).name
         phase = "probe" if key.startswith("a1_") else "fallback"
         with self.trace.scope(key,phase):
+            if self.input_limit is not None and self.estimate_input(system,payload)>self.input_limit:
+                raise LLMError("diagnostic input limit exceeded")
+            if self.messages_sha256 is not None and hashlib.sha256(json.dumps(
+                self._messages(system,payload),ensure_ascii=False).encode()).hexdigest()!=self.messages_sha256:
+                raise LLMError("diagnostic prompt changed after preflight")
             if self.attempts>=self.max_calls:
                 self.trace.nodes[key]["request_cap"] = True
                 self.trace.emit("budget_reservation","request_cap",sent=False)
@@ -514,6 +569,9 @@ class DiagnosticGateway(LLMGateway):
                     raise LLMError("diagnostic model or reasoning metadata mismatch")
                 return result
             except LLMError:
+                node = self.trace.nodes[key]
+                if self.strict_response and ((node.get("model_reported") and not node.get("model_matches")) or node.get("reasoning_content_present")):
+                    node["response_contract_rejected"] = True
                 if self.trace.nodes[key].get("transport_error")=="cancelled_or_timeout":
                     self.trace.nodes[key]["transport_error"] = "timeout"
                 self.trace.nodes[key]["gateway_error"] = True

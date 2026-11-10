@@ -4,7 +4,7 @@ import ast
 from fractions import Fraction
 import re
 
-from plan_semantics import WORDS, calculate_math, format_math, math_spec
+from plan_semantics import WORDS, NUMBER, UNIT, number, calculate_math, format_math, math_spec
 
 
 MAX_INSTRUCTION_CHARS = 8000
@@ -14,6 +14,9 @@ MAX_AST_NODES = 256
 MAX_DEPTH = 32
 MAX_VALUE_BITS = 2048
 MAX_ROUND_PLACES = 100
+MAX_POWER = 64
+MAX_DECIMAL_EXPONENT = 100
+_EXPRESSION_NUMBER = r'(?:[0-9]+(?:\.[0-9]*)?|\.[0-9]+)(?:[eE][+-]?[0-9]+)?'
 
 
 class UnsupportedMath(ValueError):
@@ -55,6 +58,147 @@ _ROUND = re.compile(
     rf"(?P<places>[0-9]+|{'|'.join(WORDS)}) decimal places? using round-half-up",
     re.IGNORECASE,
 )
+_LEFT_TO_RIGHT = re.compile(
+    r"(?:Evaluate|Calculate|Compute) (?P<expression>.+?) "
+    r"(?:(?:strictly )?from left to right(?:, ignoring (?:the )?usual precedence)?"
+    r"|using left-to-right order)", re.IGNORECASE,
+)
+_CURRENCY = r"euros?|dollars?|pounds?|yen"
+_COST = re.compile(
+    rf"(?:(?P<count>{NUMBER}) (?P<item>[A-Za-z]+) (?:cost|costs|at) "
+    rf"(?P<price>{NUMBER}) (?P<currency>{_CURRENCY}) each|"
+    rf"Each of (?P<count_each>{NUMBER}) (?P<item_each>[A-Za-z]+) costs "
+    rf"(?P<price_each>{NUMBER}) (?P<currency_each>{_CURRENCY}))\. "
+    rf"A (?:(?:booking|delivery|service|handling|shipping|processing|administrative|fixed) )?fee of (?P<fee>{NUMBER}) (?P<fee_currency>{_CURRENCY}) "
+    r"is added (?P<scope>once|per item)\. What is the total cost", re.I,
+)
+_ORDINALS = dict(zip('zeroth first second third fourth fifth sixth seventh eighth ninth tenth eleventh twelfth'.split(), range(13)))
+_DECIMAL = r'[+-]?(?:[0-9]+(?:\.[0-9]*)?|\.[0-9]+)'
+_POWER = re.compile(
+    rf'(?P<base>{_DECIMAL}|\({_DECIMAL}\)) '
+    rf'(?:raised to (?:the )?(?P<ordinal>{"|".join(_ORDINALS)}) power|'
+    r'(?:raised to the power of|to the power of) (?P<exponent>[+-]?[0-9]+))'
+    rf'(?: (?P<op>plus|minus|times|divided by) (?P<operand>{_DECIMAL}))?', re.I,
+)
+_SEQUENCE = re.compile(
+    rf'(?:Starting|Beginning|Start|Begin) (?:at|with) (?P<initial>{NUMBER}{UNIT})[,.] '
+    r'(?P<operations>.+?)(?:\. What is the (?:result|balance|value|amount|total|answer)'
+    r'(?: now|at the end)?)?', re.I,
+)
+
+
+def _sequence_spec(text):
+    match = _SEQUENCE.fullmatch(text)
+    if match is None:
+        return None
+    pair = re.fullmatch(r'(?:first )?(.+?)( before |, then )(.+)', match['operations'].rstrip('.'), re.I)
+    if pair is None:
+        return None
+    operations = []
+    for raw in (pair[1], pair[3]):
+        additive = re.fullmatch(rf'(add|adding|subtract|subtracting) ({NUMBER}{UNIT})', raw, re.I)
+        scaling = re.fullmatch(rf'(multiply|multiplying|divide|dividing) by ({NUMBER})', raw, re.I)
+        if additive:
+            verb = 'Add' if additive[1].lower().startswith('add') else 'Subtract'
+            operations.append(f'{verb} {additive[2]}')
+        elif scaling:
+            verb = 'Multiply' if scaling[1].lower().startswith('multipl') else 'Divide'
+            operations.append(f'{verb} by {scaling[2]}')
+        else:
+            raise UnsupportedMath('unsupported ordered operation')
+    try:
+        return math_spec('Start with ' + match['initial'] + '. ' + '. '.join(operations) + '.')
+    except ValueError as exc:
+        raise UnsupportedMath('invalid explicit operation sequence') from exc
+
+
+def _power_spec(text):
+    match = _POWER.fullmatch(text)
+    if match is None:
+        return None
+    raw = match['base'].strip('()')
+    exponent = match['exponent']
+    if len(raw) > MAX_LITERAL_CHARS or (exponent is not None and len(exponent) > 3):
+        raise UnsupportedMath('power literal limit exceeded')
+    exponent = int(exponent) if exponent is not None else _ORDINALS[match['ordinal'].lower()]
+    if abs(exponent) > MAX_POWER:
+        raise UnsupportedMath('power exponent limit exceeded')
+    base = _bounded(Fraction(raw))
+    if base == 0 and exponent <= 0:
+        raise UnsupportedMath('undefined zero power')
+    if abs(exponent) * max(base.numerator.bit_length(), base.denominator.bit_length()) > MAX_VALUE_BITS:
+        raise UnsupportedMath('power result limit exceeded')
+    operand = match['operand']
+    if operand is not None and len(operand) > MAX_LITERAL_CHARS:
+        raise UnsupportedMath('power operand limit exceeded')
+    return base, exponent, match['op'].lower() if match['op'] else None, Fraction(operand) if operand is not None else None
+
+
+def _power_value(parsed):
+    base, exponent, op, operand = parsed
+    value = _bounded(base ** exponent)
+    if op == 'plus': value += operand
+    elif op == 'minus': value -= operand
+    elif op == 'times': value *= operand
+    elif op == 'divided by':
+        if operand == 0: raise UnsupportedMath('division by zero')
+        value /= operand
+    return _bounded(value)
+
+
+def _cost_spec(text):
+    match = _COST.fullmatch(text)
+    if match is None:
+        return None
+    if any(len(value) > MAX_LITERAL_CHARS for value in
+           (match['count'] or match['count_each'], match['price'] or match['price_each'], match['fee'])):
+        raise UnsupportedMath('purchase literal limit exceeded')
+    count = number(match['count'] or match['count_each'])
+    price = number(match['price'] or match['price_each'])
+    fee = number(match['fee'])
+    currency = (match['currency'] or match['currency_each']).lower().rstrip('s')
+    if (currency != match['fee_currency'].lower().rstrip('s')
+        or count.denominator != 1 or min(count, price, fee) < 0):
+        raise UnsupportedMath('incompatible currency or invalid purchase quantity')
+    return _bounded(count), _bounded(price), _bounded(fee), match['scope'].lower()
+
+
+def _ordered_expression(text):
+    """A flat sequence; parentheses and implicit precedence are unsupported."""
+    if not text or len(text)>MAX_EXPRESSION_CHARS:
+        raise UnsupportedMath("expression length limit exceeded")
+    position=0;values=[];operations=[]
+    while True:
+        match=re.match(r"\s*([+-]?\s*(?:[0-9]+(?:\.[0-9]*)?|\.[0-9]+))\s*",text[position:])
+        if match is None:
+            raise UnsupportedMath("invalid left-to-right operand")
+        literal=''.join(match[1].split())
+        if len(literal)>MAX_LITERAL_CHARS:
+            raise UnsupportedMath("numeric literal limit exceeded")
+        values.append(_bounded(Fraction(literal)));position+=match.end()
+        if len(values)>64:
+            raise UnsupportedMath("expression complexity limit exceeded")
+        if position==len(text):break
+        if text[position] not in '+-*/':
+            raise UnsupportedMath("unsupported left-to-right operator")
+        operations.append(text[position]);position+=1
+    if not operations:
+        raise UnsupportedMath("left-to-right request needs an operation")
+    return values,operations
+
+
+def _evaluate_ordered(parsed):
+    values,operations=parsed
+    result=values[0]
+    for op,value in zip(operations,values[1:]):
+        if op=='+':result+=value
+        elif op=='-':result-=value
+        elif op=='*':result*=value
+        elif value:
+            result/=value
+        else:raise UnsupportedMath("division by zero")
+        _bounded(result)
+    return result
 
 
 def _warehouse(problem):
@@ -93,7 +237,7 @@ def _expression(text):
         raise UnsupportedMath("expression length limit exceeded")
     words = "|".join(WORDS)
     text = re.sub(rf"\b({words})\b", lambda m: str(WORDS[m[0].lower()]), text, flags=re.I)
-    if re.fullmatch(r"[0-9.\s+*/()\-]+", text) is None or "**" in text or "//" in text:
+    if re.fullmatch(r"[0-9.eE\s+*/()\-]+", text) is None or "**" in text or "//" in text:
         raise UnsupportedMath("unsupported expression symbols or operator")
     depth = 0
     for char in text:
@@ -107,8 +251,12 @@ def _expression(text):
                 raise UnsupportedMath("unbalanced parentheses")
     if depth:
         raise UnsupportedMath("unbalanced parentheses")
-    if any(len(m[0]) > MAX_LITERAL_CHARS for m in re.finditer(r"[0-9]+(?:\.[0-9]*)?|\.[0-9]+", text)):
-        raise UnsupportedMath("numeric literal limit exceeded")
+    for literal in re.finditer(_EXPRESSION_NUMBER, text):
+        if len(literal[0]) > MAX_LITERAL_CHARS:
+            raise UnsupportedMath("numeric literal limit exceeded")
+        if exponent := re.search(r'[eE]([+-]?[0-9]+)$', literal[0]):
+            if len(exponent[1].lstrip('+-')) > 3 or abs(int(exponent[1])) > MAX_DECIMAL_EXPONENT:
+                raise UnsupportedMath('decimal exponent limit exceeded')
     try:
         tree = ast.parse(text.strip(), mode="eval")
     except (SyntaxError, ValueError, RecursionError) as exc:
@@ -187,7 +335,16 @@ def _request(instruction):
         if _SUFFIX.fullmatch(text[suffix.start():]) is None:
             raise UnsupportedMath("unsupported or extended output directions")
         text = text[:suffix.start()]
+    wrapper = re.match(r"Solve the following arithmetic: ",text,re.I)
+    if wrapper:
+        text=text[wrapper.end():]
     bare = text.rstrip(".?! ")
+    if cost := _cost_spec(bare):
+        return "cost", cost
+    if sequence := _sequence_spec(bare):
+        return "steps", sequence
+    if ordered := _LEFT_TO_RIGHT.fullmatch(bare):
+        return "left_to_right", _ordered_expression(ordered['expression'])
     if rounded := _ROUND.fullmatch(bare):
         value, places = rounded["value"], rounded["places"].lower()
         if len(value) > MAX_LITERAL_CHARS or (places.isdecimal() and len(places) > 3):
@@ -198,6 +355,8 @@ def _request(instruction):
         return "round", (_bounded(Fraction(value)), places)
     prefix = re.fullmatch(r"(?:what is|calculate|compute|evaluate) (.+)", bare, re.I)
     body = prefix[1] if prefix else bare
+    if power := _power_spec(body):
+        return "power", power
     if len(body) <= MAX_EXPRESSION_CHARS:
         try:
             binary = _word_binary(body)
@@ -223,6 +382,11 @@ def local_form(instruction):
 
 def solve_math(instruction: str) -> int | str:
     kind, parsed = _request(instruction)
+    if kind == "power":
+        return format_math(_power_value(parsed))
+    if kind == "cost":
+        count, price, fee, scope = parsed
+        return format_math(_bounded(count * price + (fee if scope == 'once' else count * fee)))
     if kind == "warehouse":
         return _warehouse(parsed)
     if kind == "round":
@@ -232,6 +396,8 @@ def solve_math(instruction: str) -> int | str:
         whole, remainder = divmod(scaled.numerator, scaled.denominator)
         whole += 2 * remainder >= scaled.denominator
         return format_math(_bounded(Fraction(-whole if value < 0 else whole, scale)))
+    if kind == "left_to_right":
+        return format_math(_evaluate_ordered(parsed))
     if kind == "steps":
         initial, _, steps = parsed
         try:

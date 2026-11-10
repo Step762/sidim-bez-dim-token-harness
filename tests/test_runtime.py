@@ -39,15 +39,15 @@ class RuntimeTests(unittest.TestCase):
             result = self.cli({"BUDGET": "100000", "LLM_BASE_URL": server["base"], "LLM_API_KEY": server["key"]})
             self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
             self.assertEqual(self.answer.read_text(), "45\n")
-            self.assertEqual(len(server["requests"]), 1)
-            self.assertIn("llm_calls=1", result.stdout)
+            self.assertEqual(len(server["requests"]), 0)
+            self.assertIn("llm_tokens_used=0", result.stdout)
             self.assertNotIn(server["key"], result.stdout + result.stderr)
 
     def test_explicit_disable_overrides_complete_environment(self):
         with local_server(json.dumps(MATH_PLAN)) as server:
             result = self.cli({"BUDGET": "100000", "LLM_BASE_URL": server["base"], "LLM_API_KEY": server["key"]}, "--disable-llm")
             self.assertEqual(result.returncode, 0, result.stderr)
-            self.assertFalse(self.answer.exists())
+            self.assertEqual(self.answer.read_text(),"45\n")
             self.assertEqual(server["requests"], [])
             self.assertIn("llm_tokens_used=0", result.stdout)
 
@@ -55,7 +55,7 @@ class RuntimeTests(unittest.TestCase):
         with local_server(json.dumps(MATH_PLAN)) as server:
             result = self.cli({"BUDGET": "0", "LLM_BASE_URL": server["base"], "LLM_API_KEY": server["key"]})
             self.assertEqual(result.returncode, 0, result.stderr)
-            self.assertFalse(self.answer.exists())
+            self.assertEqual(self.answer.read_text(),"45\n")
             self.assertEqual(server["requests"], [])
 
     def test_partial_environment_does_not_enable_llm(self):
@@ -66,13 +66,19 @@ class RuntimeTests(unittest.TestCase):
             with self.subTest(keys=list(environment)):
                 result = self.cli(environment)
                 self.assertEqual(result.returncode, 0, result.stderr)
-                self.assertFalse(self.answer.exists())
+                self.assertEqual(self.answer.read_text(),"45\n")
                 self.assertIn("llm_tokens_used=0", result.stdout)
 
     def test_explicit_enable_requires_configuration(self):
         result = self.cli({}, "--enable-llm")
         self.assertEqual(result.returncode, 2)
         self.assertIn("explicit BUDGET", result.stderr)
+        self.assertFalse(self.answer.exists())
+
+    def test_auto_enable_validates_complete_configuration_before_local_work(self):
+        result=self.cli({'BUDGET':'1000','LLM_BASE_URL':'invalid-url','LLM_API_KEY':'synthetic-key'})
+        self.assertEqual(result.returncode,2)
+        self.assertIn('LLM_BASE_URL',result.stderr)
         self.assertFalse(self.answer.exists())
 
     def test_llm_flags_are_mutually_exclusive(self):

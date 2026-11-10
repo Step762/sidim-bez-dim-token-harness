@@ -41,6 +41,12 @@ _RELATION = re.compile(r"(.+)['’]s (employer|mentor)", re.IGNORECASE)
 _FIELD = re.compile(r"(Born|Founded|Headquarters|Employer|Mentor|Alias):\s*(.*)", re.IGNORECASE)
 _UNKNOWN = {"", "?", "unknown", "not known", "not specified", "n/a", "none", "null"}
 _INVERSE_MENTOR = re.compile(r"Who is mentored by (.+)", re.IGNORECASE)
+_INVERSE_QUESTIONS = (
+    (_INVERSE_MENTOR, 'mentor'),
+    (re.compile(r'Who works (?:for|at) (.+)', re.I), 'employer'),
+    (re.compile(r'Who is employed by (.+)', re.I), 'employer'),
+    (re.compile(r'Who is an employee of (.+)', re.I), 'employer'),
+)
 RELATION_ALIASES = {"mentor": "mentor", "coach": "mentor", "advisor": "mentor", "adviser": "mentor",
                     "employer": "employer", "company": "employer", "workplace": "employer", "firm": "employer"}
 
@@ -51,6 +57,8 @@ class _Knowledge(dict):
         super().__init__()
         self.labels = {}
         self.aliases = {}
+        self.mentor_subjects = set()
+        self.employer_subjects = set()
 
 
 def _name(value: str) -> str:
@@ -83,7 +91,7 @@ def _check_literal_expression(text, index):
 
 
 def _records(text: str):
-    """Read only headings and known fields; prose and fenced code are inert."""
+    """Headings, explicit fields and bounded subject-bound birth assertions."""
     entity = None
     facts = {}
     fence = None
@@ -103,6 +111,25 @@ def _records(text: str):
             facts = {}
         elif entity and (match := _FIELD.fullmatch(line)):
             facts.setdefault(match[1].lower(), set()).add(match[2].strip())
+        elif entity:
+            # Consume the complete sentence: a prefix match could hide a denial
+            # or a second, contradictory assertion. Quotes/code stay inert.
+            subject = re.escape(" ".join(entity.split()))
+            normalized = " ".join(line.split())
+            born = re.fullmatch(
+                rf"{subject} was born in ([0-9]{{1,4}})"
+                r"(?: and (?:later )?(?:moved|relocated) (?:abroad|to ([^.!?]+)))?\.",
+                normalized,re.I)
+            destination = born[2] if born else None
+            safe_destination = destination is None or (
+                len(destination)<=80 and re.fullmatch(r"[^\W\d_]+(?:[ '-][^\W\d_]+){0,5}",destination)
+                and not re.search(r"\b(?:not|never|but|born|false|incorrect|ignore|instead)\b",destination,re.I))
+            if born and safe_destination:
+                facts.setdefault("born",set()).add(born[1])
+            elif re.match(rf"{subject}\s+.*\bborn\b",normalized,re.I):
+                # An unsupported birth statement about this subject prevents
+                # selecting an earlier convenient year from the same profile.
+                facts.setdefault("born",set()).add("unknown")
     if entity is not None:
         yield entity, facts
 
@@ -122,6 +149,12 @@ def _load_kb(task_dir: Path) -> tuple[dict, set[str]]:
                 raise UnsupportedSearch("cannot read the complete knowledge base")
             for label, facts in _records(text):
                 entity = _name(label)
+                # Keep this across all records, including ones later replaced
+                # by conflicting profiles that omit their earlier Mentor field.
+                if "mentor" in facts:
+                    index.mentor_subjects.add(entity)
+                if "employer" in facts:
+                    index.employer_subjects.add(entity)
                 index.labels.setdefault(entity, set()).add(label)
                 # Preserve every alias binding, even from conflicting records.
                 for alias in facts.get("alias", ()):
@@ -136,38 +169,53 @@ def _load_kb(task_dir: Path) -> tuple[dict, set[str]]:
     return index, ambiguous
 
 
+def _literal_company(value):
+    """An unresolved label cannot hide an unknown, conditional or plural edge."""
+    return (0 < len(value) <= 200 and _name(value) not in _UNKNOWN
+            and re.fullmatch(r"[\w .&'’\-]+", value) is not None
+            and re.search(r"\b(?:or|and|if|unless|otherwise|maybe|unknown|unspecified|not|no)\b", value, re.I) is None
+            and re.search(r"['’]s (?:mentor|employer|company|firm|coach|advisor|adviser|workplace)$", value, re.I) is None
+            and re.match(r"(?:the )?(?:mentor|employer|company|firm|coach|advisor|adviser|workplace) of ", value, re.I) is None)
+
+
+def _inverse_answer(target, relation, index, ambiguous):
+    subjects = index.mentor_subjects if relation == 'mentor' else index.employer_subjects
+    if target is None or ambiguous & (subjects | {target}):
+        raise UnsupportedSearch('missing or ambiguous inverse relation evidence')
+    candidates = set()
+    for entity, facts in index.items():
+        for value in facts.get(relation, ()):
+            if _name(value) in _UNKNOWN:
+                raise UnsupportedSearch('missing or ambiguous inverse relation evidence')
+            resolved = _resolve_entity(value, index)
+            if relation == 'employer' and resolved is None:
+                if not _literal_company(value):
+                    raise UnsupportedSearch('missing or ambiguous inverse relation evidence')
+                resolved = _name(value)
+            if resolved == target:
+                candidates.add(entity)
+    if len(candidates) != 1:
+        raise UnsupportedSearch('missing or ambiguous inverse relation answer')
+    labels = index.labels[next(iter(candidates))]
+    if len(labels) != 1:
+        raise UnsupportedSearch('missing or ambiguous inverse entity spelling')
+    return next(iter(labels))
+
+
 def solve_search(instruction: str, task_dir: Path) -> str:
     """Resolve a supported question and its explicit mentor/employer chain."""
     parsed = _INSTRUCTION.fullmatch(" ".join(instruction.split()))
     if parsed is None or _SUFFIX.fullmatch(parsed["suffix"]) is None:
         raise UnsupportedSearch("unsupported search instructions")
-    if inverse := _INVERSE_MENTOR.fullmatch(parsed["question"]):
-        index, ambiguous = _load_kb(task_dir)
-        target = _resolve_entity(inverse[1], index)
-        _check_literal_expression(inverse[1], index)
-        if target is None or ambiguous:
-            raise UnsupportedSearch("missing or ambiguous inverse relation evidence")
-        candidates = set()
-        for entity, facts in index.items():
-            for mentor in facts.get("mentor", ()):
-                if _name(mentor) in _UNKNOWN:
-                    raise UnsupportedSearch("missing or ambiguous inverse relation evidence")
-                if _resolve_entity(mentor, index) == target:
-                    candidates.add(entity)
-        if len(candidates) != 1:
-            raise UnsupportedSearch("missing or ambiguous inverse relation answer")
-        labels = index.labels[next(iter(candidates))]
-        if len(labels) != 1:
-            raise UnsupportedSearch("missing or ambiguous inverse entity spelling")
-        return next(iter(labels))
-    for pattern, field in _QUESTIONS:
-        if match := pattern.fullmatch(parsed["question"]):
-            subject = match[1]
-            break
-    else:
-        raise UnsupportedSearch("unsupported search question")
-
     index, ambiguous = _load_kb(task_dir)
+    # Imported here because plan_semantics also uses this module's KB primitives.
+    from plan_semantics import search_spec, UnsupportedMeaning
+    try:
+        subject, relations, field = search_spec(parsed["question"], index)
+    except UnsupportedMeaning as exc:
+        raise UnsupportedSearch("unsupported search question or relation") from exc
+    if field in {'inverse_mentor', 'inverse_employer'}:
+        return _inverse_answer(subject, field.removeprefix('inverse_'), index, ambiguous)
 
     def fact(entity: str, key: str) -> str:
         entity = _resolve_entity(entity, index)
@@ -178,16 +226,7 @@ def solve_search(instruction: str, task_dir: Path) -> str:
             raise UnsupportedSearch(f"missing or ambiguous {key} fact")
         return next(iter(values))
 
-    relations = []
-    while (resolved := _resolve_entity(subject, index)) is None:
-        match = _RELATION.fullmatch(subject)
-        if match is None:
-            raise UnsupportedSearch("entity or relation cannot be resolved")
-        subject = match[1]
-        relations.append(match[2].lower())
-    _check_literal_expression(subject, index)
-    subject = resolved
-    for relation in reversed(relations):
+    for relation in relations:
         subject = fact(subject, relation)
     answer = fact(subject, field)
     if field in {"born", "founded"} and not re.fullmatch(r"[0-9]{1,4}", answer):

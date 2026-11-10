@@ -32,6 +32,8 @@ def proof():
 
 class FallbackPilotTests(unittest.TestCase):
     def setUp(self):
+        from diagnostics.trace import fallback_controls
+        self.enterContext(fallback_controls())
         self.temporary=tempfile.TemporaryDirectory(prefix="fallback-pilot-test-")
         self.addCleanup(self.temporary.cleanup)
         self.root=Path(self.temporary.name)
@@ -165,7 +167,8 @@ synthetic_context=patch_history()
 a.STATE_ROOT=Path(sys.argv[1]);p.STATE_ROOT=Path(sys.argv[2])
 proof={'mode':'offline_suite','live':False,'passed':True,'suite_version':1,'runtime_sha256':runtime_fingerprint(),'diagnostic_sha256':diagnostic_fingerprint()}
 try:
-    r=p.run_pilot(Path(sys.argv[3]),Path(sys.argv[4]),proof)
+    from diagnostics.trace import fallback_controls
+    with fallback_controls():r=p.run_pilot(Path(sys.argv[3]),Path(sys.argv[4]),proof)
 except (a.ResumeBlocked,FileExistsError):print('blocked')
 else:
     assert r['rows'][0]['transport_attempts']==1

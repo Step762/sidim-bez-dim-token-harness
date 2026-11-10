@@ -41,6 +41,8 @@ def data_plan(*filters, op="sum", column="units"):
 
 class SemanticTests(unittest.TestCase):
     def setUp(self):
+        from diagnostics.trace import fallback_controls
+        self.enterContext(fallback_controls())
         environment = patch.dict(os.environ, {}, clear=True)
         environment.start()
         self.addCleanup(environment.stop)

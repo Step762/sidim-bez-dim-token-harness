@@ -11,3 +11,4 @@ AGENTS.md
 codex-local/
 diagnostics/.a1-resume-state/
 diagnostics/.fallback-pilot-state/
+diagnostics/.search-pilot-state/
