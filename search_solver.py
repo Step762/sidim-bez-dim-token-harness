@@ -51,6 +51,22 @@ RELATION_ALIASES = {"mentor": "mentor", "coach": "mentor", "advisor": "mentor", 
                     "employer": "employer", "company": "employer", "workplace": "employer", "firm": "employer"}
 
 
+def question_subject(question):
+    """Shared full-question grammar; entity and path semantics belong to callers."""
+    for pattern, field in _QUESTIONS:
+        if match := pattern.fullmatch(question):
+            return match[1], field
+    for pattern, field in (
+        (r"(?:what|which) city is (.+) (?:based|located|headquartered)(?: in)?", "headquarters"),
+        (r"where is (.+) (?:based|located)(?: in)?", "headquarters"),
+        (r"what is the (?:birth year|year of birth) of (.+)", "born"),
+        (r"when was (.+) established", "founded"),
+    ):
+        if match := re.fullmatch(pattern, question, re.I):
+            return match[1], field
+    raise UnsupportedSearch("unsupported or ambiguous search question")
+
+
 class _Knowledge(dict):
     """Canonical facts plus exact heading labels for entity-valued answers."""
     def __init__(self):
@@ -202,7 +218,7 @@ def _inverse_answer(target, relation, index, ambiguous):
     return next(iter(labels))
 
 
-def solve_search(instruction: str, task_dir: Path) -> str:
+def _solve_exact(instruction: str, task_dir: Path) -> str:
     """Resolve a supported question and its explicit mentor/employer chain."""
     parsed = _INSTRUCTION.fullmatch(" ".join(instruction.split()))
     if parsed is None or _SUFFIX.fullmatch(parsed["suffix"]) is None:
@@ -232,3 +248,23 @@ def solve_search(instruction: str, task_dir: Path) -> str:
     if field in {"born", "founded"} and not re.fullmatch(r"[0-9]{1,4}", answer):
         raise UnsupportedSearch("year is not a single supported integer value")
     return answer
+
+
+def solve_search(instruction: str, task_dir: Path) -> str:
+    """Stable production route; the graph portfolio requires explicit opt-in."""
+    return _solve_exact(instruction, task_dir)
+
+
+def solve_search_graph(instruction: str, task_dir: Path) -> str:
+    """Preserve exact successes and hard refusals before a verified graph attempt."""
+    try:
+        return _solve_exact(instruction, task_dir)
+    except UnsupportedSearch as exc:
+        if str(exc) != "unsupported search question or relation":
+            raise
+    # Lazy import avoids a cycle and keeps the successful exact route unchanged.
+    from relation_graph import GraphRefusal, solve_verified
+    try:
+        return solve_verified(instruction, task_dir).answer
+    except GraphRefusal:
+        raise UnsupportedSearch("unsupported search question or relation") from None

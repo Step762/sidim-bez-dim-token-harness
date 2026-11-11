@@ -100,7 +100,7 @@ class RuntimeTests(unittest.TestCase):
         allowed = {line[1:] for line in rules[1:]}
         expected = {"Dockerfile", ".dockerignore", "requirements.txt", "run_agent.py", "harness.py",
                     "planner.py", "budget_manager.py", "llm_gateway.py", "llm_fallback.py",
-                    "math_solver.py", "search_solver.py", "data_solver.py", "coding_solver.py", "safe_files.py",
+                    "math_solver.py", "search_solver.py", "relation_graph.py", "data_solver.py", "coding_solver.py", "safe_files.py",
                     "plan_semantics.py", "runtime_limits.py"}
         self.assertEqual(allowed, expected)
         self.assertTrue(all((ROOT / name).is_file() for name in allowed))
@@ -121,6 +121,7 @@ class RuntimeTests(unittest.TestCase):
         self.assertIn('ENTRYPOINT ["python"]', dockerfile)
         self.assertIn('CMD ["/app/run_agent.py", "--tasks-dir", "/data/tasks"]', dockerfile)
         self.assertNotIn("COPY . ", dockerfile)
+        self.assertIn("search_solver.py relation_graph.py", dockerfile)
         self.assertNotIn("LLM_API_KEY=", dockerfile)
         self.assertNotIn("LLM_BASE_URL=", dockerfile)
         requirements = [line for line in (ROOT / "requirements.txt").read_text().splitlines()

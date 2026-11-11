@@ -200,24 +200,10 @@ def search_spec(problem, index):
             # Explicit local-only inverse operation; the forward LLM-plan schema
             # cannot claim this field, because it is never a KB fact key.
             return root, [], 'inverse_' + relation
-    subject, field = None, None
-    for pattern, candidate in search_solver._QUESTIONS:
-        if m := pattern.fullmatch(question):
-            subject, field = m[1], candidate
-            break
-    if subject is None:
-        patterns = (
-            (r"(?:what|which) city is (.+) (?:based|located|headquartered)(?: in)?", "headquarters"),
-            (r"where is (.+) (?:based|located)(?: in)?", "headquarters"),
-            (r"what is the (?:birth year|year of birth) of (.+)", "born"),
-            (r"when was (.+) established", "founded"),
-        )
-        for pattern, candidate in patterns:
-            if m := _match(pattern, question):
-                subject, field = m[1], candidate
-                break
-    if subject is None:
-        raise UnsupportedMeaning("unsupported or ambiguous search question")
+    try:
+        subject, field = search_solver.question_subject(question)
+    except search_solver.UnsupportedSearch as exc:
+        raise UnsupportedMeaning(str(exc)) from None
 
     relation_words = "|".join(RELATIONS)
 

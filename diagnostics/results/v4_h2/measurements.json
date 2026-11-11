@@ -1,0 +1,3785 @@
+{
+  "stage": "V4-H2",
+  "date": "2026-11-10",
+  "accepted_offline": false,
+  "checkpoint_created": false,
+  "pushed": false,
+  "baseline_head": "bea1ec8e4f9b7028987a78c34de3f377c2808619",
+  "real_api_requests": 0,
+  "production_changes_in_h2": false,
+  "docker": {
+    "engine": "29.7.2",
+    "image": "sidim-bez-dim:v4-h2",
+    "image_id": "sha256:f8af0e761cd79faf30f09c896d491570bc9fb9f0a2772a2e7a625d5a839963bc",
+    "docker_images_size": "976MB",
+    "clean_build_no_cache": true,
+    "build_exit": 0,
+    "build_timeout": 1000,
+    "runtime_sha256": {
+      "Dockerfile": "1c305b053b839079ddc760e917cf18b2986e33fe5bf0fd653b48136a15d88a7c",
+      ".dockerignore": "360d5919d039327d4088240fbf11a8a3e8c831e93a35626293e8c03367a94e3d",
+      "requirements.txt": "d8c2924d446449dfd156153333b01a3ae0ef3fd0da64acfe36eae937663a3da3",
+      "run_agent.py": "88938b2c66ddcf2b7428976390433c6c719cbcdbdc8969a07346effbdbaf401c",
+      "harness.py": "2e08007cc5632db92f1f1d17e56374a14a03f0f81bbdff4075c2c10cd38b1a3a",
+      "planner.py": "4db10378746a8decbf556defbcbc207afc7fc472cb8827404ba89c15beec3b8d",
+      "budget_manager.py": "8259d00cf23cb1c5f0bd2162784f0c91dc005cf570e99d9a4cfb30929abcbb4f",
+      "llm_gateway.py": "c17dbf2de2655965a88cc00f0ee709de81621770a44fa824b27cec560d923b13",
+      "llm_fallback.py": "d9c71832f892a3a1114d883eea39876caa5e98f3114c5533f5a0c943670e8020",
+      "math_solver.py": "064d1ea11f947062bd277c62d9a3d5f89d731cbaec8fa943a9da2a693c9b4d0d",
+      "search_solver.py": "eda338c7021b266440dca051855d5a8fb4e0a1a0d899fa72075672c39c9ce862",
+      "relation_graph.py": "cb836137764f4e501e549468719d0176c7e4c70375c9fc89b357243554a27f73",
+      "data_solver.py": "c4a9b0b1e56c0b06685a5d88df0aafa2fc11644bf7c658c7e5da928de457712a",
+      "coding_solver.py": "e64d5913e831c72a2afd36e70512f290886d8fd7be577ed38d6a57ac3c30d9e7",
+      "safe_files.py": "04aa6c98f6da2555b80ab298d0937ea32f39a0deea0710fa78e97d849d6c7cfb",
+      "plan_semantics.py": "3e8cfcbdf22d470c8d970d1a5fbdadfc5b219a1f32906a8bb7f6526d6f96f7b7",
+      "runtime_limits.py": "cdd72e8fc6bc119b6cd76fe4560a910552c80e04edb27e2d3d29cb1d3821e669"
+    },
+    "audit_8_cpu": {
+      "python": "3.12.12",
+      "openjiuwen": "0.1.20.post1",
+      "app_read_only": true,
+      "tmpfs_bytes": 2147483648,
+      "cap_eff": "0000000000000000",
+      "no_new_privileges": true,
+      "cgroup_limits": {
+        "memory.max": 17179869184,
+        "pids.max": 512,
+        "cpus": 8
+      },
+      "user_namespace_errno": 1,
+      "no_credentials_in_image_environment": true
+    },
+    "audit_4_cpu": {
+      "python": "3.12.12",
+      "openjiuwen": "0.1.20.post1",
+      "app_read_only": true,
+      "tmpfs_bytes": 2147483648,
+      "cap_eff": "0000000000000000",
+      "no_new_privileges": true,
+      "cgroup_limits": {
+        "memory.max": 17179869184,
+        "pids.max": 512,
+        "cpus": 4
+      },
+      "user_namespace_errno": 1,
+      "no_credentials_in_image_environment": true
+    },
+    "pip_check": "No broken requirements found.",
+    "isolation": {
+      "kernel": "6.6.87.2-microsoft-standard-WSL2",
+      "architecture": "x86_64",
+      "uid": 0,
+      "gid": 0,
+      "sandbox_confirmed": false,
+      "task_code_executed": false,
+      "process_status": {
+        "CapEff": "0000000000000000",
+        "NoNewPrivs": "1",
+        "Seccomp": "2"
+      },
+      "experiments": {
+        "user": {
+          "returncode": 0,
+          "timed_out": false,
+          "result": {
+            "result": -1,
+            "errno": 1
+          },
+          "stderr": ""
+        },
+        "mount": {
+          "returncode": 0,
+          "timed_out": false,
+          "result": {
+            "result": -1,
+            "errno": 1
+          },
+          "stderr": ""
+        },
+        "pid": {
+          "returncode": 0,
+          "timed_out": false,
+          "result": {
+            "result": -1,
+            "errno": 1
+          },
+          "stderr": ""
+        },
+        "network": {
+          "returncode": 0,
+          "timed_out": false,
+          "result": {
+            "result": -1,
+            "errno": 1
+          },
+          "stderr": ""
+        },
+        "ipc": {
+          "returncode": 0,
+          "timed_out": false,
+          "result": {
+            "result": -1,
+            "errno": 1
+          },
+          "stderr": ""
+        },
+        "uts": {
+          "returncode": 0,
+          "timed_out": false,
+          "result": {
+            "result": -1,
+            "errno": 1
+          },
+          "stderr": ""
+        },
+        "cgroup": {
+          "returncode": 0,
+          "timed_out": false,
+          "result": {
+            "result": -1,
+            "errno": 1
+          },
+          "stderr": ""
+        },
+        "uid": {
+          "returncode": 0,
+          "timed_out": false,
+          "result": {
+            "before": [
+              0,
+              0
+            ],
+            "setgroups": {
+              "allowed": false,
+              "errno": 1
+            },
+            "setgid": {
+              "allowed": false,
+              "errno": 1
+            },
+            "setuid": {
+              "allowed": false,
+              "errno": 1
+            },
+            "after": [
+              0,
+              0
+            ]
+          },
+          "stderr": ""
+        },
+        "chroot": {
+          "returncode": 0,
+          "timed_out": false,
+          "result": {
+            "allowed": false,
+            "errno": 1
+          },
+          "stderr": ""
+        },
+        "landlock": {
+          "returncode": 0,
+          "timed_out": false,
+          "result": {
+            "landlock": {
+              "abi": {
+                "result": 3,
+                "errno": 0
+              },
+              "installed": true,
+              "restrict": {
+                "result": 0,
+                "errno": 0
+              }
+            },
+            "files": {
+              "read_own": {
+                "allowed": true,
+                "errno": 0
+              },
+              "write_own": {
+                "allowed": true,
+                "errno": 0
+              },
+              "read_outside": {
+                "allowed": false,
+                "errno": 13
+              },
+              "write_outside": {
+                "allowed": false,
+                "errno": 13
+              },
+              "list_outside": {
+                "allowed": false,
+                "errno": 13
+              },
+              "read_via_symlink": {
+                "allowed": false,
+                "errno": 13
+              },
+              "stat_outside": {
+                "allowed": true,
+                "errno": 0
+              },
+              "readlink_outside": {
+                "allowed": true,
+                "errno": 0
+              }
+            },
+            "preopened_outside_fd": {
+              "allowed": true,
+              "errno": 0
+            },
+            "socket": {
+              "allowed": true,
+              "errno": 0
+            },
+            "parent_signal_zero": {
+              "allowed": true,
+              "errno": 0
+            }
+          },
+          "stderr": ""
+        },
+        "seccomp": {
+          "returncode": 0,
+          "timed_out": false,
+          "result": {
+            "seccomp": {
+              "installed": true,
+              "prctl": {
+                "result": 0,
+                "errno": 0
+              },
+              "policy": "diagnostic denylist; NOT a sandbox"
+            },
+            "files": {
+              "read_own": {
+                "allowed": true,
+                "errno": 0
+              },
+              "write_own": {
+                "allowed": true,
+                "errno": 0
+              },
+              "read_outside": {
+                "allowed": true,
+                "errno": 0
+              },
+              "write_outside": {
+                "allowed": true,
+                "errno": 0
+              },
+              "list_outside": {
+                "allowed": true,
+                "errno": 0
+              },
+              "read_via_symlink": {
+                "allowed": true,
+                "errno": 0
+              },
+              "stat_outside": {
+                "allowed": true,
+                "errno": 0
+              },
+              "readlink_outside": {
+                "allowed": true,
+                "errno": 0
+              }
+            },
+            "preopened_outside_fd": {
+              "allowed": true,
+              "errno": 0
+            },
+            "socket": {
+              "allowed": false,
+              "errno": 1
+            },
+            "parent_signal_zero": {
+              "allowed": false,
+              "errno": 1
+            },
+            "invalid_clone": {
+              "result": -1,
+              "errno": 1
+            },
+            "invalid_clone3": {
+              "result": -1,
+              "errno": 1
+            },
+            "setsid": {
+              "result": -1,
+              "errno": 1
+            }
+          },
+          "stderr": ""
+        },
+        "combined": {
+          "returncode": 0,
+          "timed_out": false,
+          "result": {
+            "landlock": {
+              "abi": {
+                "result": 3,
+                "errno": 0
+              },
+              "installed": true,
+              "restrict": {
+                "result": 0,
+                "errno": 0
+              }
+            },
+            "seccomp": {
+              "installed": true,
+              "prctl": {
+                "result": 0,
+                "errno": 0
+              },
+              "policy": "diagnostic denylist; NOT a sandbox"
+            },
+            "files": {
+              "read_own": {
+                "allowed": true,
+                "errno": 0
+              },
+              "write_own": {
+                "allowed": true,
+                "errno": 0
+              },
+              "read_outside": {
+                "allowed": false,
+                "errno": 13
+              },
+              "write_outside": {
+                "allowed": false,
+                "errno": 13
+              },
+              "list_outside": {
+                "allowed": false,
+                "errno": 13
+              },
+              "read_via_symlink": {
+                "allowed": false,
+                "errno": 13
+              },
+              "stat_outside": {
+                "allowed": true,
+                "errno": 0
+              },
+              "readlink_outside": {
+                "allowed": true,
+                "errno": 0
+              }
+            },
+            "preopened_outside_fd": {
+              "allowed": true,
+              "errno": 0
+            },
+            "socket": {
+              "allowed": false,
+              "errno": 1
+            },
+            "parent_signal_zero": {
+              "allowed": false,
+              "errno": 1
+            },
+            "invalid_clone": {
+              "result": -1,
+              "errno": 1
+            },
+            "invalid_clone3": {
+              "result": -1,
+              "errno": 1
+            },
+            "setsid": {
+              "result": -1,
+              "errno": 1
+            }
+          },
+          "stderr": ""
+        },
+        "rlimits": {
+          "returncode": 0,
+          "timed_out": false,
+          "result": {
+            "memory_allocation_denied": true,
+            "large_file": {
+              "allowed": false,
+              "errno": 27
+            },
+            "file_size": 1024,
+            "nofile": [
+              32,
+              32
+            ],
+            "nproc": [
+              1,
+              1
+            ],
+            "nproc_enforcement_proven": false
+          },
+          "stderr": ""
+        },
+        "nproc": {
+          "returncode": 0,
+          "timed_out": false,
+          "result": {
+            "fork_allowed": true,
+            "errno": 0,
+            "uid": 0
+          },
+          "stderr": ""
+        },
+        "cpu": {
+          "returncode": -9,
+          "timed_out": false,
+          "result": null,
+          "stderr": ""
+        },
+        "session": {
+          "returncode": 0,
+          "timed_out": false,
+          "result": {
+            "parent_group": 23,
+            "child_returncode": 0,
+            "child_group": 24
+          },
+          "stderr": ""
+        }
+      }
+    },
+    "default_entrypoint_safe_examples": "6/8",
+    "missing_budget_safe": true,
+    "answer_mode": "0644",
+    "closed_corpus_mounted": false,
+    "first_full_suite": {
+      "discovered": 798,
+      "passed": 790,
+      "failures": [
+        "test_runtime_limits.RuntimeLimitTests.test_outer_workflow_timeout_cancels_network_and_holds_reserve"
+      ],
+      "errors": [],
+      "skipped": [
+        "test_benchmark.BenchmarkTests.test_authored_numeric_anchors_have_second_checks",
+        "test_benchmark.BenchmarkTests.test_coding_fixtures_remain_data_and_worker_has_no_trust_flag",
+        "test_benchmark.BenchmarkTests.test_distribution_split_and_task_input_separation",
+        "test_benchmark.BenchmarkTests.test_generation_is_byte_reproducible_and_has_no_agent_imports",
+        "test_benchmark.BenchmarkTests.test_manifest_detects_mutation_and_generator_refuses_overwrite",
+        "test_benchmark.BenchmarkTests.test_pairs_are_predeclared_diverse_and_answerable",
+        "test_benchmark.BenchmarkTests.test_sql_references_recompute_from_csv_not_solver"
+      ],
+      "seconds": 425.0212111619994,
+      "network": {
+        "loopback_connects": 10,
+        "external_blocked": 0
+      }
+    },
+    "confirmation_full_suite": {
+      "discovered": 798,
+      "passed": 790,
+      "failures": [
+        "test_runtime_limits.RuntimeLimitTests.test_outer_workflow_timeout_cancels_network_and_holds_reserve"
+      ],
+      "errors": [],
+      "skipped": [
+        "test_benchmark.BenchmarkTests.test_authored_numeric_anchors_have_second_checks",
+        "test_benchmark.BenchmarkTests.test_coding_fixtures_remain_data_and_worker_has_no_trust_flag",
+        "test_benchmark.BenchmarkTests.test_distribution_split_and_task_input_separation",
+        "test_benchmark.BenchmarkTests.test_generation_is_byte_reproducible_and_has_no_agent_imports",
+        "test_benchmark.BenchmarkTests.test_manifest_detects_mutation_and_generator_refuses_overwrite",
+        "test_benchmark.BenchmarkTests.test_pairs_are_predeclared_diverse_and_answerable",
+        "test_benchmark.BenchmarkTests.test_sql_references_recompute_from_csv_not_solver"
+      ],
+      "seconds": 425.6375585699998,
+      "network": {
+        "loopback_connects": 10,
+        "external_blocked": 0
+      }
+    }
+  },
+  "wsl": {
+    "discovered": 798,
+    "passed": 791,
+    "failures": [],
+    "errors": [],
+    "skipped": [
+      "test_benchmark.BenchmarkTests.test_authored_numeric_anchors_have_second_checks",
+      "test_benchmark.BenchmarkTests.test_coding_fixtures_remain_data_and_worker_has_no_trust_flag",
+      "test_benchmark.BenchmarkTests.test_distribution_split_and_task_input_separation",
+      "test_benchmark.BenchmarkTests.test_generation_is_byte_reproducible_and_has_no_agent_imports",
+      "test_benchmark.BenchmarkTests.test_manifest_detects_mutation_and_generator_refuses_overwrite",
+      "test_benchmark.BenchmarkTests.test_pairs_are_predeclared_diverse_and_answerable",
+      "test_benchmark.BenchmarkTests.test_sql_references_recompute_from_csv_not_solver"
+    ],
+    "seconds": 185.78095177499972,
+    "network": {
+      "loopback_connects": 10,
+      "external_blocked": 0
+    }
+  },
+  "development": {
+    "scope": "64 allowlisted development inputs, 7 allowed pairs per arm; exact comparison to WSL V4-H",
+    "real_requests": 0,
+    "arms": {
+      "production": {
+        "counts": {
+          "solved": 36,
+          "skipped": 28,
+          "failed": 0
+        },
+        "rows": [
+          {
+            "task_id": "coding_d01",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 3
+          },
+          {
+            "task_id": "coding_d02",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 13
+          },
+          {
+            "task_id": "coding_d03",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 0
+          },
+          {
+            "task_id": "coding_d04",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 1
+          },
+          {
+            "task_id": "coding_d05",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 3
+          },
+          {
+            "task_id": "coding_d06",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 0
+          },
+          {
+            "task_id": "coding_d07",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 1
+          },
+          {
+            "task_id": "coding_d08",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 8
+          },
+          {
+            "task_id": "coding_d09",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 1
+          },
+          {
+            "task_id": "coding_d10",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 5
+          },
+          {
+            "task_id": "coding_d11",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 13
+          },
+          {
+            "task_id": "coding_d12",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 3
+          },
+          {
+            "task_id": "coding_d13",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 2
+          },
+          {
+            "task_id": "coding_d14",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 13
+          },
+          {
+            "task_id": "coding_d15",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 1
+          },
+          {
+            "task_id": "coding_d16",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 2
+          },
+          {
+            "task_id": "data_analysis_d01",
+            "answer": "32",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 3
+          },
+          {
+            "task_id": "data_analysis_d02",
+            "answer": "4",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "data_analysis_d03",
+            "answer": "-9",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 0
+          },
+          {
+            "task_id": "data_analysis_d04",
+            "answer": "24",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "data_analysis_d05",
+            "answer": "7",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "data_analysis_d06",
+            "answer": "12",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "data_analysis_d07",
+            "answer": "5",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 0
+          },
+          {
+            "task_id": "data_analysis_d08",
+            "answer": "0",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "data_analysis_d09",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 5
+          },
+          {
+            "task_id": "data_analysis_d10",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 8
+          },
+          {
+            "task_id": "data_analysis_d11",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 1
+          },
+          {
+            "task_id": "data_analysis_d12",
+            "answer": "{\"east\":57,\"west\":23}",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "data_analysis_d13",
+            "answer": "pin",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "data_analysis_d14",
+            "answer": "35",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "data_analysis_d15",
+            "answer": "9",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "data_analysis_d16",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 0
+          },
+          {
+            "task_id": "math_d01",
+            "answer": "163",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 1
+          },
+          {
+            "task_id": "math_d02",
+            "answer": "-5.1",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "math_d03",
+            "answer": "0.75",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "math_d04",
+            "answer": "-4",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "math_d05",
+            "answer": "270",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 1
+          },
+          {
+            "task_id": "math_d06",
+            "answer": "129",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "math_d07",
+            "answer": "0.625",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "math_d08",
+            "answer": "29",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 0
+          },
+          {
+            "task_id": "math_d09",
+            "answer": "7.24",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 3
+          },
+          {
+            "task_id": "math_d10",
+            "answer": "74",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "math_d11",
+            "answer": "28",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "math_d12",
+            "answer": "34",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 1
+          },
+          {
+            "task_id": "math_d13",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 3
+          },
+          {
+            "task_id": "math_d14",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 13
+          },
+          {
+            "task_id": "math_d15",
+            "answer": "76",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 2
+          },
+          {
+            "task_id": "math_d16",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 1
+          },
+          {
+            "task_id": "search_d01",
+            "answer": "1974",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "search_d02",
+            "answer": "2007",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 3
+          },
+          {
+            "task_id": "search_d03",
+            "answer": "São Tomé",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 2
+          },
+          {
+            "task_id": "search_d04",
+            "answer": "Aster Loom",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 3
+          },
+          {
+            "task_id": "search_d05",
+            "answer": "Porto",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 3
+          },
+          {
+            "task_id": "search_d06",
+            "answer": "1948",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "search_d07",
+            "answer": "Vela Nox",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "search_d08",
+            "answer": "1989",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 0
+          },
+          {
+            "task_id": "search_d09",
+            "answer": "1966",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "search_d10",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 5
+          },
+          {
+            "task_id": "search_d11",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 2
+          },
+          {
+            "task_id": "search_d12",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 2
+          },
+          {
+            "task_id": "search_d13",
+            "answer": "1986",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "search_d14",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 2
+          },
+          {
+            "task_id": "search_d15",
+            "answer": "Porto",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "search_d16",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 5
+          }
+        ],
+        "correct": 36,
+        "wrong": 0,
+        "skipped": 28,
+        "reward": 217,
+        "mock_requests": 0,
+        "spent": "0.0",
+        "reserved": "0.0",
+        "time_exhausted": false,
+        "qualification": [
+          {
+            "pair_id": "pair_05",
+            "correct": 2
+          },
+          {
+            "pair_id": "pair_07",
+            "correct": 2
+          },
+          {
+            "pair_id": "pair_09",
+            "correct": 2
+          },
+          {
+            "pair_id": "pair_12",
+            "correct": 2
+          },
+          {
+            "pair_id": "pair_14",
+            "correct": 2
+          },
+          {
+            "pair_id": "pair_17",
+            "correct": 1
+          },
+          {
+            "pair_id": "pair_19",
+            "correct": 1
+          }
+        ]
+      },
+      "graph": {
+        "counts": {
+          "solved": 37,
+          "skipped": 27,
+          "failed": 0
+        },
+        "rows": [
+          {
+            "task_id": "coding_d01",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 3
+          },
+          {
+            "task_id": "coding_d02",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 13
+          },
+          {
+            "task_id": "coding_d03",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 0
+          },
+          {
+            "task_id": "coding_d04",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 1
+          },
+          {
+            "task_id": "coding_d05",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 3
+          },
+          {
+            "task_id": "coding_d06",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 0
+          },
+          {
+            "task_id": "coding_d07",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 1
+          },
+          {
+            "task_id": "coding_d08",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 8
+          },
+          {
+            "task_id": "coding_d09",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 1
+          },
+          {
+            "task_id": "coding_d10",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 5
+          },
+          {
+            "task_id": "coding_d11",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 13
+          },
+          {
+            "task_id": "coding_d12",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 3
+          },
+          {
+            "task_id": "coding_d13",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 2
+          },
+          {
+            "task_id": "coding_d14",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 13
+          },
+          {
+            "task_id": "coding_d15",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 1
+          },
+          {
+            "task_id": "coding_d16",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 2
+          },
+          {
+            "task_id": "data_analysis_d01",
+            "answer": "32",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 3
+          },
+          {
+            "task_id": "data_analysis_d02",
+            "answer": "4",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "data_analysis_d03",
+            "answer": "-9",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 0
+          },
+          {
+            "task_id": "data_analysis_d04",
+            "answer": "24",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "data_analysis_d05",
+            "answer": "7",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "data_analysis_d06",
+            "answer": "12",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "data_analysis_d07",
+            "answer": "5",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 0
+          },
+          {
+            "task_id": "data_analysis_d08",
+            "answer": "0",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "data_analysis_d09",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 5
+          },
+          {
+            "task_id": "data_analysis_d10",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 8
+          },
+          {
+            "task_id": "data_analysis_d11",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 1
+          },
+          {
+            "task_id": "data_analysis_d12",
+            "answer": "{\"east\":57,\"west\":23}",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "data_analysis_d13",
+            "answer": "pin",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "data_analysis_d14",
+            "answer": "35",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "data_analysis_d15",
+            "answer": "9",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "data_analysis_d16",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 0
+          },
+          {
+            "task_id": "math_d01",
+            "answer": "163",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 1
+          },
+          {
+            "task_id": "math_d02",
+            "answer": "-5.1",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "math_d03",
+            "answer": "0.75",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "math_d04",
+            "answer": "-4",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "math_d05",
+            "answer": "270",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 1
+          },
+          {
+            "task_id": "math_d06",
+            "answer": "129",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "math_d07",
+            "answer": "0.625",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "math_d08",
+            "answer": "29",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 0
+          },
+          {
+            "task_id": "math_d09",
+            "answer": "7.24",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 3
+          },
+          {
+            "task_id": "math_d10",
+            "answer": "74",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "math_d11",
+            "answer": "28",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "math_d12",
+            "answer": "34",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 1
+          },
+          {
+            "task_id": "math_d13",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 3
+          },
+          {
+            "task_id": "math_d14",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 13
+          },
+          {
+            "task_id": "math_d15",
+            "answer": "76",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 2
+          },
+          {
+            "task_id": "math_d16",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 1
+          },
+          {
+            "task_id": "search_d01",
+            "answer": "1974",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "search_d02",
+            "answer": "2007",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 3
+          },
+          {
+            "task_id": "search_d03",
+            "answer": "São Tomé",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 2
+          },
+          {
+            "task_id": "search_d04",
+            "answer": "Aster Loom",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 3
+          },
+          {
+            "task_id": "search_d05",
+            "answer": "Porto",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 3
+          },
+          {
+            "task_id": "search_d06",
+            "answer": "1948",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "search_d07",
+            "answer": "Vela Nox",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "search_d08",
+            "answer": "1989",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 0
+          },
+          {
+            "task_id": "search_d09",
+            "answer": "1966",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "search_d10",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 5
+          },
+          {
+            "task_id": "search_d11",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 2
+          },
+          {
+            "task_id": "search_d12",
+            "answer": "1992",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 2
+          },
+          {
+            "task_id": "search_d13",
+            "answer": "1986",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "search_d14",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 2
+          },
+          {
+            "task_id": "search_d15",
+            "answer": "Porto",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "search_d16",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 5
+          }
+        ],
+        "correct": 37,
+        "wrong": 0,
+        "skipped": 27,
+        "reward": 219,
+        "mock_requests": 0,
+        "spent": "0.0",
+        "reserved": "0.0",
+        "time_exhausted": false,
+        "qualification": [
+          {
+            "pair_id": "pair_05",
+            "correct": 2
+          },
+          {
+            "pair_id": "pair_07",
+            "correct": 2
+          },
+          {
+            "pair_id": "pair_09",
+            "correct": 2
+          },
+          {
+            "pair_id": "pair_12",
+            "correct": 2
+          },
+          {
+            "pair_id": "pair_14",
+            "correct": 2
+          },
+          {
+            "pair_id": "pair_17",
+            "correct": 1
+          },
+          {
+            "pair_id": "pair_19",
+            "correct": 1
+          }
+        ]
+      },
+      "math": {
+        "counts": {
+          "solved": 36,
+          "skipped": 28,
+          "failed": 0
+        },
+        "rows": [
+          {
+            "task_id": "coding_d01",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 3
+          },
+          {
+            "task_id": "coding_d02",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 13
+          },
+          {
+            "task_id": "coding_d03",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 0
+          },
+          {
+            "task_id": "coding_d04",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 1
+          },
+          {
+            "task_id": "coding_d05",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 3
+          },
+          {
+            "task_id": "coding_d06",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 0
+          },
+          {
+            "task_id": "coding_d07",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 1
+          },
+          {
+            "task_id": "coding_d08",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 8
+          },
+          {
+            "task_id": "coding_d09",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 1
+          },
+          {
+            "task_id": "coding_d10",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 5
+          },
+          {
+            "task_id": "coding_d11",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 13
+          },
+          {
+            "task_id": "coding_d12",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 3
+          },
+          {
+            "task_id": "coding_d13",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 2
+          },
+          {
+            "task_id": "coding_d14",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 13
+          },
+          {
+            "task_id": "coding_d15",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 1
+          },
+          {
+            "task_id": "coding_d16",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 2
+          },
+          {
+            "task_id": "data_analysis_d01",
+            "answer": "32",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 3
+          },
+          {
+            "task_id": "data_analysis_d02",
+            "answer": "4",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "data_analysis_d03",
+            "answer": "-9",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 0
+          },
+          {
+            "task_id": "data_analysis_d04",
+            "answer": "24",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "data_analysis_d05",
+            "answer": "7",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "data_analysis_d06",
+            "answer": "12",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "data_analysis_d07",
+            "answer": "5",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 0
+          },
+          {
+            "task_id": "data_analysis_d08",
+            "answer": "0",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "data_analysis_d09",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 5
+          },
+          {
+            "task_id": "data_analysis_d10",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 8
+          },
+          {
+            "task_id": "data_analysis_d11",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 1
+          },
+          {
+            "task_id": "data_analysis_d12",
+            "answer": "{\"east\":57,\"west\":23}",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "data_analysis_d13",
+            "answer": "pin",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "data_analysis_d14",
+            "answer": "35",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "data_analysis_d15",
+            "answer": "9",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "data_analysis_d16",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 0
+          },
+          {
+            "task_id": "math_d01",
+            "answer": "163",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 1
+          },
+          {
+            "task_id": "math_d02",
+            "answer": "-5.1",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "math_d03",
+            "answer": "0.75",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "math_d04",
+            "answer": "-4",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "math_d05",
+            "answer": "270",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 1
+          },
+          {
+            "task_id": "math_d06",
+            "answer": "129",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "math_d07",
+            "answer": "0.625",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "math_d08",
+            "answer": "29",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 0
+          },
+          {
+            "task_id": "math_d09",
+            "answer": "7.24",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 3
+          },
+          {
+            "task_id": "math_d10",
+            "answer": "74",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "math_d11",
+            "answer": "28",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "math_d12",
+            "answer": "34",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 1
+          },
+          {
+            "task_id": "math_d13",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 3
+          },
+          {
+            "task_id": "math_d14",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 13
+          },
+          {
+            "task_id": "math_d15",
+            "answer": "76",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 2
+          },
+          {
+            "task_id": "math_d16",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 1
+          },
+          {
+            "task_id": "search_d01",
+            "answer": "1974",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "search_d02",
+            "answer": "2007",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 3
+          },
+          {
+            "task_id": "search_d03",
+            "answer": "São Tomé",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 2
+          },
+          {
+            "task_id": "search_d04",
+            "answer": "Aster Loom",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 3
+          },
+          {
+            "task_id": "search_d05",
+            "answer": "Porto",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 3
+          },
+          {
+            "task_id": "search_d06",
+            "answer": "1948",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "search_d07",
+            "answer": "Vela Nox",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "search_d08",
+            "answer": "1989",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 0
+          },
+          {
+            "task_id": "search_d09",
+            "answer": "1966",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "search_d10",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 5
+          },
+          {
+            "task_id": "search_d11",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 2
+          },
+          {
+            "task_id": "search_d12",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 2
+          },
+          {
+            "task_id": "search_d13",
+            "answer": "1986",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "search_d14",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 2
+          },
+          {
+            "task_id": "search_d15",
+            "answer": "Porto",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "search_d16",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 5
+          }
+        ],
+        "correct": 36,
+        "wrong": 0,
+        "skipped": 28,
+        "reward": 217,
+        "mock_requests": 0,
+        "spent": "0.0",
+        "reserved": "0.0",
+        "time_exhausted": false,
+        "qualification": [
+          {
+            "pair_id": "pair_05",
+            "correct": 2
+          },
+          {
+            "pair_id": "pair_07",
+            "correct": 2
+          },
+          {
+            "pair_id": "pair_09",
+            "correct": 2
+          },
+          {
+            "pair_id": "pair_12",
+            "correct": 2
+          },
+          {
+            "pair_id": "pair_14",
+            "correct": 2
+          },
+          {
+            "pair_id": "pair_17",
+            "correct": 1
+          },
+          {
+            "pair_id": "pair_19",
+            "correct": 1
+          }
+        ]
+      },
+      "both": {
+        "counts": {
+          "solved": 37,
+          "skipped": 27,
+          "failed": 0
+        },
+        "rows": [
+          {
+            "task_id": "coding_d01",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 3
+          },
+          {
+            "task_id": "coding_d02",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 13
+          },
+          {
+            "task_id": "coding_d03",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 0
+          },
+          {
+            "task_id": "coding_d04",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 1
+          },
+          {
+            "task_id": "coding_d05",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 3
+          },
+          {
+            "task_id": "coding_d06",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 0
+          },
+          {
+            "task_id": "coding_d07",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 1
+          },
+          {
+            "task_id": "coding_d08",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 8
+          },
+          {
+            "task_id": "coding_d09",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 1
+          },
+          {
+            "task_id": "coding_d10",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 5
+          },
+          {
+            "task_id": "coding_d11",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 13
+          },
+          {
+            "task_id": "coding_d12",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 3
+          },
+          {
+            "task_id": "coding_d13",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 2
+          },
+          {
+            "task_id": "coding_d14",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 13
+          },
+          {
+            "task_id": "coding_d15",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 1
+          },
+          {
+            "task_id": "coding_d16",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 2
+          },
+          {
+            "task_id": "data_analysis_d01",
+            "answer": "32",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 3
+          },
+          {
+            "task_id": "data_analysis_d02",
+            "answer": "4",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "data_analysis_d03",
+            "answer": "-9",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 0
+          },
+          {
+            "task_id": "data_analysis_d04",
+            "answer": "24",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "data_analysis_d05",
+            "answer": "7",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "data_analysis_d06",
+            "answer": "12",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "data_analysis_d07",
+            "answer": "5",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 0
+          },
+          {
+            "task_id": "data_analysis_d08",
+            "answer": "0",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "data_analysis_d09",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 5
+          },
+          {
+            "task_id": "data_analysis_d10",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 8
+          },
+          {
+            "task_id": "data_analysis_d11",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 1
+          },
+          {
+            "task_id": "data_analysis_d12",
+            "answer": "{\"east\":57,\"west\":23}",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "data_analysis_d13",
+            "answer": "pin",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "data_analysis_d14",
+            "answer": "35",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "data_analysis_d15",
+            "answer": "9",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "data_analysis_d16",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 0
+          },
+          {
+            "task_id": "math_d01",
+            "answer": "163",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 1
+          },
+          {
+            "task_id": "math_d02",
+            "answer": "-5.1",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "math_d03",
+            "answer": "0.75",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "math_d04",
+            "answer": "-4",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "math_d05",
+            "answer": "270",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 1
+          },
+          {
+            "task_id": "math_d06",
+            "answer": "129",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "math_d07",
+            "answer": "0.625",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "math_d08",
+            "answer": "29",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 0
+          },
+          {
+            "task_id": "math_d09",
+            "answer": "7.24",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 3
+          },
+          {
+            "task_id": "math_d10",
+            "answer": "74",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "math_d11",
+            "answer": "28",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "math_d12",
+            "answer": "34",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 1
+          },
+          {
+            "task_id": "math_d13",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 3
+          },
+          {
+            "task_id": "math_d14",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 13
+          },
+          {
+            "task_id": "math_d15",
+            "answer": "76",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 2
+          },
+          {
+            "task_id": "math_d16",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 1
+          },
+          {
+            "task_id": "search_d01",
+            "answer": "1974",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "search_d02",
+            "answer": "2007",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 3
+          },
+          {
+            "task_id": "search_d03",
+            "answer": "São Tomé",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 2
+          },
+          {
+            "task_id": "search_d04",
+            "answer": "Aster Loom",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 3
+          },
+          {
+            "task_id": "search_d05",
+            "answer": "Porto",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 3
+          },
+          {
+            "task_id": "search_d06",
+            "answer": "1948",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "search_d07",
+            "answer": "Vela Nox",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "search_d08",
+            "answer": "1989",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 0
+          },
+          {
+            "task_id": "search_d09",
+            "answer": "1966",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "search_d10",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 5
+          },
+          {
+            "task_id": "search_d11",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 2
+          },
+          {
+            "task_id": "search_d12",
+            "answer": "1992",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 2
+          },
+          {
+            "task_id": "search_d13",
+            "answer": "1986",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "search_d14",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 2
+          },
+          {
+            "task_id": "search_d15",
+            "answer": "Porto",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "search_d16",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 5
+          }
+        ],
+        "correct": 37,
+        "wrong": 0,
+        "skipped": 27,
+        "reward": 219,
+        "mock_requests": 0,
+        "spent": "0.0",
+        "reserved": "0.0",
+        "time_exhausted": false,
+        "qualification": [
+          {
+            "pair_id": "pair_05",
+            "correct": 2
+          },
+          {
+            "pair_id": "pair_07",
+            "correct": 2
+          },
+          {
+            "pair_id": "pair_09",
+            "correct": 2
+          },
+          {
+            "pair_id": "pair_12",
+            "correct": 2
+          },
+          {
+            "pair_id": "pair_14",
+            "correct": 2
+          },
+          {
+            "pair_id": "pair_17",
+            "correct": 1
+          },
+          {
+            "pair_id": "pair_19",
+            "correct": 1
+          }
+        ]
+      },
+      "compilerA": {
+        "counts": {
+          "solved": 37,
+          "skipped": 27,
+          "failed": 0
+        },
+        "rows": [
+          {
+            "task_id": "coding_d01",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 3
+          },
+          {
+            "task_id": "coding_d02",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 13
+          },
+          {
+            "task_id": "coding_d03",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 0
+          },
+          {
+            "task_id": "coding_d04",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 1
+          },
+          {
+            "task_id": "coding_d05",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 3
+          },
+          {
+            "task_id": "coding_d06",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 0
+          },
+          {
+            "task_id": "coding_d07",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 1
+          },
+          {
+            "task_id": "coding_d08",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 8
+          },
+          {
+            "task_id": "coding_d09",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 1
+          },
+          {
+            "task_id": "coding_d10",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 5
+          },
+          {
+            "task_id": "coding_d11",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 13
+          },
+          {
+            "task_id": "coding_d12",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 3
+          },
+          {
+            "task_id": "coding_d13",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 2
+          },
+          {
+            "task_id": "coding_d14",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 13
+          },
+          {
+            "task_id": "coding_d15",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 1
+          },
+          {
+            "task_id": "coding_d16",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 2
+          },
+          {
+            "task_id": "data_analysis_d01",
+            "answer": "32",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 3
+          },
+          {
+            "task_id": "data_analysis_d02",
+            "answer": "4",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "data_analysis_d03",
+            "answer": "-9",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 0
+          },
+          {
+            "task_id": "data_analysis_d04",
+            "answer": "24",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "data_analysis_d05",
+            "answer": "7",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "data_analysis_d06",
+            "answer": "12",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "data_analysis_d07",
+            "answer": "5",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 0
+          },
+          {
+            "task_id": "data_analysis_d08",
+            "answer": "0",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "data_analysis_d09",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 5
+          },
+          {
+            "task_id": "data_analysis_d10",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 8
+          },
+          {
+            "task_id": "data_analysis_d11",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 1
+          },
+          {
+            "task_id": "data_analysis_d12",
+            "answer": "{\"east\":57,\"west\":23}",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "data_analysis_d13",
+            "answer": "pin",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "data_analysis_d14",
+            "answer": "35",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "data_analysis_d15",
+            "answer": "9",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "data_analysis_d16",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 0
+          },
+          {
+            "task_id": "math_d01",
+            "answer": "163",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 1
+          },
+          {
+            "task_id": "math_d02",
+            "answer": "-5.1",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "math_d03",
+            "answer": "0.75",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "math_d04",
+            "answer": "-4",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "math_d05",
+            "answer": "270",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 1
+          },
+          {
+            "task_id": "math_d06",
+            "answer": "129",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "math_d07",
+            "answer": "0.625",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "math_d08",
+            "answer": "29",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 0
+          },
+          {
+            "task_id": "math_d09",
+            "answer": "7.24",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 3
+          },
+          {
+            "task_id": "math_d10",
+            "answer": "74",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "math_d11",
+            "answer": "28",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "math_d12",
+            "answer": "34",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 1
+          },
+          {
+            "task_id": "math_d13",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 3
+          },
+          {
+            "task_id": "math_d14",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 13
+          },
+          {
+            "task_id": "math_d15",
+            "answer": "76",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 2
+          },
+          {
+            "task_id": "math_d16",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 1
+          },
+          {
+            "task_id": "search_d01",
+            "answer": "1974",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "search_d02",
+            "answer": "2007",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 3
+          },
+          {
+            "task_id": "search_d03",
+            "answer": "São Tomé",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 2
+          },
+          {
+            "task_id": "search_d04",
+            "answer": "Aster Loom",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 3
+          },
+          {
+            "task_id": "search_d05",
+            "answer": "Porto",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 3
+          },
+          {
+            "task_id": "search_d06",
+            "answer": "1948",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "search_d07",
+            "answer": "Vela Nox",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "search_d08",
+            "answer": "1989",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 0
+          },
+          {
+            "task_id": "search_d09",
+            "answer": "1966",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "search_d10",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 5
+          },
+          {
+            "task_id": "search_d11",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 2
+          },
+          {
+            "task_id": "search_d12",
+            "answer": "1992",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 2
+          },
+          {
+            "task_id": "search_d13",
+            "answer": "1986",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "search_d14",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 2
+          },
+          {
+            "task_id": "search_d15",
+            "answer": "Porto",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "search_d16",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 5
+          }
+        ],
+        "correct": 37,
+        "wrong": 0,
+        "skipped": 27,
+        "reward": 219,
+        "mock_requests": 1,
+        "spent": "110.0",
+        "reserved": "0.0",
+        "time_exhausted": false,
+        "qualification": [
+          {
+            "pair_id": "pair_05",
+            "correct": 2
+          },
+          {
+            "pair_id": "pair_07",
+            "correct": 2
+          },
+          {
+            "pair_id": "pair_09",
+            "correct": 2
+          },
+          {
+            "pair_id": "pair_12",
+            "correct": 2
+          },
+          {
+            "pair_id": "pair_14",
+            "correct": 2
+          },
+          {
+            "pair_id": "pair_17",
+            "correct": 1
+          },
+          {
+            "pair_id": "pair_19",
+            "correct": 1
+          }
+        ]
+      },
+      "compilerB": {
+        "counts": {
+          "solved": 37,
+          "skipped": 27,
+          "failed": 0
+        },
+        "rows": [
+          {
+            "task_id": "coding_d01",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 3
+          },
+          {
+            "task_id": "coding_d02",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 13
+          },
+          {
+            "task_id": "coding_d03",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 0
+          },
+          {
+            "task_id": "coding_d04",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 1
+          },
+          {
+            "task_id": "coding_d05",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 3
+          },
+          {
+            "task_id": "coding_d06",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 0
+          },
+          {
+            "task_id": "coding_d07",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 1
+          },
+          {
+            "task_id": "coding_d08",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 8
+          },
+          {
+            "task_id": "coding_d09",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 1
+          },
+          {
+            "task_id": "coding_d10",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 5
+          },
+          {
+            "task_id": "coding_d11",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 13
+          },
+          {
+            "task_id": "coding_d12",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 3
+          },
+          {
+            "task_id": "coding_d13",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 2
+          },
+          {
+            "task_id": "coding_d14",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 13
+          },
+          {
+            "task_id": "coding_d15",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 1
+          },
+          {
+            "task_id": "coding_d16",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 2
+          },
+          {
+            "task_id": "data_analysis_d01",
+            "answer": "32",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 3
+          },
+          {
+            "task_id": "data_analysis_d02",
+            "answer": "4",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "data_analysis_d03",
+            "answer": "-9",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 0
+          },
+          {
+            "task_id": "data_analysis_d04",
+            "answer": "24",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "data_analysis_d05",
+            "answer": "7",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "data_analysis_d06",
+            "answer": "12",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "data_analysis_d07",
+            "answer": "5",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 0
+          },
+          {
+            "task_id": "data_analysis_d08",
+            "answer": "0",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "data_analysis_d09",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 5
+          },
+          {
+            "task_id": "data_analysis_d10",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 8
+          },
+          {
+            "task_id": "data_analysis_d11",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 1
+          },
+          {
+            "task_id": "data_analysis_d12",
+            "answer": "{\"east\":57,\"west\":23}",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "data_analysis_d13",
+            "answer": "pin",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "data_analysis_d14",
+            "answer": "35",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "data_analysis_d15",
+            "answer": "9",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "data_analysis_d16",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 0
+          },
+          {
+            "task_id": "math_d01",
+            "answer": "163",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 1
+          },
+          {
+            "task_id": "math_d02",
+            "answer": "-5.1",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "math_d03",
+            "answer": "0.75",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "math_d04",
+            "answer": "-4",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "math_d05",
+            "answer": "270",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 1
+          },
+          {
+            "task_id": "math_d06",
+            "answer": "129",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "math_d07",
+            "answer": "0.625",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "math_d08",
+            "answer": "29",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 0
+          },
+          {
+            "task_id": "math_d09",
+            "answer": "7.24",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 3
+          },
+          {
+            "task_id": "math_d10",
+            "answer": "74",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "math_d11",
+            "answer": "28",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "math_d12",
+            "answer": "34",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 1
+          },
+          {
+            "task_id": "math_d13",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 3
+          },
+          {
+            "task_id": "math_d14",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 13
+          },
+          {
+            "task_id": "math_d15",
+            "answer": "76",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 2
+          },
+          {
+            "task_id": "math_d16",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 1
+          },
+          {
+            "task_id": "search_d01",
+            "answer": "1974",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 13
+          },
+          {
+            "task_id": "search_d02",
+            "answer": "2007",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 3
+          },
+          {
+            "task_id": "search_d03",
+            "answer": "São Tomé",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 2
+          },
+          {
+            "task_id": "search_d04",
+            "answer": "Aster Loom",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 3
+          },
+          {
+            "task_id": "search_d05",
+            "answer": "Porto",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 3
+          },
+          {
+            "task_id": "search_d06",
+            "answer": "1948",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "search_d07",
+            "answer": "Vela Nox",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "search_d08",
+            "answer": "1989",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 0
+          },
+          {
+            "task_id": "search_d09",
+            "answer": "1966",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 8
+          },
+          {
+            "task_id": "search_d10",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 5
+          },
+          {
+            "task_id": "search_d11",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 2
+          },
+          {
+            "task_id": "search_d12",
+            "answer": "1992",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 2
+          },
+          {
+            "task_id": "search_d13",
+            "answer": "1986",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "search_d14",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 2
+          },
+          {
+            "task_id": "search_d15",
+            "answer": "Porto",
+            "answer_mode": 420,
+            "status": "correct",
+            "reward": 5
+          },
+          {
+            "task_id": "search_d16",
+            "answer": null,
+            "answer_mode": null,
+            "status": "skipped",
+            "reward": 5
+          }
+        ],
+        "correct": 37,
+        "wrong": 0,
+        "skipped": 27,
+        "reward": 219,
+        "mock_requests": 1,
+        "spent": "110.0",
+        "reserved": "0.0",
+        "time_exhausted": false,
+        "qualification": [
+          {
+            "pair_id": "pair_05",
+            "correct": 2
+          },
+          {
+            "pair_id": "pair_07",
+            "correct": 2
+          },
+          {
+            "pair_id": "pair_09",
+            "correct": 2
+          },
+          {
+            "pair_id": "pair_12",
+            "correct": 2
+          },
+          {
+            "pair_id": "pair_14",
+            "correct": 2
+          },
+          {
+            "pair_id": "pair_17",
+            "correct": 1
+          },
+          {
+            "pair_id": "pair_19",
+            "correct": 1
+          }
+        ]
+      }
+    }
+  },
+  "all_64_development_answers_statuses_and_modes_match_wsl": true,
+  "isolated_timing_controls": {
+    "current": [
+      {
+        "repeat": 0,
+        "pass": true,
+        "events": [
+          {
+            "phase": "workflow",
+            "task": "a",
+            "route": "local",
+            "seconds": 0.00834812100038107,
+            "error": null,
+            "status": "solved"
+          },
+          {
+            "phase": "fsync",
+            "seconds": 5.6129993026843295e-06
+          },
+          {
+            "phase": "save",
+            "task": "a",
+            "seconds": 0.0032915930005401606,
+            "error": null
+          },
+          {
+            "phase": "workflow",
+            "task": "b",
+            "route": "local",
+            "seconds": 0.005538245000025199,
+            "error": null,
+            "status": "skipped"
+          },
+          {
+            "phase": "workflow",
+            "task": "b",
+            "route": "fallback",
+            "seconds": 0.16818926900032238,
+            "error": "CancelledError",
+            "status": null
+          }
+        ],
+        "failures": []
+      },
+      {
+        "repeat": 1,
+        "pass": true,
+        "events": [
+          {
+            "phase": "workflow",
+            "task": "a",
+            "route": "local",
+            "seconds": 0.00498698899991723,
+            "error": null,
+            "status": "solved"
+          },
+          {
+            "phase": "fsync",
+            "seconds": 4.062000698468182e-06
+          },
+          {
+            "phase": "save",
+            "task": "a",
+            "seconds": 0.0013256209995233803,
+            "error": null
+          },
+          {
+            "phase": "workflow",
+            "task": "b",
+            "route": "local",
+            "seconds": 0.004983107000043674,
+            "error": null,
+            "status": "skipped"
+          },
+          {
+            "phase": "workflow",
+            "task": "b",
+            "route": "fallback",
+            "seconds": 0.08413975899929937,
+            "error": "CancelledError",
+            "status": null
+          }
+        ],
+        "failures": []
+      },
+      {
+        "repeat": 2,
+        "pass": true,
+        "events": [
+          {
+            "phase": "workflow",
+            "task": "a",
+            "route": "local",
+            "seconds": 0.0032961039996735053,
+            "error": null,
+            "status": "solved"
+          },
+          {
+            "phase": "fsync",
+            "seconds": 3.4679997042985633e-06
+          },
+          {
+            "phase": "save",
+            "task": "a",
+            "seconds": 0.0014045019997865893,
+            "error": null
+          },
+          {
+            "phase": "workflow",
+            "task": "b",
+            "route": "local",
+            "seconds": 0.0037777440002173535,
+            "error": null,
+            "status": "skipped"
+          },
+          {
+            "phase": "workflow",
+            "task": "b",
+            "route": "fallback",
+            "seconds": 0.08317816199996741,
+            "error": "CancelledError",
+            "status": null
+          }
+        ],
+        "failures": []
+      }
+    ],
+    "q5": [
+      {
+        "repeat": 0,
+        "pass": true,
+        "events": [
+          {
+            "phase": "workflow",
+            "task": "a",
+            "route": "local",
+            "seconds": 0.008455060999949637,
+            "error": null,
+            "status": "solved"
+          },
+          {
+            "phase": "fsync",
+            "seconds": 4.1620005504228175e-06
+          },
+          {
+            "phase": "save",
+            "task": "a",
+            "seconds": 0.0015648830003556213,
+            "error": null
+          },
+          {
+            "phase": "workflow",
+            "task": "b",
+            "route": "local",
+            "seconds": 0.0050431830004527,
+            "error": null,
+            "status": "skipped"
+          },
+          {
+            "phase": "workflow",
+            "task": "b",
+            "route": "fallback",
+            "seconds": 0.15315110600022308,
+            "error": "CancelledError",
+            "status": null
+          }
+        ],
+        "failures": []
+      },
+      {
+        "repeat": 1,
+        "pass": true,
+        "events": [
+          {
+            "phase": "workflow",
+            "task": "a",
+            "route": "local",
+            "seconds": 0.003991512000538933,
+            "error": null,
+            "status": "solved"
+          },
+          {
+            "phase": "fsync",
+            "seconds": 3.3699998311931267e-06
+          },
+          {
+            "phase": "save",
+            "task": "a",
+            "seconds": 0.0014505360004477552,
+            "error": null
+          },
+          {
+            "phase": "workflow",
+            "task": "b",
+            "route": "local",
+            "seconds": 0.006279078999796184,
+            "error": null,
+            "status": "skipped"
+          },
+          {
+            "phase": "workflow",
+            "task": "b",
+            "route": "fallback",
+            "seconds": 0.0833901190007964,
+            "error": "CancelledError",
+            "status": null
+          }
+        ],
+        "failures": []
+      },
+      {
+        "repeat": 2,
+        "pass": true,
+        "events": [
+          {
+            "phase": "workflow",
+            "task": "a",
+            "route": "local",
+            "seconds": 0.0032982580005409545,
+            "error": null,
+            "status": "solved"
+          },
+          {
+            "phase": "fsync",
+            "seconds": 2.64999926002929e-06
+          },
+          {
+            "phase": "save",
+            "task": "a",
+            "seconds": 0.0011703420004778309,
+            "error": null
+          },
+          {
+            "phase": "workflow",
+            "task": "b",
+            "route": "local",
+            "seconds": 0.004151013999944553,
+            "error": null,
+            "status": "skipped"
+          },
+          {
+            "phase": "workflow",
+            "task": "b",
+            "route": "fallback",
+            "seconds": 0.08299022400024114,
+            "error": "CancelledError",
+            "status": null
+          }
+        ],
+        "failures": []
+      }
+    ]
+  },
+  "timing_class_control": {
+    "run": 13,
+    "failures": [],
+    "errors": [],
+    "records": [
+      {
+        "counts": {
+          "solved": 1,
+          "skipped": 1,
+          "failed": 0
+        },
+        "outcomes": {
+          "a": {
+            "outcome": "solved",
+            "local_outcome": "",
+            "local_attempts": 1,
+            "llm_attempts": 0
+          },
+          "b": {
+            "outcome": "timed_out",
+            "local_outcome": "unsupported",
+            "local_attempts": 1,
+            "llm_attempts": 1
+          }
+        },
+        "time_exhausted": false
+      }
+    ]
+  },
+  "blocker": "Both full Docker suites fail the first local answer existence assertion in test_outer_workflow_timeout_cancels_network_and_holds_reserve; exact cause unknown",
+  "limitations": [
+    "No timeout/assertion or production changes made to hide failure",
+    "No more full reruns after one confirmation",
+    "No closed inputs/oracles or full128/full20 evaluation",
+    "Official Proxy/BUDGET and separate LIVE authorization remain prerequisites"
+  ]
+}
