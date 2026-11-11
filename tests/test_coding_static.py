@@ -95,6 +95,19 @@ class StaticCodingWorkflowTests(unittest.TestCase):
             self.assertEqual(source_file.read_bytes(), original)
             self.assertFalse(task.joinpath("answer.txt").exists())
 
+    def test_direct_import_and_boolean_assertions(self):
+        original = "def qualifies(value):\n    return value % 5 != 2\n"
+        task, source, tests = self.task("direct", original, [
+            "self.assertTrue(check(7))", "self.assertFalse(check(8))",
+        ])
+        direct_import = tests.read_text(encoding="utf-8").replace(
+            "import repair_me as subject", "from repair_me import qualifies as check",
+        )
+        tests.write_text(direct_import, encoding="utf-8")
+        self.assertEqual(self.run_static(), {"solved": 1, "skipped": 0, "failed": 0})
+        self.assertEqual(source.read_text(encoding="utf-8"), original.replace("!=", "=="))
+        self.assertEqual(task.joinpath("answer.txt").read_text(), "DONE\n")
+
     def test_stale_visible_tests_prevent_publication(self):
         source = "def total(a,b):\n    return a-b\n"
         task, source_file, tests = self.task("changed", source, ["self.assertEqual(subject.total(3, 7), 10)"])

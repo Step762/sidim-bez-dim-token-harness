@@ -34,6 +34,7 @@ from safe_files import directory_guards, identity, open_directory, open_text
 SOURCE = "workspace/engine.py"
 TESTS = "workspace/test_engine.py"
 VISIBLE_FILES = frozenset((Path(SOURCE).name, Path(TESTS).name))
+COMPARISONS = (ast.Gt, ast.GtE, ast.Eq, ast.NotEq)
 MAX_REPORT_BYTES = 8 * 1024
 OPERATIONS = {
     ast.Add: operator.add,
@@ -93,6 +94,42 @@ def _apply_patch(source: str, edit: object) -> str:
         raise InvalidPatch(str(exc)) from exc
 
 
+def _read_assertion(
+    statement: ast.stmt, binding: str, function: OperatorReturn, *, direct_import: bool,
+) -> tuple[list[ast.expr], ast.expr]:
+    match statement:
+        case ast.Expr(value=ast.Call(
+            func=ast.Attribute(value=ast.Name(id="self"), attr="assertEqual"),
+            args=[ast.Call() as call, expected], keywords=[],
+        )) | ast.Expr(value=ast.Call(
+            func=ast.Attribute(value=ast.Name(id="self"), attr="assertEqual"),
+            args=[expected, ast.Call() as call], keywords=[],
+        )):
+            pass
+        case ast.Expr(value=ast.Call(
+            func=ast.Attribute(value=ast.Name(id="self"), attr="assertTrue" | "assertFalse" as method),
+            args=[ast.Call() as call], keywords=[],
+        )) if function.operator in COMPARISONS:
+            expected = ast.Constant(value=method == "assertTrue")
+        case _:
+            raise UnsupportedSource("unsupported visible assertion")
+    target = (
+        ast.Name(id=binding, ctx=ast.Load()) if direct_import
+        else ast.Attribute(value=ast.Name(id=binding, ctx=ast.Load()), attr=function.function, ctx=ast.Load())
+    )
+    if call.keywords or ast.dump(call.func) != ast.dump(target):
+        raise UnsupportedSource("visible assertion must call the declared function")
+    arguments = call.args
+    if len(arguments) == 1 and isinstance(arguments[0], ast.Starred):
+        argument_tuple = arguments[0].value
+        if not isinstance(argument_tuple, ast.Tuple):
+            raise UnsupportedSource("expected a literal tuple of arguments")
+        arguments = argument_tuple.elts
+    if len(arguments) != len(function.parameters):
+        raise UnsupportedSource("visible assertion has the wrong arity")
+    return arguments, expected
+
+
 def _visible_examples(
     text: str, function: OperatorReturn, *, module: str = "engine",
 ) -> list[tuple[int, tuple[int | str | tuple[int, ...], ...], int | bool | float | str]]:
@@ -104,6 +141,12 @@ def _visible_examples(
     match tree.body[1]:
         case ast.Import(names=[ast.alias(name=name, asname=alias)]) if name == module:
             binding = alias or module
+            direct_import = False
+        case ast.ImportFrom(
+            module=name, names=[ast.alias(name=symbol, asname=alias)], level=0,
+        ) if name == module and symbol == function.function:
+            binding = alias or symbol
+            direct_import = True
         case _:
             raise UnsupportedSource("test must import the declared source module")
     suite = tree.body[2]
@@ -136,53 +179,35 @@ def _visible_examples(
 
     examples = []
     for statement in statements:
-        match statement:
-            case ast.Expr(value=ast.Call(
-                func=ast.Attribute(value=ast.Name(id="self"), attr="assertEqual"),
-                args=[
-                    ast.Call(func=ast.Attribute(value=ast.Name(id=receiver), attr=name),
-                             args=arguments, keywords=[]),
-                    expected,
-                ],
-                keywords=[],
-            )) if receiver == binding and name == function.function:
-                if len(arguments) == 1 and isinstance(arguments[0], ast.Starred):
-                    argument_tuple = arguments[0].value
-                    if not isinstance(argument_tuple, ast.Tuple):
-                        raise UnsupportedSource("expected a literal tuple of arguments")
-                    arguments = argument_tuple.elts
-                if len(arguments) != len(function.parameters):
-                    raise UnsupportedSource("visible assertion has the wrong arity")
-                if function.operator in CASE_METHOD_EDITS:
-                    argument = arguments[0]
-                    if not (
-                        isinstance(argument, ast.Constant) and type(argument.value) is str
-                        and isinstance(expected, ast.Constant) and type(expected.value) is str
-                    ):
-                        raise UnsupportedSource("expected literal string input and result")
-                    examples.append((statement.lineno, (argument.value,), expected.value))
-                    continue
-                if function.operator in LIST_OPERATORS:
-                    argument = arguments[0]
-                    if not isinstance(argument, ast.List):
-                        raise UnsupportedSource("expected a literal list of integers")
-                    values = tuple(parse_int_literal(item) for item in argument.elts)
-                    if function.operator in ("mean_floor", "mean_true"):
-                        value = _mean_expectation(expected)
-                    else:
-                        value = parse_int_literal(expected)
-                    examples.append((statement.lineno, (values,), value))
-                    continue
-                inputs = tuple(parse_int_literal(argument) for argument in arguments)
-                if function.operator not in (ast.Gt, ast.GtE, ast.Eq, ast.NotEq):
-                    value = parse_int_literal(expected)
-                elif isinstance(expected, ast.Constant) and type(expected.value) is bool:
-                    value = expected.value
-                else:
-                    raise UnsupportedSource("expected a boolean result for the comparison")
-                examples.append((statement.lineno, inputs, value))
-            case _:
-                raise UnsupportedSource("unsupported visible assertion")
+        arguments, expected = _read_assertion(statement, binding, function, direct_import=direct_import)
+        if function.operator in CASE_METHOD_EDITS:
+            argument = arguments[0]
+            if not (
+                isinstance(argument, ast.Constant) and type(argument.value) is str
+                and isinstance(expected, ast.Constant) and type(expected.value) is str
+            ):
+                raise UnsupportedSource("expected literal string input and result")
+            examples.append((statement.lineno, (argument.value,), expected.value))
+            continue
+        if function.operator in LIST_OPERATORS:
+            argument = arguments[0]
+            if not isinstance(argument, ast.List):
+                raise UnsupportedSource("expected a literal list of integers")
+            values = tuple(parse_int_literal(item) for item in argument.elts)
+            if function.operator in ("mean_floor", "mean_true"):
+                value = _mean_expectation(expected)
+            else:
+                value = parse_int_literal(expected)
+            examples.append((statement.lineno, (values,), value))
+            continue
+        inputs = tuple(parse_int_literal(argument) for argument in arguments)
+        if function.operator not in COMPARISONS:
+            value = parse_int_literal(expected)
+        elif isinstance(expected, ast.Constant) and type(expected.value) is bool:
+            value = expected.value
+        else:
+            raise UnsupportedSource("expected a boolean result for the comparison")
+        examples.append((statement.lineno, inputs, value))
     return examples
 
 
