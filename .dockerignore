@@ -14,6 +14,10 @@
 !relation_graph.py
 !data_solver.py
 !coding_solver.py
+!coding_static.py
+!diagnostics/coding_acceptance.py
+!diagnostics/coding_research.py
+!diagnostics/static_coding.py
 !safe_files.py
 !plan_semantics.py
 !runtime_limits.py

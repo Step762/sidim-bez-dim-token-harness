@@ -24,7 +24,9 @@ ROOT = Path(__file__).resolve().parents[1]
 IDS = frozenset(f'{kind}_d{i:02d}' for kind in ('math','search','data_analysis','coding') for i in range(1,17))
 TESTS = (
     'test_a1_resume', 'test_batch_feasibility', 'test_benchmark', 'test_budget',
-    'test_coding', 'test_coding_security', 'test_data', 'test_data_groups',
+    'test_coding', 'test_coding_security', 'test_coding_acceptance',
+    'test_coding_development', 'test_coding_research', 'test_coding_static',
+    'test_final_integration', 'test_data', 'test_data_groups',
     'test_data_or', 'test_data_paraphrase', 'test_data_ranking', 'test_diagnostics',
     'test_fallback_aliases', 'test_fallback_pilot', 'test_files', 'test_harness',
     'test_llm', 'test_math_before', 'test_math_cost', 'test_math_extended',
@@ -47,11 +49,12 @@ CLOSED_TESTS = frozenset('test_benchmark.BenchmarkTests.' + name for name in (
 ))
 DIAGNOSTICS = (
     'a1_resume.py','batch_feasibility.py','compiler_replay.py','cycle_a.py',
+    'coding_acceptance.py','coding_development.py','coding_research.py',
     'fallback_pilot.py','metamorphic.py','q1_alias_probe.py','q2_coverage_probe.py',
     'q45_stress.py','q4_qualification_probe.py','q5_probe.py','qualification_audit.py','qwen_profile.py',
     'reward_routing.py','selection.py','static_coding.py','token_economics.py','trace.py',
 )
-EXPERIMENTS = ('math_ir.py','math_ir_parser.py','semantic_compiler.py')
+EXPERIMENTS = ('math_ir.py','math_ir_parser.py','semantic_compiler.py','coding_static.py')
 
 
 def dump(path, value):
