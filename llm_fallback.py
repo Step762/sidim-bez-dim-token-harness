@@ -189,8 +189,16 @@ def _prepare_search(problem, task_dir):
         return answer
 
     schema = (
-        'For search return {"entity":"root name","relations":["mentor|employer"],'
-        '"field":"fact key","answer":"exact source value"}. Use only supplied records.'
+        'For search return exactly {"entity":"starting subject","relations":[], '
+        '"field":"fact key","answer":"exact source value"}. '
+        'entity is the starting subject of the question, never the final person or company reached. '
+        'relations is an array of individual strings: each item is either "mentor" or "employer". '
+        'Never use "mentor|employer" as a literal value. '
+        'List every transition in traversal order starting from entity; do not omit, reverse or collapse hops. '
+        'For Example Person\'s mentor\'s employer, entity is "Example Person" and relations is '
+        '["mentor", "employer"]: first follow mentor, then follow that person\'s employer. '
+        'For a direct fact use []. field is the requested fact at the end of this path and is not a hop. '
+        'answer is the exact sourced value of field. Use only supplied records.'
     )
     return Prepared(_SYSTEM + schema, {"type": "search", "instruction": problem, "records": records}, validate)
 
