@@ -1,0 +1,448 @@
+{
+  "scope": "offline byte/char sizing and synthetic token economics, NOT measured Qwen batch performance",
+  "real_requests": 0,
+  "math_sizes": [
+    {
+      "n": 2,
+      "separate_direct": {
+        "input": 2450,
+        "output_chars": 2
+      },
+      "batch_direct": {
+        "prompt_chars": 261,
+        "serialized_utf8_bytes": 347,
+        "input_estimate": 1371,
+        "output_chars": 67
+      },
+      "separate_ir": {
+        "input": 4972,
+        "output_chars": 298
+      },
+      "batch_ir": {
+        "prompt_chars": 2164,
+        "serialized_utf8_bytes": 2438,
+        "input_estimate": 3462,
+        "output_chars": 545
+      }
+    },
+    {
+      "n": 3,
+      "separate_direct": {
+        "input": 3675,
+        "output_chars": 3
+      },
+      "batch_direct": {
+        "prompt_chars": 312,
+        "serialized_utf8_bytes": 406,
+        "input_estimate": 1430,
+        "output_chars": 95
+      },
+      "separate_ir": {
+        "input": 7458,
+        "output_chars": 447
+      },
+      "batch_ir": {
+        "prompt_chars": 2657,
+        "serialized_utf8_bytes": 3007,
+        "input_estimate": 4031,
+        "output_chars": 802
+      }
+    },
+    {
+      "n": 4,
+      "separate_direct": {
+        "input": 4901,
+        "output_chars": 4
+      },
+      "batch_direct": {
+        "prompt_chars": 364,
+        "serialized_utf8_bytes": 466,
+        "input_estimate": 1490,
+        "output_chars": 123
+      },
+      "separate_ir": {
+        "input": 9945,
+        "output_chars": 597
+      },
+      "batch_ir": {
+        "prompt_chars": 3151,
+        "serialized_utf8_bytes": 3577,
+        "input_estimate": 4601,
+        "output_chars": 1060
+      }
+    },
+    {
+      "n": 6,
+      "separate_direct": {
+        "input": 7355,
+        "output_chars": 8
+      },
+      "batch_direct": {
+        "prompt_chars": 470,
+        "serialized_utf8_bytes": 588,
+        "input_estimate": 1612,
+        "output_chars": 181
+      },
+      "separate_ir": {
+        "input": 14921,
+        "output_chars": 899
+      },
+      "batch_ir": {
+        "prompt_chars": 4141,
+        "serialized_utf8_bytes": 4719,
+        "input_estimate": 5743,
+        "output_chars": 1578
+      }
+    }
+  ],
+  "search_sizes": [
+    {
+      "n": 2,
+      "separate_ir": {
+        "input": 5994,
+        "output_chars": 188
+      },
+      "batch_ir": {
+        "prompt_chars": 3251,
+        "serialized_utf8_bytes": 3567,
+        "input_estimate": 4591,
+        "output_chars": 435
+      }
+    },
+    {
+      "n": 3,
+      "separate_ir": {
+        "input": 8991,
+        "output_chars": 282
+      },
+      "batch_ir": {
+        "prompt_chars": 4340,
+        "serialized_utf8_bytes": 4754,
+        "input_estimate": 5778,
+        "output_chars": 637
+      }
+    },
+    {
+      "n": 4,
+      "separate_ir": {
+        "input": 11988,
+        "output_chars": 376
+      },
+      "batch_ir": {
+        "prompt_chars": 5429,
+        "serialized_utf8_bytes": 5941,
+        "input_estimate": 6965,
+        "output_chars": 839
+      }
+    },
+    {
+      "n": 6,
+      "separate_ir": {
+        "input": 17982,
+        "output_chars": 564
+      },
+      "batch_ir": {
+        "prompt_chars": 7607,
+        "serialized_utf8_bytes": 8315,
+        "input_estimate": 9339,
+        "output_chars": 1243
+      }
+    }
+  ],
+  "synthetic_costs": [
+    {
+      "n": 2,
+      "schema": "lean_ids",
+      "shared_input_assumed": 80,
+      "private_input_assumed": 60,
+      "output_per_task_assumed": 5,
+      "input_overhead_assumed": 28,
+      "output_extra_assumed": 22,
+      "individual_cost": "38",
+      "batch_cost": "274/5",
+      "saving": "-84/5",
+      "shared_prefix_break_even_strictly_above": "248",
+      "source": "synthetic token assumptions, not Qwen measurements"
+    },
+    {
+      "n": 2,
+      "schema": "lean_ids",
+      "shared_input_assumed": 1000,
+      "private_input_assumed": 600,
+      "output_per_task_assumed": 100,
+      "input_overhead_assumed": 28,
+      "output_extra_assumed": 22,
+      "individual_cost": "520",
+      "batch_cost": "2224/5",
+      "saving": "376/5",
+      "shared_prefix_break_even_strictly_above": "248",
+      "source": "synthetic token assumptions, not Qwen measurements"
+    },
+    {
+      "n": 2,
+      "schema": "bound_ids",
+      "shared_input_assumed": 80,
+      "private_input_assumed": 60,
+      "output_per_task_assumed": 5,
+      "input_overhead_assumed": 80,
+      "output_extra_assumed": 70,
+      "individual_cost": "38",
+      "batch_cost": "108",
+      "saving": "-70",
+      "shared_prefix_break_even_strictly_above": "780",
+      "source": "synthetic token assumptions, not Qwen measurements"
+    },
+    {
+      "n": 2,
+      "schema": "bound_ids",
+      "shared_input_assumed": 1000,
+      "private_input_assumed": 600,
+      "output_per_task_assumed": 100,
+      "input_overhead_assumed": 80,
+      "output_extra_assumed": 70,
+      "individual_cost": "520",
+      "batch_cost": "498",
+      "saving": "22",
+      "shared_prefix_break_even_strictly_above": "780",
+      "source": "synthetic token assumptions, not Qwen measurements"
+    },
+    {
+      "n": 3,
+      "schema": "lean_ids",
+      "shared_input_assumed": 80,
+      "private_input_assumed": 60,
+      "output_per_task_assumed": 5,
+      "input_overhead_assumed": 36,
+      "output_extra_assumed": 30,
+      "individual_cost": "57",
+      "batch_cost": "373/5",
+      "saving": "-88/5",
+      "shared_prefix_break_even_strictly_above": "168",
+      "source": "synthetic token assumptions, not Qwen measurements"
+    },
+    {
+      "n": 3,
+      "schema": "lean_ids",
+      "shared_input_assumed": 1000,
+      "private_input_assumed": 600,
+      "output_per_task_assumed": 100,
+      "input_overhead_assumed": 36,
+      "output_extra_assumed": 30,
+      "individual_cost": "780",
+      "batch_cost": "3068/5",
+      "saving": "832/5",
+      "shared_prefix_break_even_strictly_above": "168",
+      "source": "synthetic token assumptions, not Qwen measurements"
+    },
+    {
+      "n": 3,
+      "schema": "bound_ids",
+      "shared_input_assumed": 80,
+      "private_input_assumed": 60,
+      "output_per_task_assumed": 5,
+      "input_overhead_assumed": 110,
+      "output_extra_assumed": 102,
+      "individual_cost": "57",
+      "batch_cost": "154",
+      "saving": "-97",
+      "shared_prefix_break_even_strictly_above": "565",
+      "source": "synthetic token assumptions, not Qwen measurements"
+    },
+    {
+      "n": 3,
+      "schema": "bound_ids",
+      "shared_input_assumed": 1000,
+      "private_input_assumed": 600,
+      "output_per_task_assumed": 100,
+      "input_overhead_assumed": 110,
+      "output_extra_assumed": 102,
+      "individual_cost": "780",
+      "batch_cost": "693",
+      "saving": "87",
+      "shared_prefix_break_even_strictly_above": "565",
+      "source": "synthetic token assumptions, not Qwen measurements"
+    },
+    {
+      "n": 4,
+      "schema": "lean_ids",
+      "shared_input_assumed": 80,
+      "private_input_assumed": 60,
+      "output_per_task_assumed": 5,
+      "input_overhead_assumed": 44,
+      "output_extra_assumed": 38,
+      "individual_cost": "76",
+      "batch_cost": "472/5",
+      "saving": "-92/5",
+      "shared_prefix_break_even_strictly_above": "424/3",
+      "source": "synthetic token assumptions, not Qwen measurements"
+    },
+    {
+      "n": 4,
+      "schema": "lean_ids",
+      "shared_input_assumed": 1000,
+      "private_input_assumed": 600,
+      "output_per_task_assumed": 100,
+      "input_overhead_assumed": 44,
+      "output_extra_assumed": 38,
+      "individual_cost": "1040",
+      "batch_cost": "3912/5",
+      "saving": "1288/5",
+      "shared_prefix_break_even_strictly_above": "424/3",
+      "source": "synthetic token assumptions, not Qwen measurements"
+    },
+    {
+      "n": 4,
+      "schema": "bound_ids",
+      "shared_input_assumed": 80,
+      "private_input_assumed": 60,
+      "output_per_task_assumed": 5,
+      "input_overhead_assumed": 140,
+      "output_extra_assumed": 134,
+      "individual_cost": "76",
+      "batch_cost": "200",
+      "saving": "-124",
+      "shared_prefix_break_even_strictly_above": "1480/3",
+      "source": "synthetic token assumptions, not Qwen measurements"
+    },
+    {
+      "n": 4,
+      "schema": "bound_ids",
+      "shared_input_assumed": 1000,
+      "private_input_assumed": 600,
+      "output_per_task_assumed": 100,
+      "input_overhead_assumed": 140,
+      "output_extra_assumed": 134,
+      "individual_cost": "1040",
+      "batch_cost": "888",
+      "saving": "152",
+      "shared_prefix_break_even_strictly_above": "1480/3",
+      "source": "synthetic token assumptions, not Qwen measurements"
+    },
+    {
+      "n": 6,
+      "schema": "lean_ids",
+      "shared_input_assumed": 80,
+      "private_input_assumed": 60,
+      "output_per_task_assumed": 5,
+      "input_overhead_assumed": 60,
+      "output_extra_assumed": 54,
+      "individual_cost": "114",
+      "batch_cost": "134",
+      "saving": "-20",
+      "shared_prefix_break_even_strictly_above": "120",
+      "source": "synthetic token assumptions, not Qwen measurements"
+    },
+    {
+      "n": 6,
+      "schema": "lean_ids",
+      "shared_input_assumed": 1000,
+      "private_input_assumed": 600,
+      "output_per_task_assumed": 100,
+      "input_overhead_assumed": 60,
+      "output_extra_assumed": 54,
+      "individual_cost": "1560",
+      "batch_cost": "1120",
+      "saving": "440",
+      "shared_prefix_break_even_strictly_above": "120",
+      "source": "synthetic token assumptions, not Qwen measurements"
+    },
+    {
+      "n": 6,
+      "schema": "bound_ids",
+      "shared_input_assumed": 80,
+      "private_input_assumed": 60,
+      "output_per_task_assumed": 5,
+      "input_overhead_assumed": 200,
+      "output_extra_assumed": 198,
+      "individual_cost": "114",
+      "batch_cost": "292",
+      "saving": "-178",
+      "shared_prefix_break_even_strictly_above": "436",
+      "source": "synthetic token assumptions, not Qwen measurements"
+    },
+    {
+      "n": 6,
+      "schema": "bound_ids",
+      "shared_input_assumed": 1000,
+      "private_input_assumed": 600,
+      "output_per_task_assumed": 100,
+      "input_overhead_assumed": 200,
+      "output_extra_assumed": 198,
+      "individual_cost": "1560",
+      "batch_cost": "1278",
+      "saving": "282",
+      "shared_prefix_break_even_strictly_above": "436",
+      "source": "synthetic token assumptions, not Qwen measurements"
+    }
+  ],
+  "public_history": [
+    {
+      "schema_version": 1,
+      "task_id": "a1_ack",
+      "task_type": "protocol_probe",
+      "scope": "protocol",
+      "trace_source": "real",
+      "model": "qwen3.6-35b-a3b-noreason",
+      "calls": 1,
+      "input_tokens": 35,
+      "output_tokens": 11,
+      "reasoning_tokens": null,
+      "cost": "29/2",
+      "seconds": null,
+      "correct": null,
+      "protocol_contract": false,
+      "quality_sample_for_tasks": false,
+      "source_note": "public team-confirmed aggregate; original response/payload not included"
+    },
+    {
+      "schema_version": 1,
+      "task_id": "a1_math",
+      "task_type": "math",
+      "scope": "protocol",
+      "trace_source": "real",
+      "model": "qwen3.6-35b-a3b-noreason",
+      "calls": 1,
+      "input_tokens": 53,
+      "output_tokens": 7,
+      "reasoning_tokens": null,
+      "cost": "123/10",
+      "seconds": null,
+      "correct": true,
+      "protocol_contract": true,
+      "quality_sample_for_tasks": false,
+      "source_note": "public team-confirmed aggregate; original response/payload not included"
+    },
+    {
+      "schema_version": 1,
+      "task_id": "math_d15",
+      "task_type": "math",
+      "scope": "development",
+      "trace_source": "real",
+      "model": "qwen3.6-35b-a3b-noreason",
+      "calls": 1,
+      "input_tokens": 181,
+      "output_tokens": 111,
+      "reasoning_tokens": null,
+      "cost": "1291/10",
+      "seconds": null,
+      "correct": true,
+      "protocol_contract": true,
+      "quality_sample_for_tasks": true,
+      "source_note": "public team-confirmed aggregate; original response/payload not included"
+    }
+  ],
+  "inherited_files_unchanged": 82,
+  "source_sha256": {
+    "diagnostics/batch_feasibility.py": "d8db08a8b0ba695db55751766a699e8a068dcb10b27d612cbd977fb04b18d1e1",
+    "tests/test_batch_feasibility.py": "55cddde12064c25380ab1215a0586f0540c3bdc256df06beb2d021a34845afb4"
+  },
+  "checks": {
+    "run": 67,
+    "passed": 67,
+    "new_batch_tests": 8,
+    "existing_budget_tests": 34,
+    "existing_compiler_tests": 25,
+    "seconds": 2.131,
+    "real_requests": 0
+  }
+}

@@ -1,0 +1,1141 @@
+{
+  "stage": "P4",
+  "date": "2026-11-11",
+  "baseline_head": "ac8d89ccacdb0646f21305bae88c519ae847f90a",
+  "scope": "64 allowlisted development tasks and independent synthetic QA; no closed corpus",
+  "real_llm_requests": 0,
+  "production_defaults_changed": false,
+  "coding_changed": false,
+  "target_tests": {
+    "methods": 16,
+    "failing_methods_before": 12,
+    "passed_after": 16,
+    "seconds_after": 1.819
+  },
+  "wsl": {
+    "discovered": 814,
+    "passed": 807,
+    "failures": [],
+    "errors": [],
+    "skipped": [
+      "test_benchmark.BenchmarkTests.test_authored_numeric_anchors_have_second_checks",
+      "test_benchmark.BenchmarkTests.test_coding_fixtures_remain_data_and_worker_has_no_trust_flag",
+      "test_benchmark.BenchmarkTests.test_distribution_split_and_task_input_separation",
+      "test_benchmark.BenchmarkTests.test_generation_is_byte_reproducible_and_has_no_agent_imports",
+      "test_benchmark.BenchmarkTests.test_manifest_detects_mutation_and_generator_refuses_overwrite",
+      "test_benchmark.BenchmarkTests.test_pairs_are_predeclared_diverse_and_answerable",
+      "test_benchmark.BenchmarkTests.test_sql_references_recompute_from_csv_not_solver"
+    ],
+    "seconds": 202.2253227430001,
+    "network": {
+      "loopback_connects": 10,
+      "external_blocked": 0
+    }
+  },
+  "docker": {
+    "status": "not_run",
+    "accepted": false,
+    "reason": "Docker Desktop CLI reports missing WSL integration; Engine API not reached",
+    "new_image_built": false,
+    "historical_h2_timeout_blocker_resolved": false
+  },
+  "qa_workflow": {
+    "qa": [
+      {
+        "case": "search",
+        "answer": "TechCorp",
+        "answer_mode": "0644",
+        "beside_task_json": true
+      },
+      {
+        "case": "data",
+        "answer": "25",
+        "answer_mode": "0644",
+        "beside_task_json": true
+      }
+    ],
+    "counts": {
+      "solved": 2,
+      "skipped": 0,
+      "failed": 0
+    },
+    "llm_spent": "0.0",
+    "official_safe": {
+      "solved": 6,
+      "skipped": 2,
+      "failed": 0
+    },
+    "official_answers": {
+      "math_0000": "389",
+      "math_0004": "1735",
+      "search_0001": "1983",
+      "search_0005": "Osaka",
+      "data_analysis_0002": "158",
+      "data_analysis_0006": "284"
+    },
+    "answer_mode": "0644",
+    "real_requests": 0
+  },
+  "development": {
+    "production": {
+      "counts": {
+        "solved": 36,
+        "skipped": 28,
+        "failed": 0
+      },
+      "rows": [
+        {
+          "task_id": "coding_d01",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 3
+        },
+        {
+          "task_id": "coding_d02",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 13
+        },
+        {
+          "task_id": "coding_d03",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 0
+        },
+        {
+          "task_id": "coding_d04",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 1
+        },
+        {
+          "task_id": "coding_d05",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 3
+        },
+        {
+          "task_id": "coding_d06",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 0
+        },
+        {
+          "task_id": "coding_d07",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 1
+        },
+        {
+          "task_id": "coding_d08",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 8
+        },
+        {
+          "task_id": "coding_d09",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 1
+        },
+        {
+          "task_id": "coding_d10",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 5
+        },
+        {
+          "task_id": "coding_d11",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 13
+        },
+        {
+          "task_id": "coding_d12",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 3
+        },
+        {
+          "task_id": "coding_d13",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 2
+        },
+        {
+          "task_id": "coding_d14",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 13
+        },
+        {
+          "task_id": "coding_d15",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 1
+        },
+        {
+          "task_id": "coding_d16",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 2
+        },
+        {
+          "task_id": "data_analysis_d01",
+          "answer": "32",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 3
+        },
+        {
+          "task_id": "data_analysis_d02",
+          "answer": "4",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 13
+        },
+        {
+          "task_id": "data_analysis_d03",
+          "answer": "-9",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 0
+        },
+        {
+          "task_id": "data_analysis_d04",
+          "answer": "24",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 13
+        },
+        {
+          "task_id": "data_analysis_d05",
+          "answer": "7",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 5
+        },
+        {
+          "task_id": "data_analysis_d06",
+          "answer": "12",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 8
+        },
+        {
+          "task_id": "data_analysis_d07",
+          "answer": "5",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 0
+        },
+        {
+          "task_id": "data_analysis_d08",
+          "answer": "0",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 5
+        },
+        {
+          "task_id": "data_analysis_d09",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 5
+        },
+        {
+          "task_id": "data_analysis_d10",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 8
+        },
+        {
+          "task_id": "data_analysis_d11",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 1
+        },
+        {
+          "task_id": "data_analysis_d12",
+          "answer": "{\"east\":57,\"west\":23}",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 13
+        },
+        {
+          "task_id": "data_analysis_d13",
+          "answer": "pin",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 8
+        },
+        {
+          "task_id": "data_analysis_d14",
+          "answer": "35",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 8
+        },
+        {
+          "task_id": "data_analysis_d15",
+          "answer": "9",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 13
+        },
+        {
+          "task_id": "data_analysis_d16",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 0
+        },
+        {
+          "task_id": "math_d01",
+          "answer": "163",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 1
+        },
+        {
+          "task_id": "math_d02",
+          "answer": "-5.1",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 13
+        },
+        {
+          "task_id": "math_d03",
+          "answer": "0.75",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 8
+        },
+        {
+          "task_id": "math_d04",
+          "answer": "-4",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 13
+        },
+        {
+          "task_id": "math_d05",
+          "answer": "270",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 1
+        },
+        {
+          "task_id": "math_d06",
+          "answer": "129",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 13
+        },
+        {
+          "task_id": "math_d07",
+          "answer": "0.625",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 5
+        },
+        {
+          "task_id": "math_d08",
+          "answer": "29",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 0
+        },
+        {
+          "task_id": "math_d09",
+          "answer": "7.24",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 3
+        },
+        {
+          "task_id": "math_d10",
+          "answer": "74",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 5
+        },
+        {
+          "task_id": "math_d11",
+          "answer": "28",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 8
+        },
+        {
+          "task_id": "math_d12",
+          "answer": "34",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 1
+        },
+        {
+          "task_id": "math_d13",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 3
+        },
+        {
+          "task_id": "math_d14",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 13
+        },
+        {
+          "task_id": "math_d15",
+          "answer": "76",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 2
+        },
+        {
+          "task_id": "math_d16",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 1
+        },
+        {
+          "task_id": "search_d01",
+          "answer": "1974",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 13
+        },
+        {
+          "task_id": "search_d02",
+          "answer": "2007",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 3
+        },
+        {
+          "task_id": "search_d03",
+          "answer": "São Tomé",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 2
+        },
+        {
+          "task_id": "search_d04",
+          "answer": "Aster Loom",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 3
+        },
+        {
+          "task_id": "search_d05",
+          "answer": "Porto",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 3
+        },
+        {
+          "task_id": "search_d06",
+          "answer": "1948",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 8
+        },
+        {
+          "task_id": "search_d07",
+          "answer": "Vela Nox",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 5
+        },
+        {
+          "task_id": "search_d08",
+          "answer": "1989",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 0
+        },
+        {
+          "task_id": "search_d09",
+          "answer": "1966",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 8
+        },
+        {
+          "task_id": "search_d10",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 5
+        },
+        {
+          "task_id": "search_d11",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 2
+        },
+        {
+          "task_id": "search_d12",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 2
+        },
+        {
+          "task_id": "search_d13",
+          "answer": "1986",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 5
+        },
+        {
+          "task_id": "search_d14",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 2
+        },
+        {
+          "task_id": "search_d15",
+          "answer": "Porto",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 5
+        },
+        {
+          "task_id": "search_d16",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 5
+        }
+      ],
+      "correct": 36,
+      "wrong": 0,
+      "skipped": 28,
+      "reward": 217,
+      "mock_requests": 0,
+      "spent": "0.0",
+      "reserved": "0.0",
+      "time_exhausted": false,
+      "qualification": [
+        {
+          "pair_id": "pair_05",
+          "correct": 2
+        },
+        {
+          "pair_id": "pair_07",
+          "correct": 2
+        },
+        {
+          "pair_id": "pair_09",
+          "correct": 2
+        },
+        {
+          "pair_id": "pair_12",
+          "correct": 2
+        },
+        {
+          "pair_id": "pair_14",
+          "correct": 2
+        },
+        {
+          "pair_id": "pair_17",
+          "correct": 1
+        },
+        {
+          "pair_id": "pair_19",
+          "correct": 1
+        }
+      ]
+    },
+    "graph_experimental": {
+      "counts": {
+        "solved": 37,
+        "skipped": 27,
+        "failed": 0
+      },
+      "rows": [
+        {
+          "task_id": "coding_d01",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 3
+        },
+        {
+          "task_id": "coding_d02",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 13
+        },
+        {
+          "task_id": "coding_d03",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 0
+        },
+        {
+          "task_id": "coding_d04",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 1
+        },
+        {
+          "task_id": "coding_d05",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 3
+        },
+        {
+          "task_id": "coding_d06",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 0
+        },
+        {
+          "task_id": "coding_d07",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 1
+        },
+        {
+          "task_id": "coding_d08",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 8
+        },
+        {
+          "task_id": "coding_d09",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 1
+        },
+        {
+          "task_id": "coding_d10",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 5
+        },
+        {
+          "task_id": "coding_d11",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 13
+        },
+        {
+          "task_id": "coding_d12",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 3
+        },
+        {
+          "task_id": "coding_d13",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 2
+        },
+        {
+          "task_id": "coding_d14",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 13
+        },
+        {
+          "task_id": "coding_d15",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 1
+        },
+        {
+          "task_id": "coding_d16",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 2
+        },
+        {
+          "task_id": "data_analysis_d01",
+          "answer": "32",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 3
+        },
+        {
+          "task_id": "data_analysis_d02",
+          "answer": "4",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 13
+        },
+        {
+          "task_id": "data_analysis_d03",
+          "answer": "-9",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 0
+        },
+        {
+          "task_id": "data_analysis_d04",
+          "answer": "24",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 13
+        },
+        {
+          "task_id": "data_analysis_d05",
+          "answer": "7",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 5
+        },
+        {
+          "task_id": "data_analysis_d06",
+          "answer": "12",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 8
+        },
+        {
+          "task_id": "data_analysis_d07",
+          "answer": "5",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 0
+        },
+        {
+          "task_id": "data_analysis_d08",
+          "answer": "0",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 5
+        },
+        {
+          "task_id": "data_analysis_d09",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 5
+        },
+        {
+          "task_id": "data_analysis_d10",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 8
+        },
+        {
+          "task_id": "data_analysis_d11",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 1
+        },
+        {
+          "task_id": "data_analysis_d12",
+          "answer": "{\"east\":57,\"west\":23}",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 13
+        },
+        {
+          "task_id": "data_analysis_d13",
+          "answer": "pin",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 8
+        },
+        {
+          "task_id": "data_analysis_d14",
+          "answer": "35",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 8
+        },
+        {
+          "task_id": "data_analysis_d15",
+          "answer": "9",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 13
+        },
+        {
+          "task_id": "data_analysis_d16",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 0
+        },
+        {
+          "task_id": "math_d01",
+          "answer": "163",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 1
+        },
+        {
+          "task_id": "math_d02",
+          "answer": "-5.1",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 13
+        },
+        {
+          "task_id": "math_d03",
+          "answer": "0.75",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 8
+        },
+        {
+          "task_id": "math_d04",
+          "answer": "-4",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 13
+        },
+        {
+          "task_id": "math_d05",
+          "answer": "270",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 1
+        },
+        {
+          "task_id": "math_d06",
+          "answer": "129",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 13
+        },
+        {
+          "task_id": "math_d07",
+          "answer": "0.625",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 5
+        },
+        {
+          "task_id": "math_d08",
+          "answer": "29",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 0
+        },
+        {
+          "task_id": "math_d09",
+          "answer": "7.24",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 3
+        },
+        {
+          "task_id": "math_d10",
+          "answer": "74",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 5
+        },
+        {
+          "task_id": "math_d11",
+          "answer": "28",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 8
+        },
+        {
+          "task_id": "math_d12",
+          "answer": "34",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 1
+        },
+        {
+          "task_id": "math_d13",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 3
+        },
+        {
+          "task_id": "math_d14",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 13
+        },
+        {
+          "task_id": "math_d15",
+          "answer": "76",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 2
+        },
+        {
+          "task_id": "math_d16",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 1
+        },
+        {
+          "task_id": "search_d01",
+          "answer": "1974",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 13
+        },
+        {
+          "task_id": "search_d02",
+          "answer": "2007",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 3
+        },
+        {
+          "task_id": "search_d03",
+          "answer": "São Tomé",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 2
+        },
+        {
+          "task_id": "search_d04",
+          "answer": "Aster Loom",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 3
+        },
+        {
+          "task_id": "search_d05",
+          "answer": "Porto",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 3
+        },
+        {
+          "task_id": "search_d06",
+          "answer": "1948",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 8
+        },
+        {
+          "task_id": "search_d07",
+          "answer": "Vela Nox",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 5
+        },
+        {
+          "task_id": "search_d08",
+          "answer": "1989",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 0
+        },
+        {
+          "task_id": "search_d09",
+          "answer": "1966",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 8
+        },
+        {
+          "task_id": "search_d10",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 5
+        },
+        {
+          "task_id": "search_d11",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 2
+        },
+        {
+          "task_id": "search_d12",
+          "answer": "1992",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 2
+        },
+        {
+          "task_id": "search_d13",
+          "answer": "1986",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 5
+        },
+        {
+          "task_id": "search_d14",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 2
+        },
+        {
+          "task_id": "search_d15",
+          "answer": "Porto",
+          "answer_mode": 420,
+          "status": "correct",
+          "reward": 5
+        },
+        {
+          "task_id": "search_d16",
+          "answer": null,
+          "answer_mode": null,
+          "status": "skipped",
+          "reward": 5
+        }
+      ],
+      "correct": 37,
+      "wrong": 0,
+      "skipped": 27,
+      "reward": 219,
+      "mock_requests": 0,
+      "spent": "0.0",
+      "reserved": "0.0",
+      "time_exhausted": false,
+      "qualification": [
+        {
+          "pair_id": "pair_05",
+          "correct": 2
+        },
+        {
+          "pair_id": "pair_07",
+          "correct": 2
+        },
+        {
+          "pair_id": "pair_09",
+          "correct": 2
+        },
+        {
+          "pair_id": "pair_12",
+          "correct": 2
+        },
+        {
+          "pair_id": "pair_14",
+          "correct": 2
+        },
+        {
+          "pair_id": "pair_17",
+          "correct": 1
+        },
+        {
+          "pair_id": "pair_19",
+          "correct": 1
+        }
+      ]
+    },
+    "other_offline_arms": {
+      "math": {
+        "correct": 36,
+        "wrong": 0,
+        "skipped": 28,
+        "reward": 217,
+        "mock_requests": 0
+      },
+      "both": {
+        "correct": 37,
+        "wrong": 0,
+        "skipped": 27,
+        "reward": 219,
+        "mock_requests": 0
+      },
+      "compilerA": {
+        "correct": 37,
+        "wrong": 0,
+        "skipped": 27,
+        "reward": 219,
+        "mock_requests": 1
+      },
+      "compilerB": {
+        "correct": 37,
+        "wrong": 0,
+        "skipped": 27,
+        "reward": 219,
+        "mock_requests": 1
+      }
+    },
+    "all_64_answers_statuses_rewards_and_modes_equal_published_baseline": true,
+    "previous_production_correct_preserved": 36,
+    "previous_graph_correct_preserved": 37,
+    "new_development_correct": [],
+    "qualification_scope": "7 fully allowed pairs per arm only; no full20 run"
+  },
+  "runtime_sha256": {
+    "Dockerfile": "1c305b053b839079ddc760e917cf18b2986e33fe5bf0fd653b48136a15d88a7c",
+    ".dockerignore": "360d5919d039327d4088240fbf11a8a3e8c831e93a35626293e8c03367a94e3d",
+    "requirements.txt": "d8c2924d446449dfd156153333b01a3ae0ef3fd0da64acfe36eae937663a3da3",
+    "run_agent.py": "88938b2c66ddcf2b7428976390433c6c719cbcdbdc8969a07346effbdbaf401c",
+    "harness.py": "2e08007cc5632db92f1f1d17e56374a14a03f0f81bbdff4075c2c10cd38b1a3a",
+    "planner.py": "4db10378746a8decbf556defbcbc207afc7fc472cb8827404ba89c15beec3b8d",
+    "budget_manager.py": "8259d00cf23cb1c5f0bd2162784f0c91dc005cf570e99d9a4cfb30929abcbb4f",
+    "llm_gateway.py": "c17dbf2de2655965a88cc00f0ee709de81621770a44fa824b27cec560d923b13",
+    "llm_fallback.py": "d9c71832f892a3a1114d883eea39876caa5e98f3114c5533f5a0c943670e8020",
+    "math_solver.py": "064d1ea11f947062bd277c62d9a3d5f89d731cbaec8fa943a9da2a693c9b4d0d",
+    "search_solver.py": "b6c2eacaadaf7a19b95b12e7a57fa9772954396d98729e8b0c8114fcbbc3c07c",
+    "relation_graph.py": "57ed6d80905eb911705afaf4fdecf79b2191d7d6e6b733db0e585bcbc7bcc7b7",
+    "data_solver.py": "afbf9a093267422fe4719c4dbb3fcaeca9cc2264aeecb1ebcc5aca1d8b4b0e6c",
+    "coding_solver.py": "e64d5913e831c72a2afd36e70512f290886d8fd7be577ed38d6a57ac3c30d9e7",
+    "safe_files.py": "04aa6c98f6da2555b80ab298d0937ea32f39a0deea0710fa78e97d849d6c7cfb",
+    "plan_semantics.py": "018174dbb74ccc75201e14f1b8763b24358974792ddb222963653dc7262c9fa8",
+    "runtime_limits.py": "cdd72e8fc6bc119b6cd76fe4560a910552c80e04edb27e2d3d29cb1d3821e669"
+  },
+  "reviewed_code_sha256": {
+    "README.md": "09b897f6b4ec7ab826ca6853f57b47464ed6f00077c98b811d95a4b69b9daca4",
+    "data_solver.py": "afbf9a093267422fe4719c4dbb3fcaeca9cc2264aeecb1ebcc5aca1d8b4b0e6c",
+    "plan_semantics.py": "018174dbb74ccc75201e14f1b8763b24358974792ddb222963653dc7262c9fa8",
+    "relation_graph.py": "57ed6d80905eb911705afaf4fdecf79b2191d7d6e6b733db0e585bcbc7bcc7b7",
+    "search_solver.py": "b6c2eacaadaf7a19b95b12e7a57fa9772954396d98729e8b0c8114fcbbc3c07c",
+    "tests/allowed_acceptance.py": "92039c0ff06cb821ad4849489eb290e10298e48f0857d725cbf0cfa41972734c",
+    "tests/docker_smoke.py": "78d04a0349201ce091ab1c49aa8ea258dc90fa1f8a58d53f942337b0395b01af",
+    "tests/test_search_data_qa.py": "d6ec1a404ff5d82cbcabc07c38f083e187ce9e0bd1aae066f9a8912187a62817"
+  },
+  "limitations": [
+    "Docker acceptance pending; image with changed runtime has not been built",
+    "Historical V4 H2 timeout root cause remains unknown",
+    "No real model-quality or closed-corpus claim",
+    "Existing untracked P2 report preserved separately; excluded from P4 checkpoint"
+  ]
+}

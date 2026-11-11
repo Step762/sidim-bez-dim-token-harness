@@ -11,6 +11,7 @@
 !llm_fallback.py
 !math_solver.py
 !search_solver.py
+!relation_graph.py
 !data_solver.py
 !coding_solver.py
 !coding_static.py

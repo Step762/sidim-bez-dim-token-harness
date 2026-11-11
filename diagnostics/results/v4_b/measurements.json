@@ -1,0 +1,1385 @@
+{
+  "baseline_head": "bea1ec8e4f9b7028987a78c34de3f377c2808619",
+  "scope": "development-only evaluation; historical holdout statuses only; no full-128 acceptance",
+  "runtime_sha256": {
+    "Dockerfile": "1c305b053b839079ddc760e917cf18b2986e33fe5bf0fd653b48136a15d88a7c",
+    ".dockerignore": "360d5919d039327d4088240fbf11a8a3e8c831e93a35626293e8c03367a94e3d",
+    "requirements.txt": "d8c2924d446449dfd156153333b01a3ae0ef3fd0da64acfe36eae937663a3da3",
+    "run_agent.py": "88938b2c66ddcf2b7428976390433c6c719cbcdbdc8969a07346effbdbaf401c",
+    "harness.py": "2e08007cc5632db92f1f1d17e56374a14a03f0f81bbdff4075c2c10cd38b1a3a",
+    "planner.py": "4db10378746a8decbf556defbcbc207afc7fc472cb8827404ba89c15beec3b8d",
+    "budget_manager.py": "8259d00cf23cb1c5f0bd2162784f0c91dc005cf570e99d9a4cfb30929abcbb4f",
+    "llm_gateway.py": "c17dbf2de2655965a88cc00f0ee709de81621770a44fa824b27cec560d923b13",
+    "llm_fallback.py": "d9c71832f892a3a1114d883eea39876caa5e98f3114c5533f5a0c943670e8020",
+    "math_solver.py": "064d1ea11f947062bd277c62d9a3d5f89d731cbaec8fa943a9da2a693c9b4d0d",
+    "search_solver.py": "eda338c7021b266440dca051855d5a8fb4e0a1a0d899fa72075672c39c9ce862",
+    "relation_graph.py": "cb836137764f4e501e549468719d0176c7e4c70375c9fc89b357243554a27f73",
+    "data_solver.py": "c4a9b0b1e56c0b06685a5d88df0aafa2fc11644bf7c658c7e5da928de457712a",
+    "coding_solver.py": "e64d5913e831c72a2afd36e70512f290886d8fd7be577ed38d6a57ac3c30d9e7",
+    "safe_files.py": "04aa6c98f6da2555b80ab298d0937ea32f39a0deea0710fa78e97d849d6c7cfb",
+    "plan_semantics.py": "3e8cfcbdf22d470c8d970d1a5fbdadfc5b219a1f32906a8bb7f6526d6f96f7b7",
+    "runtime_limits.py": "cdd72e8fc6bc119b6cd76fe4560a910552c80e04edb27e2d3d29cb1d3821e669"
+  },
+  "baseline_q5_full_historical": {
+    "answer_precision": 1.0,
+    "answerable": 104,
+    "correct": 57,
+    "false_negative_skips": 47,
+    "false_positive_fraction": 0.0,
+    "justified_refusal_recall": 1.0,
+    "justified_refusals": 24,
+    "llm_calls": 0,
+    "llm_reserved": 0.0,
+    "llm_spent": 0.0,
+    "paid_correct_reward_per_unit": null,
+    "possible_reward": 503,
+    "reward": 306,
+    "seconds": 0.39586079802393215,
+    "skip_fraction": 0.5546875,
+    "skipped": 71,
+    "total": 128,
+    "unanswerable": 24,
+    "unverified": 0,
+    "wrong": 0
+  },
+  "q5_development_fresh": {
+    "total": 64,
+    "correct": 36,
+    "wrong": 0,
+    "skipped": 28,
+    "unverified": 0,
+    "answerable": 52,
+    "reward": 217,
+    "possible_reward": 287,
+    "seconds": 0.2321370849995219,
+    "llm_calls": 0,
+    "llm_spent": 0.0,
+    "llm_reserved": 0.0,
+    "false_positive_fraction": 0.0,
+    "answer_precision": 1.0,
+    "skip_fraction": 0.4375,
+    "justified_refusals": 12,
+    "unanswerable": 12,
+    "justified_refusal_recall": 1.0,
+    "false_negative_skips": 16,
+    "paid_correct_reward_per_unit": null
+  },
+  "development_local": {
+    "total": 64,
+    "correct": 37,
+    "wrong": 0,
+    "skipped": 27,
+    "unverified": 0,
+    "answerable": 52,
+    "reward": 219,
+    "possible_reward": 287,
+    "seconds": 0.21984890099975019,
+    "llm_calls": 0,
+    "llm_spent": 0.0,
+    "llm_reserved": 0.0,
+    "false_positive_fraction": 0.0,
+    "answer_precision": 1.0,
+    "skip_fraction": 0.421875,
+    "justified_refusals": 12,
+    "unanswerable": 12,
+    "justified_refusal_recall": 1.0,
+    "false_negative_skips": 15,
+    "paid_correct_reward_per_unit": null
+  },
+  "development_mock": {
+    "total": 64,
+    "correct": 37,
+    "wrong": 0,
+    "skipped": 27,
+    "unverified": 0,
+    "answerable": 52,
+    "reward": 219,
+    "possible_reward": 287,
+    "seconds": 0.2002860010002223,
+    "llm_calls": 0,
+    "llm_spent": 0.0,
+    "llm_reserved": 0.0,
+    "false_positive_fraction": 0.0,
+    "answer_precision": 1.0,
+    "skip_fraction": 0.421875,
+    "justified_refusals": 12,
+    "unanswerable": 12,
+    "justified_refusal_recall": 1.0,
+    "false_negative_skips": 15,
+    "paid_correct_reward_per_unit": null
+  },
+  "old36_exact_answers_preserved": true,
+  "new_correct": [
+    "search_d12"
+  ],
+  "development_rows": [
+    {
+      "task_id": "coding_d01",
+      "before": "skipped",
+      "after": "skipped",
+      "actual": null,
+      "reward": 3,
+      "answer_mode": null
+    },
+    {
+      "task_id": "coding_d02",
+      "before": "skipped",
+      "after": "skipped",
+      "actual": null,
+      "reward": 13,
+      "answer_mode": null
+    },
+    {
+      "task_id": "coding_d03",
+      "before": "skipped",
+      "after": "skipped",
+      "actual": null,
+      "reward": 0,
+      "answer_mode": null
+    },
+    {
+      "task_id": "coding_d04",
+      "before": "skipped",
+      "after": "skipped",
+      "actual": null,
+      "reward": 1,
+      "answer_mode": null
+    },
+    {
+      "task_id": "coding_d05",
+      "before": "skipped",
+      "after": "skipped",
+      "actual": null,
+      "reward": 3,
+      "answer_mode": null
+    },
+    {
+      "task_id": "coding_d06",
+      "before": "skipped",
+      "after": "skipped",
+      "actual": null,
+      "reward": 0,
+      "answer_mode": null
+    },
+    {
+      "task_id": "coding_d07",
+      "before": "skipped",
+      "after": "skipped",
+      "actual": null,
+      "reward": 1,
+      "answer_mode": null
+    },
+    {
+      "task_id": "coding_d08",
+      "before": "skipped",
+      "after": "skipped",
+      "actual": null,
+      "reward": 8,
+      "answer_mode": null
+    },
+    {
+      "task_id": "coding_d09",
+      "before": "skipped",
+      "after": "skipped",
+      "actual": null,
+      "reward": 1,
+      "answer_mode": null
+    },
+    {
+      "task_id": "coding_d10",
+      "before": "skipped",
+      "after": "skipped",
+      "actual": null,
+      "reward": 5,
+      "answer_mode": null
+    },
+    {
+      "task_id": "coding_d11",
+      "before": "skipped",
+      "after": "skipped",
+      "actual": null,
+      "reward": 13,
+      "answer_mode": null
+    },
+    {
+      "task_id": "coding_d12",
+      "before": "skipped",
+      "after": "skipped",
+      "actual": null,
+      "reward": 3,
+      "answer_mode": null
+    },
+    {
+      "task_id": "coding_d13",
+      "before": "skipped",
+      "after": "skipped",
+      "actual": null,
+      "reward": 2,
+      "answer_mode": null
+    },
+    {
+      "task_id": "coding_d14",
+      "before": "skipped",
+      "after": "skipped",
+      "actual": null,
+      "reward": 13,
+      "answer_mode": null
+    },
+    {
+      "task_id": "coding_d15",
+      "before": "skipped",
+      "after": "skipped",
+      "actual": null,
+      "reward": 1,
+      "answer_mode": null
+    },
+    {
+      "task_id": "coding_d16",
+      "before": "skipped",
+      "after": "skipped",
+      "actual": null,
+      "reward": 2,
+      "answer_mode": null
+    },
+    {
+      "task_id": "data_analysis_d01",
+      "before": "correct",
+      "after": "correct",
+      "actual": "32",
+      "reward": 3,
+      "answer_mode": 420
+    },
+    {
+      "task_id": "data_analysis_d02",
+      "before": "correct",
+      "after": "correct",
+      "actual": "4",
+      "reward": 13,
+      "answer_mode": 420
+    },
+    {
+      "task_id": "data_analysis_d03",
+      "before": "correct",
+      "after": "correct",
+      "actual": "-9",
+      "reward": 0,
+      "answer_mode": 420
+    },
+    {
+      "task_id": "data_analysis_d04",
+      "before": "correct",
+      "after": "correct",
+      "actual": "24",
+      "reward": 13,
+      "answer_mode": 420
+    },
+    {
+      "task_id": "data_analysis_d05",
+      "before": "correct",
+      "after": "correct",
+      "actual": "7",
+      "reward": 5,
+      "answer_mode": 420
+    },
+    {
+      "task_id": "data_analysis_d06",
+      "before": "correct",
+      "after": "correct",
+      "actual": "12",
+      "reward": 8,
+      "answer_mode": 420
+    },
+    {
+      "task_id": "data_analysis_d07",
+      "before": "correct",
+      "after": "correct",
+      "actual": "5",
+      "reward": 0,
+      "answer_mode": 420
+    },
+    {
+      "task_id": "data_analysis_d08",
+      "before": "correct",
+      "after": "correct",
+      "actual": "0",
+      "reward": 5,
+      "answer_mode": 420
+    },
+    {
+      "task_id": "data_analysis_d09",
+      "before": "skipped",
+      "after": "skipped",
+      "actual": null,
+      "reward": 5,
+      "answer_mode": null
+    },
+    {
+      "task_id": "data_analysis_d10",
+      "before": "skipped",
+      "after": "skipped",
+      "actual": null,
+      "reward": 8,
+      "answer_mode": null
+    },
+    {
+      "task_id": "data_analysis_d11",
+      "before": "skipped",
+      "after": "skipped",
+      "actual": null,
+      "reward": 1,
+      "answer_mode": null
+    },
+    {
+      "task_id": "data_analysis_d12",
+      "before": "correct",
+      "after": "correct",
+      "actual": "{\"east\":57,\"west\":23}",
+      "reward": 13,
+      "answer_mode": 420
+    },
+    {
+      "task_id": "data_analysis_d13",
+      "before": "correct",
+      "after": "correct",
+      "actual": "pin",
+      "reward": 8,
+      "answer_mode": 420
+    },
+    {
+      "task_id": "data_analysis_d14",
+      "before": "correct",
+      "after": "correct",
+      "actual": "35",
+      "reward": 8,
+      "answer_mode": 420
+    },
+    {
+      "task_id": "data_analysis_d15",
+      "before": "correct",
+      "after": "correct",
+      "actual": "9",
+      "reward": 13,
+      "answer_mode": 420
+    },
+    {
+      "task_id": "data_analysis_d16",
+      "before": "skipped",
+      "after": "skipped",
+      "actual": null,
+      "reward": 0,
+      "answer_mode": null
+    },
+    {
+      "task_id": "math_d01",
+      "before": "correct",
+      "after": "correct",
+      "actual": "163",
+      "reward": 1,
+      "answer_mode": 420
+    },
+    {
+      "task_id": "math_d02",
+      "before": "correct",
+      "after": "correct",
+      "actual": "-5.1",
+      "reward": 13,
+      "answer_mode": 420
+    },
+    {
+      "task_id": "math_d03",
+      "before": "correct",
+      "after": "correct",
+      "actual": "0.75",
+      "reward": 8,
+      "answer_mode": 420
+    },
+    {
+      "task_id": "math_d04",
+      "before": "correct",
+      "after": "correct",
+      "actual": "-4",
+      "reward": 13,
+      "answer_mode": 420
+    },
+    {
+      "task_id": "math_d05",
+      "before": "correct",
+      "after": "correct",
+      "actual": "270",
+      "reward": 1,
+      "answer_mode": 420
+    },
+    {
+      "task_id": "math_d06",
+      "before": "correct",
+      "after": "correct",
+      "actual": "129",
+      "reward": 13,
+      "answer_mode": 420
+    },
+    {
+      "task_id": "math_d07",
+      "before": "correct",
+      "after": "correct",
+      "actual": "0.625",
+      "reward": 5,
+      "answer_mode": 420
+    },
+    {
+      "task_id": "math_d08",
+      "before": "correct",
+      "after": "correct",
+      "actual": "29",
+      "reward": 0,
+      "answer_mode": 420
+    },
+    {
+      "task_id": "math_d09",
+      "before": "correct",
+      "after": "correct",
+      "actual": "7.24",
+      "reward": 3,
+      "answer_mode": 420
+    },
+    {
+      "task_id": "math_d10",
+      "before": "correct",
+      "after": "correct",
+      "actual": "74",
+      "reward": 5,
+      "answer_mode": 420
+    },
+    {
+      "task_id": "math_d11",
+      "before": "correct",
+      "after": "correct",
+      "actual": "28",
+      "reward": 8,
+      "answer_mode": 420
+    },
+    {
+      "task_id": "math_d12",
+      "before": "correct",
+      "after": "correct",
+      "actual": "34",
+      "reward": 1,
+      "answer_mode": 420
+    },
+    {
+      "task_id": "math_d13",
+      "before": "skipped",
+      "after": "skipped",
+      "actual": null,
+      "reward": 3,
+      "answer_mode": null
+    },
+    {
+      "task_id": "math_d14",
+      "before": "skipped",
+      "after": "skipped",
+      "actual": null,
+      "reward": 13,
+      "answer_mode": null
+    },
+    {
+      "task_id": "math_d15",
+      "before": "correct",
+      "after": "correct",
+      "actual": "76",
+      "reward": 2,
+      "answer_mode": 420
+    },
+    {
+      "task_id": "math_d16",
+      "before": "skipped",
+      "after": "skipped",
+      "actual": null,
+      "reward": 1,
+      "answer_mode": null
+    },
+    {
+      "task_id": "search_d01",
+      "before": "correct",
+      "after": "correct",
+      "actual": "1974",
+      "reward": 13,
+      "answer_mode": 420
+    },
+    {
+      "task_id": "search_d02",
+      "before": "correct",
+      "after": "correct",
+      "actual": "2007",
+      "reward": 3,
+      "answer_mode": 420
+    },
+    {
+      "task_id": "search_d03",
+      "before": "correct",
+      "after": "correct",
+      "actual": "São Tomé",
+      "reward": 2,
+      "answer_mode": 420
+    },
+    {
+      "task_id": "search_d04",
+      "before": "correct",
+      "after": "correct",
+      "actual": "Aster Loom",
+      "reward": 3,
+      "answer_mode": 420
+    },
+    {
+      "task_id": "search_d05",
+      "before": "correct",
+      "after": "correct",
+      "actual": "Porto",
+      "reward": 3,
+      "answer_mode": 420
+    },
+    {
+      "task_id": "search_d06",
+      "before": "correct",
+      "after": "correct",
+      "actual": "1948",
+      "reward": 8,
+      "answer_mode": 420
+    },
+    {
+      "task_id": "search_d07",
+      "before": "correct",
+      "after": "correct",
+      "actual": "Vela Nox",
+      "reward": 5,
+      "answer_mode": 420
+    },
+    {
+      "task_id": "search_d08",
+      "before": "correct",
+      "after": "correct",
+      "actual": "1989",
+      "reward": 0,
+      "answer_mode": 420
+    },
+    {
+      "task_id": "search_d09",
+      "before": "correct",
+      "after": "correct",
+      "actual": "1966",
+      "reward": 8,
+      "answer_mode": 420
+    },
+    {
+      "task_id": "search_d10",
+      "before": "skipped",
+      "after": "skipped",
+      "actual": null,
+      "reward": 5,
+      "answer_mode": null
+    },
+    {
+      "task_id": "search_d11",
+      "before": "skipped",
+      "after": "skipped",
+      "actual": null,
+      "reward": 2,
+      "answer_mode": null
+    },
+    {
+      "task_id": "search_d12",
+      "before": "skipped",
+      "after": "correct",
+      "actual": "1992",
+      "reward": 2,
+      "answer_mode": 420
+    },
+    {
+      "task_id": "search_d13",
+      "before": "correct",
+      "after": "correct",
+      "actual": "1986",
+      "reward": 5,
+      "answer_mode": 420
+    },
+    {
+      "task_id": "search_d14",
+      "before": "skipped",
+      "after": "skipped",
+      "actual": null,
+      "reward": 2,
+      "answer_mode": null
+    },
+    {
+      "task_id": "search_d15",
+      "before": "correct",
+      "after": "correct",
+      "actual": "Porto",
+      "reward": 5,
+      "answer_mode": 420
+    },
+    {
+      "task_id": "search_d16",
+      "before": "skipped",
+      "after": "skipped",
+      "actual": null,
+      "reward": 5,
+      "answer_mode": null
+    }
+  ],
+  "fresh_development_pairs": [
+    {
+      "pair_id": "pair_05",
+      "tasks": [
+        "math_d04",
+        "search_d01"
+      ],
+      "mode": "local",
+      "summary": {
+        "total": 2,
+        "correct": 2,
+        "wrong": 0,
+        "skipped": 0,
+        "unverified": 0,
+        "answerable": 2,
+        "reward": 26,
+        "possible_reward": 26,
+        "seconds": 0.052910214999883465,
+        "llm_calls": 0,
+        "llm_spent": 0.0,
+        "llm_reserved": 0.0,
+        "false_positive_fraction": 0.0,
+        "answer_precision": 1.0,
+        "skip_fraction": 0.0,
+        "justified_refusals": 0,
+        "unanswerable": 0,
+        "justified_refusal_recall": null,
+        "false_negative_skips": 0,
+        "paid_correct_reward_per_unit": null
+      }
+    },
+    {
+      "pair_id": "pair_05",
+      "tasks": [
+        "math_d04",
+        "search_d01"
+      ],
+      "mode": "mock-good",
+      "summary": {
+        "total": 2,
+        "correct": 2,
+        "wrong": 0,
+        "skipped": 0,
+        "unverified": 0,
+        "answerable": 2,
+        "reward": 26,
+        "possible_reward": 26,
+        "seconds": 0.014506182999866724,
+        "llm_calls": 0,
+        "llm_spent": 0.0,
+        "llm_reserved": 0.0,
+        "false_positive_fraction": 0.0,
+        "answer_precision": 1.0,
+        "skip_fraction": 0.0,
+        "justified_refusals": 0,
+        "unanswerable": 0,
+        "justified_refusal_recall": null,
+        "false_negative_skips": 0,
+        "paid_correct_reward_per_unit": null
+      }
+    },
+    {
+      "pair_id": "pair_07",
+      "tasks": [
+        "math_d15",
+        "search_d15"
+      ],
+      "mode": "local",
+      "summary": {
+        "total": 2,
+        "correct": 2,
+        "wrong": 0,
+        "skipped": 0,
+        "unverified": 0,
+        "answerable": 2,
+        "reward": 7,
+        "possible_reward": 7,
+        "seconds": 0.01268894500026363,
+        "llm_calls": 0,
+        "llm_spent": 0.0,
+        "llm_reserved": 0.0,
+        "false_positive_fraction": 0.0,
+        "answer_precision": 1.0,
+        "skip_fraction": 0.0,
+        "justified_refusals": 0,
+        "unanswerable": 0,
+        "justified_refusal_recall": null,
+        "false_negative_skips": 0,
+        "paid_correct_reward_per_unit": null
+      }
+    },
+    {
+      "pair_id": "pair_07",
+      "tasks": [
+        "math_d15",
+        "search_d15"
+      ],
+      "mode": "mock-good",
+      "summary": {
+        "total": 2,
+        "correct": 2,
+        "wrong": 0,
+        "skipped": 0,
+        "unverified": 0,
+        "answerable": 2,
+        "reward": 7,
+        "possible_reward": 7,
+        "seconds": 0.021887167999921076,
+        "llm_calls": 0,
+        "llm_spent": 0.0,
+        "llm_reserved": 0.0,
+        "false_positive_fraction": 0.0,
+        "answer_precision": 1.0,
+        "skip_fraction": 0.0,
+        "justified_refusals": 0,
+        "unanswerable": 0,
+        "justified_refusal_recall": null,
+        "false_negative_skips": 0,
+        "paid_correct_reward_per_unit": null
+      }
+    },
+    {
+      "pair_id": "pair_09",
+      "tasks": [
+        "math_d07",
+        "data_analysis_d01"
+      ],
+      "mode": "local",
+      "summary": {
+        "total": 2,
+        "correct": 2,
+        "wrong": 0,
+        "skipped": 0,
+        "unverified": 0,
+        "answerable": 2,
+        "reward": 8,
+        "possible_reward": 8,
+        "seconds": 0.012785144999725162,
+        "llm_calls": 0,
+        "llm_spent": 0.0,
+        "llm_reserved": 0.0,
+        "false_positive_fraction": 0.0,
+        "answer_precision": 1.0,
+        "skip_fraction": 0.0,
+        "justified_refusals": 0,
+        "unanswerable": 0,
+        "justified_refusal_recall": null,
+        "false_negative_skips": 0,
+        "paid_correct_reward_per_unit": null
+      }
+    },
+    {
+      "pair_id": "pair_09",
+      "tasks": [
+        "math_d07",
+        "data_analysis_d01"
+      ],
+      "mode": "mock-good",
+      "summary": {
+        "total": 2,
+        "correct": 2,
+        "wrong": 0,
+        "skipped": 0,
+        "unverified": 0,
+        "answerable": 2,
+        "reward": 8,
+        "possible_reward": 8,
+        "seconds": 0.011854220000714122,
+        "llm_calls": 0,
+        "llm_spent": 0.0,
+        "llm_reserved": 0.0,
+        "false_positive_fraction": 0.0,
+        "answer_precision": 1.0,
+        "skip_fraction": 0.0,
+        "justified_refusals": 0,
+        "unanswerable": 0,
+        "justified_refusal_recall": null,
+        "false_negative_skips": 0,
+        "paid_correct_reward_per_unit": null
+      }
+    },
+    {
+      "pair_id": "pair_12",
+      "tasks": [
+        "math_d10",
+        "data_analysis_d12"
+      ],
+      "mode": "local",
+      "summary": {
+        "total": 2,
+        "correct": 2,
+        "wrong": 0,
+        "skipped": 0,
+        "unverified": 0,
+        "answerable": 2,
+        "reward": 18,
+        "possible_reward": 18,
+        "seconds": 0.011040545999549067,
+        "llm_calls": 0,
+        "llm_spent": 0.0,
+        "llm_reserved": 0.0,
+        "false_positive_fraction": 0.0,
+        "answer_precision": 1.0,
+        "skip_fraction": 0.0,
+        "justified_refusals": 0,
+        "unanswerable": 0,
+        "justified_refusal_recall": null,
+        "false_negative_skips": 0,
+        "paid_correct_reward_per_unit": null
+      }
+    },
+    {
+      "pair_id": "pair_12",
+      "tasks": [
+        "math_d10",
+        "data_analysis_d12"
+      ],
+      "mode": "mock-good",
+      "summary": {
+        "total": 2,
+        "correct": 2,
+        "wrong": 0,
+        "skipped": 0,
+        "unverified": 0,
+        "answerable": 2,
+        "reward": 18,
+        "possible_reward": 18,
+        "seconds": 0.01006344600000375,
+        "llm_calls": 0,
+        "llm_spent": 0.0,
+        "llm_reserved": 0.0,
+        "false_positive_fraction": 0.0,
+        "answer_precision": 1.0,
+        "skip_fraction": 0.0,
+        "justified_refusals": 0,
+        "unanswerable": 0,
+        "justified_refusal_recall": null,
+        "false_negative_skips": 0,
+        "paid_correct_reward_per_unit": null
+      }
+    },
+    {
+      "pair_id": "pair_14",
+      "tasks": [
+        "search_d08",
+        "data_analysis_d13"
+      ],
+      "mode": "local",
+      "summary": {
+        "total": 2,
+        "correct": 2,
+        "wrong": 0,
+        "skipped": 0,
+        "unverified": 0,
+        "answerable": 2,
+        "reward": 8,
+        "possible_reward": 8,
+        "seconds": 0.013023947000419867,
+        "llm_calls": 0,
+        "llm_spent": 0.0,
+        "llm_reserved": 0.0,
+        "false_positive_fraction": 0.0,
+        "answer_precision": 1.0,
+        "skip_fraction": 0.0,
+        "justified_refusals": 0,
+        "unanswerable": 0,
+        "justified_refusal_recall": null,
+        "false_negative_skips": 0,
+        "paid_correct_reward_per_unit": null
+      }
+    },
+    {
+      "pair_id": "pair_14",
+      "tasks": [
+        "search_d08",
+        "data_analysis_d13"
+      ],
+      "mode": "mock-good",
+      "summary": {
+        "total": 2,
+        "correct": 2,
+        "wrong": 0,
+        "skipped": 0,
+        "unverified": 0,
+        "answerable": 2,
+        "reward": 8,
+        "possible_reward": 8,
+        "seconds": 0.014743255999746907,
+        "llm_calls": 0,
+        "llm_spent": 0.0,
+        "llm_reserved": 0.0,
+        "false_positive_fraction": 0.0,
+        "answer_precision": 1.0,
+        "skip_fraction": 0.0,
+        "justified_refusals": 0,
+        "unanswerable": 0,
+        "justified_refusal_recall": null,
+        "false_negative_skips": 0,
+        "paid_correct_reward_per_unit": null
+      }
+    },
+    {
+      "pair_id": "pair_17",
+      "tasks": [
+        "coding_d01",
+        "math_d01"
+      ],
+      "mode": "local",
+      "summary": {
+        "total": 2,
+        "correct": 1,
+        "wrong": 0,
+        "skipped": 1,
+        "unverified": 0,
+        "answerable": 2,
+        "reward": 1,
+        "possible_reward": 4,
+        "seconds": 0.006888643000365846,
+        "llm_calls": 0,
+        "llm_spent": 0.0,
+        "llm_reserved": 0.0,
+        "false_positive_fraction": 0.0,
+        "answer_precision": 1.0,
+        "skip_fraction": 0.5,
+        "justified_refusals": 0,
+        "unanswerable": 0,
+        "justified_refusal_recall": null,
+        "false_negative_skips": 1,
+        "paid_correct_reward_per_unit": null
+      }
+    },
+    {
+      "pair_id": "pair_17",
+      "tasks": [
+        "coding_d01",
+        "math_d01"
+      ],
+      "mode": "mock-good",
+      "summary": {
+        "total": 2,
+        "correct": 1,
+        "wrong": 0,
+        "skipped": 1,
+        "unverified": 0,
+        "answerable": 2,
+        "reward": 1,
+        "possible_reward": 4,
+        "seconds": 0.005302566999944247,
+        "llm_calls": 0,
+        "llm_spent": 0.0,
+        "llm_reserved": 0.0,
+        "false_positive_fraction": 0.0,
+        "answer_precision": 1.0,
+        "skip_fraction": 0.5,
+        "justified_refusals": 0,
+        "unanswerable": 0,
+        "justified_refusal_recall": null,
+        "false_negative_skips": 1,
+        "paid_correct_reward_per_unit": null
+      }
+    },
+    {
+      "pair_id": "pair_19",
+      "tasks": [
+        "coding_d07",
+        "data_analysis_d01"
+      ],
+      "mode": "local",
+      "summary": {
+        "total": 2,
+        "correct": 1,
+        "wrong": 0,
+        "skipped": 1,
+        "unverified": 0,
+        "answerable": 2,
+        "reward": 3,
+        "possible_reward": 4,
+        "seconds": 0.00695904399981373,
+        "llm_calls": 0,
+        "llm_spent": 0.0,
+        "llm_reserved": 0.0,
+        "false_positive_fraction": 0.0,
+        "answer_precision": 1.0,
+        "skip_fraction": 0.5,
+        "justified_refusals": 0,
+        "unanswerable": 0,
+        "justified_refusal_recall": null,
+        "false_negative_skips": 1,
+        "paid_correct_reward_per_unit": null
+      }
+    },
+    {
+      "pair_id": "pair_19",
+      "tasks": [
+        "coding_d07",
+        "data_analysis_d01"
+      ],
+      "mode": "mock-good",
+      "summary": {
+        "total": 2,
+        "correct": 1,
+        "wrong": 0,
+        "skipped": 1,
+        "unverified": 0,
+        "answerable": 2,
+        "reward": 3,
+        "possible_reward": 4,
+        "seconds": 0.008408800000324845,
+        "llm_calls": 0,
+        "llm_spent": 0.0,
+        "llm_reserved": 0.0,
+        "false_positive_fraction": 0.0,
+        "answer_precision": 1.0,
+        "skip_fraction": 0.5,
+        "justified_refusals": 0,
+        "unanswerable": 0,
+        "justified_refusal_recall": null,
+        "false_negative_skips": 1,
+        "paid_correct_reward_per_unit": null
+      }
+    }
+  ],
+  "historical_hybrid_pairs": [
+    {
+      "pair_id": "pair_01",
+      "mode": "local",
+      "correct": 2
+    },
+    {
+      "pair_id": "pair_02",
+      "mode": "local",
+      "correct": 2
+    },
+    {
+      "pair_id": "pair_03",
+      "mode": "local",
+      "correct": 2
+    },
+    {
+      "pair_id": "pair_04",
+      "mode": "local",
+      "correct": 1
+    },
+    {
+      "pair_id": "pair_05",
+      "mode": "local",
+      "correct": 2
+    },
+    {
+      "pair_id": "pair_06",
+      "mode": "local",
+      "correct": 0
+    },
+    {
+      "pair_id": "pair_07",
+      "mode": "local",
+      "correct": 2
+    },
+    {
+      "pair_id": "pair_08",
+      "mode": "local",
+      "correct": 2
+    },
+    {
+      "pair_id": "pair_09",
+      "mode": "local",
+      "correct": 2
+    },
+    {
+      "pair_id": "pair_10",
+      "mode": "local",
+      "correct": 0
+    },
+    {
+      "pair_id": "pair_11",
+      "mode": "local",
+      "correct": 1
+    },
+    {
+      "pair_id": "pair_12",
+      "mode": "local",
+      "correct": 2
+    },
+    {
+      "pair_id": "pair_13",
+      "mode": "local",
+      "correct": 2
+    },
+    {
+      "pair_id": "pair_14",
+      "mode": "local",
+      "correct": 2
+    },
+    {
+      "pair_id": "pair_15",
+      "mode": "local",
+      "correct": 2
+    },
+    {
+      "pair_id": "pair_16",
+      "mode": "local",
+      "correct": 1
+    },
+    {
+      "pair_id": "pair_17",
+      "mode": "local",
+      "correct": 1
+    },
+    {
+      "pair_id": "pair_18",
+      "mode": "local",
+      "correct": 1
+    },
+    {
+      "pair_id": "pair_19",
+      "mode": "local",
+      "correct": 1
+    },
+    {
+      "pair_id": "pair_20",
+      "mode": "local",
+      "correct": 0
+    },
+    {
+      "pair_id": "pair_01",
+      "mode": "mock-good",
+      "correct": 2
+    },
+    {
+      "pair_id": "pair_02",
+      "mode": "mock-good",
+      "correct": 2
+    },
+    {
+      "pair_id": "pair_03",
+      "mode": "mock-good",
+      "correct": 2
+    },
+    {
+      "pair_id": "pair_04",
+      "mode": "mock-good",
+      "correct": 1
+    },
+    {
+      "pair_id": "pair_05",
+      "mode": "mock-good",
+      "correct": 2
+    },
+    {
+      "pair_id": "pair_06",
+      "mode": "mock-good",
+      "correct": 0
+    },
+    {
+      "pair_id": "pair_07",
+      "mode": "mock-good",
+      "correct": 2
+    },
+    {
+      "pair_id": "pair_08",
+      "mode": "mock-good",
+      "correct": 2
+    },
+    {
+      "pair_id": "pair_09",
+      "mode": "mock-good",
+      "correct": 2
+    },
+    {
+      "pair_id": "pair_10",
+      "mode": "mock-good",
+      "correct": 0
+    },
+    {
+      "pair_id": "pair_11",
+      "mode": "mock-good",
+      "correct": 2
+    },
+    {
+      "pair_id": "pair_12",
+      "mode": "mock-good",
+      "correct": 2
+    },
+    {
+      "pair_id": "pair_13",
+      "mode": "mock-good",
+      "correct": 2
+    },
+    {
+      "pair_id": "pair_14",
+      "mode": "mock-good",
+      "correct": 2
+    },
+    {
+      "pair_id": "pair_15",
+      "mode": "mock-good",
+      "correct": 2
+    },
+    {
+      "pair_id": "pair_16",
+      "mode": "mock-good",
+      "correct": 1
+    },
+    {
+      "pair_id": "pair_17",
+      "mode": "mock-good",
+      "correct": 1
+    },
+    {
+      "pair_id": "pair_18",
+      "mode": "mock-good",
+      "correct": 1
+    },
+    {
+      "pair_id": "pair_19",
+      "mode": "mock-good",
+      "correct": 1
+    },
+    {
+      "pair_id": "pair_20",
+      "mode": "mock-good",
+      "correct": 0
+    }
+  ],
+  "qualification_full20_rerun": false,
+  "full128_rerun": false,
+  "holdout_inputs_or_oracles_inspected": false,
+  "real_llm_requests": 0,
+  "new_unit_methods": 40,
+  "wsl_acceptance": {
+    "discovered": 709,
+    "passed": 701,
+    "failures": [
+      "test_runtime_limits.RuntimeLimitTests.test_slow_fallback_preparation_does_not_block_next_local_task"
+    ],
+    "errors": [],
+    "skipped": [
+      [
+        "test_benchmark.BenchmarkTests.test_authored_numeric_anchors_have_second_checks",
+        "V4-B no-holdout policy: dataset-wide validation"
+      ],
+      [
+        "test_benchmark.BenchmarkTests.test_coding_fixtures_remain_data_and_worker_has_no_trust_flag",
+        "V4-B no-holdout policy: dataset-wide validation"
+      ],
+      [
+        "test_benchmark.BenchmarkTests.test_distribution_split_and_task_input_separation",
+        "V4-B no-holdout policy: dataset-wide validation"
+      ],
+      [
+        "test_benchmark.BenchmarkTests.test_generation_is_byte_reproducible_and_has_no_agent_imports",
+        "V4-B no-holdout policy: dataset-wide validation"
+      ],
+      [
+        "test_benchmark.BenchmarkTests.test_manifest_detects_mutation_and_generator_refuses_overwrite",
+        "V4-B no-holdout policy: dataset-wide validation"
+      ],
+      [
+        "test_benchmark.BenchmarkTests.test_pairs_are_predeclared_diverse_and_answerable",
+        "V4-B no-holdout policy: dataset-wide validation"
+      ],
+      [
+        "test_benchmark.BenchmarkTests.test_sql_references_recompute_from_csv_not_solver",
+        "V4-B no-holdout policy: dataset-wide validation"
+      ]
+    ],
+    "seconds": 193.135,
+    "new_graph_methods_passed": 40
+  },
+  "docker_acceptance": "not rebuilt; optional source COPY/allowlist unit-tested; Q5 image not presented as V4-B",
+  "production_graph_enabled": false,
+  "production_development_local": {
+    "total": 64,
+    "correct": 36,
+    "wrong": 0,
+    "skipped": 28,
+    "unverified": 0,
+    "answerable": 52,
+    "reward": 217,
+    "possible_reward": 287,
+    "seconds": 0.21251182799960588,
+    "llm_calls": 0,
+    "llm_spent": 0.0,
+    "llm_reserved": 0.0,
+    "false_positive_fraction": 0.0,
+    "answer_precision": 1.0,
+    "skip_fraction": 0.4375,
+    "justified_refusals": 12,
+    "unanswerable": 12,
+    "justified_refusal_recall": 1.0,
+    "false_negative_skips": 16,
+    "paid_correct_reward_per_unit": null
+  },
+  "production_development_mock": {
+    "total": 64,
+    "correct": 36,
+    "wrong": 0,
+    "skipped": 28,
+    "unverified": 0,
+    "answerable": 52,
+    "reward": 217,
+    "possible_reward": 287,
+    "seconds": 0.23470181100219634,
+    "llm_calls": 0,
+    "llm_spent": 0.0,
+    "llm_reserved": 0.0,
+    "false_positive_fraction": 0.0,
+    "answer_precision": 1.0,
+    "skip_fraction": 0.4375,
+    "justified_refusals": 12,
+    "unanswerable": 12,
+    "justified_refusal_recall": 1.0,
+    "false_negative_skips": 16,
+    "paid_correct_reward_per_unit": null
+  },
+  "experimental_runtime_sha256": {
+    "Dockerfile": "1c305b053b839079ddc760e917cf18b2986e33fe5bf0fd653b48136a15d88a7c",
+    ".dockerignore": "360d5919d039327d4088240fbf11a8a3e8c831e93a35626293e8c03367a94e3d",
+    "requirements.txt": "d8c2924d446449dfd156153333b01a3ae0ef3fd0da64acfe36eae937663a3da3",
+    "run_agent.py": "88938b2c66ddcf2b7428976390433c6c719cbcdbdc8969a07346effbdbaf401c",
+    "harness.py": "55ebbca36dd477b14e82c3cb6472e10076242902a82c30aa01b14629e7edd6b4",
+    "planner.py": "4db10378746a8decbf556defbcbc207afc7fc472cb8827404ba89c15beec3b8d",
+    "budget_manager.py": "8259d00cf23cb1c5f0bd2162784f0c91dc005cf570e99d9a4cfb30929abcbb4f",
+    "llm_gateway.py": "c17dbf2de2655965a88cc00f0ee709de81621770a44fa824b27cec560d923b13",
+    "llm_fallback.py": "d9c71832f892a3a1114d883eea39876caa5e98f3114c5533f5a0c943670e8020",
+    "math_solver.py": "064d1ea11f947062bd277c62d9a3d5f89d731cbaec8fa943a9da2a693c9b4d0d",
+    "search_solver.py": "eda338c7021b266440dca051855d5a8fb4e0a1a0d899fa72075672c39c9ce862",
+    "relation_graph.py": "cb836137764f4e501e549468719d0176c7e4c70375c9fc89b357243554a27f73",
+    "data_solver.py": "c4a9b0b1e56c0b06685a5d88df0aafa2fc11644bf7c658c7e5da928de457712a",
+    "coding_solver.py": "e64d5913e831c72a2afd36e70512f290886d8fd7be577ed38d6a57ac3c30d9e7",
+    "safe_files.py": "04aa6c98f6da2555b80ab298d0937ea32f39a0deea0710fa78e97d849d6c7cfb",
+    "plan_semantics.py": "3e8cfcbdf22d470c8d970d1a5fbdadfc5b219a1f32906a8bb7f6526d6f96f7b7",
+    "runtime_limits.py": "cdd72e8fc6bc119b6cd76fe4560a910552c80e04edb27e2d3d29cb1d3821e669"
+  },
+  "development_local_scope": "explicit experimental portfolio; not default production",
+  "development_mock_scope": "explicit experimental portfolio; mock requests zero",
+  "acceptance": "experiment complete; production enable blocked by WSL regression and full-holdout acceptance gap",
+  "wsl_previous_run": {
+    "discovered": 708,
+    "failures": 3,
+    "skipped": 7,
+    "seconds": 187.462
+  },
+  "exact_solver_ast_unchanged": true,
+  "baseline_control_runtime_limits": {
+    "tests": 13,
+    "failures": 2,
+    "scope": "Q5 runtime from git show; same old test module; no production changes"
+  },
+  "validation_artifacts": {
+    "root": "/tmp/v4-b-acceptance-riq_q1dy",
+    "suite": "wsl-final-state.log",
+    "development": "final-state",
+    "baseline_timing": "runtime-limits-q5.log",
+    "current_timing": "runtime-limits-current.log"
+  }
+}

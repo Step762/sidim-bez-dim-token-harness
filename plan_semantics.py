@@ -200,26 +200,10 @@ def search_spec(problem, index):
             # Explicit local-only inverse operation; the forward LLM-plan schema
             # cannot claim this field, because it is never a KB fact key.
             return root, [], 'inverse_' + relation
-    subject, field = None, None
-    for pattern, candidate in search_solver._QUESTIONS:
-        if m := pattern.fullmatch(question):
-            subject, field = m[1], candidate
-            break
-    if subject is None:
-        patterns = (
-            (r"(?:what|which) city is (.+) (?:based|located|headquartered)(?: in)?", "headquarters"),
-            (r"where is (.+) (?:based|located)(?: in)?", "headquarters"),
-            (r"what is the (?:birth year|year of birth) of (.+)", "born"),
-            (r"when was (.+) established", "founded"),
-        )
-        for pattern, candidate in patterns:
-            if m := _match(pattern, question):
-                subject, field = m[1], candidate
-                break
-    if subject is None:
-        raise UnsupportedMeaning("unsupported or ambiguous search question")
-
-    relation_words = "|".join(RELATIONS)
+    try:
+        subject, field = search_solver.question_subject(question)
+    except search_solver.UnsupportedSearch as exc:
+        raise UnsupportedMeaning(str(exc)) from None
 
     def expression(text, depth=0):
         text = text.strip()
@@ -227,18 +211,11 @@ def search_spec(problem, index):
             raise UnsupportedMeaning("search chain is too long")
         if (canonical := search_solver._resolve_entity(text, index)) is not None:
             # A literal entity name must not hide another valid expression.
-            possessive = _match(rf"(.+)['’]s ({relation_words})", text)
-            nested = _match(rf"(?:the )?({relation_words}) of (.+)", text)
-            alternative = possessive[1] if possessive else nested[2] if nested else None
-            if alternative is not None and search_solver._resolve_entity(alternative, index) is not None:
-                raise UnsupportedMeaning("literal entity and relation expression are ambiguous")
+            search_solver._check_literal_expression(text, index)
             return canonical, []
-        if m := _match(rf"(.+)['’]s ({relation_words})", text):
-            root, chain = expression(m[1], depth + 1)
-            return root, chain + [RELATIONS[m[2].lower()]]
-        if m := _match(rf"(?:the )?({relation_words}) of (.+)", text):
-            root, chain = expression(m[2], depth + 1)
-            return root, chain + [RELATIONS[m[1].lower()]]
+        if term := search_solver.relation_term(text):
+            root, chain = expression(term[0], depth + 1)
+            return root, chain + [term[1]]
         raise UnsupportedMeaning("search direction or subject cannot be established")
 
     root, chain = expression(subject)

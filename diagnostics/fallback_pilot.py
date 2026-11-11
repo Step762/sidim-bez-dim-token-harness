@@ -294,6 +294,9 @@ def run_pilot(original,math_report,offline,*,config=None,scenario="valid",worksp
 
 def main(argv=None):
     argv = list(sys.argv[1:] if argv is None else argv)
+    if '--qwen-direct' in argv:
+        from diagnostics.qwen_profile import main as qwen_main
+        return qwen_main([arg for arg in argv if arg != '--qwen-direct'])
     if "--search" in argv:
         return search_main([arg for arg in argv if arg!="--search"])
     parser = argparse.ArgumentParser(description=__doc__)
