@@ -109,6 +109,25 @@ class StaticCodingWorkflowTests(unittest.TestCase):
         self.assertEqual(source.read_text(encoding="utf-8"), original.replace("!=", "=="))
         self.assertEqual(task.joinpath("answer.txt").read_text(), "DONE\n")
 
+    def test_test_method_parameter_cannot_shadow_import(self):
+        original = "def total(a,b):\n    return a-b\n"
+        cases = (
+            ("module-alias", "import repair_me as self", "self.total(3, 7)"),
+            ("function-alias", "from repair_me import total as self", "self(3, 7)"),
+        )
+        paths = []
+        for name, import_statement, call in cases:
+            task, source, tests = self.task(name, original, [f"self.assertEqual({call}, 10)"])
+            suite = tests.read_text(encoding="utf-8")
+            tests.write_text(suite.replace("import repair_me as subject", import_statement),
+                             encoding="utf-8")
+            paths.append((task, source))
+
+        self.assertEqual(self.run_static(), {"solved": 0, "skipped": len(cases), "failed": 0})
+        for task, source in paths:
+            self.assertEqual(source.read_text(encoding="utf-8"), original)
+            self.assertFalse((task / "answer.txt").exists())
+
     def test_stale_visible_tests_prevent_publication(self):
         source = "def total(a,b):\n    return a-b\n"
         task, source_file, tests = self.task("changed", source, ["self.assertEqual(subject.total(3, 7), 10)"])

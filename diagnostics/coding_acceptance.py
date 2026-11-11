@@ -152,7 +152,7 @@ def _visible_examples(
     suite = tree.body[2]
     reserved = {"unittest", "load_tests", "setUpModule", "tearDownModule"}
     if (
-        binding in reserved or binding.startswith("_")
+        binding == "self" or binding in reserved or binding.startswith("_")
         or suite.name in reserved or suite.name == binding or suite.name.startswith("_")
     ):
         raise UnsupportedSource("test scaffold shadows an import or reserved binding")
