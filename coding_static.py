@@ -46,9 +46,6 @@ def _select_repair(source: str, tests: str, module: str) -> str:
         raise UnsupportedCoding("restored syntax does not satisfy the visible tests")
 
     examples = _visible_examples(tests, original, module=module)
-    if all(_passes(original, inputs, expected) for _, inputs, expected in examples):
-        return source
-
     if original.operator in ARITHMETIC_OPERATORS and original.literal is None:
         alternatives = ARITHMETIC_OPERATORS
     else:
@@ -58,7 +55,7 @@ def _select_repair(source: str, tests: str, module: str) -> str:
             or PREDICATE_EDITS.get(original.operator)
         )
         alternatives = (replacement,) if replacement is not None else ()
-    winner = None
+    winner = original if all(_passes(original, inputs, expected) for _, inputs, expected in examples) else None
     for operator in alternatives:
         if operator == original.operator:
             continue
@@ -69,6 +66,8 @@ def _select_repair(source: str, tests: str, module: str) -> str:
             winner = repaired
     if winner is None:
         raise UnsupportedCoding("no supported repair satisfies the visible tests")
+    if winner is original:
+        return source
 
     candidate = apply_operator_edit(source, _operator_patch(source, original.operator, winner.operator))
     if parse_operator_return(candidate) != winner:

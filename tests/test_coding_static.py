@@ -214,3 +214,18 @@ class StaticCodingWorkflowTests(unittest.TestCase):
         self.assertFalse(task.joinpath("answer.txt").exists())
         self.assertEqual(unique_source.read_text(encoding="utf-8"), original.replace("*", "/"))
         self.assertEqual(unique.joinpath("answer.txt").read_text(), "DONE\n")
+
+    def test_passing_original_still_needs_distinguishing_checks(self):
+        original = "def total(a,b):\n    return a-b\n"
+        task, source, _ = self.task("passing-but-ambiguous", original, [
+            "self.assertEqual(subject.total(5, 0), 5)",
+        ])
+        distinct, distinct_source, _ = self.task("passing-and-distinct", original, [
+            "self.assertEqual(subject.total(7, 2), 5)",
+        ])
+
+        self.assertEqual(self.run_static(), {"solved": 1, "skipped": 1, "failed": 0})
+        self.assertEqual(source.read_text(encoding="utf-8"), original)
+        self.assertFalse((task / "answer.txt").exists())
+        self.assertEqual(distinct_source.read_text(encoding="utf-8"), original)
+        self.assertEqual((distinct / "answer.txt").read_text(encoding="utf-8"), "DONE\n")
