@@ -12,11 +12,16 @@ def main() -> int:
     from llm_gateway import DEFAULT_MODEL, MODELS
     from planner import STRATEGIES
 
-    parser = argparse.ArgumentParser(description="Run local task routes with optional trusted code repair.")
+    parser = argparse.ArgumentParser(description="Run local task routes with optional Coding repair.")
     parser.add_argument("--tasks-dir", required=True, type=Path)
-    parser.add_argument(
+    coding_mode = parser.add_mutually_exclusive_group()
+    coding_mode.add_argument(
         "--trusted-code", action="store_true",
         help="execute coding tests only in explicitly trusted working copies; this is not a sandbox",
+    )
+    coding_mode.add_argument(
+        "--static-coding", action="store_true",
+        help="infer bounded Coding repairs from literal tests without executing task Python",
     )
     llm_mode = parser.add_mutually_exclusive_group()
     llm_mode.add_argument("--enable-llm", dest="llm", action="store_const", const=True,
@@ -73,7 +78,7 @@ def main() -> int:
 
     report = {}
     counts = asyncio.run(run_tasks(
-        args.tasks_dir, allow_trusted_code=args.trusted_code, llm=gateway,
+        args.tasks_dir, allow_trusted_code=args.trusted_code, allow_static_coding=args.static_coding, llm=gateway,
         budget=int(budget) if budget is not None else None,
         manager=manager,
         strategy=args.strategy, report=report,limits=limits,

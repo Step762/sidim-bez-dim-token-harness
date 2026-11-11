@@ -54,7 +54,7 @@ class Features:
     blocker: str = ""
 
 
-def _features(task, trusted_code=False) -> Features:
+def _features(task, trusted_code=False, *, static_coding=False) -> Features:
     """Only syntax and file metadata; never run a solver or execute task text."""
     text = " ".join(task.instruction.split())
     numbers = len(re.findall(r"(?<!\w)[0-9]+", text))
@@ -71,7 +71,7 @@ def _features(task, trusted_code=False) -> Features:
         native = data_solver._INSTRUCTION.fullmatch(text) is not None
     elif task.task_type == "coding":
         native = coding_solver._INSTRUCTION.fullmatch(text) is not None
-        if not trusted_code:
+        if not trusted_code and static_coding is not True:
             return Features(complexity, native, False, "unsafe")
     else:
         return Features(complexity, False, False, "unsupported_type")
@@ -107,10 +107,10 @@ def _features(task, trusted_code=False) -> Features:
     return Features(complexity, native, True)
 
 
-def features(task, trusted_code=False) -> Features:
+def features(task, trusted_code=False, *, static_coding=False) -> Features:
     try:
         with open_directory(task.directory):
-            return _features(task, trusted_code)
+            return _features(task, trusted_code, static_coding=static_coding)
     except (OSError, RuntimeError, UnsafeFile):
         return Features(1, False, False, "invalid_data")
 
@@ -159,7 +159,8 @@ class Planner:
     original/reward are controlled ordering baselines: they retain the same
     local-first execution, budget admission and safety checks as priority.
     """
-    def __init__(self, tasks, manager, gateway=None, *, strategy="priority", trusted_code=False, llm_enabled=True,limits=None):
+    def __init__(self, tasks, manager, gateway=None, *, strategy="priority", trusted_code=False,
+                 static_coding=False, llm_enabled=True, limits=None):
         if strategy not in STRATEGIES:
             raise ValueError("unknown planning strategy")
         if gateway is not None and gateway.manager is not manager:
@@ -167,12 +168,14 @@ class Planner:
         self.manager, self.gateway = manager, gateway
         self.strategy, self.llm_enabled = strategy, llm_enabled
         self.entries = []
+        feature_options = {"static_coding": True} if static_coding is True else {}
         for task in tasks:
             try:
                 if limits is None:
-                    value = features(task,trusted_code)
+                    value = features(task, trusted_code, **feature_options)
                 else:
-                    with limits.sync(): value = features(task,trusted_code)
+                    with limits.sync():
+                        value = features(task, trusted_code, **feature_options)
             except OperationTimeout:
                 value = Features(1,False,False,"timed_out")
             self.entries.append(Entry(task,value))

@@ -4,12 +4,15 @@ import argparse
 import ast
 from dataclasses import replace
 import json
+import math
 import operator
 import os
 from pathlib import Path
 import sys
 
 from diagnostics.coding_research import (
+    CASE_METHOD_EDITS,
+    LIST_OPERATORS,
     MAX_SOURCE_BYTES,
     OperatorReturn,
     PREDICATE_EDITS,
@@ -41,6 +44,12 @@ OPERATIONS = {
     ast.GtE: operator.ge,
     ast.Eq: operator.eq,
     ast.NotEq: operator.ne,
+    "upper": str.upper,
+    "lower": str.lower,
+    "mean_floor": lambda values: sum(values) // len(values),
+    "mean_true": lambda values: sum(values) / len(values),
+    "first_item": operator.itemgetter(0),
+    "last_item": operator.itemgetter(-1),
 }
 
 _SCAFFOLD = """
@@ -60,6 +69,17 @@ class InvalidPatch(ValueError):
     """The proposed edit is not a supported local change."""
 
 
+def _mean_expectation(node: ast.expr) -> int | float:
+    match node:
+        case ast.Constant(value=value) if type(value) is float and math.isfinite(value):
+            return value
+        case ast.UnaryOp(op=ast.USub(), operand=ast.Constant(value=value)) \
+                if type(value) is float and math.isfinite(value):
+            return -value
+        case _:
+            return parse_int_literal(node)
+
+
 def _apply_patch(source: str, edit: object) -> str:
     if not isinstance(edit, dict) or edit.get("file") != SOURCE:
         raise InvalidPatch("expected an edit to engine.py")
@@ -73,18 +93,45 @@ def _apply_patch(source: str, edit: object) -> str:
         raise InvalidPatch(str(exc)) from exc
 
 
-def _visible_examples(text: str, function: OperatorReturn) -> list[tuple[int, tuple[int, ...], int | bool]]:
+def _visible_examples(
+    text: str, function: OperatorReturn, *, module: str = "engine",
+) -> list[tuple[int, tuple[int | str | tuple[int, ...], ...], int | bool | float | str]]:
     tree = parse_bounded_module(text)
     # Validate the entire surrounding module as well as each assertion. An
     # unsupported fixture, hook or extra statement invalidates the whole suite.
     if len(tree.body) != 4 or not isinstance(tree.body[2], ast.ClassDef):
         raise UnsupportedSource("unsupported unittest scaffold")
+    match tree.body[1]:
+        case ast.Import(names=[ast.alias(name=name, asname=alias)]) if name == module:
+            binding = alias or module
+        case _:
+            raise UnsupportedSource("test must import the declared source module")
     suite = tree.body[2]
-    if len(suite.body) != 1 or not isinstance(suite.body[0], ast.FunctionDef):
-        raise UnsupportedSource("expected one plain test method")
-    method = suite.body[0]
-    statements, method.body = method.body, [ast.Pass()]
-    if ast.dump(tree) != ast.dump(ast.parse(_SCAFFOLD)):
+    reserved = {"unittest", "load_tests", "setUpModule", "tearDownModule"}
+    if (
+        binding in reserved or binding.startswith("_")
+        or suite.name in reserved or suite.name == binding or suite.name.startswith("_")
+    ):
+        raise UnsupportedSource("test scaffold shadows an import or reserved binding")
+    expected_tree = ast.parse(_SCAFFOLD)
+    expected_suite = expected_tree.body[2]
+    expected_method = expected_suite.body[0]
+    statements, method_names = [], set()
+    for method in suite.body:
+        if (
+            not isinstance(method, ast.FunctionDef)
+            or not method.name.startswith("test")
+            or method.name in method_names
+        ):
+            raise UnsupportedSource("expected distinct plain unittest methods")
+        method_names.add(method.name)
+        statements.extend(method.body)
+        method.name, method.body = expected_method.name, [ast.Pass()]
+        if ast.dump(method) != ast.dump(expected_method):
+            raise UnsupportedSource("unsupported unittest method")
+    tree.body[1] = expected_tree.body[1]
+    suite.name, suite.body = expected_suite.name, [expected_method]
+    if ast.dump(tree) != ast.dump(expected_tree):
         raise UnsupportedSource("unsupported unittest scaffold")
 
     examples = []
@@ -93,12 +140,39 @@ def _visible_examples(text: str, function: OperatorReturn) -> list[tuple[int, tu
             case ast.Expr(value=ast.Call(
                 func=ast.Attribute(value=ast.Name(id="self"), attr="assertEqual"),
                 args=[
-                    ast.Call(func=ast.Attribute(value=ast.Name(id="lib"), attr=name),
-                             args=[ast.Starred(value=ast.Tuple(elts=arguments))], keywords=[]),
+                    ast.Call(func=ast.Attribute(value=ast.Name(id=receiver), attr=name),
+                             args=arguments, keywords=[]),
                     expected,
                 ],
                 keywords=[],
-            )) if name == function.function and len(arguments) == len(function.parameters):
+            )) if receiver == binding and name == function.function:
+                if len(arguments) == 1 and isinstance(arguments[0], ast.Starred):
+                    argument_tuple = arguments[0].value
+                    if not isinstance(argument_tuple, ast.Tuple):
+                        raise UnsupportedSource("expected a literal tuple of arguments")
+                    arguments = argument_tuple.elts
+                if len(arguments) != len(function.parameters):
+                    raise UnsupportedSource("visible assertion has the wrong arity")
+                if function.operator in CASE_METHOD_EDITS:
+                    argument = arguments[0]
+                    if not (
+                        isinstance(argument, ast.Constant) and type(argument.value) is str
+                        and isinstance(expected, ast.Constant) and type(expected.value) is str
+                    ):
+                        raise UnsupportedSource("expected literal string input and result")
+                    examples.append((statement.lineno, (argument.value,), expected.value))
+                    continue
+                if function.operator in LIST_OPERATORS:
+                    argument = arguments[0]
+                    if not isinstance(argument, ast.List):
+                        raise UnsupportedSource("expected a literal list of integers")
+                    values = tuple(parse_int_literal(item) for item in argument.elts)
+                    if function.operator in ("mean_floor", "mean_true"):
+                        value = _mean_expectation(expected)
+                    else:
+                        value = parse_int_literal(expected)
+                    examples.append((statement.lineno, (values,), value))
+                    continue
                 inputs = tuple(parse_int_literal(argument) for argument in arguments)
                 if function.operator not in (ast.Gt, ast.GtE, ast.Eq, ast.NotEq):
                     value = parse_int_literal(expected)
@@ -112,14 +186,16 @@ def _visible_examples(text: str, function: OperatorReturn) -> list[tuple[int, tu
     return examples
 
 
-def _passes(function: OperatorReturn, inputs: tuple[int, ...], expected: int | bool) -> bool:
+def _passes(
+    function: OperatorReturn, inputs: tuple[int | str | tuple[int, ...], ...], expected: int | bool | float | str,
+) -> bool:
     if function.modulus is not None:
         operands = (inputs[0] % function.modulus, function.literal)
     else:
         operands = inputs if function.literal is None else (*inputs, function.literal)
     try:
         return OPERATIONS[function.operator](*operands) == expected
-    except ZeroDivisionError:
+    except (IndexError, ZeroDivisionError):
         return False
 
 
@@ -134,7 +210,7 @@ def check_visible_examples(original: str, tests: str, edit: object) -> dict:
         else:
             before = parse_operator_return(original)
             if (
-                before.operator is after.operator
+                before.operator == after.operator
                 or replace(before, operator=after.operator) != after
                 or (before.literal is not None and PREDICATE_EDITS.get(before.operator) is not after.operator)
             ):
@@ -159,9 +235,9 @@ def check_visible_examples(original: str, tests: str, edit: object) -> dict:
     return result
 
 
-def _only_visible_files(workspace: Path) -> bool:
+def _only_visible_files(workspace: Path, names: frozenset[str] = VISIBLE_FILES) -> bool:
     with open_directory(workspace) as directory, os.scandir(directory) as entries:
-        return all(entry.name in VISIBLE_FILES and entry.is_file(follow_symlinks=False) for entry in entries)
+        return all(entry.name in names and entry.is_file(follow_symlinks=False) for entry in entries)
 
 
 def check_task_examples(task_dir: Path, edit: object) -> dict:

@@ -38,6 +38,7 @@ from math_solver import UnsupportedMath, solve_math
 from search_solver import UnsupportedSearch, solve_search
 from data_solver import UnsupportedData, solve_data
 from coding_solver import UnsupportedCoding, solve_coding
+from coding_static import solve_static_coding
 from llm_gateway import LLMError
 from llm_gateway import install_openjiuwen_budget_guard
 from budget_manager import BudgetManager
@@ -90,9 +91,10 @@ SOLVERS = {
 
 
 class SolveTask(WorkflowComponent):
-    def __init__(self,limits):
+    def __init__(self, limits, *, static_coding=False):
         super().__init__()
         self.limits = limits
+        self.static_coding = static_coding is True
 
     async def invoke(self, inputs, session, context):
         if inputs.get("route") == "fallback":
@@ -101,14 +103,17 @@ class SolveTask(WorkflowComponent):
         if solver is None:
             return {"status": "skipped", "answer": "", "reason": "unsupported task type"}
         try:
-            if inputs["task_type"] == "coding" and inputs.get("trusted_code") is not True:
+            if inputs["task_type"] == "coding" and not self.static_coding and inputs.get("trusted_code") is not True:
                 raise UnsupportedCoding("coding execution requires --trusted-code for trusted copies")
             with self.limits.sync():
                 if inputs["task_type"] in {"search", "data_analysis", "coding"}:
                     if not inputs.get("task_dir"):
                         return {"status": "skipped", "answer": "", "reason": "missing task directory"}
                     if inputs["task_type"] == "coding":
-                        answer = solver(inputs["instruction"], Path(inputs["task_dir"]), trusted=True)
+                        if self.static_coding:
+                            answer = solve_static_coding(inputs["instruction"], Path(inputs["task_dir"]))
+                        else:
+                            answer = solver(inputs["instruction"], Path(inputs["task_dir"]), trusted=True)
                     else:
                         answer = solver(inputs["instruction"], Path(inputs["task_dir"]))
                 else:
@@ -161,7 +166,7 @@ class FallbackTask(WorkflowComponent):
             return {"status": "skipped", "answer": "", "reason": "LLM plan or local evidence could not be validated"}
 
 
-def build_workflow(*, llm=None, budget=None, manager=None, limits=None) -> Workflow:
+def build_workflow(*, llm=None, budget=None, manager=None, limits=None, static_coding=False) -> Workflow:
     """Local solving precedes the optional, bounded LLM translation node."""
     if manager is not None and llm is not None and manager is not llm.manager:
         raise ValueError("workflow and gateway must share one BudgetManager")
@@ -179,7 +184,7 @@ def build_workflow(*, llm=None, budget=None, manager=None, limits=None) -> Workf
         },
     )
     workflow.add_workflow_comp(
-        "solve", SolveTask(limits),
+        "solve", SolveTask(limits, static_coding=static_coding),
         inputs_schema={
             "task_type": "${start.task_type}",
             "instruction": "${start.instruction}",
@@ -237,7 +242,7 @@ def save_answer(directory: Path, answer: str) -> None:
 
 
 async def run_tasks(
-    tasks_dir: Path, *, allow_trusted_code: bool = False, llm=None, budget=None,
+    tasks_dir: Path, *, allow_trusted_code: bool = False, allow_static_coding: bool = False, llm=None, budget=None,
     manager=None,
     strategy="priority", report=None,
     limits=None,
@@ -247,7 +252,8 @@ async def run_tasks(
         raise ValueError(f"tasks directory does not exist: {tasks_dir}")
     manager = manager if manager is not None else (llm.manager if llm is not None else BudgetManager(0))
     limits = limits or RuntimeLimits()
-    workflow = build_workflow(llm=llm, budget=budget, manager=manager,limits=limits)
+    workflow = build_workflow(llm=llm, budget=budget, manager=manager, limits=limits,
+                              static_coding=allow_static_coding)
     tasks_dir = tasks_dir.resolve(strict=True)
     with open_directory(tasks_dir) as root:
         with directory_guards({tasks_dir: identity(os.fstat(root))}) as guards:
@@ -282,12 +288,14 @@ async def run_tasks(
                     malformed += 1
                     print(f"{name}: failed: {exc}", flush=True)
             return await _execute_tasks(tasks, malformed, workflow, allow_trusted_code,
-                                        llm, budget, manager, strategy, report,limits)
+                                        llm, budget, manager, strategy, report, limits,
+                                        static_coding=allow_static_coding)
 
 
 async def _execute_tasks(tasks, malformed, workflow, allow_trusted_code,
-                         llm, budget, manager, strategy, report,limits):
+                         llm, budget, manager, strategy, report, limits, *, static_coding=False):
     planner = Planner(tasks, manager, llm, strategy=strategy, trusted_code=allow_trusted_code,
+                      static_coding=static_coding,
                       llm_enabled=budget is None or (type(budget) is int and budget > 0),limits=limits)
     printed = set()
     while not limits.expired:

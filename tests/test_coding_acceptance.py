@@ -89,7 +89,7 @@ class VisibleAcceptanceTests(unittest.TestCase):
         for suite in (
             "import os\n" + TESTS,
             TESTS.replace("    def test_examples", "    @decorator\n    def test_examples"),
-            TESTS.replace("class Examples", "class Other"),
+            TESTS.replace("class Examples", "class lib"),
             TESTS.replace("lib.combine", "lib.different"),
             TESTS.replace("    unittest.main()", "    setup()"),
         ):

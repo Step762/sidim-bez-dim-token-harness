@@ -24,11 +24,15 @@ EXPECTED_OPERATORS = {"add": ast.Add, "subtract": ast.Sub, "multiply": ast.Mult}
 CONTRACTS = (*EXPECTED_OPERATORS, "at_least", "remainder_equals", "scale")
 ARITHMETIC_OPERATORS = (*EXPECTED_OPERATORS.values(), ast.Div)
 PREDICATE_EDITS = {ast.Gt: ast.GtE, ast.NotEq: ast.Eq}
+CASE_METHOD_EDITS = {"upper": "lower", "lower": "upper"}
+LIST_EDITS = {"mean_floor": "mean_true", "mean_true": "mean_floor", "first_item": "last_item"}
+LIST_OPERATORS = frozenset((*LIST_EDITS, *LIST_EDITS.values()))
 OPERATOR_TEXT = {
     ast.Add: "+", ast.Sub: "-", ast.Mult: "*", ast.Div: "/", ast.Gt: ">", ast.GtE: ">=",
     ast.NotEq: "!=", ast.Eq: "==",
+    "mean_floor": "//", "mean_true": "/", "first_item": "0", "last_item": "-1",
 }
-REPLACEMENT_TEXT = ("+", "-", "*", ">=", "==")
+REPLACEMENT_TEXT = ("+", "-", "*", "/", "//", "-1", ">=", "==", *CASE_METHOD_EDITS)
 DOMAIN = "two exact built-in int arguments, assuming sufficient resources"
 UNARY_DOMAIN = "one exact built-in int argument, assuming sufficient resources"
 PLAIN_HEADER = re.compile(r"def [A-Za-z_][A-Za-z0-9_]*\([ \t]*[A-Za-z_][A-Za-z0-9_]*[ \t]*\)(?=[ \t]*(?:#.*)?$)")
@@ -42,7 +46,7 @@ class UnsupportedSource(ValueError):
 class OperatorReturn:
     function: str
     parameters: tuple[str, ...]
-    operator: type[ast.operator] | type[ast.cmpop]
+    operator: type[ast.operator] | type[ast.cmpop] | str
     literal: int | None = None
     modulus: int | None = None
 
@@ -195,6 +199,22 @@ def parse_operator_return(source: str) -> OperatorReturn:
             return OperatorReturn(function.name, parameters, type(op), residue, modulus)
         case ast.BinOp(left=ast.Name(id=name), op=ast.Mult(), right=factor) if parameters == (name,):
             return OperatorReturn(function.name, parameters, ast.Mult, parse_int_literal(factor))
+        case ast.Call(
+            func=ast.Attribute(value=ast.Name(id=name), attr=method), args=[], keywords=[],
+        ) if parameters == (name,) and method in CASE_METHOD_EDITS:
+            return OperatorReturn(function.name, parameters, method)
+        case ast.BinOp(
+            left=ast.Call(func=ast.Name(id="sum"), args=[ast.Name(id=left)], keywords=[]),
+            op=ast.FloorDiv() | ast.Div() as op,
+            right=ast.Call(func=ast.Name(id="len"), args=[ast.Name(id=right)], keywords=[]),
+        ) if parameters == (left,) and left == right and not {"sum", "len"} & {left, function.name}:
+            method = "mean_floor" if isinstance(op, ast.FloorDiv) else "mean_true"
+            return OperatorReturn(function.name, parameters, method)
+        case ast.Subscript(value=ast.Name(id=name), slice=index) if parameters == (name,):
+            value = parse_int_literal(index)
+            if value in (0, -1):
+                return OperatorReturn(function.name, parameters, "first_item" if value == 0 else "last_item")
+            raise UnsupportedSource("expected an endpoint index")
         case _:
             raise UnsupportedSource("expected supported arithmetic or a comparison with a literal threshold")
 
@@ -239,11 +259,15 @@ def verify_candidate(
 
 
 def _operator_patch(source: str, before, after) -> dict:
-    old, new = OPERATOR_TEXT[before], OPERATOR_TEXT[after]
-    tokens = [
-        token for token in tokenize.generate_tokens(io.StringIO(source).readline)
-        if token.type == tokenize.OP and token.string == old
-    ]
+    tokens = list(tokenize.generate_tokens(io.StringIO(source).readline))
+    if before in CASE_METHOD_EDITS:
+        old, new = before, after
+        tokens = [token for previous, token in zip(tokens, tokens[1:])
+                  if previous.string == "." and token.type == tokenize.NAME and token.string == old]
+    else:
+        old, new = OPERATOR_TEXT[before], OPERATOR_TEXT[after]
+        token_type = tokenize.NUMBER if before == "first_item" else tokenize.OP
+        tokens = [token for token in tokens if token.type == token_type and token.string == old]
     if len(tokens) != 1:
         raise UnsupportedSource("expected a unique operator token")
     line, column = tokens[0].start
@@ -256,7 +280,9 @@ def apply_operator_edit(source: str, edit: dict) -> str:
     old, new = edit.get("old"), edit.get("new")
     if (
         type(line) is not int or type(column) is not int or line < 1 or column < 1
-        or old not in OPERATOR_TEXT.values() or new not in REPLACEMENT_TEXT or old == new
+        or type(old) is not str or type(new) is not str
+        or (old not in OPERATOR_TEXT.values() and old not in CASE_METHOD_EDITS)
+        or new not in REPLACEMENT_TEXT or old == new
     ):
         raise ValueError("invalid edit coordinates or operator")
     lines = source.split("\n")
@@ -274,7 +300,7 @@ def source_digest(source: str) -> str:
 
 
 def _missing_colon_edit(source: str) -> dict:
-    header = PLAIN_HEADER.match(source.partition("\n")[0])
+    header = PLAIN_HEADER.match(source.partition("\n")[0].removesuffix("\r"))
     if header is None:
         raise UnsupportedSource("expected a one-line plain function header missing its colon")
     return {"line": 1, "column": header.end() + 1, "old": "", "new": ":"}
