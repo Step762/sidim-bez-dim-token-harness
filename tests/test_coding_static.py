@@ -2,13 +2,14 @@
 
 import asyncio
 import json
+import os
 from pathlib import Path
 import tempfile
 import unittest
 from unittest.mock import patch
 
 import coding_static
-from harness import run_tasks
+from harness import run_tasks, save_answer
 from test_coding import instruction
 
 
@@ -30,16 +31,16 @@ class StaticCodingWorkflowTests(unittest.TestCase):
         self.addCleanup(directory.cleanup)
         self.tasks = Path(directory.name)
 
-    def task(self, name, source, assertions):
+    def task(self, name, source, assertions, *, module="repair_me"):
         task = self.tasks / name
         workspace = task / "workspace"
         workspace.mkdir(parents=True)
         task.joinpath("task.json").write_text(json.dumps({
-            "task_type": "coding", "reward": 1, "instruction": instruction("repair_me.py", "checks.py"),
+            "task_type": "coding", "reward": 1, "instruction": instruction(f"{module}.py", "checks.py"),
         }), encoding="utf-8")
-        source_file, test_file = workspace / "repair_me.py", workspace / "checks.py"
+        source_file, test_file = workspace / f"{module}.py", workspace / "checks.py"
         source_file.write_bytes(source.encode("utf-8"))
-        test_file.write_text(_suite("repair_me", assertions), encoding="utf-8")
+        test_file.write_text(_suite(module, assertions), encoding="utf-8")
         return task, source_file, test_file
 
     def run_static(self):
@@ -123,3 +124,74 @@ class StaticCodingWorkflowTests(unittest.TestCase):
             self.assertEqual(self.run_static(), {"solved": 0, "skipped": 1, "failed": 0})
         self.assertEqual(source_file.read_text(encoding="utf-8"), source)
         self.assertFalse(task.joinpath("answer.txt").exists())
+
+    def test_tests_changed_at_answer_publication_leave_source_and_answer_untouched(self):
+        original = "def total(a,b):\n    return a-b\n"
+        task, source, tests = self.task("late-change", original, ["self.assertEqual(subject.total(3, 7), 10)"])
+
+        def change_tests_before_save(directory, answer, before_replace):
+            tests.write_text(tests.read_text(encoding="utf-8").replace(", 10)", ", 11)"), encoding="utf-8")
+            return save_answer(directory, answer, before_replace)
+
+        with patch("harness.save_answer", side_effect=change_tests_before_save):
+            self.assertEqual(self.run_static(), {"solved": 0, "skipped": 1, "failed": 0})
+        self.assertEqual(source.read_text(encoding="utf-8"), original)
+        self.assertFalse(task.joinpath("answer.txt").exists())
+        self.assertFalse(list(task.glob(".answer-*")))
+
+    def test_answer_failure_after_source_publication_can_be_retried(self):
+        original = "def total(a,b):\n    return a-b\n"
+        task, source, _ = self.task("retry", original, ["self.assertEqual(subject.total(3, 7), 10)"])
+        replace_file = os.replace
+
+        def fail_answer(source_name, target_name, **options):
+            if target_name == "answer.txt":
+                raise OSError("synthetic answer publication error")
+            return replace_file(source_name, target_name, **options)
+
+        with patch("harness.os.replace", side_effect=fail_answer):
+            self.assertEqual(self.run_static(), {"solved": 0, "skipped": 0, "failed": 1})
+        self.assertEqual(source.read_text(encoding="utf-8"), original.replace("-", "+"))
+        self.assertFalse(task.joinpath("answer.txt").exists())
+        self.assertFalse(list(task.glob(".answer-*")))
+        self.assertEqual(self.run_static(), {"solved": 1, "skipped": 0, "failed": 0})
+        self.assertEqual(task.joinpath("answer.txt").read_text(), "DONE\n")
+
+    def test_modified_staged_answer_is_rejected(self):
+        original = "def total(a,b):\n    return a-b\n"
+        task, _, _ = self.task("staged-answer", original, ["self.assertEqual(subject.total(3, 7), 10)"])
+        publish = coding_static._publish
+
+        def change_staged_answer(*args):
+            installed = publish(*args)
+            staged, = task.glob(".answer-*")
+            staged.write_text("CHANGED\n", encoding="utf-8")
+            return installed
+
+        with patch("coding_static._publish", side_effect=change_staged_answer):
+            self.assertEqual(self.run_static(), {"solved": 0, "skipped": 0, "failed": 1})
+        self.assertFalse(task.joinpath("answer.txt").exists())
+        self.assertFalse(list(task.glob(".answer-*")))
+
+    def test_reserved_modules_cannot_receive_static_done(self):
+        original = "def total(a,b):\n    return a-b\n"
+        cases = [
+            self.task(module, original, ["self.assertEqual(subject.total(3, 7), 10)"], module=module)
+            for module in ("__main__", "sitecustomize", "usercustomize")
+        ]
+        self.assertEqual(self.run_static(), {"solved": 0, "skipped": len(cases), "failed": 0})
+        for task, source, _ in cases:
+            self.assertEqual(source.read_text(encoding="utf-8"), original)
+            self.assertFalse(task.joinpath("answer.txt").exists())
+
+    def test_division_is_considered_when_checking_ambiguity(self):
+        original = "def total(a,b):\n    return a*b\n"
+        task, source, _ = self.task("divide-or-subtract", original, ["self.assertEqual(subject.total(4, 2), 2)"])
+        unique, unique_source, _ = self.task("unique-division", original, [
+            "self.assertEqual(subject.total(9, 3), 3)", "self.assertEqual(subject.total(12, 4), 3)",
+        ])
+        self.assertEqual(self.run_static(), {"solved": 1, "skipped": 1, "failed": 0})
+        self.assertEqual(source.read_text(encoding="utf-8"), original)
+        self.assertFalse(task.joinpath("answer.txt").exists())
+        self.assertEqual(unique_source.read_text(encoding="utf-8"), original.replace("*", "/"))
+        self.assertEqual(unique.joinpath("answer.txt").read_text(), "DONE\n")

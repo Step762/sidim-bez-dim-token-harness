@@ -10,7 +10,7 @@ import secrets
 import stat
 import tempfile
 
-from safe_files import TASK_JSON_BYTES, directory_guards, identity, open_directory, read_text
+from safe_files import TASK_JSON_BYTES, _version, directory_guards, identity, open_directory, read_text
 
 from openjiuwen.core.common.logging.log_config import configure_log_config
 
@@ -91,10 +91,11 @@ SOLVERS = {
 
 
 class SolveTask(WorkflowComponent):
-    def __init__(self, limits, *, static_coding=False):
+    def __init__(self, limits, *, static_coding=False, static_answer_writer=None):
         super().__init__()
         self.limits = limits
         self.static_coding = static_coding is True
+        self.static_answer_writer = static_answer_writer
 
     async def invoke(self, inputs, session, context):
         if inputs.get("route") == "fallback":
@@ -111,7 +112,10 @@ class SolveTask(WorkflowComponent):
                         return {"status": "skipped", "answer": "", "reason": "missing task directory"}
                     if inputs["task_type"] == "coding":
                         if self.static_coding:
-                            answer = solve_static_coding(inputs["instruction"], Path(inputs["task_dir"]))
+                            answer = solve_static_coding(
+                                inputs["instruction"], Path(inputs["task_dir"]),
+                                publish_answer=self.static_answer_writer,
+                            )
                         else:
                             answer = solver(inputs["instruction"], Path(inputs["task_dir"]), trusted=True)
                     else:
@@ -166,7 +170,8 @@ class FallbackTask(WorkflowComponent):
             return {"status": "skipped", "answer": "", "reason": "LLM plan or local evidence could not be validated"}
 
 
-def build_workflow(*, llm=None, budget=None, manager=None, limits=None, static_coding=False) -> Workflow:
+def build_workflow(*, llm=None, budget=None, manager=None, limits=None,
+                   static_coding=False, static_answer_writer=None) -> Workflow:
     """Local solving precedes the optional, bounded LLM translation node."""
     if manager is not None and llm is not None and manager is not llm.manager:
         raise ValueError("workflow and gateway must share one BudgetManager")
@@ -184,7 +189,7 @@ def build_workflow(*, llm=None, budget=None, manager=None, limits=None, static_c
         },
     )
     workflow.add_workflow_comp(
-        "solve", SolveTask(limits, static_coding=static_coding),
+        "solve", SolveTask(limits, static_coding=static_coding, static_answer_writer=static_answer_writer),
         inputs_schema={
             "task_type": "${start.task_type}",
             "instruction": "${start.instruction}",
@@ -217,7 +222,7 @@ def build_workflow(*, llm=None, budget=None, manager=None, limits=None, static_c
     return workflow
 
 
-def save_answer(directory: Path, answer: str) -> None:
+def save_answer(directory: Path, answer: str, before_replace=None) -> None:
     """Atomically publish an answer beside task.json, never in workspace/."""
     with open_directory(directory) as parent:
         temporary = f".answer-{secrets.token_hex(16)}.tmp"
@@ -229,11 +234,21 @@ def save_answer(directory: Path, answer: str) -> None:
                 output.flush()
                 os.fchmod(output.fileno(), 0o644)
                 os.fsync(output.fileno())
-            # Refuse publication if the pathname was replaced during the write.
-            with open_directory(directory) as current:
-                if identity(os.fstat(current)) != identity(os.fstat(parent)):
-                    raise ValueError("answer directory was replaced")
-            os.replace(temporary, "answer.txt", src_dir_fd=parent, dst_dir_fd=parent)
+                staged = _version(os.fstat(output.fileno()))
+
+                def check_staged() -> None:
+                    if _version(os.stat(temporary, dir_fd=parent, follow_symlinks=False)) != staged:
+                        raise ValueError("staged answer changed before publication")
+
+                # Refuse publication if the pathname was replaced during the write.
+                with open_directory(directory) as current:
+                    if identity(os.fstat(current)) != identity(os.fstat(parent)):
+                        raise ValueError("answer directory was replaced")
+                check_staged()
+                if before_replace is not None:
+                    before_replace()
+                    check_staged()
+                os.replace(temporary, "answer.txt", src_dir_fd=parent, dst_dir_fd=parent)
         finally:
             try:
                 os.unlink(temporary, dir_fd=parent)
@@ -252,8 +267,10 @@ async def run_tasks(
         raise ValueError(f"tasks directory does not exist: {tasks_dir}")
     manager = manager if manager is not None else (llm.manager if llm is not None else BudgetManager(0))
     limits = limits or RuntimeLimits()
-    workflow = build_workflow(llm=llm, budget=budget, manager=manager, limits=limits,
-                              static_coding=allow_static_coding)
+    workflow = build_workflow(
+        llm=llm, budget=budget, manager=manager, limits=limits, static_coding=allow_static_coding,
+        static_answer_writer=save_answer if allow_static_coding is True else None,
+    )
     tasks_dir = tasks_dir.resolve(strict=True)
     with open_directory(tasks_dir) as root:
         with directory_guards({tasks_dir: identity(os.fstat(root))}) as guards:
@@ -324,7 +341,8 @@ async def _execute_tasks(tasks, malformed, workflow, allow_trusted_code,
             result = output.result["output"]
             status = result["status"]
             if status == "solved":
-                with limits.sync(): save_answer(task.directory, result["answer"])
+                if not (static_coding is True and task.task_type == "coding"):
+                    with limits.sync(): save_answer(task.directory, result["answer"])
             elif status != "skipped":
                 raise RuntimeError(f"unexpected solver status: {status}")
             with limits.sync(): planner.finish(decision, status, result["reason"])

@@ -1,6 +1,7 @@
 """Choose and publish a bounded Coding repair using literal unittest assertions."""
 
 import ast
+from collections.abc import Callable
 from dataclasses import replace
 import os
 from pathlib import Path
@@ -14,7 +15,6 @@ from diagnostics.coding_acceptance import _only_visible_files, _passes, _visible
 from diagnostics.coding_research import (
     ARITHMETIC_OPERATORS,
     CASE_METHOD_EDITS,
-    EXPECTED_OPERATORS,
     LIST_EDITS,
     MAX_SOURCE_BYTES,
     PREDICATE_EDITS,
@@ -27,6 +27,9 @@ from diagnostics.coding_research import (
     read_task_declaration,
 )
 from safe_files import _version, directory_guards, identity, open_directory, open_text
+
+
+RESERVED_MODULES = sys.stdlib_module_names | {"__main__", "sitecustomize", "usercustomize"}
 
 
 def _select_repair(source: str, tests: str, module: str) -> str:
@@ -47,7 +50,7 @@ def _select_repair(source: str, tests: str, module: str) -> str:
         return source
 
     if original.operator in ARITHMETIC_OPERATORS and original.literal is None:
-        alternatives = EXPECTED_OPERATORS.values()
+        alternatives = ARITHMETIC_OPERATORS
     else:
         replacement = (
             CASE_METHOD_EDITS.get(original.operator)
@@ -73,7 +76,24 @@ def _select_repair(source: str, tests: str, module: str) -> str:
     return candidate
 
 
-def _publish(workspace: Path, directory: int, source: str, content: str, inputs: dict, declaration: str) -> None:
+def _check_snapshot(
+    workspace: Path, directory: int, inputs: dict[str, os.stat_result], declaration: str,
+    *, temporary: str | None = None,
+) -> None:
+    names = frozenset(inputs) if temporary is None else frozenset((*inputs, temporary))
+    if (
+        read_task_declaration(workspace.parent) != declaration
+        or not _only_visible_files(workspace, names)
+        or any(_version(os.stat(name, dir_fd=directory, follow_symlinks=False)) != _version(info)
+               for name, info in inputs.items())
+    ):
+        raise UnsupportedCoding("coding inputs changed before publication")
+
+
+def _publish(
+    workspace: Path, directory: int, source: str, content: str,
+    inputs: dict[str, os.stat_result], declaration: str,
+) -> os.stat_result:
     temporary = f".coding-{secrets.token_hex(16)}.tmp"
     fd = os.open(temporary, os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW | os.O_CLOEXEC,
                  0o600, dir_fd=directory)
@@ -83,14 +103,15 @@ def _publish(workspace: Path, directory: int, source: str, content: str, inputs:
             output.flush()
             os.fchmod(output.fileno(), stat.S_IMODE(inputs[source].st_mode) & 0o777)
             os.fsync(output.fileno())
-        if (
-            read_task_declaration(workspace.parent) != declaration
-            or not _only_visible_files(workspace, frozenset((*inputs, temporary)))
-            or any(_version(os.stat(name, dir_fd=directory, follow_symlinks=False)) != _version(info)
-                   for name, info in inputs.items())
-        ):
-            raise UnsupportedCoding("coding inputs changed before publication")
-        os.replace(temporary, source, src_dir_fd=directory, dst_dir_fd=directory)
+            staged = os.fstat(output.fileno())
+            _check_snapshot(workspace, directory, inputs, declaration, temporary=temporary)
+            if _version(os.stat(temporary, dir_fd=directory, follow_symlinks=False)) != _version(staged):
+                raise UnsupportedCoding("staged coding repair changed before publication")
+            os.replace(temporary, source, src_dir_fd=directory, dst_dir_fd=directory)
+            installed = os.fstat(output.fileno())
+            if installed.st_size != staged.st_size or installed.st_mtime_ns != staged.st_mtime_ns:
+                raise UnsupportedCoding("coding repair changed during publication")
+            return installed
     finally:
         try:
             os.unlink(temporary, dir_fd=directory)
@@ -98,7 +119,10 @@ def _publish(workspace: Path, directory: int, source: str, content: str, inputs:
             pass
 
 
-def solve_static_coding(instruction: str, task_dir: Path) -> str:
+def solve_static_coding(
+    instruction: str, task_dir: Path, *,
+    publish_answer: Callable[[Path, str, Callable[[], None]], None] | None = None,
+) -> str:
     """Infer a local repair from the declared tests without importing task modules."""
     normalized = " ".join(instruction.split())
     parsed = _INSTRUCTION.fullmatch(normalized)
@@ -109,7 +133,7 @@ def solve_static_coding(instruction: str, task_dir: Path) -> str:
     module = Path(source).stem
     if (
         len(names) != 2 or module.startswith("test") or module.endswith("_test")
-        or any(Path(name).stem in sys.stdlib_module_names for name in names)
+        or any(Path(name).stem in RESERVED_MODULES for name in names)
     ):
         raise UnsupportedCoding("unsupported source or test filename")
 
@@ -136,14 +160,20 @@ def solve_static_coding(instruction: str, task_dir: Path) -> str:
                 ):
                     original = source_file.read()
                     candidate = _select_repair(original, test_file.read(), module)
-                if candidate != original:
-                    _publish(workspace, workspace_fd, source, candidate, inputs, declaration)
-                elif (
-                    read_task_declaration(root) != declaration or not _only_visible_files(workspace, names)
-                    or any(_version(os.stat(name, dir_fd=workspace_fd, follow_symlinks=False)) != _version(info)
-                           for name, info in inputs.items())
-                ):
-                    raise UnsupportedCoding("coding inputs changed before completion")
+                def publish_repair() -> None:
+                    if candidate != original:
+                        inputs[source] = _publish(workspace, workspace_fd, source, candidate, inputs, declaration)
+                    _check_snapshot(workspace, workspace_fd, inputs, declaration)
+
+                if publish_answer is None:
+                    publish_repair()
+                else:
+                    try:
+                        publish_answer(root, "DONE", publish_repair)
+                    except (UnsupportedCoding, TimeoutError):
+                        raise
+                    except (OSError, ValueError) as exc:
+                        raise RuntimeError("static Coding answer publication failed") from exc
         return "DONE"
     except UnsupportedCoding:
         raise
