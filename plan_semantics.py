@@ -205,26 +205,17 @@ def search_spec(problem, index):
     except search_solver.UnsupportedSearch as exc:
         raise UnsupportedMeaning(str(exc)) from None
 
-    relation_words = "|".join(RELATIONS)
-
     def expression(text, depth=0):
         text = text.strip()
         if depth > 3:
             raise UnsupportedMeaning("search chain is too long")
         if (canonical := search_solver._resolve_entity(text, index)) is not None:
             # A literal entity name must not hide another valid expression.
-            possessive = _match(rf"(.+)['’]s ({relation_words})", text)
-            nested = _match(rf"(?:the )?({relation_words}) of (.+)", text)
-            alternative = possessive[1] if possessive else nested[2] if nested else None
-            if alternative is not None and search_solver._resolve_entity(alternative, index) is not None:
-                raise UnsupportedMeaning("literal entity and relation expression are ambiguous")
+            search_solver._check_literal_expression(text, index)
             return canonical, []
-        if m := _match(rf"(.+)['’]s ({relation_words})", text):
-            root, chain = expression(m[1], depth + 1)
-            return root, chain + [RELATIONS[m[2].lower()]]
-        if m := _match(rf"(?:the )?({relation_words}) of (.+)", text):
-            root, chain = expression(m[2], depth + 1)
-            return root, chain + [RELATIONS[m[1].lower()]]
+        if term := search_solver.relation_term(text):
+            root, chain = expression(term[0], depth + 1)
+            return root, chain + [term[1]]
         raise UnsupportedMeaning("search direction or subject cannot be established")
 
     root, chain = expression(subject)

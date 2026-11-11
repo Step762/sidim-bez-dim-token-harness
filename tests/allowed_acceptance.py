@@ -32,7 +32,7 @@ TESTS = (
     'test_math_rounding', 'test_math_scientific', 'test_math_units', 'test_metamorphic',
     'test_planner', 'test_q45_stress', 'test_q4_qualification', 'test_q5_workflow',
     'test_relation_graph', 'test_reward_routing', 'test_runtime', 'test_runtime_limits',
-    'test_search', 'test_search_employer', 'test_search_extensions', 'test_search_grounded',
+    'test_search', 'test_search_data_qa', 'test_search_employer', 'test_search_extensions', 'test_search_grounded',
     'test_search_inverse_scope', 'test_search_pilot', 'test_semantic_compiler', 'test_semantics',
     'test_static_coding', 'test_synthetic_history', 'test_token_economics',
 )

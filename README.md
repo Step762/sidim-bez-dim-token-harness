@@ -145,7 +145,7 @@ docker run --rm --pull=never --network none \
   --output /tmp/harness-v4-acceptance-new
 ```
 
-Текущая V4-приёмка использует явный список 47 тестовых модулей и исключает
+Текущая приёмка использует явный список 48 тестовых модулей и исключает
 7 corpus-wide проверок, которым нужен закрытый набор. Контейнер получает
 только 64 development-задачи, опубликованное development test view и
 очищенные официальные примеры. Исходные mixed references/mocks, генератор
@@ -554,6 +554,10 @@ Employer. Нужен единственный кандидат с явным Emp
 
 ### Графовый маршрут V4-B
 
+Exact и Graph одинаково разбирают смешанные цепочки: `the employer of X's mentor`
+означает Mentor → Employer, а `X's employer's mentor` — Employer → Mentor.
+Проверки идентичности, конфликтов и доказательств сохраняются.
+
 Эксперимент не включён в production `SOLVERS`: `solve_search` сохраняет Local Exact.
 Явный экспериментальный `solve_search_graph` вызывает Local Exact первым. Только отказ
 `unsupported search question or relation` допускает попытку в `relation_graph.py`.
@@ -597,6 +601,10 @@ Alias должен иметь единственного владельца. З�
 ```
 
 ## Локальный анализ CSV
+
+Для прежних агрегатов и WHERE также поддержан префикс `Using ledger.csv,`,
+например `Using ledger.csv, what is the average of amount where day >= 2?`.
+Имя файла извлекается только из явного префикса, без поиска похожих файлов.
 
 `data_analysis` читает указанный в инструкции CSV только из собственного
 `workspace/`. Имя файла обязательно: подстановка `sales.csv` и выбор первого

@@ -181,7 +181,7 @@ def main():
         container(['-B','/app/tests/allowed_acceptance.py','suite','--output','/audit-result/suite.json'],
                   mounts,timeout=900)
         suite=json.loads((args.output/'suite.json').read_text())
-        assert (suite['discovered'],suite['passed'],len(suite['skipped']))==(798,791,7),suite
+        assert (suite['discovered'],suite['passed'],len(suite['skipped']))==(814,807,7),suite
         assert not suite['failures'] and not suite['errors']
         container(['-B','/app/tests/allowed_acceptance.py','development','--output','/audit-result/development.json'],
                   mounts,timeout=600)

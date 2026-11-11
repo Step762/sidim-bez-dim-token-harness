@@ -268,17 +268,13 @@ def compile_query(instruction, graph):
     if parsed is None or exact._SUFFIX.fullmatch(parsed['suffix']) is None:
         raise GraphRefusal('unsupported graph instruction')
     question = parsed['question']
-    words = '|'.join(exact.RELATION_ALIASES)
-
     def expression(text, depth=0):
         if depth > MAX_HOPS:
             raise GraphRefusal('graph path limit exceeded')
         text = text.strip()
         forms = []
-        if m := re.fullmatch(rf"(.+)['’]s ({words})", text, re.I):
-            forms.append((m[1], Hop(exact.RELATION_ALIASES[m[2].lower()], 'forward')))
-        if m := re.fullmatch(rf'(?:the )?({words}) of (.+)', text, re.I):
-            forms.append((m[2], Hop(exact.RELATION_ALIASES[m[1].lower()], 'forward')))
+        if term := exact.relation_term(text):
+            forms.append((term[0], Hop(term[1], 'forward')))
         for pattern, relation in (
             (r'the person mentored by (.+)', 'mentor'),
             (r'the employee of (.+)', 'employer'),

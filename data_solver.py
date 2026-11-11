@@ -23,6 +23,10 @@ _INSTRUCTION = re.compile(
     r"(?: \([0-9]+ rows?\))?)?\. (?P<question>.+)\?(?P<suffix>.*)",
     re.IGNORECASE | re.DOTALL,
 )
+_USING_INSTRUCTION = re.compile(
+    r"Using (?P<filename>[A-Za-z0-9_./-]+\.csv), (?P<question>.+)\?(?P<suffix>.*)",
+    re.IGNORECASE | re.DOTALL,
+)
 _SUFFIX = re.compile(
     r"(?: Use bash with python3 to compute it\.)?"
     r"(?: Work only inside the current directory\.)?"
@@ -342,7 +346,7 @@ def solve_data(instruction: str, task_dir: Path) -> str:
     statement = re.sub(
         _QUOTED + r"|\s+", lambda m: " " if m[0].isspace() else m[0], instruction
     ).strip()
-    parsed = _INSTRUCTION.fullmatch(statement)
+    parsed = _INSTRUCTION.fullmatch(statement) or _USING_INSTRUCTION.fullmatch(statement)
     grouped = _GROUPED.fullmatch(statement)
     total = _CALCULATE_TOTAL.fullmatch(statement)
     ranked = _SORT_FIRST.fullmatch(statement)

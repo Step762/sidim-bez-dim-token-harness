@@ -30,10 +30,10 @@ _QUESTIONS = [
         (r"(?:In which year|What year|When) was (.+) founded", "founded"),
         (r"In which city is the headquarters of (.+)", "headquarters"),
         (r"(?:Where|In which city) is (.+) headquartered", "headquarters"),
-        (r"(?:Who|What) is (.+)['’]s employer", "employer"),
-        (r"(?:Who|What) is (.+)['’]s mentor", "mentor"),
         (r"(?:Who|What) is the employer of (.+)", "employer"),
         (r"(?:Who|What) is the mentor of (.+)", "mentor"),
+        (r"(?:Who|What) is (.+)['’]s employer", "employer"),
+        (r"(?:Who|What) is (.+)['’]s mentor", "mentor"),
         (r"Which company does (.+) work for", "employer"),
     )
 ]
@@ -97,12 +97,23 @@ def _resolve_entity(value, index):
     return next(iter(candidates), None)
 
 
-def _check_literal_expression(text, index):
+def relation_term(text):
+    """Split one outer forward relation; 'of' contains the following possessive.
+
+    For example, 'the employer of X's mentor' is employer(mentor(X)),
+    whereas 'X's employer's mentor' is mentor(employer(X)).
+    """
     words = "|".join(RELATION_ALIASES)
-    possessive = re.fullmatch(rf"(.+)['’]s ({words})", text, re.I)
-    nested = re.fullmatch(rf"(?:the )?({words}) of (.+)", text, re.I)
-    base = possessive[1] if possessive else nested[2] if nested else None
-    if base is not None and _resolve_entity(base, index) is not None:
+    if nested := re.fullmatch(rf"(?:the )?({words}) of (.+)", text, re.I):
+        return nested[2], RELATION_ALIASES[nested[1].lower()]
+    if possessive := re.fullmatch(rf"(.+)['’]s ({words})", text, re.I):
+        return possessive[1], RELATION_ALIASES[possessive[2].lower()]
+    return None
+
+
+def _check_literal_expression(text, index):
+    term = relation_term(text)
+    if term is not None and _resolve_entity(term[0], index) is not None:
         raise UnsupportedSearch("literal entity and relation expression are ambiguous")
 
 
