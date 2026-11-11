@@ -1,0 +1,2691 @@
+{
+  "coding_d01": {
+    "answer": "DONE",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "easy",
+    "family": "binary-add",
+    "oracle": {
+      "function": "join",
+      "hidden_examples": [
+        [
+          [
+            19,
+            -8
+          ],
+          11
+        ]
+      ],
+      "method": "independent_function_examples"
+    },
+    "policy": "coding",
+    "rationale": "Requires verified source repair; DONE alone is insufficient.",
+    "reward": 3,
+    "split": "development",
+    "tags": [
+      "untrusted_execution_disabled",
+      "reviewed_fixture"
+    ],
+    "task_id": "coding_d01",
+    "task_type": "coding"
+  },
+  "coding_d02": {
+    "answer": "DONE",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "easy",
+    "family": "binary-product",
+    "oracle": {
+      "function": "product",
+      "hidden_examples": [
+        [
+          [
+            7,
+            -2
+          ],
+          -14
+        ]
+      ],
+      "method": "independent_function_examples"
+    },
+    "policy": "coding",
+    "rationale": "Requires verified source repair; DONE alone is insufficient.",
+    "reward": 13,
+    "split": "development",
+    "tags": [
+      "untrusted_execution_disabled",
+      "reviewed_fixture"
+    ],
+    "task_id": "coding_d02",
+    "task_type": "coding"
+  },
+  "coding_d03": {
+    "answer": "DONE",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "minimum-comparison",
+    "oracle": {
+      "function": "small",
+      "hidden_examples": [
+        [
+          [
+            17,
+            5
+          ],
+          5
+        ]
+      ],
+      "method": "independent_function_examples"
+    },
+    "policy": "coding",
+    "rationale": "Requires verified source repair; DONE alone is insufficient.",
+    "reward": 0,
+    "split": "development",
+    "tags": [
+      "untrusted_execution_disabled",
+      "reviewed_fixture"
+    ],
+    "task_id": "coding_d03",
+    "task_type": "coding"
+  },
+  "coding_d04": {
+    "answer": "DONE",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "maximum-loop",
+    "oracle": {
+      "function": "peak",
+      "hidden_examples": [
+        [
+          [
+            [
+              9,
+              1,
+              14,
+              6
+            ]
+          ],
+          14
+        ]
+      ],
+      "method": "independent_function_examples"
+    },
+    "policy": "coding",
+    "rationale": "Requires verified source repair; DONE alone is insufficient.",
+    "reward": 1,
+    "split": "development",
+    "tags": [
+      "untrusted_execution_disabled",
+      "reviewed_fixture"
+    ],
+    "task_id": "coding_d04",
+    "task_type": "coding"
+  },
+  "coding_d05": {
+    "answer": "DONE",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "easy",
+    "family": "even-predicate",
+    "oracle": {
+      "function": "even",
+      "hidden_examples": [
+        [
+          [
+            -6
+          ],
+          true
+        ]
+      ],
+      "method": "independent_function_examples"
+    },
+    "policy": "coding",
+    "rationale": "Requires verified source repair; DONE alone is insufficient.",
+    "reward": 3,
+    "split": "development",
+    "tags": [
+      "untrusted_execution_disabled",
+      "reviewed_fixture"
+    ],
+    "task_id": "coding_d05",
+    "task_type": "coding"
+  },
+  "coding_d06": {
+    "answer": "DONE",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "reverse-versus-sort",
+    "oracle": {
+      "function": "flip",
+      "hidden_examples": [
+        [
+          [
+            [
+              9,
+              4,
+              8
+            ]
+          ],
+          [
+            8,
+            4,
+            9
+          ]
+        ]
+      ],
+      "method": "independent_function_examples"
+    },
+    "policy": "coding",
+    "rationale": "Requires verified source repair; DONE alone is insufficient.",
+    "reward": 0,
+    "split": "development",
+    "tags": [
+      "untrusted_execution_disabled",
+      "reviewed_fixture"
+    ],
+    "task_id": "coding_d06",
+    "task_type": "coding"
+  },
+  "coding_d07": {
+    "answer": "DONE",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "off-by-one-range",
+    "oracle": {
+      "function": "indices",
+      "hidden_examples": [
+        [
+          [
+            5
+          ],
+          [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        ]
+      ],
+      "method": "independent_function_examples"
+    },
+    "policy": "coding",
+    "rationale": "Requires verified source repair; DONE alone is insufficient.",
+    "reward": 1,
+    "split": "development",
+    "tags": [
+      "untrusted_execution_disabled",
+      "reviewed_fixture"
+    ],
+    "task_id": "coding_d07",
+    "task_type": "coding"
+  },
+  "coding_d08": {
+    "answer": "DONE",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "wrong-string-case",
+    "oracle": {
+      "function": "clean",
+      "hidden_examples": [
+        [
+          [
+            "CODE"
+          ],
+          "code"
+        ]
+      ],
+      "method": "independent_function_examples"
+    },
+    "policy": "coding",
+    "rationale": "Requires verified source repair; DONE alone is insufficient.",
+    "reward": 8,
+    "split": "development",
+    "tags": [
+      "untrusted_execution_disabled",
+      "reviewed_fixture"
+    ],
+    "task_id": "coding_d08",
+    "task_type": "coding"
+  },
+  "coding_d09": {
+    "answer": "DONE",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "missing-absolute",
+    "oracle": {
+      "function": "magnitude",
+      "hidden_examples": [
+        [
+          [
+            -11
+          ],
+          11
+        ]
+      ],
+      "method": "independent_function_examples"
+    },
+    "policy": "coding",
+    "rationale": "Requires verified source repair; DONE alone is insufficient.",
+    "reward": 1,
+    "split": "development",
+    "tags": [
+      "untrusted_execution_disabled",
+      "reviewed_fixture"
+    ],
+    "task_id": "coding_d09",
+    "task_type": "coding"
+  },
+  "coding_d10": {
+    "answer": "DONE",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "floor-instead-of-mean",
+    "oracle": {
+      "function": "mean",
+      "hidden_examples": [
+        [
+          [
+            [
+              2,
+              3,
+              6
+            ]
+          ],
+          3.6666666666666665
+        ]
+      ],
+      "method": "independent_function_examples"
+    },
+    "policy": "coding",
+    "rationale": "Requires verified source repair; DONE alone is insufficient.",
+    "reward": 5,
+    "split": "development",
+    "tags": [
+      "untrusted_execution_disabled",
+      "reviewed_fixture"
+    ],
+    "task_id": "coding_d10",
+    "task_type": "coding"
+  },
+  "coding_d11": {
+    "answer": "DONE",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "boundary-inclusive",
+    "oracle": {
+      "function": "adult",
+      "hidden_examples": [
+        [
+          [
+            19
+          ],
+          true
+        ]
+      ],
+      "method": "independent_function_examples"
+    },
+    "policy": "coding",
+    "rationale": "Requires verified source repair; DONE alone is insufficient.",
+    "reward": 13,
+    "split": "development",
+    "tags": [
+      "untrusted_execution_disabled",
+      "reviewed_fixture"
+    ],
+    "task_id": "coding_d11",
+    "task_type": "coding"
+  },
+  "coding_d12": {
+    "answer": "DONE",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "wrong-dictionary-default",
+    "oracle": {
+      "function": "lookup",
+      "hidden_examples": [
+        [
+          [
+            {
+              "a": 8
+            },
+            "b"
+          ],
+          0
+        ]
+      ],
+      "method": "independent_function_examples"
+    },
+    "policy": "coding",
+    "rationale": "Requires verified source repair; DONE alone is insufficient.",
+    "reward": 3,
+    "split": "development",
+    "tags": [
+      "untrusted_execution_disabled",
+      "reviewed_fixture"
+    ],
+    "task_id": "coding_d12",
+    "task_type": "coding"
+  },
+  "coding_d13": {
+    "answer": "DONE",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "slice-last-item",
+    "oracle": {
+      "function": "tail",
+      "hidden_examples": [
+        [
+          [
+            [
+              5,
+              6,
+              1
+            ]
+          ],
+          1
+        ]
+      ],
+      "method": "independent_function_examples"
+    },
+    "policy": "coding",
+    "rationale": "Requires verified source repair; DONE alone is insufficient.",
+    "reward": 2,
+    "split": "development",
+    "tags": [
+      "untrusted_execution_disabled",
+      "reviewed_fixture"
+    ],
+    "task_id": "coding_d13",
+    "task_type": "coding"
+  },
+  "coding_d14": {
+    "answer": "DONE",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "damaged-source-syntax",
+    "oracle": {
+      "function": "double",
+      "hidden_examples": [
+        [
+          [
+            -4
+          ],
+          -8
+        ]
+      ],
+      "method": "independent_function_examples"
+    },
+    "policy": "coding",
+    "rationale": "Requires verified source repair; DONE alone is insufficient.",
+    "reward": 13,
+    "split": "development",
+    "tags": [
+      "untrusted_execution_disabled",
+      "reviewed_fixture"
+    ],
+    "task_id": "coding_d14",
+    "task_type": "coding"
+  },
+  "coding_d15": {
+    "answer": null,
+    "answerable": false,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "missing-target",
+    "oracle": {
+      "function": "f",
+      "hidden_examples": [
+        [
+          [
+            8
+          ],
+          16
+        ]
+      ],
+      "method": "independent_function_examples"
+    },
+    "policy": "coding",
+    "rationale": "Required evidence is absent or pure-function tests conflict.",
+    "reward": 1,
+    "split": "development",
+    "tags": [
+      "untrusted_execution_disabled",
+      "impossible"
+    ],
+    "task_id": "coding_d15",
+    "task_type": "coding"
+  },
+  "coding_d16": {
+    "answer": null,
+    "answerable": false,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "missing-tests",
+    "oracle": {
+      "function": "f",
+      "hidden_examples": [
+        [
+          [
+            8
+          ],
+          9
+        ]
+      ],
+      "method": "independent_function_examples"
+    },
+    "policy": "coding",
+    "rationale": "Required evidence is absent or pure-function tests conflict.",
+    "reward": 2,
+    "split": "development",
+    "tags": [
+      "untrusted_execution_disabled",
+      "impossible"
+    ],
+    "task_id": "coding_d16",
+    "task_type": "coding"
+  },
+  "coding_h01": {
+    "answer": "DONE",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "sum-accumulator",
+    "oracle": {
+      "function": "total",
+      "hidden_examples": [
+        [
+          [
+            [
+              -7,
+              3,
+              9
+            ]
+          ],
+          5
+        ]
+      ],
+      "method": "independent_function_examples"
+    },
+    "policy": "coding",
+    "rationale": "Requires verified source repair; DONE alone is insufficient.",
+    "reward": 8,
+    "split": "holdout",
+    "tags": [
+      "untrusted_execution_disabled",
+      "reviewed_fixture"
+    ],
+    "task_id": "coding_h01",
+    "task_type": "coding"
+  },
+  "coding_h02": {
+    "answer": "DONE",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "odd-predicate",
+    "oracle": {
+      "function": "odd",
+      "hidden_examples": [
+        [
+          [
+            -5
+          ],
+          true
+        ]
+      ],
+      "method": "independent_function_examples"
+    },
+    "policy": "coding",
+    "rationale": "Requires verified source repair; DONE alone is insufficient.",
+    "reward": 5,
+    "split": "holdout",
+    "tags": [
+      "untrusted_execution_disabled",
+      "reviewed_fixture"
+    ],
+    "task_id": "coding_h02",
+    "task_type": "coding"
+  },
+  "coding_h03": {
+    "answer": "DONE",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "discount-direction",
+    "oracle": {
+      "function": "net",
+      "hidden_examples": [
+        [
+          [
+            37,
+            11
+          ],
+          26
+        ]
+      ],
+      "method": "independent_function_examples"
+    },
+    "policy": "coding",
+    "rationale": "Requires verified source repair; DONE alone is insufficient.",
+    "reward": 2,
+    "split": "holdout",
+    "tags": [
+      "untrusted_execution_disabled",
+      "reviewed_fixture"
+    ],
+    "task_id": "coding_h03",
+    "task_type": "coding"
+  },
+  "coding_h04": {
+    "answer": "DONE",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "scale-factor",
+    "oracle": {
+      "function": "scale",
+      "hidden_examples": [
+        [
+          [
+            13,
+            2
+          ],
+          26
+        ]
+      ],
+      "method": "independent_function_examples"
+    },
+    "policy": "coding",
+    "rationale": "Requires verified source repair; DONE alone is insufficient.",
+    "reward": 8,
+    "split": "holdout",
+    "tags": [
+      "untrusted_execution_disabled",
+      "reviewed_fixture"
+    ],
+    "task_id": "coding_h04",
+    "task_type": "coding"
+  },
+  "coding_h05": {
+    "answer": "DONE",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "cube-power",
+    "oracle": {
+      "function": "cube",
+      "hidden_examples": [
+        [
+          [
+            5
+          ],
+          125
+        ]
+      ],
+      "method": "independent_function_examples"
+    },
+    "policy": "coding",
+    "rationale": "Requires verified source repair; DONE alone is insufficient.",
+    "reward": 2,
+    "split": "holdout",
+    "tags": [
+      "untrusted_execution_disabled",
+      "reviewed_fixture"
+    ],
+    "task_id": "coding_h05",
+    "task_type": "coding"
+  },
+  "coding_h06": {
+    "answer": "DONE",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "remove-duplicates",
+    "oracle": {
+      "function": "unique",
+      "hidden_examples": [
+        [
+          [
+            [
+              8,
+              2,
+              8,
+              2
+            ]
+          ],
+          [
+            2,
+            8
+          ]
+        ]
+      ],
+      "method": "independent_function_examples"
+    },
+    "policy": "coding",
+    "rationale": "Requires verified source repair; DONE alone is insufficient.",
+    "reward": 2,
+    "split": "holdout",
+    "tags": [
+      "untrusted_execution_disabled",
+      "reviewed_fixture"
+    ],
+    "task_id": "coding_h06",
+    "task_type": "coding"
+  },
+  "coding_h07": {
+    "answer": "DONE",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "filter-sign",
+    "oracle": {
+      "function": "positive",
+      "hidden_examples": [
+        [
+          [
+            [
+              -9,
+              4,
+              1
+            ]
+          ],
+          [
+            4,
+            1
+          ]
+        ]
+      ],
+      "method": "independent_function_examples"
+    },
+    "policy": "coding",
+    "rationale": "Requires verified source repair; DONE alone is insufficient.",
+    "reward": 13,
+    "split": "holdout",
+    "tags": [
+      "untrusted_execution_disabled",
+      "reviewed_fixture"
+    ],
+    "task_id": "coding_h07",
+    "task_type": "coding"
+  },
+  "coding_h08": {
+    "answer": "DONE",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "sort-key-descending",
+    "oracle": {
+      "function": "rank",
+      "hidden_examples": [
+        [
+          [
+            [
+              9,
+              3,
+              6
+            ]
+          ],
+          [
+            9,
+            6,
+            3
+          ]
+        ]
+      ],
+      "method": "independent_function_examples"
+    },
+    "policy": "coding",
+    "rationale": "Requires verified source repair; DONE alone is insufficient.",
+    "reward": 0,
+    "split": "holdout",
+    "tags": [
+      "untrusted_execution_disabled",
+      "reviewed_fixture"
+    ],
+    "task_id": "coding_h08",
+    "task_type": "coding"
+  },
+  "coding_h09": {
+    "answer": "DONE",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "hard",
+    "family": "factorial-accumulator",
+    "oracle": {
+      "function": "factorial",
+      "hidden_examples": [
+        [
+          [
+            6
+          ],
+          720
+        ]
+      ],
+      "method": "independent_function_examples"
+    },
+    "policy": "coding",
+    "rationale": "Requires verified source repair; DONE alone is insufficient.",
+    "reward": 1,
+    "split": "holdout",
+    "tags": [
+      "untrusted_execution_disabled",
+      "reviewed_fixture"
+    ],
+    "task_id": "coding_h09",
+    "task_type": "coding"
+  },
+  "coding_h10": {
+    "answer": "DONE",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "clamp-missing-upper",
+    "oracle": {
+      "function": "clamp",
+      "hidden_examples": [
+        [
+          [
+            22
+          ],
+          10
+        ]
+      ],
+      "method": "independent_function_examples"
+    },
+    "policy": "coding",
+    "rationale": "Requires verified source repair; DONE alone is insufficient.",
+    "reward": 8,
+    "split": "holdout",
+    "tags": [
+      "untrusted_execution_disabled",
+      "reviewed_fixture"
+    ],
+    "task_id": "coding_h10",
+    "task_type": "coding"
+  },
+  "coding_h11": {
+    "answer": "DONE",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "hard",
+    "family": "two-independent-bugs",
+    "oracle": {
+      "function": "distance",
+      "hidden_examples": [
+        [
+          [
+            -4,
+            6
+          ],
+          10
+        ]
+      ],
+      "method": "independent_function_examples"
+    },
+    "policy": "coding",
+    "rationale": "Requires verified source repair; DONE alone is insufficient.",
+    "reward": 1,
+    "split": "holdout",
+    "tags": [
+      "untrusted_execution_disabled",
+      "reviewed_fixture"
+    ],
+    "task_id": "coding_h11",
+    "task_type": "coding"
+  },
+  "coding_h12": {
+    "answer": "DONE",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "split-whitespace",
+    "oracle": {
+      "function": "words",
+      "hidden_examples": [
+        [
+          [
+            "x\ty"
+          ],
+          [
+            "x",
+            "y"
+          ]
+        ]
+      ],
+      "method": "independent_function_examples"
+    },
+    "policy": "coding",
+    "rationale": "Requires verified source repair; DONE alone is insufficient.",
+    "reward": 1,
+    "split": "holdout",
+    "tags": [
+      "untrusted_execution_disabled",
+      "reviewed_fixture"
+    ],
+    "task_id": "coding_h12",
+    "task_type": "coding"
+  },
+  "coding_h13": {
+    "answer": "DONE",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "easy",
+    "family": "correct-program",
+    "oracle": {
+      "function": "square",
+      "hidden_examples": [
+        [
+          [
+            11
+          ],
+          121
+        ]
+      ],
+      "method": "independent_function_examples"
+    },
+    "policy": "coding",
+    "rationale": "Requires verified source repair; DONE alone is insufficient.",
+    "reward": 3,
+    "split": "holdout",
+    "tags": [
+      "untrusted_execution_disabled",
+      "reviewed_fixture"
+    ],
+    "task_id": "coding_h13",
+    "task_type": "coding"
+  },
+  "coding_h14": {
+    "answer": null,
+    "answerable": false,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "contradictory-pure-contract",
+    "oracle": {
+      "function": "pure",
+      "hidden_examples": null,
+      "method": "independent_function_examples"
+    },
+    "policy": "coding",
+    "rationale": "Required evidence is absent or pure-function tests conflict.",
+    "reward": 8,
+    "split": "holdout",
+    "tags": [
+      "untrusted_execution_disabled",
+      "impossible"
+    ],
+    "task_id": "coding_h14",
+    "task_type": "coding"
+  },
+  "coding_h15": {
+    "answer": "DONE",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "hard",
+    "family": "import-missing-dependency",
+    "oracle": {
+      "function": "f",
+      "hidden_examples": [
+        [
+          [
+            7
+          ],
+          7
+        ]
+      ],
+      "method": "independent_function_examples"
+    },
+    "policy": "coding",
+    "rationale": "Requires verified source repair; DONE alone is insufficient.",
+    "reward": 3,
+    "split": "holdout",
+    "tags": [
+      "untrusted_execution_disabled",
+      "reviewed_fixture"
+    ],
+    "task_id": "coding_h15",
+    "task_type": "coding"
+  },
+  "coding_h16": {
+    "answer": "DONE",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "prefix-slice",
+    "oracle": {
+      "function": "prefix",
+      "hidden_examples": [
+        [
+          [
+            [
+              9,
+              8,
+              7,
+              6
+            ],
+            3
+          ],
+          [
+            9,
+            8,
+            7
+          ]
+        ]
+      ],
+      "method": "independent_function_examples"
+    },
+    "policy": "coding",
+    "rationale": "Requires verified source repair; DONE alone is insufficient.",
+    "reward": 8,
+    "split": "holdout",
+    "tags": [
+      "untrusted_execution_disabled",
+      "reviewed_fixture"
+    ],
+    "task_id": "coding_h16",
+    "task_type": "coding"
+  },
+  "data_analysis_d01": {
+    "answer": "32",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "easy",
+    "family": "sum-all",
+    "oracle": {
+      "method": "sqlite",
+      "query": "SELECT SUM(units) FROM observations",
+      "shape": "scalar"
+    },
+    "policy": "numeric",
+    "rationale": "sum-all",
+    "reward": 3,
+    "split": "development",
+    "tags": [],
+    "task_id": "data_analysis_d01",
+    "task_type": "data_analysis"
+  },
+  "data_analysis_d02": {
+    "answer": "4",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "easy",
+    "family": "row-count-boundary",
+    "oracle": {
+      "method": "sqlite",
+      "query": "SELECT COUNT(*) FROM observations WHERE period >= 3",
+      "shape": "scalar"
+    },
+    "policy": "numeric",
+    "rationale": "row-count-boundary",
+    "reward": 13,
+    "split": "development",
+    "tags": [],
+    "task_id": "data_analysis_d02",
+    "task_type": "data_analysis"
+  },
+  "data_analysis_d03": {
+    "answer": "-9",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "easy",
+    "family": "minimum-signed",
+    "oracle": {
+      "method": "sqlite",
+      "query": "SELECT MIN(units) FROM observations",
+      "shape": "scalar"
+    },
+    "policy": "numeric",
+    "rationale": "minimum-signed",
+    "reward": 0,
+    "split": "development",
+    "tags": [],
+    "task_id": "data_analysis_d03",
+    "task_type": "data_analysis"
+  },
+  "data_analysis_d04": {
+    "answer": "24",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "easy",
+    "family": "maximum-filter",
+    "oracle": {
+      "method": "sqlite",
+      "query": "SELECT MAX(units) FROM observations WHERE region='east'",
+      "shape": "scalar"
+    },
+    "policy": "numeric",
+    "rationale": "maximum-filter",
+    "reward": 13,
+    "split": "development",
+    "tags": [],
+    "task_id": "data_analysis_d04",
+    "task_type": "data_analysis"
+  },
+  "data_analysis_d05": {
+    "answer": "7",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "exact-mean",
+    "oracle": {
+      "method": "sqlite",
+      "query": "SELECT SUM(units),COUNT(*) FROM observations",
+      "shape": "mean"
+    },
+    "policy": "numeric",
+    "rationale": "exact-mean",
+    "reward": 5,
+    "split": "development",
+    "tags": [],
+    "task_id": "data_analysis_d05",
+    "task_type": "data_analysis"
+  },
+  "data_analysis_d06": {
+    "answer": "12",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "conjunction-inclusive",
+    "oracle": {
+      "method": "sqlite",
+      "query": "SELECT COALESCE(SUM(units),0) FROM observations WHERE sku='cog' AND period BETWEEN 2 AND 4 AND units >= 0",
+      "shape": "scalar"
+    },
+    "policy": "numeric",
+    "rationale": "conjunction-inclusive",
+    "reward": 8,
+    "split": "development",
+    "tags": [],
+    "task_id": "data_analysis_d06",
+    "task_type": "data_analysis"
+  },
+  "data_analysis_d07": {
+    "answer": "5",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "quoted-comma-field",
+    "oracle": {
+      "method": "sqlite",
+      "query": "SELECT SUM(units) FROM observations WHERE sku='pin, deluxe'",
+      "shape": "scalar"
+    },
+    "policy": "numeric",
+    "rationale": "quoted-comma-field",
+    "reward": 0,
+    "split": "development",
+    "tags": [
+      "csv_quotes"
+    ],
+    "task_id": "data_analysis_d07",
+    "task_type": "data_analysis"
+  },
+  "data_analysis_d08": {
+    "answer": "0",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "easy",
+    "family": "empty-sum",
+    "oracle": {
+      "method": "sqlite",
+      "query": "SELECT COALESCE(SUM(units),0) FROM observations WHERE sku='absent'",
+      "shape": "scalar"
+    },
+    "policy": "numeric",
+    "rationale": "empty-sum",
+    "reward": 5,
+    "split": "development",
+    "tags": [
+      "empty"
+    ],
+    "task_id": "data_analysis_d08",
+    "task_type": "data_analysis"
+  },
+  "data_analysis_d09": {
+    "answer": null,
+    "answerable": false,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "empty-minimum",
+    "oracle": {
+      "method": "sqlite",
+      "query": "SELECT MIN(units) FROM observations WHERE sku='absent'",
+      "shape": "scalar"
+    },
+    "policy": "numeric",
+    "rationale": "empty-minimum",
+    "reward": 5,
+    "split": "development",
+    "tags": [
+      "impossible",
+      "empty"
+    ],
+    "task_id": "data_analysis_d09",
+    "task_type": "data_analysis"
+  },
+  "data_analysis_d10": {
+    "answer": null,
+    "answerable": false,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "missing-column",
+    "oracle": {
+      "method": "authored",
+      "query": null,
+      "shape": "scalar"
+    },
+    "policy": "numeric",
+    "rationale": "missing-column",
+    "reward": 8,
+    "split": "development",
+    "tags": [
+      "missing"
+    ],
+    "task_id": "data_analysis_d10",
+    "task_type": "data_analysis"
+  },
+  "data_analysis_d11": {
+    "answer": null,
+    "answerable": false,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "invalid-numeric-cell",
+    "oracle": {
+      "method": "authored",
+      "query": null,
+      "shape": "scalar"
+    },
+    "policy": "numeric",
+    "rationale": "invalid-numeric-cell",
+    "reward": 1,
+    "split": "development",
+    "tags": [
+      "damaged"
+    ],
+    "task_id": "data_analysis_d11",
+    "task_type": "data_analysis"
+  },
+  "data_analysis_d12": {
+    "answer": "{\"east\":57,\"west\":23}",
+    "answerable": true,
+    "contest_format_unknown": true,
+    "difficulty": "hard",
+    "family": "grouped-totals",
+    "oracle": {
+      "method": "sqlite",
+      "query": "SELECT region,SUM(units) FROM observations GROUP BY region",
+      "shape": "mapping"
+    },
+    "policy": "json",
+    "rationale": "grouped-totals",
+    "reward": 13,
+    "split": "development",
+    "tags": [
+      "grouping"
+    ],
+    "task_id": "data_analysis_d12",
+    "task_type": "data_analysis"
+  },
+  "data_analysis_d13": {
+    "answer": "pin",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "sorted-top-sku",
+    "oracle": {
+      "method": "sqlite",
+      "query": "SELECT sku FROM observations ORDER BY units DESC,sku ASC LIMIT 1",
+      "shape": "scalar"
+    },
+    "policy": "exact",
+    "rationale": "sorted-top-sku",
+    "reward": 8,
+    "split": "development",
+    "tags": [
+      "sorting"
+    ],
+    "task_id": "data_analysis_d13",
+    "task_type": "data_analysis"
+  },
+  "data_analysis_d14": {
+    "answer": "35",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "aggregate-paraphrase",
+    "oracle": {
+      "method": "sqlite",
+      "query": "SELECT SUM(units) FROM observations WHERE region='east' AND period >= 2",
+      "shape": "scalar"
+    },
+    "policy": "numeric",
+    "rationale": "aggregate-paraphrase",
+    "reward": 8,
+    "split": "development",
+    "tags": [
+      "mock_plan"
+    ],
+    "task_id": "data_analysis_d14",
+    "task_type": "data_analysis"
+  },
+  "data_analysis_d15": {
+    "answer": "9",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "disjunction",
+    "oracle": {
+      "method": "sqlite",
+      "query": "SELECT SUM(units) FROM observations WHERE period=1 OR period=6",
+      "shape": "scalar"
+    },
+    "policy": "numeric",
+    "rationale": "disjunction",
+    "reward": 13,
+    "split": "development",
+    "tags": [
+      "or"
+    ],
+    "task_id": "data_analysis_d15",
+    "task_type": "data_analysis"
+  },
+  "data_analysis_d16": {
+    "answer": null,
+    "answerable": false,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "broken-quoting",
+    "oracle": {
+      "method": "authored",
+      "query": null,
+      "shape": "scalar"
+    },
+    "policy": "numeric",
+    "rationale": "broken-quoting",
+    "reward": 0,
+    "split": "development",
+    "tags": [
+      "damaged"
+    ],
+    "task_id": "data_analysis_d16",
+    "task_type": "data_analysis"
+  },
+  "data_analysis_h01": {
+    "answer": "4",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "easy",
+    "family": "count-text-column",
+    "oracle": {
+      "method": "sqlite",
+      "query": "SELECT COUNT(sku) FROM observations WHERE region!='west'",
+      "shape": "scalar"
+    },
+    "policy": "numeric",
+    "rationale": "count-text-column",
+    "reward": 8,
+    "split": "holdout",
+    "tags": [],
+    "task_id": "data_analysis_h01",
+    "task_type": "data_analysis"
+  },
+  "data_analysis_h02": {
+    "answer": "-9",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "exclusive-interval",
+    "oracle": {
+      "method": "sqlite",
+      "query": "SELECT SUM(units) FROM observations WHERE period>2 AND period<5",
+      "shape": "scalar"
+    },
+    "policy": "numeric",
+    "rationale": "exclusive-interval",
+    "reward": 0,
+    "split": "holdout",
+    "tags": [
+      "boundary"
+    ],
+    "task_id": "data_analysis_h02",
+    "task_type": "data_analysis"
+  },
+  "data_analysis_h03": {
+    "answer": "1",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "negative-and-range",
+    "oracle": {
+      "method": "sqlite",
+      "query": "SELECT COUNT(*) FROM observations WHERE units<0 AND period>=1 AND period<=6",
+      "shape": "scalar"
+    },
+    "policy": "numeric",
+    "rationale": "negative-and-range",
+    "reward": 13,
+    "split": "holdout",
+    "tags": [],
+    "task_id": "data_analysis_h03",
+    "task_type": "data_analysis"
+  },
+  "data_analysis_h04": {
+    "answer": "23",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "physical-row-count",
+    "oracle": {
+      "method": "sqlite",
+      "query": "SELECT COUNT(*) FROM observations",
+      "shape": "scalar"
+    },
+    "policy": "numeric",
+    "rationale": "physical-row-count",
+    "reward": 3,
+    "split": "holdout",
+    "tags": [
+      "boundary"
+    ],
+    "task_id": "data_analysis_h04",
+    "task_type": "data_analysis"
+  },
+  "data_analysis_h05": {
+    "answer": "3/20",
+    "answerable": true,
+    "contest_format_unknown": true,
+    "difficulty": "easy",
+    "family": "decimal-sum",
+    "oracle": {
+      "method": "authored",
+      "query": null,
+      "shape": "scalar"
+    },
+    "policy": "numeric",
+    "rationale": "decimal-sum",
+    "reward": 8,
+    "split": "holdout",
+    "tags": [],
+    "task_id": "data_analysis_h05",
+    "task_type": "data_analysis"
+  },
+  "data_analysis_h06": {
+    "answer": "1.5",
+    "answerable": true,
+    "contest_format_unknown": true,
+    "difficulty": "easy",
+    "family": "decimal-average",
+    "oracle": {
+      "method": "authored",
+      "query": null,
+      "shape": "scalar"
+    },
+    "policy": "numeric",
+    "rationale": "decimal-average",
+    "reward": 5,
+    "split": "holdout",
+    "tags": [],
+    "task_id": "data_analysis_h06",
+    "task_type": "data_analysis"
+  },
+  "data_analysis_h07": {
+    "answer": "23/2",
+    "answerable": true,
+    "contest_format_unknown": true,
+    "difficulty": "medium",
+    "family": "median-value",
+    "oracle": {
+      "method": "sqlite",
+      "query": "SELECT SUM(units),COUNT(*) FROM (SELECT units FROM observations ORDER BY units LIMIT 2 OFFSET 2)",
+      "shape": "mean"
+    },
+    "policy": "numeric",
+    "rationale": "median-value",
+    "reward": 13,
+    "split": "holdout",
+    "tags": [
+      "median"
+    ],
+    "task_id": "data_analysis_h07",
+    "task_type": "data_analysis"
+  },
+  "data_analysis_h08": {
+    "answer": "2",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "distinct-count",
+    "oracle": {
+      "method": "sqlite",
+      "query": "SELECT COUNT(DISTINCT sku) FROM observations",
+      "shape": "scalar"
+    },
+    "policy": "numeric",
+    "rationale": "distinct-count",
+    "reward": 8,
+    "split": "holdout",
+    "tags": [
+      "distinct"
+    ],
+    "task_id": "data_analysis_h08",
+    "task_type": "data_analysis"
+  },
+  "data_analysis_h09": {
+    "answer": "east",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "hard",
+    "family": "group-sort-winner",
+    "oracle": {
+      "method": "sqlite",
+      "query": "SELECT region FROM observations GROUP BY region ORDER BY SUM(units) DESC,region ASC LIMIT 1",
+      "shape": "scalar"
+    },
+    "policy": "exact",
+    "rationale": "group-sort-winner",
+    "reward": 1,
+    "split": "holdout",
+    "tags": [
+      "grouping",
+      "sorting"
+    ],
+    "task_id": "data_analysis_h09",
+    "task_type": "data_analysis"
+  },
+  "data_analysis_h10": {
+    "answer": null,
+    "answerable": false,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "missing-csv",
+    "oracle": null,
+    "policy": "numeric",
+    "rationale": "missing-csv",
+    "reward": 2,
+    "split": "holdout",
+    "tags": [
+      "missing"
+    ],
+    "task_id": "data_analysis_h10",
+    "task_type": "data_analysis"
+  },
+  "data_analysis_h11": {
+    "answer": null,
+    "answerable": false,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "duplicate-header",
+    "oracle": {
+      "method": "authored",
+      "query": null,
+      "shape": "scalar"
+    },
+    "policy": "numeric",
+    "rationale": "duplicate-header",
+    "reward": 0,
+    "split": "holdout",
+    "tags": [
+      "damaged"
+    ],
+    "task_id": "data_analysis_h11",
+    "task_type": "data_analysis"
+  },
+  "data_analysis_h12": {
+    "answer": null,
+    "answerable": false,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "empty-average",
+    "oracle": {
+      "method": "authored",
+      "query": null,
+      "shape": "scalar"
+    },
+    "policy": "numeric",
+    "rationale": "empty-average",
+    "reward": 5,
+    "split": "holdout",
+    "tags": [
+      "impossible",
+      "empty"
+    ],
+    "task_id": "data_analysis_h12",
+    "task_type": "data_analysis"
+  },
+  "data_analysis_h13": {
+    "answer": null,
+    "answerable": false,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "missing-numeric-value",
+    "oracle": {
+      "method": "authored",
+      "query": null,
+      "shape": "scalar"
+    },
+    "policy": "numeric",
+    "rationale": "missing-numeric-value",
+    "reward": 1,
+    "split": "holdout",
+    "tags": [
+      "damaged"
+    ],
+    "task_id": "data_analysis_h13",
+    "task_type": "data_analysis"
+  },
+  "data_analysis_h14": {
+    "answer": "-3",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "bom-nested-path",
+    "oracle": {
+      "method": "authored",
+      "query": null,
+      "shape": "scalar"
+    },
+    "policy": "numeric",
+    "rationale": "bom-nested-path",
+    "reward": 13,
+    "split": "holdout",
+    "tags": [
+      "encoding"
+    ],
+    "task_id": "data_analysis_h14",
+    "task_type": "data_analysis"
+  },
+  "data_analysis_h15": {
+    "answer": "-9",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "minimum-paraphrase",
+    "oracle": {
+      "method": "sqlite",
+      "query": "SELECT MIN(units) FROM observations WHERE period<4",
+      "shape": "scalar"
+    },
+    "policy": "numeric",
+    "rationale": "minimum-paraphrase",
+    "reward": 5,
+    "split": "holdout",
+    "tags": [
+      "mock_plan"
+    ],
+    "task_id": "data_analysis_h15",
+    "task_type": "data_analysis"
+  },
+  "data_analysis_h16": {
+    "answer": "358",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "hard",
+    "family": "weighted-sum",
+    "oracle": {
+      "method": "sqlite",
+      "query": "SELECT SUM(units*price) FROM observations",
+      "shape": "scalar"
+    },
+    "policy": "numeric",
+    "rationale": "weighted-sum",
+    "reward": 1,
+    "split": "holdout",
+    "tags": [
+      "formula"
+    ],
+    "task_id": "data_analysis_h16",
+    "task_type": "data_analysis"
+  },
+  "math_d01": {
+    "answer": "163",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "easy",
+    "family": "nested-rational-precedence",
+    "oracle": null,
+    "policy": "numeric",
+    "rationale": "nested-rational-precedence",
+    "reward": 1,
+    "split": "development",
+    "tags": [],
+    "task_id": "math_d01",
+    "task_type": "math"
+  },
+  "math_d02": {
+    "answer": "-51/10",
+    "answerable": true,
+    "contest_format_unknown": true,
+    "difficulty": "easy",
+    "family": "signed-decimal",
+    "oracle": null,
+    "policy": "numeric",
+    "rationale": "signed-decimal",
+    "reward": 13,
+    "split": "development",
+    "tags": [],
+    "task_id": "math_d02",
+    "task_type": "math"
+  },
+  "math_d03": {
+    "answer": "3/4",
+    "answerable": true,
+    "contest_format_unknown": true,
+    "difficulty": "easy",
+    "family": "fraction-difference",
+    "oracle": null,
+    "policy": "numeric",
+    "rationale": "fraction-difference",
+    "reward": 8,
+    "split": "development",
+    "tags": [],
+    "task_id": "math_d03",
+    "task_type": "math"
+  },
+  "math_d04": {
+    "answer": "-4",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "easy",
+    "family": "negative-divisor",
+    "oracle": null,
+    "policy": "numeric",
+    "rationale": "negative-divisor",
+    "reward": 13,
+    "split": "development",
+    "tags": [],
+    "task_id": "math_d04",
+    "task_type": "math"
+  },
+  "math_d05": {
+    "answer": "270",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "fractional-percent",
+    "oracle": null,
+    "policy": "numeric",
+    "rationale": "fractional-percent",
+    "reward": 1,
+    "split": "development",
+    "tags": [],
+    "task_id": "math_d05",
+    "task_type": "math"
+  },
+  "math_d06": {
+    "answer": "129",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "sequential-discount",
+    "oracle": null,
+    "policy": "numeric",
+    "rationale": "sequential-discount",
+    "reward": 13,
+    "split": "development",
+    "tags": [],
+    "task_id": "math_d06",
+    "task_type": "math"
+  },
+  "math_d07": {
+    "answer": "5/8",
+    "answerable": true,
+    "contest_format_unknown": true,
+    "difficulty": "easy",
+    "family": "operand-order-fraction",
+    "oracle": null,
+    "policy": "numeric",
+    "rationale": "operand-order-fraction",
+    "reward": 5,
+    "split": "development",
+    "tags": [],
+    "task_id": "math_d07",
+    "task_type": "math"
+  },
+  "math_d08": {
+    "answer": "29",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "power-words",
+    "oracle": null,
+    "policy": "numeric",
+    "rationale": "power-words",
+    "reward": 0,
+    "split": "development",
+    "tags": [
+      "wording"
+    ],
+    "task_id": "math_d08",
+    "task_type": "math"
+  },
+  "math_d09": {
+    "answer": "7.24",
+    "answerable": true,
+    "contest_format_unknown": true,
+    "difficulty": "medium",
+    "family": "explicit-half-up",
+    "oracle": null,
+    "policy": "numeric",
+    "rationale": "explicit-half-up",
+    "reward": 3,
+    "split": "development",
+    "tags": [
+      "rounding"
+    ],
+    "task_id": "math_d09",
+    "task_type": "math"
+  },
+  "math_d10": {
+    "answer": "74",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "ticket-story",
+    "oracle": null,
+    "policy": "numeric",
+    "rationale": "ticket-story",
+    "reward": 5,
+    "split": "development",
+    "tags": [
+      "wording"
+    ],
+    "task_id": "math_d10",
+    "task_type": "math"
+  },
+  "math_d11": {
+    "answer": "28",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "hard",
+    "family": "override-precedence",
+    "oracle": null,
+    "policy": "numeric",
+    "rationale": "override-precedence",
+    "reward": 8,
+    "split": "development",
+    "tags": [
+      "semantic_order"
+    ],
+    "task_id": "math_d11",
+    "task_type": "math"
+  },
+  "math_d12": {
+    "answer": "34",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "before-clause",
+    "oracle": null,
+    "policy": "numeric",
+    "rationale": "before-clause",
+    "reward": 1,
+    "split": "development",
+    "tags": [
+      "semantic_order"
+    ],
+    "task_id": "math_d12",
+    "task_type": "math"
+  },
+  "math_d13": {
+    "answer": null,
+    "answerable": false,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "literal-zero-divisor",
+    "oracle": null,
+    "policy": "numeric",
+    "rationale": "Division by zero has no numeric answer.",
+    "reward": 3,
+    "split": "development",
+    "tags": [
+      "impossible"
+    ],
+    "task_id": "math_d13",
+    "task_type": "math"
+  },
+  "math_d14": {
+    "answer": null,
+    "answerable": false,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "unknown-attendee-count",
+    "oracle": null,
+    "policy": "numeric",
+    "rationale": "unknown-attendee-count",
+    "reward": 13,
+    "split": "development",
+    "tags": [
+      "missing"
+    ],
+    "task_id": "math_d14",
+    "task_type": "math"
+  },
+  "math_d15": {
+    "answer": "76",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "labelled-arithmetic",
+    "oracle": null,
+    "policy": "numeric",
+    "rationale": "labelled-arithmetic",
+    "reward": 2,
+    "split": "development",
+    "tags": [
+      "mock_plan"
+    ],
+    "task_id": "math_d15",
+    "task_type": "math"
+  },
+  "math_d16": {
+    "answer": null,
+    "answerable": false,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "implicit-multiplication-ambiguity",
+    "oracle": null,
+    "policy": "numeric",
+    "rationale": "implicit-multiplication-ambiguity",
+    "reward": 1,
+    "split": "development",
+    "tags": [
+      "ambiguous"
+    ],
+    "task_id": "math_d16",
+    "task_type": "math"
+  },
+  "math_h01": {
+    "answer": "87",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "compound-percent-steps",
+    "oracle": null,
+    "policy": "numeric",
+    "rationale": "compound-percent-steps",
+    "reward": 8,
+    "split": "holdout",
+    "tags": [],
+    "task_id": "math_h01",
+    "task_type": "math"
+  },
+  "math_h02": {
+    "answer": "29/40",
+    "answerable": true,
+    "contest_format_unknown": true,
+    "difficulty": "easy",
+    "family": "small-decimal-product",
+    "oracle": null,
+    "policy": "numeric",
+    "rationale": "small-decimal-product",
+    "reward": 0,
+    "split": "holdout",
+    "tags": [],
+    "task_id": "math_h02",
+    "task_type": "math"
+  },
+  "math_h03": {
+    "answer": "2",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "hard",
+    "family": "nested-reciprocal",
+    "oracle": null,
+    "policy": "numeric",
+    "rationale": "nested-reciprocal",
+    "reward": 0,
+    "split": "holdout",
+    "tags": [],
+    "task_id": "math_h03",
+    "task_type": "math"
+  },
+  "math_h04": {
+    "answer": "-6",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "negative-floor",
+    "oracle": null,
+    "policy": "numeric",
+    "rationale": "negative-floor",
+    "reward": 1,
+    "split": "holdout",
+    "tags": [
+      "rounding"
+    ],
+    "task_id": "math_h04",
+    "task_type": "math"
+  },
+  "math_h05": {
+    "answer": "-4",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "explicit-ceiling",
+    "oracle": null,
+    "policy": "numeric",
+    "rationale": "explicit-ceiling",
+    "reward": 1,
+    "split": "holdout",
+    "tags": [
+      "rounding"
+    ],
+    "task_id": "math_h05",
+    "task_type": "math"
+  },
+  "math_h06": {
+    "answer": "18",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "ratio-allocation",
+    "oracle": null,
+    "policy": "numeric",
+    "rationale": "ratio-allocation",
+    "reward": 0,
+    "split": "holdout",
+    "tags": [
+      "wording"
+    ],
+    "task_id": "math_h06",
+    "task_type": "math"
+  },
+  "math_h07": {
+    "answer": "30",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "easy",
+    "family": "teen-number-words",
+    "oracle": null,
+    "policy": "numeric",
+    "rationale": "teen-number-words",
+    "reward": 5,
+    "split": "holdout",
+    "tags": [
+      "wording"
+    ],
+    "task_id": "math_h07",
+    "task_type": "math"
+  },
+  "math_h08": {
+    "answer": "133.1",
+    "answerable": true,
+    "contest_format_unknown": true,
+    "difficulty": "hard",
+    "family": "compound-interest-story",
+    "oracle": null,
+    "policy": "numeric",
+    "rationale": "compound-interest-story",
+    "reward": 13,
+    "split": "holdout",
+    "tags": [],
+    "task_id": "math_h08",
+    "task_type": "math"
+  },
+  "math_h09": {
+    "answer": "44",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "percentage-points",
+    "oracle": null,
+    "policy": "numeric",
+    "rationale": "percentage-points",
+    "reward": 2,
+    "split": "holdout",
+    "tags": [
+      "semantic_percent"
+    ],
+    "task_id": "math_h09",
+    "task_type": "math"
+  },
+  "math_h10": {
+    "answer": "10",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "easy",
+    "family": "mean-of-list",
+    "oracle": null,
+    "policy": "numeric",
+    "rationale": "mean-of-list",
+    "reward": 3,
+    "split": "holdout",
+    "tags": [],
+    "task_id": "math_h10",
+    "task_type": "math"
+  },
+  "math_h11": {
+    "answer": "26",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "remove-double",
+    "oracle": null,
+    "policy": "numeric",
+    "rationale": "remove-double",
+    "reward": 2,
+    "split": "holdout",
+    "tags": [],
+    "task_id": "math_h11",
+    "task_type": "math"
+  },
+  "math_h12": {
+    "answer": "3",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "conditional-absolute",
+    "oracle": null,
+    "policy": "numeric",
+    "rationale": "conditional-absolute",
+    "reward": 8,
+    "split": "holdout",
+    "tags": [
+      "conditional"
+    ],
+    "task_id": "math_h12",
+    "task_type": "math"
+  },
+  "math_h13": {
+    "answer": null,
+    "answerable": false,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "computed-zero-divisor",
+    "oracle": null,
+    "policy": "numeric",
+    "rationale": "computed-zero-divisor",
+    "reward": 0,
+    "split": "holdout",
+    "tags": [
+      "impossible"
+    ],
+    "task_id": "math_h13",
+    "task_type": "math"
+  },
+  "math_h14": {
+    "answer": null,
+    "answerable": false,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "unspecified-tie-rule",
+    "oracle": null,
+    "policy": "numeric",
+    "rationale": "unspecified-tie-rule",
+    "reward": 8,
+    "split": "holdout",
+    "tags": [
+      "ambiguous"
+    ],
+    "task_id": "math_h14",
+    "task_type": "math"
+  },
+  "math_h15": {
+    "answer": "53",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "labelled-ledger",
+    "oracle": null,
+    "policy": "numeric",
+    "rationale": "labelled-ledger",
+    "reward": 0,
+    "split": "holdout",
+    "tags": [
+      "mock_plan"
+    ],
+    "task_id": "math_h15",
+    "task_type": "math"
+  },
+  "math_h16": {
+    "answer": "30",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "easy",
+    "family": "quotient-expression-operands",
+    "oracle": null,
+    "policy": "numeric",
+    "rationale": "quotient-expression-operands",
+    "reward": 0,
+    "split": "holdout",
+    "tags": [],
+    "task_id": "math_h16",
+    "task_type": "math"
+  },
+  "search_d01": {
+    "answer": "1974",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "easy",
+    "family": "birth-heading",
+    "oracle": null,
+    "policy": "exact",
+    "rationale": "birth-heading",
+    "reward": 13,
+    "split": "development",
+    "tags": [],
+    "task_id": "search_d01",
+    "task_type": "search"
+  },
+  "search_d02": {
+    "answer": "2007",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "easy",
+    "family": "company-founding",
+    "oracle": null,
+    "policy": "exact",
+    "rationale": "company-founding",
+    "reward": 3,
+    "split": "development",
+    "tags": [],
+    "task_id": "search_d02",
+    "task_type": "search"
+  },
+  "search_d03": {
+    "answer": "São Tomé",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "easy",
+    "family": "unicode-city",
+    "oracle": null,
+    "policy": "exact",
+    "rationale": "unicode-city",
+    "reward": 2,
+    "split": "development",
+    "tags": [],
+    "task_id": "search_d03",
+    "task_type": "search"
+  },
+  "search_d04": {
+    "answer": "Aster Loom",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "easy",
+    "family": "direct-employer",
+    "oracle": null,
+    "policy": "exact",
+    "rationale": "direct-employer",
+    "reward": 3,
+    "split": "development",
+    "tags": [],
+    "task_id": "search_d04",
+    "task_type": "search"
+  },
+  "search_d05": {
+    "answer": "Porto",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "mentor-company-city",
+    "oracle": null,
+    "policy": "exact",
+    "rationale": "mentor-company-city",
+    "reward": 3,
+    "split": "development",
+    "tags": [],
+    "task_id": "search_d05",
+    "task_type": "search"
+  },
+  "search_d06": {
+    "answer": "1948",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "hard",
+    "family": "three-mentor-chain",
+    "oracle": null,
+    "policy": "exact",
+    "rationale": "three-mentor-chain",
+    "reward": 8,
+    "split": "development",
+    "tags": [],
+    "task_id": "search_d06",
+    "task_type": "search"
+  },
+  "search_d07": {
+    "answer": "Vela Nox",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "inverse-mentor",
+    "oracle": null,
+    "policy": "exact",
+    "rationale": "inverse-mentor",
+    "reward": 5,
+    "split": "development",
+    "tags": [
+      "inverse"
+    ],
+    "task_id": "search_d07",
+    "task_type": "search"
+  },
+  "search_d08": {
+    "answer": "1989",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "fact-in-prose",
+    "oracle": null,
+    "policy": "exact",
+    "rationale": "fact-in-prose",
+    "reward": 0,
+    "split": "development",
+    "tags": [
+      "prose"
+    ],
+    "task_id": "search_d08",
+    "task_type": "search"
+  },
+  "search_d09": {
+    "answer": "1966",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "explicit-alias",
+    "oracle": null,
+    "policy": "exact",
+    "rationale": "explicit-alias",
+    "reward": 8,
+    "split": "development",
+    "tags": [
+      "alias"
+    ],
+    "task_id": "search_d09",
+    "task_type": "search"
+  },
+  "search_d10": {
+    "answer": null,
+    "answerable": false,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "contradictory-birth",
+    "oracle": null,
+    "policy": "exact",
+    "rationale": "contradictory-birth",
+    "reward": 5,
+    "split": "development",
+    "tags": [
+      "contradiction"
+    ],
+    "task_id": "search_d10",
+    "task_type": "search"
+  },
+  "search_d11": {
+    "answer": null,
+    "answerable": false,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "missing-company-fact",
+    "oracle": null,
+    "policy": "exact",
+    "rationale": "missing-company-fact",
+    "reward": 2,
+    "split": "development",
+    "tags": [
+      "missing"
+    ],
+    "task_id": "search_d11",
+    "task_type": "search"
+  },
+  "search_d12": {
+    "answer": "1992",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "hard",
+    "family": "disambiguated-homonyms",
+    "oracle": null,
+    "policy": "exact",
+    "rationale": "disambiguated-homonyms",
+    "reward": 2,
+    "split": "development",
+    "tags": [
+      "homonym"
+    ],
+    "task_id": "search_d12",
+    "task_type": "search"
+  },
+  "search_d13": {
+    "answer": "1986",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "easy",
+    "family": "near-identical-names",
+    "oracle": null,
+    "policy": "exact",
+    "rationale": "near-identical-names",
+    "reward": 5,
+    "split": "development",
+    "tags": [],
+    "task_id": "search_d13",
+    "task_type": "search"
+  },
+  "search_d14": {
+    "answer": "1978",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "complementary-records",
+    "oracle": null,
+    "policy": "exact",
+    "rationale": "complementary-records",
+    "reward": 2,
+    "split": "development",
+    "tags": [
+      "split_record"
+    ],
+    "task_id": "search_d14",
+    "task_type": "search"
+  },
+  "search_d15": {
+    "answer": "Porto",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "based-in-paraphrase",
+    "oracle": null,
+    "policy": "exact",
+    "rationale": "based-in-paraphrase",
+    "reward": 5,
+    "split": "development",
+    "tags": [
+      "mock_plan"
+    ],
+    "task_id": "search_d15",
+    "task_type": "search"
+  },
+  "search_d16": {
+    "answer": null,
+    "answerable": false,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "empty-knowledge-base",
+    "oracle": null,
+    "policy": "exact",
+    "rationale": "empty-knowledge-base",
+    "reward": 5,
+    "split": "development",
+    "tags": [
+      "missing"
+    ],
+    "task_id": "search_d16",
+    "task_type": "search"
+  },
+  "search_h01": {
+    "answer": "2001",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "easy",
+    "family": "multiple-headings",
+    "oracle": null,
+    "policy": "exact",
+    "rationale": "multiple-headings",
+    "reward": 0,
+    "split": "holdout",
+    "tags": [],
+    "task_id": "search_h01",
+    "task_type": "search"
+  },
+  "search_h02": {
+    "answer": "1996",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "hard",
+    "family": "nested-of-relations",
+    "oracle": null,
+    "policy": "exact",
+    "rationale": "nested-of-relations",
+    "reward": 5,
+    "split": "holdout",
+    "tags": [
+      "mock_plan"
+    ],
+    "task_id": "search_h02",
+    "task_type": "search"
+  },
+  "search_h03": {
+    "answer": "Ari Gale",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "easy",
+    "family": "typographic-possessive",
+    "oracle": null,
+    "policy": "exact",
+    "rationale": "typographic-possessive",
+    "reward": 0,
+    "split": "holdout",
+    "tags": [],
+    "task_id": "search_h03",
+    "task_type": "search"
+  },
+  "search_h04": {
+    "answer": "1963",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "mentor-birth",
+    "oracle": null,
+    "policy": "exact",
+    "rationale": "mentor-birth",
+    "reward": 0,
+    "split": "holdout",
+    "tags": [],
+    "task_id": "search_h04",
+    "task_type": "search"
+  },
+  "search_h05": {
+    "answer": "2003",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "easy",
+    "family": "same-name-other-world",
+    "oracle": null,
+    "policy": "exact",
+    "rationale": "same-name-other-world",
+    "reward": 13,
+    "split": "holdout",
+    "tags": [
+      "isolation"
+    ],
+    "task_id": "search_h05",
+    "task_type": "search"
+  },
+  "search_h06": {
+    "answer": "[\"Ari Gale\",\"Nola Frost\"]",
+    "answerable": true,
+    "contest_format_unknown": true,
+    "difficulty": "hard",
+    "family": "inverse-employees",
+    "oracle": null,
+    "policy": "json",
+    "rationale": "inverse-employees",
+    "reward": 1,
+    "split": "holdout",
+    "tags": [
+      "inverse"
+    ],
+    "task_id": "search_h06",
+    "task_type": "search"
+  },
+  "search_h07": {
+    "answer": null,
+    "answerable": false,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "ambiguous-shared-alias",
+    "oracle": null,
+    "policy": "exact",
+    "rationale": "ambiguous-shared-alias",
+    "reward": 8,
+    "split": "holdout",
+    "tags": [
+      "ambiguous"
+    ],
+    "task_id": "search_h07",
+    "task_type": "search"
+  },
+  "search_h08": {
+    "answer": "1991",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "markdown-table",
+    "oracle": null,
+    "policy": "exact",
+    "rationale": "markdown-table",
+    "reward": 0,
+    "split": "holdout",
+    "tags": [
+      "table"
+    ],
+    "task_id": "search_h08",
+    "task_type": "search"
+  },
+  "search_h09": {
+    "answer": "1988",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "full-date-to-year",
+    "oracle": null,
+    "policy": "exact",
+    "rationale": "full-date-to-year",
+    "reward": 1,
+    "split": "holdout",
+    "tags": [
+      "schema"
+    ],
+    "task_id": "search_h09",
+    "task_type": "search"
+  },
+  "search_h10": {
+    "answer": null,
+    "answerable": false,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "conflicting-city",
+    "oracle": null,
+    "policy": "exact",
+    "rationale": "conflicting-city",
+    "reward": 2,
+    "split": "holdout",
+    "tags": [
+      "contradiction"
+    ],
+    "task_id": "search_h10",
+    "task_type": "search"
+  },
+  "search_h11": {
+    "answer": "1998",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "inert-code-fence",
+    "oracle": null,
+    "policy": "exact",
+    "rationale": "inert-code-fence",
+    "reward": 5,
+    "split": "holdout",
+    "tags": [
+      "untrusted_text"
+    ],
+    "task_id": "search_h11",
+    "task_type": "search"
+  },
+  "search_h12": {
+    "answer": null,
+    "answerable": false,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "missing-kb-directory",
+    "oracle": null,
+    "policy": "exact",
+    "rationale": "missing-kb-directory",
+    "reward": 13,
+    "split": "holdout",
+    "tags": [
+      "missing"
+    ],
+    "task_id": "search_h12",
+    "task_type": "search"
+  },
+  "search_h13": {
+    "answer": "1977",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "irrelevant-field-conflict",
+    "oracle": null,
+    "policy": "exact",
+    "rationale": "irrelevant-field-conflict",
+    "reward": 0,
+    "split": "holdout",
+    "tags": [
+      "overconservative"
+    ],
+    "task_id": "search_h13",
+    "task_type": "search"
+  },
+  "search_h14": {
+    "answer": null,
+    "answerable": false,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "cycle-without-terminal-fact",
+    "oracle": null,
+    "policy": "exact",
+    "rationale": "cycle-without-terminal-fact",
+    "reward": 2,
+    "split": "holdout",
+    "tags": [
+      "missing",
+      "cycle"
+    ],
+    "task_id": "search_h14",
+    "task_type": "search"
+  },
+  "search_h15": {
+    "answer": "Faro",
+    "answerable": true,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "located-paraphrase",
+    "oracle": null,
+    "policy": "exact",
+    "rationale": "located-paraphrase",
+    "reward": 5,
+    "split": "holdout",
+    "tags": [
+      "mock_plan"
+    ],
+    "task_id": "search_h15",
+    "task_type": "search"
+  },
+  "search_h16": {
+    "answer": null,
+    "answerable": false,
+    "contest_format_unknown": false,
+    "difficulty": "medium",
+    "family": "unknown-terminal-value",
+    "oracle": null,
+    "policy": "exact",
+    "rationale": "unknown-terminal-value",
+    "reward": 13,
+    "split": "holdout",
+    "tags": [
+      "missing"
+    ],
+    "task_id": "search_h16",
+    "task_type": "search"
+  }
+}

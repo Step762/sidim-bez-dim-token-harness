@@ -1,0 +1,6 @@
+{
+  "instruction": "What year was Luma Fern born?",
+  "reward": 5,
+  "task_id": "search_d10",
+  "task_type": "search"
+}

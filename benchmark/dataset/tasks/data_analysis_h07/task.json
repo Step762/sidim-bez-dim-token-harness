@@ -1,0 +1,6 @@
+{
+  "instruction": "Find the median units in observations.csv. For an even number of rows use the mean of the two middle values.",
+  "reward": 13,
+  "task_id": "data_analysis_h07",
+  "task_type": "data_analysis"
+}

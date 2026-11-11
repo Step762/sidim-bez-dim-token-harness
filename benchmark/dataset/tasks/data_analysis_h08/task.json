@@ -1,0 +1,6 @@
+{
+  "instruction": "Count distinct sku values in observations.csv.",
+  "reward": 8,
+  "task_id": "data_analysis_h08",
+  "task_type": "data_analysis"
+}

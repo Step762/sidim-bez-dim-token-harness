@@ -1,0 +1,6 @@
+{
+  "instruction": "Evaluate 9 + 5 * 2 strictly from left to right, ignoring usual precedence.",
+  "reward": 8,
+  "task_id": "math_d11",
+  "task_type": "math"
+}

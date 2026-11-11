@@ -1,0 +1,6 @@
+{
+  "instruction": "A rate is 35 percent. Increase it by 9 percentage points. Return the new rate as a number of percent.",
+  "reward": 2,
+  "task_id": "math_h09",
+  "task_type": "math"
+}

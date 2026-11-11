@@ -1,0 +1,6 @@
+{
+  "instruction": "The file observations.csv. What is the count of sku where region != 'west'?",
+  "reward": 8,
+  "task_id": "data_analysis_h01",
+  "task_type": "data_analysis"
+}

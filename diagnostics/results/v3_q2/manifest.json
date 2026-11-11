@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "baseline_head": "ae9351c357711c46e7c39b51911a32219548a9fa",
+  "runtime_sha256": {
+    ".dockerignore": "cf5e437662e0eabe0be727cf8e86d482c41e6768a4ef222b28540085e3eab9a5",
+    "Dockerfile": "fa31e22d5ca58014cdf56e0a83899dd6f96caf97f5421c0d6ae9aca4ebf00fe6",
+    "budget_manager.py": "8259d00cf23cb1c5f0bd2162784f0c91dc005cf570e99d9a4cfb30929abcbb4f",
+    "coding_solver.py": "e64d5913e831c72a2afd36e70512f290886d8fd7be577ed38d6a57ac3c30d9e7",
+    "data_solver.py": "c4a9b0b1e56c0b06685a5d88df0aafa2fc11644bf7c658c7e5da928de457712a",
+    "harness.py": "2e08007cc5632db92f1f1d17e56374a14a03f0f81bbdff4075c2c10cd38b1a3a",
+    "llm_fallback.py": "d9c71832f892a3a1114d883eea39876caa5e98f3114c5533f5a0c943670e8020",
+    "llm_gateway.py": "d86450f235ed339dfc0766859b13a43b6f9a52d850a0fb7b06b8ff6a5d999331",
+    "math_solver.py": "c0aec6ee312b2bbd9aa9606f5f41e395f8fcb54bd867dbd9a40b35bfeb8cf263",
+    "plan_semantics.py": "23bd5a40b73b66e7f16921065adf37be8286bb51cb5c1913b3211d784669c31c",
+    "planner.py": "4db10378746a8decbf556defbcbc207afc7fc472cb8827404ba89c15beec3b8d",
+    "requirements.txt": "d8c2924d446449dfd156153333b01a3ae0ef3fd0da64acfe36eae937663a3da3",
+    "run_agent.py": "88938b2c66ddcf2b7428976390433c6c719cbcdbdc8969a07346effbdbaf401c",
+    "runtime_limits.py": "cdd72e8fc6bc119b6cd76fe4560a910552c80e04edb27e2d3d29cb1d3821e669",
+    "safe_files.py": "04aa6c98f6da2555b80ab298d0937ea32f39a0deea0710fa78e97d849d6c7cfb",
+    "search_solver.py": "9e0a8c44c063391fe841806ab90c12d28d714a45dafe71c4f48328d4582badd9"
+  },
+  "new_source_sha256": {
+    "math_solver.py": "c0aec6ee312b2bbd9aa9606f5f41e395f8fcb54bd867dbd9a40b35bfeb8cf263",
+    "data_solver.py": "c4a9b0b1e56c0b06685a5d88df0aafa2fc11644bf7c658c7e5da928de457712a",
+    "tests/test_math_rounding.py": "8ede2ffe9ece1473b27a334a473ccbee58f4dd55f2977ee0bd96062908c3e756",
+    "tests/test_data_ranking.py": "b28bc545e0d7ee20df293d7f630ba3c883abe1d9384f28ce8424132a7aa707fd",
+    "tests/test_diagnostics.py": "2a9e79aa4038762c109c3f4d9d625fe4002798ce60caa6fad3cb0c27c72534c0",
+    "diagnostics/q2_coverage_probe.py": "b4f6f7eb97a7faead81780349a7afe4cb6c682ef3780c6ac80f8800b3b92ea83"
+  },
+  "dataset_manifest_sha256": "2861a8eb1c07abb199d39066a5b65fea2920298dd252904e564846cecd537049",
+  "files_sha256": {
+    "independent_pairs.json": "0577084fa9c2139ab037752f8c77378bdee735bd81669bf53d904e2644a69a06",
+    "qualification_pairs.json": "b85f8c1084e52aa785baf1a788fde4d246b28f4584524659c9bccdc2d5f8a1ec",
+    "development_audit.json": "1ecb055e9ad0b34deede43ef40386a70e46b2279db715ffd5c6fc88a7c7e19ad",
+    "measurements.json": "1ac46ecf0b53d765e11ecbcea3821d0002f80c7ad995f8677ce54da13cfcf3c9",
+    "performance.json": "0cf2b483fe12b778d400529ae13ff55513b06d11375fc1f507051dfcb9b29840"
+  },
+  "holdout_answers_exported": false,
+  "holdout_used_for_rule_selection": false,
+  "real_requests": 0
+}

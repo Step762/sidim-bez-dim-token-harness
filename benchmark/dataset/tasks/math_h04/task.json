@@ -1,0 +1,6 @@
+{
+  "instruction": "Start with -23 units. Divide by 4 rounded down.",
+  "reward": 1,
+  "task_id": "math_h04",
+  "task_type": "math"
+}

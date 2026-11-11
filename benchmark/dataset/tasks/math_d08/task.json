@@ -1,0 +1,6 @@
+{
+  "instruction": "Compute 2 raised to the fifth power minus 3.",
+  "reward": 0,
+  "task_id": "math_d08",
+  "task_type": "math"
+}

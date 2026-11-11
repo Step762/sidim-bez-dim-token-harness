@@ -1,0 +1,926 @@
+{
+  "before": {
+    "local": {
+      "counts": {
+        "correct": 15,
+        "fallback_not_enabled_in_local_run": 16,
+        "missing_or_ambiguous_evidence": 4,
+        "coding_safe_disabled": 5
+      },
+      "pairs": [
+        {
+          "pair_id": "pair_01",
+          "category": "math+math",
+          "correct": 2,
+          "reasons": {
+            "correct": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_02",
+          "category": "math+math",
+          "correct": 1,
+          "reasons": {
+            "fallback_not_enabled_in_local_run": 1,
+            "correct": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_03",
+          "category": "math+math",
+          "correct": 0,
+          "reasons": {
+            "fallback_not_enabled_in_local_run": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_04",
+          "category": "math+math",
+          "correct": 0,
+          "reasons": {
+            "fallback_not_enabled_in_local_run": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_05",
+          "category": "math+search",
+          "correct": 2,
+          "reasons": {
+            "correct": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_06",
+          "category": "math+search",
+          "correct": 0,
+          "reasons": {
+            "fallback_not_enabled_in_local_run": 1,
+            "missing_or_ambiguous_evidence": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_07",
+          "category": "math+search",
+          "correct": 0,
+          "reasons": {
+            "fallback_not_enabled_in_local_run": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_08",
+          "category": "math+search",
+          "correct": 1,
+          "reasons": {
+            "correct": 1,
+            "fallback_not_enabled_in_local_run": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_09",
+          "category": "math+data_analysis",
+          "correct": 2,
+          "reasons": {
+            "correct": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_10",
+          "category": "math+data_analysis",
+          "correct": 0,
+          "reasons": {
+            "fallback_not_enabled_in_local_run": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_11",
+          "category": "math+data_analysis",
+          "correct": 0,
+          "reasons": {
+            "fallback_not_enabled_in_local_run": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_12",
+          "category": "math+data_analysis",
+          "correct": 1,
+          "reasons": {
+            "correct": 1,
+            "fallback_not_enabled_in_local_run": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_13",
+          "category": "search+data_analysis",
+          "correct": 2,
+          "reasons": {
+            "correct": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_14",
+          "category": "search+data_analysis",
+          "correct": 0,
+          "reasons": {
+            "fallback_not_enabled_in_local_run": 1,
+            "missing_or_ambiguous_evidence": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_15",
+          "category": "search+data_analysis",
+          "correct": 1,
+          "reasons": {
+            "correct": 1,
+            "fallback_not_enabled_in_local_run": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_16",
+          "category": "search+data_analysis",
+          "correct": 1,
+          "reasons": {
+            "correct": 1,
+            "missing_or_ambiguous_evidence": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_17",
+          "category": "coding+any",
+          "correct": 1,
+          "reasons": {
+            "coding_safe_disabled": 1,
+            "correct": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_18",
+          "category": "coding+any",
+          "correct": 0,
+          "reasons": {
+            "coding_safe_disabled": 1,
+            "missing_or_ambiguous_evidence": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_19",
+          "category": "coding+any",
+          "correct": 1,
+          "reasons": {
+            "coding_safe_disabled": 1,
+            "correct": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_20",
+          "category": "coding+any",
+          "correct": 0,
+          "reasons": {
+            "coding_safe_disabled": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        }
+      ],
+      "summary": {
+        "2/2": 4,
+        "1/2": 7,
+        "0/2": 9,
+        "causes": {
+          "correct": 15,
+          "fallback_disabled_local_mode": 16,
+          "routing_or_grounding": 4,
+          "coding_disabled": 5
+        }
+      }
+    },
+    "mock-good": {
+      "counts": {
+        "correct": 23,
+        "unsupported_preparation_or_semantics": 8,
+        "missing_or_ambiguous_evidence": 4,
+        "coding_safe_disabled": 5
+      },
+      "pairs": [
+        {
+          "pair_id": "pair_01",
+          "category": "math+math",
+          "correct": 2,
+          "reasons": {
+            "correct": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_02",
+          "category": "math+math",
+          "correct": 1,
+          "reasons": {
+            "unsupported_preparation_or_semantics": 1,
+            "correct": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_03",
+          "category": "math+math",
+          "correct": 2,
+          "reasons": {
+            "correct": 2
+          },
+          "calls": 2,
+          "spent": 189.7
+        },
+        {
+          "pair_id": "pair_04",
+          "category": "math+math",
+          "correct": 0,
+          "reasons": {
+            "unsupported_preparation_or_semantics": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_05",
+          "category": "math+search",
+          "correct": 2,
+          "reasons": {
+            "correct": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_06",
+          "category": "math+search",
+          "correct": 0,
+          "reasons": {
+            "unsupported_preparation_or_semantics": 1,
+            "missing_or_ambiguous_evidence": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_07",
+          "category": "math+search",
+          "correct": 2,
+          "reasons": {
+            "correct": 2
+          },
+          "calls": 2,
+          "spent": 143.6
+        },
+        {
+          "pair_id": "pair_08",
+          "category": "math+search",
+          "correct": 2,
+          "reasons": {
+            "correct": 2
+          },
+          "calls": 1,
+          "spent": 60.1
+        },
+        {
+          "pair_id": "pair_09",
+          "category": "math+data_analysis",
+          "correct": 2,
+          "reasons": {
+            "correct": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_10",
+          "category": "math+data_analysis",
+          "correct": 0,
+          "reasons": {
+            "unsupported_preparation_or_semantics": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_11",
+          "category": "math+data_analysis",
+          "correct": 2,
+          "reasons": {
+            "correct": 2
+          },
+          "calls": 2,
+          "spent": 192.7
+        },
+        {
+          "pair_id": "pair_12",
+          "category": "math+data_analysis",
+          "correct": 1,
+          "reasons": {
+            "correct": 1,
+            "unsupported_preparation_or_semantics": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_13",
+          "category": "search+data_analysis",
+          "correct": 2,
+          "reasons": {
+            "correct": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_14",
+          "category": "search+data_analysis",
+          "correct": 0,
+          "reasons": {
+            "unsupported_preparation_or_semantics": 1,
+            "missing_or_ambiguous_evidence": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_15",
+          "category": "search+data_analysis",
+          "correct": 2,
+          "reasons": {
+            "correct": 2
+          },
+          "calls": 1,
+          "spent": 57.8
+        },
+        {
+          "pair_id": "pair_16",
+          "category": "search+data_analysis",
+          "correct": 1,
+          "reasons": {
+            "correct": 1,
+            "missing_or_ambiguous_evidence": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_17",
+          "category": "coding+any",
+          "correct": 1,
+          "reasons": {
+            "coding_safe_disabled": 1,
+            "correct": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_18",
+          "category": "coding+any",
+          "correct": 0,
+          "reasons": {
+            "coding_safe_disabled": 1,
+            "missing_or_ambiguous_evidence": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_19",
+          "category": "coding+any",
+          "correct": 1,
+          "reasons": {
+            "coding_safe_disabled": 1,
+            "correct": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_20",
+          "category": "coding+any",
+          "correct": 0,
+          "reasons": {
+            "coding_safe_disabled": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        }
+      ],
+      "summary": {
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "causes": {
+          "correct": 23,
+          "unsupported_validated_route": 8,
+          "routing_or_grounding": 4,
+          "coding_disabled": 5
+        }
+      }
+    }
+  },
+  "after": {
+    "local": {
+      "counts": {
+        "correct": 15,
+        "fallback_not_enabled_in_local_run": 16,
+        "missing_or_ambiguous_evidence": 4,
+        "coding_safe_disabled": 5
+      },
+      "pairs": [
+        {
+          "pair_id": "pair_01",
+          "category": "math+math",
+          "correct": 2,
+          "reasons": {
+            "correct": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_02",
+          "category": "math+math",
+          "correct": 1,
+          "reasons": {
+            "fallback_not_enabled_in_local_run": 1,
+            "correct": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_03",
+          "category": "math+math",
+          "correct": 0,
+          "reasons": {
+            "fallback_not_enabled_in_local_run": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_04",
+          "category": "math+math",
+          "correct": 0,
+          "reasons": {
+            "fallback_not_enabled_in_local_run": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_05",
+          "category": "math+search",
+          "correct": 2,
+          "reasons": {
+            "correct": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_06",
+          "category": "math+search",
+          "correct": 0,
+          "reasons": {
+            "fallback_not_enabled_in_local_run": 1,
+            "missing_or_ambiguous_evidence": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_07",
+          "category": "math+search",
+          "correct": 0,
+          "reasons": {
+            "fallback_not_enabled_in_local_run": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_08",
+          "category": "math+search",
+          "correct": 1,
+          "reasons": {
+            "correct": 1,
+            "fallback_not_enabled_in_local_run": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_09",
+          "category": "math+data_analysis",
+          "correct": 2,
+          "reasons": {
+            "correct": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_10",
+          "category": "math+data_analysis",
+          "correct": 0,
+          "reasons": {
+            "fallback_not_enabled_in_local_run": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_11",
+          "category": "math+data_analysis",
+          "correct": 0,
+          "reasons": {
+            "fallback_not_enabled_in_local_run": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_12",
+          "category": "math+data_analysis",
+          "correct": 1,
+          "reasons": {
+            "correct": 1,
+            "fallback_not_enabled_in_local_run": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_13",
+          "category": "search+data_analysis",
+          "correct": 2,
+          "reasons": {
+            "correct": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_14",
+          "category": "search+data_analysis",
+          "correct": 0,
+          "reasons": {
+            "fallback_not_enabled_in_local_run": 1,
+            "missing_or_ambiguous_evidence": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_15",
+          "category": "search+data_analysis",
+          "correct": 1,
+          "reasons": {
+            "correct": 1,
+            "fallback_not_enabled_in_local_run": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_16",
+          "category": "search+data_analysis",
+          "correct": 1,
+          "reasons": {
+            "correct": 1,
+            "missing_or_ambiguous_evidence": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_17",
+          "category": "coding+any",
+          "correct": 1,
+          "reasons": {
+            "coding_safe_disabled": 1,
+            "correct": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_18",
+          "category": "coding+any",
+          "correct": 0,
+          "reasons": {
+            "coding_safe_disabled": 1,
+            "missing_or_ambiguous_evidence": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_19",
+          "category": "coding+any",
+          "correct": 1,
+          "reasons": {
+            "coding_safe_disabled": 1,
+            "correct": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_20",
+          "category": "coding+any",
+          "correct": 0,
+          "reasons": {
+            "coding_safe_disabled": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        }
+      ],
+      "summary": {
+        "2/2": 4,
+        "1/2": 7,
+        "0/2": 9,
+        "causes": {
+          "correct": 15,
+          "fallback_disabled_local_mode": 16,
+          "routing_or_grounding": 4,
+          "coding_disabled": 5
+        }
+      }
+    },
+    "mock-good": {
+      "counts": {
+        "correct": 23,
+        "unsupported_preparation_or_semantics": 8,
+        "missing_or_ambiguous_evidence": 4,
+        "coding_safe_disabled": 5
+      },
+      "pairs": [
+        {
+          "pair_id": "pair_01",
+          "category": "math+math",
+          "correct": 2,
+          "reasons": {
+            "correct": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_02",
+          "category": "math+math",
+          "correct": 1,
+          "reasons": {
+            "unsupported_preparation_or_semantics": 1,
+            "correct": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_03",
+          "category": "math+math",
+          "correct": 2,
+          "reasons": {
+            "correct": 2
+          },
+          "calls": 2,
+          "spent": 189.7
+        },
+        {
+          "pair_id": "pair_04",
+          "category": "math+math",
+          "correct": 0,
+          "reasons": {
+            "unsupported_preparation_or_semantics": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_05",
+          "category": "math+search",
+          "correct": 2,
+          "reasons": {
+            "correct": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_06",
+          "category": "math+search",
+          "correct": 0,
+          "reasons": {
+            "unsupported_preparation_or_semantics": 1,
+            "missing_or_ambiguous_evidence": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_07",
+          "category": "math+search",
+          "correct": 2,
+          "reasons": {
+            "correct": 2
+          },
+          "calls": 2,
+          "spent": 143.6
+        },
+        {
+          "pair_id": "pair_08",
+          "category": "math+search",
+          "correct": 2,
+          "reasons": {
+            "correct": 2
+          },
+          "calls": 1,
+          "spent": 60.1
+        },
+        {
+          "pair_id": "pair_09",
+          "category": "math+data_analysis",
+          "correct": 2,
+          "reasons": {
+            "correct": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_10",
+          "category": "math+data_analysis",
+          "correct": 0,
+          "reasons": {
+            "unsupported_preparation_or_semantics": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_11",
+          "category": "math+data_analysis",
+          "correct": 2,
+          "reasons": {
+            "correct": 2
+          },
+          "calls": 2,
+          "spent": 192.7
+        },
+        {
+          "pair_id": "pair_12",
+          "category": "math+data_analysis",
+          "correct": 1,
+          "reasons": {
+            "correct": 1,
+            "unsupported_preparation_or_semantics": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_13",
+          "category": "search+data_analysis",
+          "correct": 2,
+          "reasons": {
+            "correct": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_14",
+          "category": "search+data_analysis",
+          "correct": 0,
+          "reasons": {
+            "unsupported_preparation_or_semantics": 1,
+            "missing_or_ambiguous_evidence": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_15",
+          "category": "search+data_analysis",
+          "correct": 2,
+          "reasons": {
+            "correct": 2
+          },
+          "calls": 1,
+          "spent": 57.8
+        },
+        {
+          "pair_id": "pair_16",
+          "category": "search+data_analysis",
+          "correct": 1,
+          "reasons": {
+            "correct": 1,
+            "missing_or_ambiguous_evidence": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_17",
+          "category": "coding+any",
+          "correct": 1,
+          "reasons": {
+            "coding_safe_disabled": 1,
+            "correct": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_18",
+          "category": "coding+any",
+          "correct": 0,
+          "reasons": {
+            "coding_safe_disabled": 1,
+            "missing_or_ambiguous_evidence": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_19",
+          "category": "coding+any",
+          "correct": 1,
+          "reasons": {
+            "coding_safe_disabled": 1,
+            "correct": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_20",
+          "category": "coding+any",
+          "correct": 0,
+          "reasons": {
+            "coding_safe_disabled": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        }
+      ],
+      "summary": {
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "causes": {
+          "correct": 23,
+          "unsupported_validated_route": 8,
+          "routing_or_grounding": 4,
+          "coding_disabled": 5
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "instruction": "Start with 80 units. Increase by 20 percent. Decrease by 12.5 percent. Add 3 units.",
+  "reward": 8,
+  "task_id": "math_h01",
+  "task_type": "math"
+}

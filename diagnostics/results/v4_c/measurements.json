@@ -1,0 +1,1039 @@
+{
+  "baseline_head": "bea1ec8e4f9b7028987a78c34de3f377c2808619",
+  "variants": {
+    "production": {
+      "summary": {
+        "total": 64,
+        "correct": 36,
+        "wrong": 0,
+        "skipped": 28,
+        "unverified": 0,
+        "answerable": 52,
+        "reward": 217,
+        "possible_reward": 287,
+        "seconds": 0.2177523310047036,
+        "llm_calls": 0,
+        "llm_spent": 0.0,
+        "llm_reserved": 0.0,
+        "false_positive_fraction": 0.0,
+        "answer_precision": 1.0,
+        "skip_fraction": 0.4375,
+        "justified_refusals": 12,
+        "unanswerable": 12,
+        "justified_refusal_recall": 1.0,
+        "false_negative_skips": 16,
+        "paid_correct_reward_per_unit": null
+      },
+      "runtime_sha256": {
+        "Dockerfile": "1c305b053b839079ddc760e917cf18b2986e33fe5bf0fd653b48136a15d88a7c",
+        ".dockerignore": "360d5919d039327d4088240fbf11a8a3e8c831e93a35626293e8c03367a94e3d",
+        "requirements.txt": "d8c2924d446449dfd156153333b01a3ae0ef3fd0da64acfe36eae937663a3da3",
+        "run_agent.py": "88938b2c66ddcf2b7428976390433c6c719cbcdbdc8969a07346effbdbaf401c",
+        "harness.py": "2e08007cc5632db92f1f1d17e56374a14a03f0f81bbdff4075c2c10cd38b1a3a",
+        "planner.py": "4db10378746a8decbf556defbcbc207afc7fc472cb8827404ba89c15beec3b8d",
+        "budget_manager.py": "8259d00cf23cb1c5f0bd2162784f0c91dc005cf570e99d9a4cfb30929abcbb4f",
+        "llm_gateway.py": "c17dbf2de2655965a88cc00f0ee709de81621770a44fa824b27cec560d923b13",
+        "llm_fallback.py": "d9c71832f892a3a1114d883eea39876caa5e98f3114c5533f5a0c943670e8020",
+        "math_solver.py": "064d1ea11f947062bd277c62d9a3d5f89d731cbaec8fa943a9da2a693c9b4d0d",
+        "search_solver.py": "eda338c7021b266440dca051855d5a8fb4e0a1a0d899fa72075672c39c9ce862",
+        "relation_graph.py": "cb836137764f4e501e549468719d0176c7e4c70375c9fc89b357243554a27f73",
+        "data_solver.py": "c4a9b0b1e56c0b06685a5d88df0aafa2fc11644bf7c658c7e5da928de457712a",
+        "coding_solver.py": "e64d5913e831c72a2afd36e70512f290886d8fd7be577ed38d6a57ac3c30d9e7",
+        "safe_files.py": "04aa6c98f6da2555b80ab298d0937ea32f39a0deea0710fa78e97d849d6c7cfb",
+        "plan_semantics.py": "3e8cfcbdf22d470c8d970d1a5fbdadfc5b219a1f32906a8bb7f6526d6f96f7b7",
+        "runtime_limits.py": "cdd72e8fc6bc119b6cd76fe4560a910552c80e04edb27e2d3d29cb1d3821e669",
+        "math_ir.py": "d8ff7a21f0c336fc9c6977dd39930c990d2694a1fb81febebbbdf72041d382e8",
+        "math_ir_parser.py": "08e77b1dff876227081e86418352b46c234836acdcb87579e7a934a70ce7dce1"
+      },
+      "preserved_old_correct": true,
+      "new_correct": []
+    },
+    "math_ir": {
+      "summary": {
+        "total": 64,
+        "correct": 36,
+        "wrong": 0,
+        "skipped": 28,
+        "unverified": 0,
+        "answerable": 52,
+        "reward": 217,
+        "possible_reward": 287,
+        "seconds": 0.19432040999981837,
+        "llm_calls": 0,
+        "llm_spent": 0.0,
+        "llm_reserved": 0.0,
+        "false_positive_fraction": 0.0,
+        "answer_precision": 1.0,
+        "skip_fraction": 0.4375,
+        "justified_refusals": 12,
+        "unanswerable": 12,
+        "justified_refusal_recall": 1.0,
+        "false_negative_skips": 16,
+        "paid_correct_reward_per_unit": null
+      },
+      "runtime_sha256": {
+        "Dockerfile": "1c305b053b839079ddc760e917cf18b2986e33fe5bf0fd653b48136a15d88a7c",
+        ".dockerignore": "360d5919d039327d4088240fbf11a8a3e8c831e93a35626293e8c03367a94e3d",
+        "requirements.txt": "d8c2924d446449dfd156153333b01a3ae0ef3fd0da64acfe36eae937663a3da3",
+        "run_agent.py": "88938b2c66ddcf2b7428976390433c6c719cbcdbdc8969a07346effbdbaf401c",
+        "harness.py": "1647831b2389376720f418f4f5f95711de5c8960e4744946410bce19af70eeca",
+        "planner.py": "4db10378746a8decbf556defbcbc207afc7fc472cb8827404ba89c15beec3b8d",
+        "budget_manager.py": "8259d00cf23cb1c5f0bd2162784f0c91dc005cf570e99d9a4cfb30929abcbb4f",
+        "llm_gateway.py": "c17dbf2de2655965a88cc00f0ee709de81621770a44fa824b27cec560d923b13",
+        "llm_fallback.py": "d9c71832f892a3a1114d883eea39876caa5e98f3114c5533f5a0c943670e8020",
+        "math_solver.py": "064d1ea11f947062bd277c62d9a3d5f89d731cbaec8fa943a9da2a693c9b4d0d",
+        "search_solver.py": "eda338c7021b266440dca051855d5a8fb4e0a1a0d899fa72075672c39c9ce862",
+        "relation_graph.py": "cb836137764f4e501e549468719d0176c7e4c70375c9fc89b357243554a27f73",
+        "data_solver.py": "c4a9b0b1e56c0b06685a5d88df0aafa2fc11644bf7c658c7e5da928de457712a",
+        "coding_solver.py": "e64d5913e831c72a2afd36e70512f290886d8fd7be577ed38d6a57ac3c30d9e7",
+        "safe_files.py": "04aa6c98f6da2555b80ab298d0937ea32f39a0deea0710fa78e97d849d6c7cfb",
+        "plan_semantics.py": "3e8cfcbdf22d470c8d970d1a5fbdadfc5b219a1f32906a8bb7f6526d6f96f7b7",
+        "runtime_limits.py": "cdd72e8fc6bc119b6cd76fe4560a910552c80e04edb27e2d3d29cb1d3821e669",
+        "math_ir.py": "d8ff7a21f0c336fc9c6977dd39930c990d2694a1fb81febebbbdf72041d382e8",
+        "math_ir_parser.py": "08e77b1dff876227081e86418352b46c234836acdcb87579e7a934a70ce7dce1"
+      },
+      "preserved_old_correct": true,
+      "new_correct": []
+    },
+    "search_graph": {
+      "summary": {
+        "total": 64,
+        "correct": 37,
+        "wrong": 0,
+        "skipped": 27,
+        "unverified": 0,
+        "answerable": 52,
+        "reward": 219,
+        "possible_reward": 287,
+        "seconds": 0.32582724199801305,
+        "llm_calls": 0,
+        "llm_spent": 0.0,
+        "llm_reserved": 0.0,
+        "false_positive_fraction": 0.0,
+        "answer_precision": 1.0,
+        "skip_fraction": 0.421875,
+        "justified_refusals": 12,
+        "unanswerable": 12,
+        "justified_refusal_recall": 1.0,
+        "false_negative_skips": 15,
+        "paid_correct_reward_per_unit": null
+      },
+      "runtime_sha256": {
+        "Dockerfile": "1c305b053b839079ddc760e917cf18b2986e33fe5bf0fd653b48136a15d88a7c",
+        ".dockerignore": "360d5919d039327d4088240fbf11a8a3e8c831e93a35626293e8c03367a94e3d",
+        "requirements.txt": "d8c2924d446449dfd156153333b01a3ae0ef3fd0da64acfe36eae937663a3da3",
+        "run_agent.py": "88938b2c66ddcf2b7428976390433c6c719cbcdbdc8969a07346effbdbaf401c",
+        "harness.py": "d2cb69ea710e3525c494b0bcedd653a8e8ba67d91ca6e4a55f0dbd171038ac2b",
+        "planner.py": "4db10378746a8decbf556defbcbc207afc7fc472cb8827404ba89c15beec3b8d",
+        "budget_manager.py": "8259d00cf23cb1c5f0bd2162784f0c91dc005cf570e99d9a4cfb30929abcbb4f",
+        "llm_gateway.py": "c17dbf2de2655965a88cc00f0ee709de81621770a44fa824b27cec560d923b13",
+        "llm_fallback.py": "d9c71832f892a3a1114d883eea39876caa5e98f3114c5533f5a0c943670e8020",
+        "math_solver.py": "064d1ea11f947062bd277c62d9a3d5f89d731cbaec8fa943a9da2a693c9b4d0d",
+        "search_solver.py": "eda338c7021b266440dca051855d5a8fb4e0a1a0d899fa72075672c39c9ce862",
+        "relation_graph.py": "cb836137764f4e501e549468719d0176c7e4c70375c9fc89b357243554a27f73",
+        "data_solver.py": "c4a9b0b1e56c0b06685a5d88df0aafa2fc11644bf7c658c7e5da928de457712a",
+        "coding_solver.py": "e64d5913e831c72a2afd36e70512f290886d8fd7be577ed38d6a57ac3c30d9e7",
+        "safe_files.py": "04aa6c98f6da2555b80ab298d0937ea32f39a0deea0710fa78e97d849d6c7cfb",
+        "plan_semantics.py": "3e8cfcbdf22d470c8d970d1a5fbdadfc5b219a1f32906a8bb7f6526d6f96f7b7",
+        "runtime_limits.py": "cdd72e8fc6bc119b6cd76fe4560a910552c80e04edb27e2d3d29cb1d3821e669",
+        "math_ir.py": "d8ff7a21f0c336fc9c6977dd39930c990d2694a1fb81febebbbdf72041d382e8",
+        "math_ir_parser.py": "08e77b1dff876227081e86418352b46c234836acdcb87579e7a934a70ce7dce1"
+      },
+      "preserved_old_correct": true,
+      "new_correct": [
+        "search_d12"
+      ]
+    },
+    "combined": {
+      "summary": {
+        "total": 64,
+        "correct": 37,
+        "wrong": 0,
+        "skipped": 27,
+        "unverified": 0,
+        "answerable": 52,
+        "reward": 219,
+        "possible_reward": 287,
+        "seconds": 0.33168431900048745,
+        "llm_calls": 0,
+        "llm_spent": 0.0,
+        "llm_reserved": 0.0,
+        "false_positive_fraction": 0.0,
+        "answer_precision": 1.0,
+        "skip_fraction": 0.421875,
+        "justified_refusals": 12,
+        "unanswerable": 12,
+        "justified_refusal_recall": 1.0,
+        "false_negative_skips": 15,
+        "paid_correct_reward_per_unit": null
+      },
+      "runtime_sha256": {
+        "Dockerfile": "1c305b053b839079ddc760e917cf18b2986e33fe5bf0fd653b48136a15d88a7c",
+        ".dockerignore": "360d5919d039327d4088240fbf11a8a3e8c831e93a35626293e8c03367a94e3d",
+        "requirements.txt": "d8c2924d446449dfd156153333b01a3ae0ef3fd0da64acfe36eae937663a3da3",
+        "run_agent.py": "88938b2c66ddcf2b7428976390433c6c719cbcdbdc8969a07346effbdbaf401c",
+        "harness.py": "6eb3cc42edbe0f0ee80cf3cb41cb0554b2372834fa936a43e3624e786d37f67c",
+        "planner.py": "4db10378746a8decbf556defbcbc207afc7fc472cb8827404ba89c15beec3b8d",
+        "budget_manager.py": "8259d00cf23cb1c5f0bd2162784f0c91dc005cf570e99d9a4cfb30929abcbb4f",
+        "llm_gateway.py": "c17dbf2de2655965a88cc00f0ee709de81621770a44fa824b27cec560d923b13",
+        "llm_fallback.py": "d9c71832f892a3a1114d883eea39876caa5e98f3114c5533f5a0c943670e8020",
+        "math_solver.py": "064d1ea11f947062bd277c62d9a3d5f89d731cbaec8fa943a9da2a693c9b4d0d",
+        "search_solver.py": "eda338c7021b266440dca051855d5a8fb4e0a1a0d899fa72075672c39c9ce862",
+        "relation_graph.py": "cb836137764f4e501e549468719d0176c7e4c70375c9fc89b357243554a27f73",
+        "data_solver.py": "c4a9b0b1e56c0b06685a5d88df0aafa2fc11644bf7c658c7e5da928de457712a",
+        "coding_solver.py": "e64d5913e831c72a2afd36e70512f290886d8fd7be577ed38d6a57ac3c30d9e7",
+        "safe_files.py": "04aa6c98f6da2555b80ab298d0937ea32f39a0deea0710fa78e97d849d6c7cfb",
+        "plan_semantics.py": "3e8cfcbdf22d470c8d970d1a5fbdadfc5b219a1f32906a8bb7f6526d6f96f7b7",
+        "runtime_limits.py": "cdd72e8fc6bc119b6cd76fe4560a910552c80e04edb27e2d3d29cb1d3821e669",
+        "math_ir.py": "d8ff7a21f0c336fc9c6977dd39930c990d2694a1fb81febebbbdf72041d382e8",
+        "math_ir_parser.py": "08e77b1dff876227081e86418352b46c234836acdcb87579e7a934a70ce7dce1"
+      },
+      "preserved_old_correct": true,
+      "new_correct": [
+        "search_d12"
+      ]
+    }
+  },
+  "compiler_development_rows": [
+    {
+      "compiler": "compile_existing",
+      "task_id": "math_d01",
+      "status": "correct",
+      "actual": "163",
+      "reason": "",
+      "reward": 1
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "math_d02",
+      "status": "correct",
+      "actual": "-5.1",
+      "reason": "",
+      "reward": 13
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "math_d03",
+      "status": "correct",
+      "actual": "0.75",
+      "reason": "",
+      "reward": 8
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "math_d04",
+      "status": "correct",
+      "actual": "-4",
+      "reason": "",
+      "reward": 13
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "math_d05",
+      "status": "correct",
+      "actual": "270",
+      "reason": "",
+      "reward": 1
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "math_d06",
+      "status": "correct",
+      "actual": "129",
+      "reason": "",
+      "reward": 13
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "math_d07",
+      "status": "correct",
+      "actual": "0.625",
+      "reason": "",
+      "reward": 5
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "math_d08",
+      "status": "correct",
+      "actual": "29",
+      "reason": "",
+      "reward": 0
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "math_d09",
+      "status": "correct",
+      "actual": "7.24",
+      "reason": "",
+      "reward": 3
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "math_d10",
+      "status": "correct",
+      "actual": "74",
+      "reason": "",
+      "reward": 5
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "math_d11",
+      "status": "correct",
+      "actual": "28",
+      "reason": "",
+      "reward": 8
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "math_d12",
+      "status": "correct",
+      "actual": "34",
+      "reason": "",
+      "reward": 1
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "math_d13",
+      "status": "skipped",
+      "actual": null,
+      "reason": "division by zero",
+      "reward": 3
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "math_d14",
+      "status": "skipped",
+      "actual": null,
+      "reason": "existing parser refused instruction",
+      "reward": 13
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "math_d15",
+      "status": "correct",
+      "actual": "76",
+      "reason": "",
+      "reward": 2
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "math_d16",
+      "status": "skipped",
+      "actual": null,
+      "reason": "existing parser refused instruction",
+      "reward": 1
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "math_d01",
+      "status": "correct",
+      "actual": "163",
+      "reason": "",
+      "reward": 1
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "math_d02",
+      "status": "correct",
+      "actual": "-5.1",
+      "reason": "",
+      "reward": 13
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "math_d03",
+      "status": "correct",
+      "actual": "0.75",
+      "reason": "",
+      "reward": 8
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "math_d04",
+      "status": "correct",
+      "actual": "-4",
+      "reason": "",
+      "reward": 13
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "math_d05",
+      "status": "skipped",
+      "actual": null,
+      "reason": "incomplete or unexpected grammar token",
+      "reward": 1
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "math_d06",
+      "status": "skipped",
+      "actual": null,
+      "reason": "unsupported grammar token",
+      "reward": 13
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "math_d07",
+      "status": "skipped",
+      "actual": null,
+      "reason": "unsupported function name",
+      "reward": 5
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "math_d08",
+      "status": "skipped",
+      "actual": null,
+      "reason": "unconsumed mathematical instruction",
+      "reward": 0
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "math_d09",
+      "status": "skipped",
+      "actual": null,
+      "reason": "incomplete or unexpected grammar token",
+      "reward": 3
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "math_d10",
+      "status": "skipped",
+      "actual": null,
+      "reason": "unsupported grammar token",
+      "reward": 5
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "math_d11",
+      "status": "skipped",
+      "actual": null,
+      "reason": "unconsumed mathematical instruction",
+      "reward": 8
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "math_d12",
+      "status": "skipped",
+      "actual": null,
+      "reason": "unsupported function name",
+      "reward": 1
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "math_d13",
+      "status": "skipped",
+      "actual": null,
+      "reason": "division by zero",
+      "reward": 3
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "math_d14",
+      "status": "skipped",
+      "actual": null,
+      "reason": "unsupported grammar token",
+      "reward": 13
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "math_d15",
+      "status": "skipped",
+      "actual": null,
+      "reason": "unsupported grammar token",
+      "reward": 2
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "math_d16",
+      "status": "skipped",
+      "actual": null,
+      "reason": "unsupported grammar token",
+      "reward": 1
+    }
+  ],
+  "compiler_independent_rows": [
+    {
+      "compiler": "compile_existing",
+      "task_id": "m01",
+      "status": "skipped",
+      "actual": null,
+      "expected": "-3",
+      "reason": "existing parser refused instruction"
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "m02",
+      "status": "skipped",
+      "actual": null,
+      "expected": "17",
+      "reason": "existing parser refused instruction"
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "m03",
+      "status": "skipped",
+      "actual": null,
+      "expected": "115",
+      "reason": "existing parser refused instruction"
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "m04",
+      "status": "skipped",
+      "actual": null,
+      "expected": "198",
+      "reason": "existing parser refused instruction"
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "m05",
+      "status": "skipped",
+      "actual": null,
+      "expected": "5",
+      "reason": "existing parser refused instruction"
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "m06",
+      "status": "skipped",
+      "actual": null,
+      "expected": "4.5",
+      "reason": "existing parser refused instruction"
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "m07",
+      "status": "skipped",
+      "actual": null,
+      "expected": "1.25",
+      "reason": "existing parser refused instruction"
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "m08",
+      "status": "skipped",
+      "actual": null,
+      "expected": "2",
+      "reason": "existing parser refused instruction"
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "m09",
+      "status": "skipped",
+      "actual": null,
+      "expected": "1.35",
+      "reason": "existing parser refused instruction"
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "m10",
+      "status": "skipped",
+      "actual": null,
+      "expected": "15",
+      "reason": "existing parser refused instruction"
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "m11",
+      "status": "skipped",
+      "actual": null,
+      "expected": "6",
+      "reason": "existing parser refused instruction"
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "m12",
+      "status": "skipped",
+      "actual": null,
+      "expected": "13",
+      "reason": "existing parser refused instruction"
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "m13",
+      "status": "correct",
+      "actual": "9007199254740995",
+      "expected": "9007199254740995",
+      "reason": ""
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "m14",
+      "status": "correct",
+      "actual": "115",
+      "expected": "115",
+      "reason": ""
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "n00",
+      "status": "safe_skip",
+      "actual": null
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "n01",
+      "status": "safe_skip",
+      "actual": null
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "n02",
+      "status": "safe_skip",
+      "actual": null
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "n03",
+      "status": "safe_skip",
+      "actual": null
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "n04",
+      "status": "safe_skip",
+      "actual": null
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "n05",
+      "status": "safe_skip",
+      "actual": null
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "n06",
+      "status": "safe_skip",
+      "actual": null
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "n07",
+      "status": "safe_skip",
+      "actual": null
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "n08",
+      "status": "safe_skip",
+      "actual": null
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "n09",
+      "status": "safe_skip",
+      "actual": null
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "n10",
+      "status": "safe_skip",
+      "actual": null
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "n11",
+      "status": "safe_skip",
+      "actual": null
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "n12",
+      "status": "safe_skip",
+      "actual": null
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "n13",
+      "status": "safe_skip",
+      "actual": null
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "n14",
+      "status": "safe_skip",
+      "actual": null
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "n15",
+      "status": "safe_skip",
+      "actual": null
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "n16",
+      "status": "safe_skip",
+      "actual": null
+    },
+    {
+      "compiler": "compile_existing",
+      "task_id": "n17",
+      "status": "safe_skip",
+      "actual": null
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "m01",
+      "status": "correct",
+      "actual": "-3",
+      "expected": "-3",
+      "reason": ""
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "m02",
+      "status": "correct",
+      "actual": "17",
+      "expected": "17",
+      "reason": ""
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "m03",
+      "status": "correct",
+      "actual": "115",
+      "expected": "115",
+      "reason": ""
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "m04",
+      "status": "correct",
+      "actual": "198",
+      "expected": "198",
+      "reason": ""
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "m05",
+      "status": "correct",
+      "actual": "5",
+      "expected": "5",
+      "reason": ""
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "m06",
+      "status": "correct",
+      "actual": "4.5",
+      "expected": "4.5",
+      "reason": ""
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "m07",
+      "status": "correct",
+      "actual": "1.25",
+      "expected": "1.25",
+      "reason": ""
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "m08",
+      "status": "correct",
+      "actual": "2",
+      "expected": "2",
+      "reason": ""
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "m09",
+      "status": "correct",
+      "actual": "1.35",
+      "expected": "1.35",
+      "reason": ""
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "m10",
+      "status": "correct",
+      "actual": "15",
+      "expected": "15",
+      "reason": ""
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "m11",
+      "status": "correct",
+      "actual": "6",
+      "expected": "6",
+      "reason": ""
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "m12",
+      "status": "correct",
+      "actual": "13",
+      "expected": "13",
+      "reason": ""
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "m13",
+      "status": "correct",
+      "actual": "9007199254740995",
+      "expected": "9007199254740995",
+      "reason": ""
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "m14",
+      "status": "skipped",
+      "actual": null,
+      "expected": "115",
+      "reason": "unsupported grammar token"
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "n00",
+      "status": "safe_skip",
+      "actual": null
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "n01",
+      "status": "safe_skip",
+      "actual": null
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "n02",
+      "status": "safe_skip",
+      "actual": null
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "n03",
+      "status": "safe_skip",
+      "actual": null
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "n04",
+      "status": "safe_skip",
+      "actual": null
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "n05",
+      "status": "safe_skip",
+      "actual": null
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "n06",
+      "status": "safe_skip",
+      "actual": null
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "n07",
+      "status": "safe_skip",
+      "actual": null
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "n08",
+      "status": "safe_skip",
+      "actual": null
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "n09",
+      "status": "safe_skip",
+      "actual": null
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "n10",
+      "status": "safe_skip",
+      "actual": null
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "n11",
+      "status": "safe_skip",
+      "actual": null
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "n12",
+      "status": "safe_skip",
+      "actual": null
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "n13",
+      "status": "safe_skip",
+      "actual": null
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "n14",
+      "status": "safe_skip",
+      "actual": null
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "n15",
+      "status": "safe_skip",
+      "actual": null
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "n16",
+      "status": "safe_skip",
+      "actual": null
+    },
+    {
+      "compiler": "compile_grammar",
+      "task_id": "n17",
+      "status": "safe_skip",
+      "actual": null
+    }
+  ],
+  "independent_workflow_cohort": [
+    {
+      "mode": "production",
+      "correct": 2,
+      "wrong": 0,
+      "counts": {
+        "solved": 2,
+        "skipped": 31,
+        "failed": 0
+      },
+      "requests": 0
+    },
+    {
+      "mode": "math_ir",
+      "correct": 14,
+      "wrong": 0,
+      "counts": {
+        "solved": 14,
+        "skipped": 19,
+        "failed": 0
+      },
+      "requests": 0
+    },
+    {
+      "mode": "search_graph",
+      "correct": 3,
+      "wrong": 0,
+      "counts": {
+        "solved": 3,
+        "skipped": 30,
+        "failed": 0
+      },
+      "requests": 0
+    },
+    {
+      "mode": "combined",
+      "correct": 15,
+      "wrong": 0,
+      "counts": {
+        "solved": 15,
+        "skipped": 18,
+        "failed": 0
+      },
+      "requests": 0
+    }
+  ],
+  "holdout_run": false,
+  "real_requests": 0,
+  "existing_v4_b_and_runtime_unchanged": true,
+  "existing_files_sha256": {
+    ".dockerignore": "360d5919d039327d4088240fbf11a8a3e8c831e93a35626293e8c03367a94e3d",
+    "Dockerfile": "1c305b053b839079ddc760e917cf18b2986e33fe5bf0fd653b48136a15d88a7c",
+    "README.md": "641315a7630ee0a06aa04e2522e6997c079498978789498a8315fe1a0a4838e3",
+    "budget_manager.py": "8259d00cf23cb1c5f0bd2162784f0c91dc005cf570e99d9a4cfb30929abcbb4f",
+    "coding_solver.py": "e64d5913e831c72a2afd36e70512f290886d8fd7be577ed38d6a57ac3c30d9e7",
+    "data_solver.py": "c4a9b0b1e56c0b06685a5d88df0aafa2fc11644bf7c658c7e5da928de457712a",
+    "diagnostics/results/v4_b/measurements.json": "88076bd59021c96474e0d9d170d9bbddc246b9fba572218e680bd5868ad845e4",
+    "harness.py": "2e08007cc5632db92f1f1d17e56374a14a03f0f81bbdff4075c2c10cd38b1a3a",
+    "llm_fallback.py": "d9c71832f892a3a1114d883eea39876caa5e98f3114c5533f5a0c943670e8020",
+    "llm_gateway.py": "c17dbf2de2655965a88cc00f0ee709de81621770a44fa824b27cec560d923b13",
+    "math_solver.py": "064d1ea11f947062bd277c62d9a3d5f89d731cbaec8fa943a9da2a693c9b4d0d",
+    "plan_semantics.py": "3e8cfcbdf22d470c8d970d1a5fbdadfc5b219a1f32906a8bb7f6526d6f96f7b7",
+    "planner.py": "4db10378746a8decbf556defbcbc207afc7fc472cb8827404ba89c15beec3b8d",
+    "relation_graph.py": "cb836137764f4e501e549468719d0176c7e4c70375c9fc89b357243554a27f73",
+    "reports/v4_a_architecture_2026-11-10.md": "feaebb70e426dd1dbb4c5d981006a17882913917929b0d28b216d2f7d291d7ef",
+    "reports/v4_b_first_solver_2026-11-10.md": "30fa1ff78b3be71c8971ee92797395f8c17aefaf546dfa534055f775c40cb385",
+    "requirements.txt": "d8c2924d446449dfd156153333b01a3ae0ef3fd0da64acfe36eae937663a3da3",
+    "run_agent.py": "88938b2c66ddcf2b7428976390433c6c719cbcdbdc8969a07346effbdbaf401c",
+    "runtime_limits.py": "cdd72e8fc6bc119b6cd76fe4560a910552c80e04edb27e2d3d29cb1d3821e669",
+    "safe_files.py": "04aa6c98f6da2555b80ab298d0937ea32f39a0deea0710fa78e97d849d6c7cfb",
+    "search_solver.py": "eda338c7021b266440dca051855d5a8fb4e0a1a0d899fa72075672c39c9ce862",
+    "tests/test_relation_graph.py": "f433c84720424bcab5872faf3a2080f6e002795a41c0b6bdebb2c2e4236b4330",
+    "tests/test_runtime.py": "38f6fb872591bae458fb40bece79af5017ae66cc669b871810b8b38f6815fcc5"
+  },
+  "new_source_sha256": {
+    "math_ir.py": "d8ff7a21f0c336fc9c6977dd39930c990d2694a1fb81febebbbdf72041d382e8",
+    "math_ir_parser.py": "08e77b1dff876227081e86418352b46c234836acdcb87579e7a934a70ce7dce1",
+    "tests/test_math_ir.py": "20b7b6b27f8de8fa775914c8bf5ea73b884ecb45052c4ebaaa5ed9178d4febf4",
+    "tests/test_math_ir_workflow.py": "4dc1efd76306e4184afc550ce6ae484c1eac08554b835538ef1eb5f3d3b9c42b"
+  },
+  "production_enabled": false,
+  "graph_auto_enabled": false,
+  "target_tests": {
+    "methods": 31,
+    "passed": 31,
+    "seconds": 1.931
+  },
+  "wsl": {
+    "discovered": 740,
+    "passed": 730,
+    "failures": [
+      "test_runtime_limits.RuntimeLimitTests.test_slow_fallback_preparation_does_not_block_next_local_task",
+      "test_runtime_limits.RuntimeLimitTests.test_slow_feature_probe_is_bounded_independently",
+      "test_runtime_limits.RuntimeLimitTests.test_slow_first_local_does_not_block_second_or_trigger_fallback"
+    ],
+    "errors": [],
+    "skipped": [
+      [
+        "test_benchmark.BenchmarkTests.test_authored_numeric_anchors_have_second_checks",
+        "V4-C no-holdout policy: dataset-wide validation"
+      ],
+      [
+        "test_benchmark.BenchmarkTests.test_coding_fixtures_remain_data_and_worker_has_no_trust_flag",
+        "V4-C no-holdout policy: dataset-wide validation"
+      ],
+      [
+        "test_benchmark.BenchmarkTests.test_distribution_split_and_task_input_separation",
+        "V4-C no-holdout policy: dataset-wide validation"
+      ],
+      [
+        "test_benchmark.BenchmarkTests.test_generation_is_byte_reproducible_and_has_no_agent_imports",
+        "V4-C no-holdout policy: dataset-wide validation"
+      ],
+      [
+        "test_benchmark.BenchmarkTests.test_manifest_detects_mutation_and_generator_refuses_overwrite",
+        "V4-C no-holdout policy: dataset-wide validation"
+      ],
+      [
+        "test_benchmark.BenchmarkTests.test_pairs_are_predeclared_diverse_and_answerable",
+        "V4-C no-holdout policy: dataset-wide validation"
+      ],
+      [
+        "test_benchmark.BenchmarkTests.test_sql_references_recompute_from_csv_not_solver",
+        "V4-C no-holdout policy: dataset-wide validation"
+      ]
+    ],
+    "seconds": 194.403,
+    "new_math_ir_methods_passed": 31
+  },
+  "q5_control": {
+    "tests": 3,
+    "passed": 1,
+    "failures": 2,
+    "seconds": 1.312,
+    "failed_names": [
+      "test_slow_fallback_preparation_does_not_block_next_local_task",
+      "test_slow_first_local_does_not_block_second_or_trigger_fallback"
+    ],
+    "runtime_from": "bea1ec8e4f9b7028987a78c34de3f377c2808619",
+    "math_ir_imported": false
+  },
+  "acceptance": "experimental only; no production activation; full WSL not green; no full holdout/Docker acceptance"
+}

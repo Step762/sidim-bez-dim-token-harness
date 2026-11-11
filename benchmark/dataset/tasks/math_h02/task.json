@@ -1,0 +1,6 @@
+{
+  "instruction": "What is 0.03 * -2.5 + 0.8?",
+  "reward": 0,
+  "task_id": "math_h02",
+  "task_type": "math"
+}

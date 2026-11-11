@@ -1,0 +1,6 @@
+{
+  "instruction": "The file observations.csv. How many rows are there where units < 0 and period >= 1 and period <= 6?",
+  "reward": 13,
+  "task_id": "data_analysis_h03",
+  "task_type": "data_analysis"
+}

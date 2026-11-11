@@ -1,0 +1,6 @@
+{
+  "instruction": "Round -17/4 toward positive infinity to an integer.",
+  "reward": 1,
+  "task_id": "math_h05",
+  "task_type": "math"
+}

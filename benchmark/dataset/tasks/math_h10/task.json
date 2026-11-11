@@ -1,0 +1,6 @@
+{
+  "instruction": "What is the arithmetic mean of 7, 9 and 14?",
+  "reward": 3,
+  "task_id": "math_h10",
+  "task_type": "math"
+}

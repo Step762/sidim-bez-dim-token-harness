@@ -1,0 +1,6 @@
+{
+  "instruction": "Start with 18 euros. Remove 5 euros. Double it.",
+  "reward": 2,
+  "task_id": "math_h11",
+  "task_type": "math"
+}

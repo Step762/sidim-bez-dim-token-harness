@@ -1,0 +1,7 @@
+sku,period,units,region,price
+pin,1,20,west,2
+cog,2,-1,east,3
+pin,3,-7,east,4
+cog,4,2,west,5
+pin,5,10,east,6
+cog,6,24,east,7

@@ -1,0 +1,6 @@
+{
+  "instruction": "Evaluate (24 - 8) * (8 + 2) + 24/8",
+  "reward": 1,
+  "task_id": "math_d01",
+  "task_type": "math"
+}

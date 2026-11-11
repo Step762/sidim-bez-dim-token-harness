@@ -1,0 +1,6 @@
+{
+  "instruction": "Compute (-19 + 7) / (-3) - 8",
+  "reward": 13,
+  "task_id": "math_d04",
+  "task_type": "math"
+}

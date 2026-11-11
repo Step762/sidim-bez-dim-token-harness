@@ -1,0 +1,6 @@
+{
+  "instruction": "If -3 is negative, return its absolute value; otherwise return 0.",
+  "reward": 8,
+  "task_id": "math_h12",
+  "task_type": "math"
+}

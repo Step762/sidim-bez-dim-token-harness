@@ -1,0 +1,6 @@
+{
+  "instruction": "What is 37 / 0?",
+  "reward": 3,
+  "task_id": "math_d13",
+  "task_type": "math"
+}

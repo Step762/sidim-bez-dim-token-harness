@@ -1,0 +1,4660 @@
+{
+  "stage": "V4-H",
+  "date": "2026-11-10",
+  "baseline_head": "bea1ec8e4f9b7028987a78c34de3f377c2808619",
+  "accepted": false,
+  "checkpoint_created": false,
+  "real_requests": 0,
+  "production_changed_in_v4_h": false,
+  "inherited_files_unchanged": 35,
+  "wsl": {
+    "discovered": 798,
+    "passed": 791,
+    "failures": [],
+    "errors": [],
+    "skipped": [
+      "test_benchmark.BenchmarkTests.test_authored_numeric_anchors_have_second_checks",
+      "test_benchmark.BenchmarkTests.test_coding_fixtures_remain_data_and_worker_has_no_trust_flag",
+      "test_benchmark.BenchmarkTests.test_distribution_split_and_task_input_separation",
+      "test_benchmark.BenchmarkTests.test_generation_is_byte_reproducible_and_has_no_agent_imports",
+      "test_benchmark.BenchmarkTests.test_manifest_detects_mutation_and_generator_refuses_overwrite",
+      "test_benchmark.BenchmarkTests.test_pairs_are_predeclared_diverse_and_answerable",
+      "test_benchmark.BenchmarkTests.test_sql_references_recompute_from_csv_not_solver"
+    ],
+    "seconds": 185.78095177499972,
+    "network": {
+      "loopback_connects": 10,
+      "external_blocked": 0
+    }
+  },
+  "development": {
+    "scope": "64 explicit development IDs, 7 allowed fixed pairs; NO closed inputs, prior permitted answer verification",
+    "real_requests": 0,
+    "arms": {
+      "q5": {
+        "counts": {
+          "solved": 36,
+          "skipped": 28,
+          "failed": 0
+        },
+        "rows": [
+          {
+            "task_id": "coding_d01",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 3,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d02",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 13,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d03",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 0,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d04",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d05",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 3,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d06",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 0,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d07",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d08",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 8,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d09",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d10",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 5,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d11",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 13,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d12",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 3,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d13",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 2,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d14",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 13,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d15",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d16",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 2,
+            "status": "skipped"
+          },
+          {
+            "task_id": "data_analysis_d01",
+            "answer": "32",
+            "answer_mode": 420,
+            "reward": 3,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d02",
+            "answer": "4",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d03",
+            "answer": "-9",
+            "answer_mode": 420,
+            "reward": 0,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d04",
+            "answer": "24",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d05",
+            "answer": "7",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d06",
+            "answer": "12",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d07",
+            "answer": "5",
+            "answer_mode": 420,
+            "reward": 0,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d08",
+            "answer": "0",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d09",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 5,
+            "status": "skipped"
+          },
+          {
+            "task_id": "data_analysis_d10",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 8,
+            "status": "skipped"
+          },
+          {
+            "task_id": "data_analysis_d11",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "data_analysis_d12",
+            "answer": "{\"east\":57,\"west\":23}",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d13",
+            "answer": "pin",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d14",
+            "answer": "35",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d15",
+            "answer": "9",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d16",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 0,
+            "status": "skipped"
+          },
+          {
+            "task_id": "math_d01",
+            "answer": "163",
+            "answer_mode": 420,
+            "reward": 1,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d02",
+            "answer": "-5.1",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d03",
+            "answer": "0.75",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d04",
+            "answer": "-4",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d05",
+            "answer": "270",
+            "answer_mode": 420,
+            "reward": 1,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d06",
+            "answer": "129",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d07",
+            "answer": "0.625",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d08",
+            "answer": "29",
+            "answer_mode": 420,
+            "reward": 0,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d09",
+            "answer": "7.24",
+            "answer_mode": 420,
+            "reward": 3,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d10",
+            "answer": "74",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d11",
+            "answer": "28",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d12",
+            "answer": "34",
+            "answer_mode": 420,
+            "reward": 1,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d13",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 3,
+            "status": "skipped"
+          },
+          {
+            "task_id": "math_d14",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 13,
+            "status": "skipped"
+          },
+          {
+            "task_id": "math_d15",
+            "answer": "76",
+            "answer_mode": 420,
+            "reward": 2,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d16",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "search_d01",
+            "answer": "1974",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d02",
+            "answer": "2007",
+            "answer_mode": 420,
+            "reward": 3,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d03",
+            "answer": "São Tomé",
+            "answer_mode": 420,
+            "reward": 2,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d04",
+            "answer": "Aster Loom",
+            "answer_mode": 420,
+            "reward": 3,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d05",
+            "answer": "Porto",
+            "answer_mode": 420,
+            "reward": 3,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d06",
+            "answer": "1948",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d07",
+            "answer": "Vela Nox",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d08",
+            "answer": "1989",
+            "answer_mode": 420,
+            "reward": 0,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d09",
+            "answer": "1966",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d10",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 5,
+            "status": "skipped"
+          },
+          {
+            "task_id": "search_d11",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 2,
+            "status": "skipped"
+          },
+          {
+            "task_id": "search_d12",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 2,
+            "status": "skipped"
+          },
+          {
+            "task_id": "search_d13",
+            "answer": "1986",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d14",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 2,
+            "status": "skipped"
+          },
+          {
+            "task_id": "search_d15",
+            "answer": "Porto",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d16",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 5,
+            "status": "skipped"
+          }
+        ],
+        "outcomes": {
+          "coding_d01": "unsafe",
+          "coding_d02": "unsafe",
+          "coding_d03": "unsafe",
+          "coding_d04": "unsafe",
+          "coding_d05": "unsafe",
+          "coding_d06": "unsafe",
+          "coding_d07": "unsafe",
+          "coding_d08": "unsafe",
+          "coding_d09": "unsafe",
+          "coding_d10": "unsafe",
+          "coding_d11": "unsafe",
+          "coding_d12": "unsafe",
+          "coding_d13": "unsafe",
+          "coding_d14": "unsafe",
+          "coding_d15": "unsafe",
+          "coding_d16": "unsafe",
+          "data_analysis_d01": "solved",
+          "data_analysis_d02": "solved",
+          "data_analysis_d03": "solved",
+          "data_analysis_d04": "solved",
+          "data_analysis_d05": "solved",
+          "data_analysis_d06": "solved",
+          "data_analysis_d07": "solved",
+          "data_analysis_d08": "solved",
+          "data_analysis_d09": "insufficient_evidence",
+          "data_analysis_d10": "insufficient_evidence",
+          "data_analysis_d11": "invalid_data",
+          "data_analysis_d12": "solved",
+          "data_analysis_d13": "solved",
+          "data_analysis_d14": "solved",
+          "data_analysis_d15": "solved",
+          "data_analysis_d16": "invalid_data",
+          "math_d01": "solved",
+          "math_d02": "solved",
+          "math_d03": "solved",
+          "math_d04": "solved",
+          "math_d05": "solved",
+          "math_d06": "solved",
+          "math_d07": "solved",
+          "math_d08": "solved",
+          "math_d09": "solved",
+          "math_d10": "solved",
+          "math_d11": "solved",
+          "math_d12": "solved",
+          "math_d13": "budget_blocked",
+          "math_d14": "budget_blocked",
+          "math_d15": "solved",
+          "math_d16": "budget_blocked",
+          "search_d01": "solved",
+          "search_d02": "solved",
+          "search_d03": "solved",
+          "search_d04": "solved",
+          "search_d05": "solved",
+          "search_d06": "solved",
+          "search_d07": "solved",
+          "search_d08": "solved",
+          "search_d09": "solved",
+          "search_d10": "insufficient_evidence",
+          "search_d11": "insufficient_evidence",
+          "search_d12": "budget_blocked",
+          "search_d13": "solved",
+          "search_d14": "insufficient_evidence",
+          "search_d15": "solved",
+          "search_d16": "insufficient_evidence"
+        },
+        "budget": {
+          "spent": "0.0",
+          "reserved": "0.0",
+          "available": "0.0",
+          "frozen": "False"
+        },
+        "mock_requests": 0,
+        "time_exhausted": false,
+        "correct": 36,
+        "wrong": 0,
+        "skipped": 28,
+        "reward": 217,
+        "old36_preserved": true,
+        "qualification": [
+          {
+            "pair_id": "pair_05",
+            "tasks": [
+              "math_d04",
+              "search_d01"
+            ],
+            "correct": 2,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_07",
+            "tasks": [
+              "math_d15",
+              "search_d15"
+            ],
+            "correct": 2,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_09",
+            "tasks": [
+              "math_d07",
+              "data_analysis_d01"
+            ],
+            "correct": 2,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_12",
+            "tasks": [
+              "math_d10",
+              "data_analysis_d12"
+            ],
+            "correct": 2,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_14",
+            "tasks": [
+              "search_d08",
+              "data_analysis_d13"
+            ],
+            "correct": 2,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_17",
+            "tasks": [
+              "coding_d01",
+              "math_d01"
+            ],
+            "correct": 1,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_19",
+            "tasks": [
+              "coding_d07",
+              "data_analysis_d01"
+            ],
+            "correct": 1,
+            "spent": "0.0"
+          }
+        ]
+      },
+      "production": {
+        "counts": {
+          "solved": 36,
+          "skipped": 28,
+          "failed": 0
+        },
+        "rows": [
+          {
+            "task_id": "coding_d01",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 3,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d02",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 13,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d03",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 0,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d04",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d05",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 3,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d06",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 0,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d07",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d08",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 8,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d09",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d10",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 5,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d11",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 13,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d12",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 3,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d13",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 2,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d14",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 13,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d15",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d16",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 2,
+            "status": "skipped"
+          },
+          {
+            "task_id": "data_analysis_d01",
+            "answer": "32",
+            "answer_mode": 420,
+            "reward": 3,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d02",
+            "answer": "4",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d03",
+            "answer": "-9",
+            "answer_mode": 420,
+            "reward": 0,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d04",
+            "answer": "24",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d05",
+            "answer": "7",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d06",
+            "answer": "12",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d07",
+            "answer": "5",
+            "answer_mode": 420,
+            "reward": 0,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d08",
+            "answer": "0",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d09",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 5,
+            "status": "skipped"
+          },
+          {
+            "task_id": "data_analysis_d10",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 8,
+            "status": "skipped"
+          },
+          {
+            "task_id": "data_analysis_d11",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "data_analysis_d12",
+            "answer": "{\"east\":57,\"west\":23}",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d13",
+            "answer": "pin",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d14",
+            "answer": "35",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d15",
+            "answer": "9",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d16",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 0,
+            "status": "skipped"
+          },
+          {
+            "task_id": "math_d01",
+            "answer": "163",
+            "answer_mode": 420,
+            "reward": 1,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d02",
+            "answer": "-5.1",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d03",
+            "answer": "0.75",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d04",
+            "answer": "-4",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d05",
+            "answer": "270",
+            "answer_mode": 420,
+            "reward": 1,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d06",
+            "answer": "129",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d07",
+            "answer": "0.625",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d08",
+            "answer": "29",
+            "answer_mode": 420,
+            "reward": 0,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d09",
+            "answer": "7.24",
+            "answer_mode": 420,
+            "reward": 3,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d10",
+            "answer": "74",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d11",
+            "answer": "28",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d12",
+            "answer": "34",
+            "answer_mode": 420,
+            "reward": 1,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d13",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 3,
+            "status": "skipped"
+          },
+          {
+            "task_id": "math_d14",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 13,
+            "status": "skipped"
+          },
+          {
+            "task_id": "math_d15",
+            "answer": "76",
+            "answer_mode": 420,
+            "reward": 2,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d16",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "search_d01",
+            "answer": "1974",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d02",
+            "answer": "2007",
+            "answer_mode": 420,
+            "reward": 3,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d03",
+            "answer": "São Tomé",
+            "answer_mode": 420,
+            "reward": 2,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d04",
+            "answer": "Aster Loom",
+            "answer_mode": 420,
+            "reward": 3,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d05",
+            "answer": "Porto",
+            "answer_mode": 420,
+            "reward": 3,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d06",
+            "answer": "1948",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d07",
+            "answer": "Vela Nox",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d08",
+            "answer": "1989",
+            "answer_mode": 420,
+            "reward": 0,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d09",
+            "answer": "1966",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d10",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 5,
+            "status": "skipped"
+          },
+          {
+            "task_id": "search_d11",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 2,
+            "status": "skipped"
+          },
+          {
+            "task_id": "search_d12",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 2,
+            "status": "skipped"
+          },
+          {
+            "task_id": "search_d13",
+            "answer": "1986",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d14",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 2,
+            "status": "skipped"
+          },
+          {
+            "task_id": "search_d15",
+            "answer": "Porto",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d16",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 5,
+            "status": "skipped"
+          }
+        ],
+        "outcomes": {
+          "coding_d01": "unsafe",
+          "coding_d02": "unsafe",
+          "coding_d03": "unsafe",
+          "coding_d04": "unsafe",
+          "coding_d05": "unsafe",
+          "coding_d06": "unsafe",
+          "coding_d07": "unsafe",
+          "coding_d08": "unsafe",
+          "coding_d09": "unsafe",
+          "coding_d10": "unsafe",
+          "coding_d11": "unsafe",
+          "coding_d12": "unsafe",
+          "coding_d13": "unsafe",
+          "coding_d14": "unsafe",
+          "coding_d15": "unsafe",
+          "coding_d16": "unsafe",
+          "data_analysis_d01": "solved",
+          "data_analysis_d02": "solved",
+          "data_analysis_d03": "solved",
+          "data_analysis_d04": "solved",
+          "data_analysis_d05": "solved",
+          "data_analysis_d06": "solved",
+          "data_analysis_d07": "solved",
+          "data_analysis_d08": "solved",
+          "data_analysis_d09": "insufficient_evidence",
+          "data_analysis_d10": "insufficient_evidence",
+          "data_analysis_d11": "invalid_data",
+          "data_analysis_d12": "solved",
+          "data_analysis_d13": "solved",
+          "data_analysis_d14": "solved",
+          "data_analysis_d15": "solved",
+          "data_analysis_d16": "invalid_data",
+          "math_d01": "solved",
+          "math_d02": "solved",
+          "math_d03": "solved",
+          "math_d04": "solved",
+          "math_d05": "solved",
+          "math_d06": "solved",
+          "math_d07": "solved",
+          "math_d08": "solved",
+          "math_d09": "solved",
+          "math_d10": "solved",
+          "math_d11": "solved",
+          "math_d12": "solved",
+          "math_d13": "budget_blocked",
+          "math_d14": "budget_blocked",
+          "math_d15": "solved",
+          "math_d16": "budget_blocked",
+          "search_d01": "solved",
+          "search_d02": "solved",
+          "search_d03": "solved",
+          "search_d04": "solved",
+          "search_d05": "solved",
+          "search_d06": "solved",
+          "search_d07": "solved",
+          "search_d08": "solved",
+          "search_d09": "solved",
+          "search_d10": "insufficient_evidence",
+          "search_d11": "insufficient_evidence",
+          "search_d12": "budget_blocked",
+          "search_d13": "solved",
+          "search_d14": "insufficient_evidence",
+          "search_d15": "solved",
+          "search_d16": "insufficient_evidence"
+        },
+        "budget": {
+          "spent": "0.0",
+          "reserved": "0.0",
+          "available": "0.0",
+          "frozen": "False"
+        },
+        "mock_requests": 0,
+        "time_exhausted": false,
+        "correct": 36,
+        "wrong": 0,
+        "skipped": 28,
+        "reward": 217,
+        "old36_preserved": true,
+        "qualification": [
+          {
+            "pair_id": "pair_05",
+            "tasks": [
+              "math_d04",
+              "search_d01"
+            ],
+            "correct": 2,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_07",
+            "tasks": [
+              "math_d15",
+              "search_d15"
+            ],
+            "correct": 2,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_09",
+            "tasks": [
+              "math_d07",
+              "data_analysis_d01"
+            ],
+            "correct": 2,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_12",
+            "tasks": [
+              "math_d10",
+              "data_analysis_d12"
+            ],
+            "correct": 2,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_14",
+            "tasks": [
+              "search_d08",
+              "data_analysis_d13"
+            ],
+            "correct": 2,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_17",
+            "tasks": [
+              "coding_d01",
+              "math_d01"
+            ],
+            "correct": 1,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_19",
+            "tasks": [
+              "coding_d07",
+              "data_analysis_d01"
+            ],
+            "correct": 1,
+            "spent": "0.0"
+          }
+        ]
+      },
+      "graph": {
+        "counts": {
+          "solved": 37,
+          "skipped": 27,
+          "failed": 0
+        },
+        "rows": [
+          {
+            "task_id": "coding_d01",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 3,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d02",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 13,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d03",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 0,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d04",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d05",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 3,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d06",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 0,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d07",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d08",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 8,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d09",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d10",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 5,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d11",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 13,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d12",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 3,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d13",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 2,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d14",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 13,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d15",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d16",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 2,
+            "status": "skipped"
+          },
+          {
+            "task_id": "data_analysis_d01",
+            "answer": "32",
+            "answer_mode": 420,
+            "reward": 3,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d02",
+            "answer": "4",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d03",
+            "answer": "-9",
+            "answer_mode": 420,
+            "reward": 0,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d04",
+            "answer": "24",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d05",
+            "answer": "7",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d06",
+            "answer": "12",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d07",
+            "answer": "5",
+            "answer_mode": 420,
+            "reward": 0,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d08",
+            "answer": "0",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d09",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 5,
+            "status": "skipped"
+          },
+          {
+            "task_id": "data_analysis_d10",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 8,
+            "status": "skipped"
+          },
+          {
+            "task_id": "data_analysis_d11",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "data_analysis_d12",
+            "answer": "{\"east\":57,\"west\":23}",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d13",
+            "answer": "pin",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d14",
+            "answer": "35",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d15",
+            "answer": "9",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d16",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 0,
+            "status": "skipped"
+          },
+          {
+            "task_id": "math_d01",
+            "answer": "163",
+            "answer_mode": 420,
+            "reward": 1,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d02",
+            "answer": "-5.1",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d03",
+            "answer": "0.75",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d04",
+            "answer": "-4",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d05",
+            "answer": "270",
+            "answer_mode": 420,
+            "reward": 1,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d06",
+            "answer": "129",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d07",
+            "answer": "0.625",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d08",
+            "answer": "29",
+            "answer_mode": 420,
+            "reward": 0,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d09",
+            "answer": "7.24",
+            "answer_mode": 420,
+            "reward": 3,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d10",
+            "answer": "74",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d11",
+            "answer": "28",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d12",
+            "answer": "34",
+            "answer_mode": 420,
+            "reward": 1,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d13",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 3,
+            "status": "skipped"
+          },
+          {
+            "task_id": "math_d14",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 13,
+            "status": "skipped"
+          },
+          {
+            "task_id": "math_d15",
+            "answer": "76",
+            "answer_mode": 420,
+            "reward": 2,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d16",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "search_d01",
+            "answer": "1974",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d02",
+            "answer": "2007",
+            "answer_mode": 420,
+            "reward": 3,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d03",
+            "answer": "São Tomé",
+            "answer_mode": 420,
+            "reward": 2,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d04",
+            "answer": "Aster Loom",
+            "answer_mode": 420,
+            "reward": 3,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d05",
+            "answer": "Porto",
+            "answer_mode": 420,
+            "reward": 3,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d06",
+            "answer": "1948",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d07",
+            "answer": "Vela Nox",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d08",
+            "answer": "1989",
+            "answer_mode": 420,
+            "reward": 0,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d09",
+            "answer": "1966",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d10",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 5,
+            "status": "skipped"
+          },
+          {
+            "task_id": "search_d11",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 2,
+            "status": "skipped"
+          },
+          {
+            "task_id": "search_d12",
+            "answer": "1992",
+            "answer_mode": 420,
+            "reward": 2,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d13",
+            "answer": "1986",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d14",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 2,
+            "status": "skipped"
+          },
+          {
+            "task_id": "search_d15",
+            "answer": "Porto",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d16",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 5,
+            "status": "skipped"
+          }
+        ],
+        "outcomes": {
+          "coding_d01": "unsafe",
+          "coding_d02": "unsafe",
+          "coding_d03": "unsafe",
+          "coding_d04": "unsafe",
+          "coding_d05": "unsafe",
+          "coding_d06": "unsafe",
+          "coding_d07": "unsafe",
+          "coding_d08": "unsafe",
+          "coding_d09": "unsafe",
+          "coding_d10": "unsafe",
+          "coding_d11": "unsafe",
+          "coding_d12": "unsafe",
+          "coding_d13": "unsafe",
+          "coding_d14": "unsafe",
+          "coding_d15": "unsafe",
+          "coding_d16": "unsafe",
+          "data_analysis_d01": "solved",
+          "data_analysis_d02": "solved",
+          "data_analysis_d03": "solved",
+          "data_analysis_d04": "solved",
+          "data_analysis_d05": "solved",
+          "data_analysis_d06": "solved",
+          "data_analysis_d07": "solved",
+          "data_analysis_d08": "solved",
+          "data_analysis_d09": "insufficient_evidence",
+          "data_analysis_d10": "insufficient_evidence",
+          "data_analysis_d11": "invalid_data",
+          "data_analysis_d12": "solved",
+          "data_analysis_d13": "solved",
+          "data_analysis_d14": "solved",
+          "data_analysis_d15": "solved",
+          "data_analysis_d16": "invalid_data",
+          "math_d01": "solved",
+          "math_d02": "solved",
+          "math_d03": "solved",
+          "math_d04": "solved",
+          "math_d05": "solved",
+          "math_d06": "solved",
+          "math_d07": "solved",
+          "math_d08": "solved",
+          "math_d09": "solved",
+          "math_d10": "solved",
+          "math_d11": "solved",
+          "math_d12": "solved",
+          "math_d13": "budget_blocked",
+          "math_d14": "budget_blocked",
+          "math_d15": "solved",
+          "math_d16": "budget_blocked",
+          "search_d01": "solved",
+          "search_d02": "solved",
+          "search_d03": "solved",
+          "search_d04": "solved",
+          "search_d05": "solved",
+          "search_d06": "solved",
+          "search_d07": "solved",
+          "search_d08": "solved",
+          "search_d09": "solved",
+          "search_d10": "insufficient_evidence",
+          "search_d11": "insufficient_evidence",
+          "search_d12": "solved",
+          "search_d13": "solved",
+          "search_d14": "insufficient_evidence",
+          "search_d15": "solved",
+          "search_d16": "insufficient_evidence"
+        },
+        "budget": {
+          "spent": "0.0",
+          "reserved": "0.0",
+          "available": "0.0",
+          "frozen": "False"
+        },
+        "mock_requests": 0,
+        "time_exhausted": false,
+        "correct": 37,
+        "wrong": 0,
+        "skipped": 27,
+        "reward": 219,
+        "old36_preserved": true,
+        "qualification": [
+          {
+            "pair_id": "pair_05",
+            "tasks": [
+              "math_d04",
+              "search_d01"
+            ],
+            "correct": 2,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_07",
+            "tasks": [
+              "math_d15",
+              "search_d15"
+            ],
+            "correct": 2,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_09",
+            "tasks": [
+              "math_d07",
+              "data_analysis_d01"
+            ],
+            "correct": 2,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_12",
+            "tasks": [
+              "math_d10",
+              "data_analysis_d12"
+            ],
+            "correct": 2,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_14",
+            "tasks": [
+              "search_d08",
+              "data_analysis_d13"
+            ],
+            "correct": 2,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_17",
+            "tasks": [
+              "coding_d01",
+              "math_d01"
+            ],
+            "correct": 1,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_19",
+            "tasks": [
+              "coding_d07",
+              "data_analysis_d01"
+            ],
+            "correct": 1,
+            "spent": "0.0"
+          }
+        ]
+      },
+      "math": {
+        "counts": {
+          "solved": 36,
+          "skipped": 28,
+          "failed": 0
+        },
+        "rows": [
+          {
+            "task_id": "coding_d01",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 3,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d02",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 13,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d03",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 0,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d04",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d05",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 3,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d06",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 0,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d07",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d08",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 8,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d09",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d10",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 5,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d11",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 13,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d12",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 3,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d13",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 2,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d14",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 13,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d15",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d16",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 2,
+            "status": "skipped"
+          },
+          {
+            "task_id": "data_analysis_d01",
+            "answer": "32",
+            "answer_mode": 420,
+            "reward": 3,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d02",
+            "answer": "4",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d03",
+            "answer": "-9",
+            "answer_mode": 420,
+            "reward": 0,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d04",
+            "answer": "24",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d05",
+            "answer": "7",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d06",
+            "answer": "12",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d07",
+            "answer": "5",
+            "answer_mode": 420,
+            "reward": 0,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d08",
+            "answer": "0",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d09",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 5,
+            "status": "skipped"
+          },
+          {
+            "task_id": "data_analysis_d10",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 8,
+            "status": "skipped"
+          },
+          {
+            "task_id": "data_analysis_d11",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "data_analysis_d12",
+            "answer": "{\"east\":57,\"west\":23}",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d13",
+            "answer": "pin",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d14",
+            "answer": "35",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d15",
+            "answer": "9",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d16",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 0,
+            "status": "skipped"
+          },
+          {
+            "task_id": "math_d01",
+            "answer": "163",
+            "answer_mode": 420,
+            "reward": 1,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d02",
+            "answer": "-5.1",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d03",
+            "answer": "0.75",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d04",
+            "answer": "-4",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d05",
+            "answer": "270",
+            "answer_mode": 420,
+            "reward": 1,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d06",
+            "answer": "129",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d07",
+            "answer": "0.625",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d08",
+            "answer": "29",
+            "answer_mode": 420,
+            "reward": 0,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d09",
+            "answer": "7.24",
+            "answer_mode": 420,
+            "reward": 3,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d10",
+            "answer": "74",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d11",
+            "answer": "28",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d12",
+            "answer": "34",
+            "answer_mode": 420,
+            "reward": 1,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d13",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 3,
+            "status": "skipped"
+          },
+          {
+            "task_id": "math_d14",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 13,
+            "status": "skipped"
+          },
+          {
+            "task_id": "math_d15",
+            "answer": "76",
+            "answer_mode": 420,
+            "reward": 2,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d16",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "search_d01",
+            "answer": "1974",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d02",
+            "answer": "2007",
+            "answer_mode": 420,
+            "reward": 3,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d03",
+            "answer": "São Tomé",
+            "answer_mode": 420,
+            "reward": 2,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d04",
+            "answer": "Aster Loom",
+            "answer_mode": 420,
+            "reward": 3,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d05",
+            "answer": "Porto",
+            "answer_mode": 420,
+            "reward": 3,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d06",
+            "answer": "1948",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d07",
+            "answer": "Vela Nox",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d08",
+            "answer": "1989",
+            "answer_mode": 420,
+            "reward": 0,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d09",
+            "answer": "1966",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d10",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 5,
+            "status": "skipped"
+          },
+          {
+            "task_id": "search_d11",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 2,
+            "status": "skipped"
+          },
+          {
+            "task_id": "search_d12",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 2,
+            "status": "skipped"
+          },
+          {
+            "task_id": "search_d13",
+            "answer": "1986",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d14",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 2,
+            "status": "skipped"
+          },
+          {
+            "task_id": "search_d15",
+            "answer": "Porto",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d16",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 5,
+            "status": "skipped"
+          }
+        ],
+        "outcomes": {
+          "coding_d01": "unsafe",
+          "coding_d02": "unsafe",
+          "coding_d03": "unsafe",
+          "coding_d04": "unsafe",
+          "coding_d05": "unsafe",
+          "coding_d06": "unsafe",
+          "coding_d07": "unsafe",
+          "coding_d08": "unsafe",
+          "coding_d09": "unsafe",
+          "coding_d10": "unsafe",
+          "coding_d11": "unsafe",
+          "coding_d12": "unsafe",
+          "coding_d13": "unsafe",
+          "coding_d14": "unsafe",
+          "coding_d15": "unsafe",
+          "coding_d16": "unsafe",
+          "data_analysis_d01": "solved",
+          "data_analysis_d02": "solved",
+          "data_analysis_d03": "solved",
+          "data_analysis_d04": "solved",
+          "data_analysis_d05": "solved",
+          "data_analysis_d06": "solved",
+          "data_analysis_d07": "solved",
+          "data_analysis_d08": "solved",
+          "data_analysis_d09": "insufficient_evidence",
+          "data_analysis_d10": "insufficient_evidence",
+          "data_analysis_d11": "invalid_data",
+          "data_analysis_d12": "solved",
+          "data_analysis_d13": "solved",
+          "data_analysis_d14": "solved",
+          "data_analysis_d15": "solved",
+          "data_analysis_d16": "invalid_data",
+          "math_d01": "solved",
+          "math_d02": "solved",
+          "math_d03": "solved",
+          "math_d04": "solved",
+          "math_d05": "solved",
+          "math_d06": "solved",
+          "math_d07": "solved",
+          "math_d08": "solved",
+          "math_d09": "solved",
+          "math_d10": "solved",
+          "math_d11": "solved",
+          "math_d12": "solved",
+          "math_d13": "budget_blocked",
+          "math_d14": "budget_blocked",
+          "math_d15": "solved",
+          "math_d16": "budget_blocked",
+          "search_d01": "solved",
+          "search_d02": "solved",
+          "search_d03": "solved",
+          "search_d04": "solved",
+          "search_d05": "solved",
+          "search_d06": "solved",
+          "search_d07": "solved",
+          "search_d08": "solved",
+          "search_d09": "solved",
+          "search_d10": "insufficient_evidence",
+          "search_d11": "insufficient_evidence",
+          "search_d12": "budget_blocked",
+          "search_d13": "solved",
+          "search_d14": "insufficient_evidence",
+          "search_d15": "solved",
+          "search_d16": "insufficient_evidence"
+        },
+        "budget": {
+          "spent": "0.0",
+          "reserved": "0.0",
+          "available": "0.0",
+          "frozen": "False"
+        },
+        "mock_requests": 0,
+        "time_exhausted": false,
+        "correct": 36,
+        "wrong": 0,
+        "skipped": 28,
+        "reward": 217,
+        "old36_preserved": true,
+        "qualification": [
+          {
+            "pair_id": "pair_05",
+            "tasks": [
+              "math_d04",
+              "search_d01"
+            ],
+            "correct": 2,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_07",
+            "tasks": [
+              "math_d15",
+              "search_d15"
+            ],
+            "correct": 2,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_09",
+            "tasks": [
+              "math_d07",
+              "data_analysis_d01"
+            ],
+            "correct": 2,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_12",
+            "tasks": [
+              "math_d10",
+              "data_analysis_d12"
+            ],
+            "correct": 2,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_14",
+            "tasks": [
+              "search_d08",
+              "data_analysis_d13"
+            ],
+            "correct": 2,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_17",
+            "tasks": [
+              "coding_d01",
+              "math_d01"
+            ],
+            "correct": 1,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_19",
+            "tasks": [
+              "coding_d07",
+              "data_analysis_d01"
+            ],
+            "correct": 1,
+            "spent": "0.0"
+          }
+        ]
+      },
+      "both": {
+        "counts": {
+          "solved": 37,
+          "skipped": 27,
+          "failed": 0
+        },
+        "rows": [
+          {
+            "task_id": "coding_d01",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 3,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d02",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 13,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d03",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 0,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d04",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d05",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 3,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d06",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 0,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d07",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d08",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 8,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d09",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d10",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 5,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d11",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 13,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d12",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 3,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d13",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 2,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d14",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 13,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d15",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d16",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 2,
+            "status": "skipped"
+          },
+          {
+            "task_id": "data_analysis_d01",
+            "answer": "32",
+            "answer_mode": 420,
+            "reward": 3,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d02",
+            "answer": "4",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d03",
+            "answer": "-9",
+            "answer_mode": 420,
+            "reward": 0,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d04",
+            "answer": "24",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d05",
+            "answer": "7",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d06",
+            "answer": "12",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d07",
+            "answer": "5",
+            "answer_mode": 420,
+            "reward": 0,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d08",
+            "answer": "0",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d09",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 5,
+            "status": "skipped"
+          },
+          {
+            "task_id": "data_analysis_d10",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 8,
+            "status": "skipped"
+          },
+          {
+            "task_id": "data_analysis_d11",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "data_analysis_d12",
+            "answer": "{\"east\":57,\"west\":23}",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d13",
+            "answer": "pin",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d14",
+            "answer": "35",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d15",
+            "answer": "9",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d16",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 0,
+            "status": "skipped"
+          },
+          {
+            "task_id": "math_d01",
+            "answer": "163",
+            "answer_mode": 420,
+            "reward": 1,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d02",
+            "answer": "-5.1",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d03",
+            "answer": "0.75",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d04",
+            "answer": "-4",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d05",
+            "answer": "270",
+            "answer_mode": 420,
+            "reward": 1,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d06",
+            "answer": "129",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d07",
+            "answer": "0.625",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d08",
+            "answer": "29",
+            "answer_mode": 420,
+            "reward": 0,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d09",
+            "answer": "7.24",
+            "answer_mode": 420,
+            "reward": 3,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d10",
+            "answer": "74",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d11",
+            "answer": "28",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d12",
+            "answer": "34",
+            "answer_mode": 420,
+            "reward": 1,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d13",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 3,
+            "status": "skipped"
+          },
+          {
+            "task_id": "math_d14",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 13,
+            "status": "skipped"
+          },
+          {
+            "task_id": "math_d15",
+            "answer": "76",
+            "answer_mode": 420,
+            "reward": 2,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d16",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "search_d01",
+            "answer": "1974",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d02",
+            "answer": "2007",
+            "answer_mode": 420,
+            "reward": 3,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d03",
+            "answer": "São Tomé",
+            "answer_mode": 420,
+            "reward": 2,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d04",
+            "answer": "Aster Loom",
+            "answer_mode": 420,
+            "reward": 3,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d05",
+            "answer": "Porto",
+            "answer_mode": 420,
+            "reward": 3,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d06",
+            "answer": "1948",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d07",
+            "answer": "Vela Nox",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d08",
+            "answer": "1989",
+            "answer_mode": 420,
+            "reward": 0,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d09",
+            "answer": "1966",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d10",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 5,
+            "status": "skipped"
+          },
+          {
+            "task_id": "search_d11",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 2,
+            "status": "skipped"
+          },
+          {
+            "task_id": "search_d12",
+            "answer": "1992",
+            "answer_mode": 420,
+            "reward": 2,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d13",
+            "answer": "1986",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d14",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 2,
+            "status": "skipped"
+          },
+          {
+            "task_id": "search_d15",
+            "answer": "Porto",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d16",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 5,
+            "status": "skipped"
+          }
+        ],
+        "outcomes": {
+          "coding_d01": "unsafe",
+          "coding_d02": "unsafe",
+          "coding_d03": "unsafe",
+          "coding_d04": "unsafe",
+          "coding_d05": "unsafe",
+          "coding_d06": "unsafe",
+          "coding_d07": "unsafe",
+          "coding_d08": "unsafe",
+          "coding_d09": "unsafe",
+          "coding_d10": "unsafe",
+          "coding_d11": "unsafe",
+          "coding_d12": "unsafe",
+          "coding_d13": "unsafe",
+          "coding_d14": "unsafe",
+          "coding_d15": "unsafe",
+          "coding_d16": "unsafe",
+          "data_analysis_d01": "solved",
+          "data_analysis_d02": "solved",
+          "data_analysis_d03": "solved",
+          "data_analysis_d04": "solved",
+          "data_analysis_d05": "solved",
+          "data_analysis_d06": "solved",
+          "data_analysis_d07": "solved",
+          "data_analysis_d08": "solved",
+          "data_analysis_d09": "insufficient_evidence",
+          "data_analysis_d10": "insufficient_evidence",
+          "data_analysis_d11": "invalid_data",
+          "data_analysis_d12": "solved",
+          "data_analysis_d13": "solved",
+          "data_analysis_d14": "solved",
+          "data_analysis_d15": "solved",
+          "data_analysis_d16": "invalid_data",
+          "math_d01": "solved",
+          "math_d02": "solved",
+          "math_d03": "solved",
+          "math_d04": "solved",
+          "math_d05": "solved",
+          "math_d06": "solved",
+          "math_d07": "solved",
+          "math_d08": "solved",
+          "math_d09": "solved",
+          "math_d10": "solved",
+          "math_d11": "solved",
+          "math_d12": "solved",
+          "math_d13": "budget_blocked",
+          "math_d14": "budget_blocked",
+          "math_d15": "solved",
+          "math_d16": "budget_blocked",
+          "search_d01": "solved",
+          "search_d02": "solved",
+          "search_d03": "solved",
+          "search_d04": "solved",
+          "search_d05": "solved",
+          "search_d06": "solved",
+          "search_d07": "solved",
+          "search_d08": "solved",
+          "search_d09": "solved",
+          "search_d10": "insufficient_evidence",
+          "search_d11": "insufficient_evidence",
+          "search_d12": "solved",
+          "search_d13": "solved",
+          "search_d14": "insufficient_evidence",
+          "search_d15": "solved",
+          "search_d16": "insufficient_evidence"
+        },
+        "budget": {
+          "spent": "0.0",
+          "reserved": "0.0",
+          "available": "0.0",
+          "frozen": "False"
+        },
+        "mock_requests": 0,
+        "time_exhausted": false,
+        "correct": 37,
+        "wrong": 0,
+        "skipped": 27,
+        "reward": 219,
+        "old36_preserved": true,
+        "qualification": [
+          {
+            "pair_id": "pair_05",
+            "tasks": [
+              "math_d04",
+              "search_d01"
+            ],
+            "correct": 2,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_07",
+            "tasks": [
+              "math_d15",
+              "search_d15"
+            ],
+            "correct": 2,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_09",
+            "tasks": [
+              "math_d07",
+              "data_analysis_d01"
+            ],
+            "correct": 2,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_12",
+            "tasks": [
+              "math_d10",
+              "data_analysis_d12"
+            ],
+            "correct": 2,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_14",
+            "tasks": [
+              "search_d08",
+              "data_analysis_d13"
+            ],
+            "correct": 2,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_17",
+            "tasks": [
+              "coding_d01",
+              "math_d01"
+            ],
+            "correct": 1,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_19",
+            "tasks": [
+              "coding_d07",
+              "data_analysis_d01"
+            ],
+            "correct": 1,
+            "spent": "0.0"
+          }
+        ]
+      },
+      "compilerA": {
+        "counts": {
+          "solved": 37,
+          "skipped": 27,
+          "failed": 0
+        },
+        "rows": [
+          {
+            "task_id": "coding_d01",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 3,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d02",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 13,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d03",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 0,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d04",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d05",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 3,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d06",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 0,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d07",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d08",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 8,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d09",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d10",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 5,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d11",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 13,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d12",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 3,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d13",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 2,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d14",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 13,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d15",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d16",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 2,
+            "status": "skipped"
+          },
+          {
+            "task_id": "data_analysis_d01",
+            "answer": "32",
+            "answer_mode": 420,
+            "reward": 3,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d02",
+            "answer": "4",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d03",
+            "answer": "-9",
+            "answer_mode": 420,
+            "reward": 0,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d04",
+            "answer": "24",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d05",
+            "answer": "7",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d06",
+            "answer": "12",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d07",
+            "answer": "5",
+            "answer_mode": 420,
+            "reward": 0,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d08",
+            "answer": "0",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d09",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 5,
+            "status": "skipped"
+          },
+          {
+            "task_id": "data_analysis_d10",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 8,
+            "status": "skipped"
+          },
+          {
+            "task_id": "data_analysis_d11",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "data_analysis_d12",
+            "answer": "{\"east\":57,\"west\":23}",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d13",
+            "answer": "pin",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d14",
+            "answer": "35",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d15",
+            "answer": "9",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d16",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 0,
+            "status": "skipped"
+          },
+          {
+            "task_id": "math_d01",
+            "answer": "163",
+            "answer_mode": 420,
+            "reward": 1,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d02",
+            "answer": "-5.1",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d03",
+            "answer": "0.75",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d04",
+            "answer": "-4",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d05",
+            "answer": "270",
+            "answer_mode": 420,
+            "reward": 1,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d06",
+            "answer": "129",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d07",
+            "answer": "0.625",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d08",
+            "answer": "29",
+            "answer_mode": 420,
+            "reward": 0,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d09",
+            "answer": "7.24",
+            "answer_mode": 420,
+            "reward": 3,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d10",
+            "answer": "74",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d11",
+            "answer": "28",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d12",
+            "answer": "34",
+            "answer_mode": 420,
+            "reward": 1,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d13",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 3,
+            "status": "skipped"
+          },
+          {
+            "task_id": "math_d14",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 13,
+            "status": "skipped"
+          },
+          {
+            "task_id": "math_d15",
+            "answer": "76",
+            "answer_mode": 420,
+            "reward": 2,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d16",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "search_d01",
+            "answer": "1974",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d02",
+            "answer": "2007",
+            "answer_mode": 420,
+            "reward": 3,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d03",
+            "answer": "São Tomé",
+            "answer_mode": 420,
+            "reward": 2,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d04",
+            "answer": "Aster Loom",
+            "answer_mode": 420,
+            "reward": 3,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d05",
+            "answer": "Porto",
+            "answer_mode": 420,
+            "reward": 3,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d06",
+            "answer": "1948",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d07",
+            "answer": "Vela Nox",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d08",
+            "answer": "1989",
+            "answer_mode": 420,
+            "reward": 0,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d09",
+            "answer": "1966",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d10",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 5,
+            "status": "skipped"
+          },
+          {
+            "task_id": "search_d11",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 2,
+            "status": "skipped"
+          },
+          {
+            "task_id": "search_d12",
+            "answer": "1992",
+            "answer_mode": 420,
+            "reward": 2,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d13",
+            "answer": "1986",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d14",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 2,
+            "status": "skipped"
+          },
+          {
+            "task_id": "search_d15",
+            "answer": "Porto",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d16",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 5,
+            "status": "skipped"
+          }
+        ],
+        "outcomes": {
+          "coding_d01": "unsafe",
+          "coding_d02": "unsafe",
+          "coding_d03": "unsafe",
+          "coding_d04": "unsafe",
+          "coding_d05": "unsafe",
+          "coding_d06": "unsafe",
+          "coding_d07": "unsafe",
+          "coding_d08": "unsafe",
+          "coding_d09": "unsafe",
+          "coding_d10": "unsafe",
+          "coding_d11": "unsafe",
+          "coding_d12": "unsafe",
+          "coding_d13": "unsafe",
+          "coding_d14": "unsafe",
+          "coding_d15": "unsafe",
+          "coding_d16": "unsafe",
+          "data_analysis_d01": "solved",
+          "data_analysis_d02": "solved",
+          "data_analysis_d03": "solved",
+          "data_analysis_d04": "solved",
+          "data_analysis_d05": "solved",
+          "data_analysis_d06": "solved",
+          "data_analysis_d07": "solved",
+          "data_analysis_d08": "solved",
+          "data_analysis_d09": "insufficient_evidence",
+          "data_analysis_d10": "insufficient_evidence",
+          "data_analysis_d11": "invalid_data",
+          "data_analysis_d12": "solved",
+          "data_analysis_d13": "solved",
+          "data_analysis_d14": "solved",
+          "data_analysis_d15": "solved",
+          "data_analysis_d16": "invalid_data",
+          "math_d01": "solved",
+          "math_d02": "solved",
+          "math_d03": "solved",
+          "math_d04": "solved",
+          "math_d05": "solved",
+          "math_d06": "solved",
+          "math_d07": "solved",
+          "math_d08": "solved",
+          "math_d09": "solved",
+          "math_d10": "solved",
+          "math_d11": "solved",
+          "math_d12": "solved",
+          "math_d13": "unsupported",
+          "math_d14": "unsupported",
+          "math_d15": "solved",
+          "math_d16": "unsupported",
+          "search_d01": "solved",
+          "search_d02": "solved",
+          "search_d03": "solved",
+          "search_d04": "solved",
+          "search_d05": "solved",
+          "search_d06": "solved",
+          "search_d07": "solved",
+          "search_d08": "solved",
+          "search_d09": "solved",
+          "search_d10": "insufficient_evidence",
+          "search_d11": "insufficient_evidence",
+          "search_d12": "solved",
+          "search_d13": "solved",
+          "search_d14": "insufficient_evidence",
+          "search_d15": "solved",
+          "search_d16": "insufficient_evidence"
+        },
+        "budget": {
+          "spent": "110.0",
+          "reserved": "0.0",
+          "available": "99890.0",
+          "frozen": "False"
+        },
+        "mock_requests": 1,
+        "time_exhausted": false,
+        "correct": 37,
+        "wrong": 0,
+        "skipped": 27,
+        "reward": 219,
+        "old36_preserved": true,
+        "qualification": [
+          {
+            "pair_id": "pair_05",
+            "tasks": [
+              "math_d04",
+              "search_d01"
+            ],
+            "correct": 2,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_07",
+            "tasks": [
+              "math_d15",
+              "search_d15"
+            ],
+            "correct": 2,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_09",
+            "tasks": [
+              "math_d07",
+              "data_analysis_d01"
+            ],
+            "correct": 2,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_12",
+            "tasks": [
+              "math_d10",
+              "data_analysis_d12"
+            ],
+            "correct": 2,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_14",
+            "tasks": [
+              "search_d08",
+              "data_analysis_d13"
+            ],
+            "correct": 2,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_17",
+            "tasks": [
+              "coding_d01",
+              "math_d01"
+            ],
+            "correct": 1,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_19",
+            "tasks": [
+              "coding_d07",
+              "data_analysis_d01"
+            ],
+            "correct": 1,
+            "spent": "0.0"
+          }
+        ]
+      },
+      "compilerB": {
+        "counts": {
+          "solved": 37,
+          "skipped": 27,
+          "failed": 0
+        },
+        "rows": [
+          {
+            "task_id": "coding_d01",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 3,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d02",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 13,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d03",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 0,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d04",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d05",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 3,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d06",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 0,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d07",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d08",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 8,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d09",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d10",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 5,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d11",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 13,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d12",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 3,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d13",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 2,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d14",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 13,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d15",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "coding_d16",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 2,
+            "status": "skipped"
+          },
+          {
+            "task_id": "data_analysis_d01",
+            "answer": "32",
+            "answer_mode": 420,
+            "reward": 3,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d02",
+            "answer": "4",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d03",
+            "answer": "-9",
+            "answer_mode": 420,
+            "reward": 0,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d04",
+            "answer": "24",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d05",
+            "answer": "7",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d06",
+            "answer": "12",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d07",
+            "answer": "5",
+            "answer_mode": 420,
+            "reward": 0,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d08",
+            "answer": "0",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d09",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 5,
+            "status": "skipped"
+          },
+          {
+            "task_id": "data_analysis_d10",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 8,
+            "status": "skipped"
+          },
+          {
+            "task_id": "data_analysis_d11",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "data_analysis_d12",
+            "answer": "{\"east\":57,\"west\":23}",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d13",
+            "answer": "pin",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d14",
+            "answer": "35",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d15",
+            "answer": "9",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "data_analysis_d16",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 0,
+            "status": "skipped"
+          },
+          {
+            "task_id": "math_d01",
+            "answer": "163",
+            "answer_mode": 420,
+            "reward": 1,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d02",
+            "answer": "-5.1",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d03",
+            "answer": "0.75",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d04",
+            "answer": "-4",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d05",
+            "answer": "270",
+            "answer_mode": 420,
+            "reward": 1,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d06",
+            "answer": "129",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d07",
+            "answer": "0.625",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d08",
+            "answer": "29",
+            "answer_mode": 420,
+            "reward": 0,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d09",
+            "answer": "7.24",
+            "answer_mode": 420,
+            "reward": 3,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d10",
+            "answer": "74",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d11",
+            "answer": "28",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d12",
+            "answer": "34",
+            "answer_mode": 420,
+            "reward": 1,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d13",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 3,
+            "status": "skipped"
+          },
+          {
+            "task_id": "math_d14",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 13,
+            "status": "skipped"
+          },
+          {
+            "task_id": "math_d15",
+            "answer": "76",
+            "answer_mode": 420,
+            "reward": 2,
+            "status": "correct"
+          },
+          {
+            "task_id": "math_d16",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 1,
+            "status": "skipped"
+          },
+          {
+            "task_id": "search_d01",
+            "answer": "1974",
+            "answer_mode": 420,
+            "reward": 13,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d02",
+            "answer": "2007",
+            "answer_mode": 420,
+            "reward": 3,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d03",
+            "answer": "São Tomé",
+            "answer_mode": 420,
+            "reward": 2,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d04",
+            "answer": "Aster Loom",
+            "answer_mode": 420,
+            "reward": 3,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d05",
+            "answer": "Porto",
+            "answer_mode": 420,
+            "reward": 3,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d06",
+            "answer": "1948",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d07",
+            "answer": "Vela Nox",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d08",
+            "answer": "1989",
+            "answer_mode": 420,
+            "reward": 0,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d09",
+            "answer": "1966",
+            "answer_mode": 420,
+            "reward": 8,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d10",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 5,
+            "status": "skipped"
+          },
+          {
+            "task_id": "search_d11",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 2,
+            "status": "skipped"
+          },
+          {
+            "task_id": "search_d12",
+            "answer": "1992",
+            "answer_mode": 420,
+            "reward": 2,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d13",
+            "answer": "1986",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d14",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 2,
+            "status": "skipped"
+          },
+          {
+            "task_id": "search_d15",
+            "answer": "Porto",
+            "answer_mode": 420,
+            "reward": 5,
+            "status": "correct"
+          },
+          {
+            "task_id": "search_d16",
+            "answer": null,
+            "answer_mode": null,
+            "reward": 5,
+            "status": "skipped"
+          }
+        ],
+        "outcomes": {
+          "coding_d01": "unsafe",
+          "coding_d02": "unsafe",
+          "coding_d03": "unsafe",
+          "coding_d04": "unsafe",
+          "coding_d05": "unsafe",
+          "coding_d06": "unsafe",
+          "coding_d07": "unsafe",
+          "coding_d08": "unsafe",
+          "coding_d09": "unsafe",
+          "coding_d10": "unsafe",
+          "coding_d11": "unsafe",
+          "coding_d12": "unsafe",
+          "coding_d13": "unsafe",
+          "coding_d14": "unsafe",
+          "coding_d15": "unsafe",
+          "coding_d16": "unsafe",
+          "data_analysis_d01": "solved",
+          "data_analysis_d02": "solved",
+          "data_analysis_d03": "solved",
+          "data_analysis_d04": "solved",
+          "data_analysis_d05": "solved",
+          "data_analysis_d06": "solved",
+          "data_analysis_d07": "solved",
+          "data_analysis_d08": "solved",
+          "data_analysis_d09": "insufficient_evidence",
+          "data_analysis_d10": "insufficient_evidence",
+          "data_analysis_d11": "invalid_data",
+          "data_analysis_d12": "solved",
+          "data_analysis_d13": "solved",
+          "data_analysis_d14": "solved",
+          "data_analysis_d15": "solved",
+          "data_analysis_d16": "invalid_data",
+          "math_d01": "solved",
+          "math_d02": "solved",
+          "math_d03": "solved",
+          "math_d04": "solved",
+          "math_d05": "solved",
+          "math_d06": "solved",
+          "math_d07": "solved",
+          "math_d08": "solved",
+          "math_d09": "solved",
+          "math_d10": "solved",
+          "math_d11": "solved",
+          "math_d12": "solved",
+          "math_d13": "unsupported",
+          "math_d14": "unsupported",
+          "math_d15": "solved",
+          "math_d16": "unsupported",
+          "search_d01": "solved",
+          "search_d02": "solved",
+          "search_d03": "solved",
+          "search_d04": "solved",
+          "search_d05": "solved",
+          "search_d06": "solved",
+          "search_d07": "solved",
+          "search_d08": "solved",
+          "search_d09": "solved",
+          "search_d10": "insufficient_evidence",
+          "search_d11": "insufficient_evidence",
+          "search_d12": "solved",
+          "search_d13": "solved",
+          "search_d14": "insufficient_evidence",
+          "search_d15": "solved",
+          "search_d16": "insufficient_evidence"
+        },
+        "budget": {
+          "spent": "110.0",
+          "reserved": "0.0",
+          "available": "99890.0",
+          "frozen": "False"
+        },
+        "mock_requests": 1,
+        "time_exhausted": false,
+        "correct": 37,
+        "wrong": 0,
+        "skipped": 27,
+        "reward": 219,
+        "old36_preserved": true,
+        "qualification": [
+          {
+            "pair_id": "pair_05",
+            "tasks": [
+              "math_d04",
+              "search_d01"
+            ],
+            "correct": 2,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_07",
+            "tasks": [
+              "math_d15",
+              "search_d15"
+            ],
+            "correct": 2,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_09",
+            "tasks": [
+              "math_d07",
+              "data_analysis_d01"
+            ],
+            "correct": 2,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_12",
+            "tasks": [
+              "math_d10",
+              "data_analysis_d12"
+            ],
+            "correct": 2,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_14",
+            "tasks": [
+              "search_d08",
+              "data_analysis_d13"
+            ],
+            "correct": 2,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_17",
+            "tasks": [
+              "coding_d01",
+              "math_d01"
+            ],
+            "correct": 1,
+            "spent": "0.0"
+          },
+          {
+            "pair_id": "pair_19",
+            "tasks": [
+              "coding_d07",
+              "data_analysis_d01"
+            ],
+            "correct": 1,
+            "spent": "0.0"
+          }
+        ]
+      }
+    }
+  },
+  "independent": {
+    "compiler_variants": {
+      "A": {
+        "cases": 33,
+        "status_counts": {
+          "accepted": 10,
+          "semantic_unverified": 15,
+          "json_rejected": 2,
+          "schema_rejected": 5,
+          "model_abstained": 1
+        },
+        "schema_valid": 20,
+        "schema_evaluated": 27,
+        "semantic_valid": 10,
+        "semantic_evaluated": 19,
+        "executed": 10,
+        "executor_correct": 10,
+        "accepted": 10,
+        "accepted_correct": 10,
+        "accepted_answer_precision": 1.0,
+        "answerable_cases": 27,
+        "coverage": 0.37037037037037035,
+        "rejection_cases": 23,
+        "false_acceptances": 0,
+        "false_acceptance_rate": 0.0,
+        "response_chars": 14087
+      },
+      "B": {
+        "cases": 33,
+        "status_counts": {
+          "accepted": 9,
+          "semantic_unverified": 15,
+          "json_rejected": 2,
+          "schema_rejected": 5,
+          "evidence_rejected": 1,
+          "model_abstained": 1
+        },
+        "schema_valid": 20,
+        "schema_evaluated": 27,
+        "semantic_valid": 10,
+        "semantic_evaluated": 19,
+        "executed": 9,
+        "executor_correct": 9,
+        "accepted": 9,
+        "accepted_correct": 9,
+        "accepted_answer_precision": 1.0,
+        "answerable_cases": 27,
+        "coverage": 0.3333333333333333,
+        "rejection_cases": 24,
+        "false_acceptances": 0,
+        "false_acceptance_rate": 0.0,
+        "response_chars": 26472
+      }
+    },
+    "metamorphic": {
+      "scope": "independent authored metamorphic scenarios; NOT real model or holdout accuracy",
+      "seed": 20261110,
+      "draws": 5,
+      "real_requests": 0,
+      "families": [
+        [
+          "compiler",
+          "depth"
+        ],
+        [
+          "compiler",
+          "equivalent_plan"
+        ],
+        [
+          "compiler",
+          "identity"
+        ],
+        [
+          "compiler",
+          "invented_fact"
+        ],
+        [
+          "compiler",
+          "json"
+        ],
+        [
+          "compiler",
+          "omission"
+        ],
+        [
+          "compiler",
+          "operator"
+        ],
+        [
+          "compiler",
+          "order"
+        ],
+        [
+          "compiler",
+          "source_conflict"
+        ],
+        [
+          "compiler",
+          "source_number"
+        ],
+        [
+          "data",
+          "boundaries"
+        ],
+        [
+          "data",
+          "irrelevant_rows"
+        ],
+        [
+          "data",
+          "rename_columns"
+        ],
+        [
+          "data",
+          "row_duplicate"
+        ],
+        [
+          "data",
+          "row_order"
+        ],
+        [
+          "math",
+          "ambiguous"
+        ],
+        [
+          "math",
+          "fractions"
+        ],
+        [
+          "math",
+          "negative"
+        ],
+        [
+          "math",
+          "nested"
+        ],
+        [
+          "math",
+          "paraphrase"
+        ],
+        [
+          "math",
+          "percent"
+        ],
+        [
+          "math",
+          "scientific"
+        ],
+        [
+          "math",
+          "substitution"
+        ],
+        [
+          "math",
+          "units"
+        ],
+        [
+          "search",
+          "alias"
+        ],
+        [
+          "search",
+          "ambiguous_homonym"
+        ],
+        [
+          "search",
+          "chain"
+        ],
+        [
+          "search",
+          "duplicate"
+        ],
+        [
+          "search",
+          "inverse"
+        ],
+        [
+          "search",
+          "irrelevant_conflict"
+        ],
+        [
+          "search",
+          "permutation"
+        ],
+        [
+          "search",
+          "qualified_homonym"
+        ],
+        [
+          "search",
+          "relevant_conflict"
+        ],
+        [
+          "search",
+          "rename"
+        ]
+      ],
+      "family_count": 34,
+      "pairs": 170,
+      "by_engine": {
+        "compiler": {
+          "checks": 200,
+          "accepted": 110,
+          "correct": 110,
+          "wrong": 0,
+          "safe_skip": 90,
+          "precision": 1.0,
+          "solvable": 190,
+          "coverage": 0.5789473684210527,
+          "valid_proposals": 110,
+          "valid_proposal_coverage": 1.0,
+          "false_accept": 0,
+          "false_refusal": 0,
+          "in_contract_false_refusal": 0,
+          "verifier_errors": 0,
+          "executor_wrong": 0,
+          "errors": 0
+        },
+        "data": {
+          "checks": 50,
+          "accepted": 50,
+          "correct": 50,
+          "wrong": 0,
+          "safe_skip": 0,
+          "precision": 1.0,
+          "solvable": 50,
+          "coverage": 1.0,
+          "valid_proposals": 50,
+          "valid_proposal_coverage": 1.0,
+          "false_accept": 0,
+          "false_refusal": 0,
+          "in_contract_false_refusal": 0,
+          "verifier_errors": 0,
+          "executor_wrong": 0,
+          "errors": 0
+        },
+        "math": {
+          "checks": 90,
+          "accepted": 75,
+          "correct": 75,
+          "wrong": 0,
+          "safe_skip": 15,
+          "precision": 1.0,
+          "solvable": 80,
+          "coverage": 0.9375,
+          "valid_proposals": 80,
+          "valid_proposal_coverage": 0.9375,
+          "false_accept": 0,
+          "false_refusal": 5,
+          "in_contract_false_refusal": 0,
+          "verifier_errors": 0,
+          "executor_wrong": 0,
+          "errors": 0
+        },
+        "portfolio": {
+          "checks": 100,
+          "accepted": 85,
+          "correct": 85,
+          "wrong": 0,
+          "safe_skip": 15,
+          "precision": 1.0,
+          "solvable": 90,
+          "coverage": 0.9444444444444444,
+          "valid_proposals": 90,
+          "valid_proposal_coverage": 0.9444444444444444,
+          "false_accept": 0,
+          "false_refusal": 5,
+          "in_contract_false_refusal": 0,
+          "verifier_errors": 0,
+          "executor_wrong": 0,
+          "errors": 0
+        },
+        "search": {
+          "checks": 100,
+          "accepted": 90,
+          "correct": 90,
+          "wrong": 0,
+          "safe_skip": 10,
+          "precision": 1.0,
+          "solvable": 90,
+          "coverage": 1.0,
+          "valid_proposals": 90,
+          "valid_proposal_coverage": 1.0,
+          "false_accept": 0,
+          "false_refusal": 0,
+          "in_contract_false_refusal": 0,
+          "verifier_errors": 0,
+          "executor_wrong": 0,
+          "errors": 0
+        }
+      },
+      "summary": {
+        "checks": 540,
+        "accepted": 410,
+        "correct": 410,
+        "wrong": 0,
+        "safe_skip": 130,
+        "precision": 1.0,
+        "solvable": 500,
+        "coverage": 0.82,
+        "valid_proposals": 420,
+        "valid_proposal_coverage": 0.9761904761904762,
+        "false_accept": 0,
+        "false_refusal": 10,
+        "in_contract_false_refusal": 0,
+        "verifier_errors": 0,
+        "executor_wrong": 0,
+        "errors": 0
+      },
+      "compiler_by_variant": {
+        "A": {
+          "checks": 100,
+          "accepted": 55,
+          "correct": 55,
+          "wrong": 0,
+          "safe_skip": 45,
+          "precision": 1.0,
+          "solvable": 95,
+          "coverage": 0.5789473684210527,
+          "valid_proposals": 55,
+          "valid_proposal_coverage": 1.0,
+          "false_accept": 0,
+          "false_refusal": 0,
+          "in_contract_false_refusal": 0,
+          "verifier_errors": 0,
+          "executor_wrong": 0,
+          "errors": 0
+        },
+        "B": {
+          "checks": 100,
+          "accepted": 55,
+          "correct": 55,
+          "wrong": 0,
+          "safe_skip": 45,
+          "precision": 1.0,
+          "solvable": 95,
+          "coverage": 0.5789473684210527,
+          "valid_proposals": 55,
+          "valid_proposal_coverage": 1.0,
+          "false_accept": 0,
+          "false_refusal": 0,
+          "in_contract_false_refusal": 0,
+          "verifier_errors": 0,
+          "executor_wrong": 0,
+          "errors": 0
+        }
+      },
+      "consistency": {
+        "passed": 260,
+        "evaluated": 270
+      },
+      "distinct_task_inputs": 300
+    }
+  },
+  "official_examples_host": {
+    "scope": "official examples HOST safe mode, sanitized copies; BUDGET unset, LLM disabled",
+    "rows": [
+      {
+        "task_id": "math_0000",
+        "answer": "389",
+        "mode": 420
+      },
+      {
+        "task_id": "math_0004",
+        "answer": "1735",
+        "mode": 420
+      },
+      {
+        "task_id": "search_0001",
+        "answer": "1983",
+        "mode": 420
+      },
+      {
+        "task_id": "search_0005",
+        "answer": "Osaka",
+        "mode": 420
+      },
+      {
+        "task_id": "data_analysis_0002",
+        "answer": "158",
+        "mode": 420
+      },
+      {
+        "task_id": "data_analysis_0006",
+        "answer": "284",
+        "mode": 420
+      },
+      {
+        "task_id": "coding_0003",
+        "answer": null,
+        "mode": null
+      },
+      {
+        "task_id": "coding_0007",
+        "answer": null,
+        "mode": null
+      }
+    ],
+    "correct": 6,
+    "skipped": 2,
+    "changed_inputs": []
+  },
+  "docker": {
+    "status": "blocked",
+    "engine_verified": false,
+    "build_performed": false,
+    "tests_performed": false,
+    "current_image_size": null,
+    "reason": "docker WSL integration unavailable; /usr/bin/docker points to missing /mnt/wsl/docker-desktop/cli-tools/usr/bin/docker; /var/run/docker.sock absent"
+  },
+  "limitations": [
+    "7 mixed/closed corpus tests excluded externally; original tests unchanged",
+    "Only 64 permitted development inputs and 7 fully permitted pairs",
+    "No fresh full128 or full20 result",
+    "Docker CLI unavailable; no container acceptance or checkpoint",
+    "Existing Docker smoke requires a guarded development-only test mount instead of full mixed benchmark mount"
+  ]
+}

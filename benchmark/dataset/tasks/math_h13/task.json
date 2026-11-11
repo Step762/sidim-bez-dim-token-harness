@@ -1,0 +1,6 @@
+{
+  "instruction": "What is 8 / (5 - 5)?",
+  "reward": 0,
+  "task_id": "math_h13",
+  "task_type": "math"
+}

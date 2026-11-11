@@ -1,0 +1,1396 @@
+{
+  "first": {
+    "local": {
+      "summary": {
+        "2/2": 4,
+        "1/2": 8,
+        "0/2": 8,
+        "causes": {
+          "correct": 16,
+          "fallback_disabled_local_mode": 15,
+          "routing_or_grounding": 4,
+          "coding_disabled": 5
+        }
+      },
+      "pairs": [
+        {
+          "pair_id": "pair_01",
+          "category": "math+math",
+          "tasks": [
+            "math_d01",
+            "math_h02"
+          ],
+          "correct": 2,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_02",
+          "category": "math+math",
+          "tasks": [
+            "math_d08",
+            "math_h16"
+          ],
+          "correct": 1,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_03",
+          "category": "math+math",
+          "tasks": [
+            "math_d15",
+            "math_h15"
+          ],
+          "correct": 0,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_04",
+          "category": "math+math",
+          "tasks": [
+            "math_d09",
+            "math_h08"
+          ],
+          "correct": 1,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_05",
+          "category": "math+search",
+          "tasks": [
+            "math_d04",
+            "search_d01"
+          ],
+          "correct": 2,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_06",
+          "category": "math+search",
+          "tasks": [
+            "math_h07",
+            "search_h08"
+          ],
+          "correct": 0,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_07",
+          "category": "math+search",
+          "tasks": [
+            "math_d15",
+            "search_d15"
+          ],
+          "correct": 0,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_08",
+          "category": "math+search",
+          "tasks": [
+            "math_h04",
+            "search_h02"
+          ],
+          "correct": 1,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_09",
+          "category": "math+data_analysis",
+          "tasks": [
+            "math_d07",
+            "data_analysis_d01"
+          ],
+          "correct": 2,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_10",
+          "category": "math+data_analysis",
+          "tasks": [
+            "math_h06",
+            "data_analysis_h08"
+          ],
+          "correct": 0,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_11",
+          "category": "math+data_analysis",
+          "tasks": [
+            "math_h15",
+            "data_analysis_h15"
+          ],
+          "correct": 0,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_12",
+          "category": "math+data_analysis",
+          "tasks": [
+            "math_d10",
+            "data_analysis_d12"
+          ],
+          "correct": 1,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_13",
+          "category": "search+data_analysis",
+          "tasks": [
+            "search_d03",
+            "data_analysis_h05"
+          ],
+          "correct": 2,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_14",
+          "category": "search+data_analysis",
+          "tasks": [
+            "search_d08",
+            "data_analysis_d13"
+          ],
+          "correct": 0,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_15",
+          "category": "search+data_analysis",
+          "tasks": [
+            "search_h15",
+            "data_analysis_d14"
+          ],
+          "correct": 1,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_16",
+          "category": "search+data_analysis",
+          "tasks": [
+            "search_d14",
+            "data_analysis_h14"
+          ],
+          "correct": 1,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_17",
+          "category": "coding+any",
+          "tasks": [
+            "coding_d01",
+            "math_d01"
+          ],
+          "correct": 1,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_18",
+          "category": "coding+any",
+          "tasks": [
+            "coding_h05",
+            "search_d08"
+          ],
+          "correct": 0,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_19",
+          "category": "coding+any",
+          "tasks": [
+            "coding_d07",
+            "data_analysis_d01"
+          ],
+          "correct": 1,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_20",
+          "category": "coding+any",
+          "tasks": [
+            "coding_d02",
+            "coding_h13"
+          ],
+          "correct": 0,
+          "llm_calls": 0,
+          "spent": 0.0
+        }
+      ]
+    },
+    "mock-good": {
+      "summary": {
+        "2/2": 9,
+        "1/2": 6,
+        "0/2": 5,
+        "causes": {
+          "correct": 24,
+          "unsupported_validated_route": 7,
+          "routing_or_grounding": 4,
+          "coding_disabled": 5
+        }
+      },
+      "pairs": [
+        {
+          "pair_id": "pair_01",
+          "category": "math+math",
+          "tasks": [
+            "math_d01",
+            "math_h02"
+          ],
+          "correct": 2,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_02",
+          "category": "math+math",
+          "tasks": [
+            "math_d08",
+            "math_h16"
+          ],
+          "correct": 1,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_03",
+          "category": "math+math",
+          "tasks": [
+            "math_d15",
+            "math_h15"
+          ],
+          "correct": 2,
+          "llm_calls": 2,
+          "spent": 189.7
+        },
+        {
+          "pair_id": "pair_04",
+          "category": "math+math",
+          "tasks": [
+            "math_d09",
+            "math_h08"
+          ],
+          "correct": 1,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_05",
+          "category": "math+search",
+          "tasks": [
+            "math_d04",
+            "search_d01"
+          ],
+          "correct": 2,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_06",
+          "category": "math+search",
+          "tasks": [
+            "math_h07",
+            "search_h08"
+          ],
+          "correct": 0,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_07",
+          "category": "math+search",
+          "tasks": [
+            "math_d15",
+            "search_d15"
+          ],
+          "correct": 2,
+          "llm_calls": 2,
+          "spent": 143.6
+        },
+        {
+          "pair_id": "pair_08",
+          "category": "math+search",
+          "tasks": [
+            "math_h04",
+            "search_h02"
+          ],
+          "correct": 2,
+          "llm_calls": 1,
+          "spent": 60.1
+        },
+        {
+          "pair_id": "pair_09",
+          "category": "math+data_analysis",
+          "tasks": [
+            "math_d07",
+            "data_analysis_d01"
+          ],
+          "correct": 2,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_10",
+          "category": "math+data_analysis",
+          "tasks": [
+            "math_h06",
+            "data_analysis_h08"
+          ],
+          "correct": 0,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_11",
+          "category": "math+data_analysis",
+          "tasks": [
+            "math_h15",
+            "data_analysis_h15"
+          ],
+          "correct": 2,
+          "llm_calls": 2,
+          "spent": 192.7
+        },
+        {
+          "pair_id": "pair_12",
+          "category": "math+data_analysis",
+          "tasks": [
+            "math_d10",
+            "data_analysis_d12"
+          ],
+          "correct": 1,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_13",
+          "category": "search+data_analysis",
+          "tasks": [
+            "search_d03",
+            "data_analysis_h05"
+          ],
+          "correct": 2,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_14",
+          "category": "search+data_analysis",
+          "tasks": [
+            "search_d08",
+            "data_analysis_d13"
+          ],
+          "correct": 0,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_15",
+          "category": "search+data_analysis",
+          "tasks": [
+            "search_h15",
+            "data_analysis_d14"
+          ],
+          "correct": 2,
+          "llm_calls": 1,
+          "spent": 57.8
+        },
+        {
+          "pair_id": "pair_16",
+          "category": "search+data_analysis",
+          "tasks": [
+            "search_d14",
+            "data_analysis_h14"
+          ],
+          "correct": 1,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_17",
+          "category": "coding+any",
+          "tasks": [
+            "coding_d01",
+            "math_d01"
+          ],
+          "correct": 1,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_18",
+          "category": "coding+any",
+          "tasks": [
+            "coding_h05",
+            "search_d08"
+          ],
+          "correct": 0,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_19",
+          "category": "coding+any",
+          "tasks": [
+            "coding_d07",
+            "data_analysis_d01"
+          ],
+          "correct": 1,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_20",
+          "category": "coding+any",
+          "tasks": [
+            "coding_d02",
+            "coding_h13"
+          ],
+          "correct": 0,
+          "llm_calls": 0,
+          "spent": 0.0
+        }
+      ]
+    }
+  },
+  "final": {
+    "local": {
+      "summary": {
+        "2/2": 4,
+        "1/2": 9,
+        "0/2": 7,
+        "causes": {
+          "correct": 17,
+          "fallback_disabled_local_mode": 14,
+          "routing_or_grounding": 4,
+          "coding_disabled": 5
+        }
+      },
+      "pairs": [
+        {
+          "pair_id": "pair_01",
+          "category": "math+math",
+          "tasks": [
+            "math_d01",
+            "math_h02"
+          ],
+          "correct": 2,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_02",
+          "category": "math+math",
+          "tasks": [
+            "math_d08",
+            "math_h16"
+          ],
+          "correct": 1,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_03",
+          "category": "math+math",
+          "tasks": [
+            "math_d15",
+            "math_h15"
+          ],
+          "correct": 0,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_04",
+          "category": "math+math",
+          "tasks": [
+            "math_d09",
+            "math_h08"
+          ],
+          "correct": 1,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_05",
+          "category": "math+search",
+          "tasks": [
+            "math_d04",
+            "search_d01"
+          ],
+          "correct": 2,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_06",
+          "category": "math+search",
+          "tasks": [
+            "math_h07",
+            "search_h08"
+          ],
+          "correct": 0,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_07",
+          "category": "math+search",
+          "tasks": [
+            "math_d15",
+            "search_d15"
+          ],
+          "correct": 0,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_08",
+          "category": "math+search",
+          "tasks": [
+            "math_h04",
+            "search_h02"
+          ],
+          "correct": 1,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_09",
+          "category": "math+data_analysis",
+          "tasks": [
+            "math_d07",
+            "data_analysis_d01"
+          ],
+          "correct": 2,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_10",
+          "category": "math+data_analysis",
+          "tasks": [
+            "math_h06",
+            "data_analysis_h08"
+          ],
+          "correct": 0,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_11",
+          "category": "math+data_analysis",
+          "tasks": [
+            "math_h15",
+            "data_analysis_h15"
+          ],
+          "correct": 0,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_12",
+          "category": "math+data_analysis",
+          "tasks": [
+            "math_d10",
+            "data_analysis_d12"
+          ],
+          "correct": 1,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_13",
+          "category": "search+data_analysis",
+          "tasks": [
+            "search_d03",
+            "data_analysis_h05"
+          ],
+          "correct": 2,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_14",
+          "category": "search+data_analysis",
+          "tasks": [
+            "search_d08",
+            "data_analysis_d13"
+          ],
+          "correct": 1,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_15",
+          "category": "search+data_analysis",
+          "tasks": [
+            "search_h15",
+            "data_analysis_d14"
+          ],
+          "correct": 1,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_16",
+          "category": "search+data_analysis",
+          "tasks": [
+            "search_d14",
+            "data_analysis_h14"
+          ],
+          "correct": 1,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_17",
+          "category": "coding+any",
+          "tasks": [
+            "coding_d01",
+            "math_d01"
+          ],
+          "correct": 1,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_18",
+          "category": "coding+any",
+          "tasks": [
+            "coding_h05",
+            "search_d08"
+          ],
+          "correct": 0,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_19",
+          "category": "coding+any",
+          "tasks": [
+            "coding_d07",
+            "data_analysis_d01"
+          ],
+          "correct": 1,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_20",
+          "category": "coding+any",
+          "tasks": [
+            "coding_d02",
+            "coding_h13"
+          ],
+          "correct": 0,
+          "llm_calls": 0,
+          "spent": 0.0
+        }
+      ]
+    },
+    "mock-good": {
+      "summary": {
+        "2/2": 9,
+        "1/2": 7,
+        "0/2": 4,
+        "causes": {
+          "correct": 25,
+          "unsupported_validated_route": 6,
+          "routing_or_grounding": 4,
+          "coding_disabled": 5
+        }
+      },
+      "pairs": [
+        {
+          "pair_id": "pair_01",
+          "category": "math+math",
+          "tasks": [
+            "math_d01",
+            "math_h02"
+          ],
+          "correct": 2,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_02",
+          "category": "math+math",
+          "tasks": [
+            "math_d08",
+            "math_h16"
+          ],
+          "correct": 1,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_03",
+          "category": "math+math",
+          "tasks": [
+            "math_d15",
+            "math_h15"
+          ],
+          "correct": 2,
+          "llm_calls": 2,
+          "spent": 189.7
+        },
+        {
+          "pair_id": "pair_04",
+          "category": "math+math",
+          "tasks": [
+            "math_d09",
+            "math_h08"
+          ],
+          "correct": 1,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_05",
+          "category": "math+search",
+          "tasks": [
+            "math_d04",
+            "search_d01"
+          ],
+          "correct": 2,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_06",
+          "category": "math+search",
+          "tasks": [
+            "math_h07",
+            "search_h08"
+          ],
+          "correct": 0,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_07",
+          "category": "math+search",
+          "tasks": [
+            "math_d15",
+            "search_d15"
+          ],
+          "correct": 2,
+          "llm_calls": 2,
+          "spent": 143.6
+        },
+        {
+          "pair_id": "pair_08",
+          "category": "math+search",
+          "tasks": [
+            "math_h04",
+            "search_h02"
+          ],
+          "correct": 2,
+          "llm_calls": 1,
+          "spent": 60.1
+        },
+        {
+          "pair_id": "pair_09",
+          "category": "math+data_analysis",
+          "tasks": [
+            "math_d07",
+            "data_analysis_d01"
+          ],
+          "correct": 2,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_10",
+          "category": "math+data_analysis",
+          "tasks": [
+            "math_h06",
+            "data_analysis_h08"
+          ],
+          "correct": 0,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_11",
+          "category": "math+data_analysis",
+          "tasks": [
+            "math_h15",
+            "data_analysis_h15"
+          ],
+          "correct": 2,
+          "llm_calls": 2,
+          "spent": 192.7
+        },
+        {
+          "pair_id": "pair_12",
+          "category": "math+data_analysis",
+          "tasks": [
+            "math_d10",
+            "data_analysis_d12"
+          ],
+          "correct": 1,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_13",
+          "category": "search+data_analysis",
+          "tasks": [
+            "search_d03",
+            "data_analysis_h05"
+          ],
+          "correct": 2,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_14",
+          "category": "search+data_analysis",
+          "tasks": [
+            "search_d08",
+            "data_analysis_d13"
+          ],
+          "correct": 1,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_15",
+          "category": "search+data_analysis",
+          "tasks": [
+            "search_h15",
+            "data_analysis_d14"
+          ],
+          "correct": 2,
+          "llm_calls": 1,
+          "spent": 57.8
+        },
+        {
+          "pair_id": "pair_16",
+          "category": "search+data_analysis",
+          "tasks": [
+            "search_d14",
+            "data_analysis_h14"
+          ],
+          "correct": 1,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_17",
+          "category": "coding+any",
+          "tasks": [
+            "coding_d01",
+            "math_d01"
+          ],
+          "correct": 1,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_18",
+          "category": "coding+any",
+          "tasks": [
+            "coding_h05",
+            "search_d08"
+          ],
+          "correct": 0,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_19",
+          "category": "coding+any",
+          "tasks": [
+            "coding_d07",
+            "data_analysis_d01"
+          ],
+          "correct": 1,
+          "llm_calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_20",
+          "category": "coding+any",
+          "tasks": [
+            "coding_d02",
+            "coding_h13"
+          ],
+          "correct": 0,
+          "llm_calls": 0,
+          "spent": 0.0
+        }
+      ]
+    }
+  },
+  "before": {
+    "local": {
+      "summary": {
+        "2/2": 4,
+        "1/2": 7,
+        "0/2": 9,
+        "causes": {
+          "correct": 15,
+          "fallback_disabled_local_mode": 16,
+          "routing_or_grounding": 4,
+          "coding_disabled": 5
+        }
+      },
+      "pairs": [
+        {
+          "pair_id": "pair_01",
+          "category": "math+math",
+          "correct": 2,
+          "reasons": {
+            "correct": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_02",
+          "category": "math+math",
+          "correct": 1,
+          "reasons": {
+            "fallback_not_enabled_in_local_run": 1,
+            "correct": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_03",
+          "category": "math+math",
+          "correct": 0,
+          "reasons": {
+            "fallback_not_enabled_in_local_run": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_04",
+          "category": "math+math",
+          "correct": 0,
+          "reasons": {
+            "fallback_not_enabled_in_local_run": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_05",
+          "category": "math+search",
+          "correct": 2,
+          "reasons": {
+            "correct": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_06",
+          "category": "math+search",
+          "correct": 0,
+          "reasons": {
+            "fallback_not_enabled_in_local_run": 1,
+            "missing_or_ambiguous_evidence": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_07",
+          "category": "math+search",
+          "correct": 0,
+          "reasons": {
+            "fallback_not_enabled_in_local_run": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_08",
+          "category": "math+search",
+          "correct": 1,
+          "reasons": {
+            "correct": 1,
+            "fallback_not_enabled_in_local_run": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_09",
+          "category": "math+data_analysis",
+          "correct": 2,
+          "reasons": {
+            "correct": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_10",
+          "category": "math+data_analysis",
+          "correct": 0,
+          "reasons": {
+            "fallback_not_enabled_in_local_run": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_11",
+          "category": "math+data_analysis",
+          "correct": 0,
+          "reasons": {
+            "fallback_not_enabled_in_local_run": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_12",
+          "category": "math+data_analysis",
+          "correct": 1,
+          "reasons": {
+            "correct": 1,
+            "fallback_not_enabled_in_local_run": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_13",
+          "category": "search+data_analysis",
+          "correct": 2,
+          "reasons": {
+            "correct": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_14",
+          "category": "search+data_analysis",
+          "correct": 0,
+          "reasons": {
+            "fallback_not_enabled_in_local_run": 1,
+            "missing_or_ambiguous_evidence": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_15",
+          "category": "search+data_analysis",
+          "correct": 1,
+          "reasons": {
+            "correct": 1,
+            "fallback_not_enabled_in_local_run": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_16",
+          "category": "search+data_analysis",
+          "correct": 1,
+          "reasons": {
+            "correct": 1,
+            "missing_or_ambiguous_evidence": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_17",
+          "category": "coding+any",
+          "correct": 1,
+          "reasons": {
+            "coding_safe_disabled": 1,
+            "correct": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_18",
+          "category": "coding+any",
+          "correct": 0,
+          "reasons": {
+            "coding_safe_disabled": 1,
+            "missing_or_ambiguous_evidence": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_19",
+          "category": "coding+any",
+          "correct": 1,
+          "reasons": {
+            "coding_safe_disabled": 1,
+            "correct": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_20",
+          "category": "coding+any",
+          "correct": 0,
+          "reasons": {
+            "coding_safe_disabled": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        }
+      ]
+    },
+    "mock-good": {
+      "summary": {
+        "2/2": 9,
+        "1/2": 5,
+        "0/2": 6,
+        "causes": {
+          "correct": 23,
+          "unsupported_validated_route": 8,
+          "routing_or_grounding": 4,
+          "coding_disabled": 5
+        }
+      },
+      "pairs": [
+        {
+          "pair_id": "pair_01",
+          "category": "math+math",
+          "correct": 2,
+          "reasons": {
+            "correct": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_02",
+          "category": "math+math",
+          "correct": 1,
+          "reasons": {
+            "unsupported_preparation_or_semantics": 1,
+            "correct": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_03",
+          "category": "math+math",
+          "correct": 2,
+          "reasons": {
+            "correct": 2
+          },
+          "calls": 2,
+          "spent": 189.7
+        },
+        {
+          "pair_id": "pair_04",
+          "category": "math+math",
+          "correct": 0,
+          "reasons": {
+            "unsupported_preparation_or_semantics": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_05",
+          "category": "math+search",
+          "correct": 2,
+          "reasons": {
+            "correct": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_06",
+          "category": "math+search",
+          "correct": 0,
+          "reasons": {
+            "unsupported_preparation_or_semantics": 1,
+            "missing_or_ambiguous_evidence": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_07",
+          "category": "math+search",
+          "correct": 2,
+          "reasons": {
+            "correct": 2
+          },
+          "calls": 2,
+          "spent": 143.6
+        },
+        {
+          "pair_id": "pair_08",
+          "category": "math+search",
+          "correct": 2,
+          "reasons": {
+            "correct": 2
+          },
+          "calls": 1,
+          "spent": 60.1
+        },
+        {
+          "pair_id": "pair_09",
+          "category": "math+data_analysis",
+          "correct": 2,
+          "reasons": {
+            "correct": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_10",
+          "category": "math+data_analysis",
+          "correct": 0,
+          "reasons": {
+            "unsupported_preparation_or_semantics": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_11",
+          "category": "math+data_analysis",
+          "correct": 2,
+          "reasons": {
+            "correct": 2
+          },
+          "calls": 2,
+          "spent": 192.7
+        },
+        {
+          "pair_id": "pair_12",
+          "category": "math+data_analysis",
+          "correct": 1,
+          "reasons": {
+            "correct": 1,
+            "unsupported_preparation_or_semantics": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_13",
+          "category": "search+data_analysis",
+          "correct": 2,
+          "reasons": {
+            "correct": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_14",
+          "category": "search+data_analysis",
+          "correct": 0,
+          "reasons": {
+            "unsupported_preparation_or_semantics": 1,
+            "missing_or_ambiguous_evidence": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_15",
+          "category": "search+data_analysis",
+          "correct": 2,
+          "reasons": {
+            "correct": 2
+          },
+          "calls": 1,
+          "spent": 57.8
+        },
+        {
+          "pair_id": "pair_16",
+          "category": "search+data_analysis",
+          "correct": 1,
+          "reasons": {
+            "correct": 1,
+            "missing_or_ambiguous_evidence": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_17",
+          "category": "coding+any",
+          "correct": 1,
+          "reasons": {
+            "coding_safe_disabled": 1,
+            "correct": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_18",
+          "category": "coding+any",
+          "correct": 0,
+          "reasons": {
+            "coding_safe_disabled": 1,
+            "missing_or_ambiguous_evidence": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_19",
+          "category": "coding+any",
+          "correct": 1,
+          "reasons": {
+            "coding_safe_disabled": 1,
+            "correct": 1
+          },
+          "calls": 0,
+          "spent": 0.0
+        },
+        {
+          "pair_id": "pair_20",
+          "category": "coding+any",
+          "correct": 0,
+          "reasons": {
+            "coding_safe_disabled": 2
+          },
+          "calls": 0,
+          "spent": 0.0
+        }
+      ]
+    }
+  }
+}

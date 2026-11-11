@@ -1,0 +1,6 @@
+{
+  "instruction": "The file nested/ledger.csv. What is the max of units?",
+  "reward": 13,
+  "task_id": "data_analysis_h14",
+  "task_type": "data_analysis"
+}

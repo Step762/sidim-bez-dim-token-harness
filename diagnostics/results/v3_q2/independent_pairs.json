@@ -1,0 +1,221 @@
+{
+  "before": {
+    "source": "independent_synthetic_local_workflow",
+    "real_requests": 0,
+    "pairs": [
+      {
+        "pair_id": "q2_independent_1",
+        "types": [
+          "math",
+          "math"
+        ],
+        "correct": 0,
+        "wrong": 0,
+        "counts": {
+          "solved": 0,
+          "skipped": 2,
+          "failed": 0
+        },
+        "spent": "0.0",
+        "calls": 0
+      },
+      {
+        "pair_id": "q2_independent_2",
+        "types": [
+          "data_analysis",
+          "data_analysis"
+        ],
+        "correct": 0,
+        "wrong": 0,
+        "counts": {
+          "solved": 0,
+          "skipped": 2,
+          "failed": 0
+        },
+        "spent": "0.0",
+        "calls": 0
+      },
+      {
+        "pair_id": "q2_independent_3",
+        "types": [
+          "math",
+          "data_analysis"
+        ],
+        "correct": 0,
+        "wrong": 0,
+        "counts": {
+          "solved": 0,
+          "skipped": 2,
+          "failed": 0
+        },
+        "spent": "0.0",
+        "calls": 0
+      },
+      {
+        "pair_id": "q2_independent_4",
+        "types": [
+          "math",
+          "data_analysis"
+        ],
+        "correct": 0,
+        "wrong": 0,
+        "counts": {
+          "solved": 0,
+          "skipped": 2,
+          "failed": 0
+        },
+        "spent": "0.0",
+        "calls": 0
+      }
+    ],
+    "correct": 0,
+    "wrong": 0,
+    "2/2": 0
+  },
+  "first": {
+    "source": "independent_synthetic_local_workflow",
+    "real_requests": 0,
+    "pairs": [
+      {
+        "pair_id": "q2_independent_1",
+        "types": [
+          "math",
+          "math"
+        ],
+        "correct": 2,
+        "wrong": 0,
+        "counts": {
+          "solved": 2,
+          "skipped": 0,
+          "failed": 0
+        },
+        "spent": "0.0",
+        "calls": 0
+      },
+      {
+        "pair_id": "q2_independent_2",
+        "types": [
+          "data_analysis",
+          "data_analysis"
+        ],
+        "correct": 0,
+        "wrong": 0,
+        "counts": {
+          "solved": 0,
+          "skipped": 2,
+          "failed": 0
+        },
+        "spent": "0.0",
+        "calls": 0
+      },
+      {
+        "pair_id": "q2_independent_3",
+        "types": [
+          "math",
+          "data_analysis"
+        ],
+        "correct": 1,
+        "wrong": 0,
+        "counts": {
+          "solved": 1,
+          "skipped": 1,
+          "failed": 0
+        },
+        "spent": "0.0",
+        "calls": 0
+      },
+      {
+        "pair_id": "q2_independent_4",
+        "types": [
+          "math",
+          "data_analysis"
+        ],
+        "correct": 1,
+        "wrong": 0,
+        "counts": {
+          "solved": 1,
+          "skipped": 1,
+          "failed": 0
+        },
+        "spent": "0.0",
+        "calls": 0
+      }
+    ],
+    "correct": 4,
+    "wrong": 0,
+    "2/2": 1
+  },
+  "after": {
+    "source": "independent_synthetic_local_workflow",
+    "real_requests": 0,
+    "pairs": [
+      {
+        "pair_id": "q2_independent_1",
+        "types": [
+          "math",
+          "math"
+        ],
+        "correct": 2,
+        "wrong": 0,
+        "counts": {
+          "solved": 2,
+          "skipped": 0,
+          "failed": 0
+        },
+        "spent": "0.0",
+        "calls": 0
+      },
+      {
+        "pair_id": "q2_independent_2",
+        "types": [
+          "data_analysis",
+          "data_analysis"
+        ],
+        "correct": 2,
+        "wrong": 0,
+        "counts": {
+          "solved": 2,
+          "skipped": 0,
+          "failed": 0
+        },
+        "spent": "0.0",
+        "calls": 0
+      },
+      {
+        "pair_id": "q2_independent_3",
+        "types": [
+          "math",
+          "data_analysis"
+        ],
+        "correct": 2,
+        "wrong": 0,
+        "counts": {
+          "solved": 2,
+          "skipped": 0,
+          "failed": 0
+        },
+        "spent": "0.0",
+        "calls": 0
+      },
+      {
+        "pair_id": "q2_independent_4",
+        "types": [
+          "math",
+          "data_analysis"
+        ],
+        "correct": 2,
+        "wrong": 0,
+        "counts": {
+          "solved": 2,
+          "skipped": 0,
+          "failed": 0
+        },
+        "spent": "0.0",
+        "calls": 0
+      }
+    ],
+    "correct": 8,
+    "wrong": 0,
+    "2/2": 4
+  }
+}

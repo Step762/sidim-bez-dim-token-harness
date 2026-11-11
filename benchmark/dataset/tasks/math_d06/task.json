@@ -1,0 +1,6 @@
+{
+  "instruction": "Start with 320 dollars. Decrease by 25 percent. Add 18 dollars. Halve it.",
+  "reward": 13,
+  "task_id": "math_d06",
+  "task_type": "math"
+}

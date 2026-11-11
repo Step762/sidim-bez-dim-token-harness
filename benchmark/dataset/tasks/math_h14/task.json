@@ -1,0 +1,6 @@
+{
+  "instruction": "Round 2.5 to the nearest integer. No tie-breaking rule is specified.",
+  "reward": 8,
+  "task_id": "math_h14",
+  "task_type": "math"
+}

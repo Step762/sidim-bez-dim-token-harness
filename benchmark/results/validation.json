@@ -1,0 +1,473 @@
+{
+  "cli_check": {
+    "budget": 0,
+    "matches_instrumented_worker": 128,
+    "real_provider_calls": 0,
+    "seconds": 7.3292663779993745,
+    "stdout": "data_analysis_h14: solved: -3\nsearch_d01: solved: 1974\nsearch_h05: solved: 2003\ndata_analysis_d02: solved: 4\ndata_analysis_d04: solved: 24\nmath_d04: solved: -4\nmath_d06: solved: 129\nmath_d02: solved: -5.1\ndata_analysis_h03: solved: 1\ndata_analysis_h05: solved: 0.15\ndata_analysis_h01: solved: 4\nmath_h01: solved: 87\nmath_d03: solved: 0.75\nsearch_d06: solved: 1948\ndata_analysis_d06: solved: 12\ndata_analysis_d05: solved: 7\ndata_analysis_h06: solved: 1.5\nsearch_d13: solved: 1986\nsearch_h11: solved: 1998\ndata_analysis_d08: solved: 0\nmath_d07: solved: 0.625\ndata_analysis_d01: solved: 32\ndata_analysis_h04: solved: 23\nsearch_d02: solved: 2007\nsearch_d04: solved: Aster Loom\nsearch_d05: solved: Porto\nmath_h11: solved: 26\nsearch_d03: solved: São Tomé\nmath_h04: solved: -6\nmath_d05: solved: 270\nmath_d01: solved: 163\ndata_analysis_d03: solved: -9\nsearch_h01: solved: 2001\ndata_analysis_d07: solved: 5\nsearch_h03: solved: Ari Gale\nsearch_h04: solved: 1963\ndata_analysis_h02: solved: -9\nmath_h02: solved: 0.725\nmath_h03: solved: 2\nmath_h16: solved: 30\ncoding_d01: skipped [unsafe]: preflight: unsafe\ncoding_d02: skipped [unsafe]: preflight: unsafe\ncoding_d03: skipped [unsafe]: preflight: unsafe\ncoding_d04: skipped [unsafe]: preflight: unsafe\ncoding_d05: skipped [unsafe]: preflight: unsafe\ncoding_d06: skipped [unsafe]: preflight: unsafe\ncoding_d07: skipped [unsafe]: preflight: unsafe\ncoding_d08: skipped [unsafe]: preflight: unsafe\ncoding_d09: skipped [unsafe]: preflight: unsafe\ncoding_d10: skipped [unsafe]: preflight: unsafe\ncoding_d11: skipped [unsafe]: preflight: unsafe\ncoding_d12: skipped [unsafe]: preflight: unsafe\ncoding_d13: skipped [unsafe]: preflight: unsafe\ncoding_d14: skipped [unsafe]: preflight: unsafe\ncoding_d15: skipped [unsafe]: preflight: unsafe\ncoding_d16: skipped [unsafe]: preflight: unsafe\ncoding_h01: skipped [unsafe]: preflight: unsafe\ncoding_h02: skipped [unsafe]: preflight: unsafe\ncoding_h03: skipped [unsafe]: preflight: unsafe\ncoding_h04: skipped [unsafe]: preflight: unsafe\ncoding_h05: skipped [unsafe]: preflight: unsafe\ncoding_h06: skipped [unsafe]: preflight: unsafe\ncoding_h07: skipped [unsafe]: preflight: unsafe\ncoding_h08: skipped [unsafe]: preflight: unsafe\ncoding_h09: skipped [unsafe]: preflight: unsafe\ncoding_h10: skipped [unsafe]: preflight: unsafe\ncoding_h11: skipped [unsafe]: preflight: unsafe\ncoding_h12: skipped [unsafe]: preflight: unsafe\ncoding_h13: skipped [unsafe]: preflight: unsafe\ncoding_h14: skipped [unsafe]: preflight: unsafe\ncoding_h15: skipped [unsafe]: preflight: unsafe\ncoding_h16: skipped [unsafe]: preflight: unsafe\ndata_analysis_d09: skipped [insufficient_evidence]: aggregate is undefined for an empty selection\ndata_analysis_d10: skipped [insufficient_evidence]: requested column is absent from CSV\ndata_analysis_d11: skipped [invalid_data]: invalid or unsupported numeric value\ndata_analysis_d12: skipped [budget_blocked]: unsupported analysis instructions\ndata_analysis_d13: skipped [budget_blocked]: unsupported analysis instructions\ndata_analysis_d14: skipped [budget_blocked]: unsupported analysis instructions\ndata_analysis_d15: skipped [budget_blocked]: filters must be joined with AND\ndata_analysis_d16: skipped [invalid_data]: CSV cannot be read or contains invalid data\ndata_analysis_h07: skipped [budget_blocked]: unsupported analysis instructions\ndata_analysis_h08: skipped [budget_blocked]: unsupported analysis instructions\ndata_analysis_h09: skipped [budget_blocked]: unsupported analysis instructions\ndata_analysis_h10: skipped [insufficient_evidence]: preflight: insufficient_evidence\ndata_analysis_h11: skipped [invalid_data]: missing, empty or duplicate CSV headers\ndata_analysis_h12: skipped [insufficient_evidence]: aggregate is undefined for an empty selection\ndata_analysis_h13: skipped [invalid_data]: invalid or unsupported numeric value\ndata_analysis_h15: skipped [budget_blocked]: unsupported analysis instructions\ndata_analysis_h16: skipped [budget_blocked]: unsupported analysis instructions\nmath_d08: skipped [budget_blocked]: unsupported math statement or instructions\nmath_d09: skipped [budget_blocked]: unsupported math statement or instructions\nmath_d10: skipped [budget_blocked]: unsupported math statement or instructions\nmath_d11: skipped [budget_blocked]: unsupported math statement or instructions\nmath_d12: skipped [budget_blocked]: unsupported math statement or instructions\nmath_d13: skipped [budget_blocked]: division by zero\nmath_d14: skipped [budget_blocked]: unsupported math statement or instructions\nmath_d15: skipped [budget_blocked]: unsupported math statement or instructions\nmath_d16: skipped [budget_blocked]: unsupported math statement or instructions\nmath_h05: skipped [budget_blocked]: unsupported math statement or instructions\nmath_h06: skipped [budget_blocked]: unsupported math statement or instructions\nmath_h07: skipped [budget_blocked]: unsupported math statement or instructions\nmath_h08: skipped [budget_blocked]: unsupported math statement or instructions\nmath_h09: skipped [budget_blocked]: unsupported math statement or instructions\nmath_h10: skipped [budget_blocked]: unsupported math statement or instructions\nmath_h12: skipped [budget_blocked]: unsupported math statement or instructions\nmath_h13: skipped [budget_blocked]: division by zero\nmath_h14: skipped [budget_blocked]: unsupported math statement or instructions\nmath_h15: skipped [budget_blocked]: unsupported math statement or instructions\nsearch_d07: skipped [budget_blocked]: unsupported search question\nsearch_d08: skipped [insufficient_evidence]: missing or ambiguous born fact\nsearch_d09: skipped [budget_blocked]: entity or relation cannot be resolved\nsearch_d10: skipped [insufficient_evidence]: conflicting or ambiguous entity definitions\nsearch_d11: skipped [insufficient_evidence]: missing or ambiguous headquarters fact\nsearch_d12: skipped [budget_blocked]: entity or relation cannot be resolved\nsearch_d14: skipped [insufficient_evidence]: conflicting or ambiguous entity definitions\nsearch_d15: skipped [budget_blocked]: unsupported search question\nsearch_d16: skipped [insufficient_evidence]: preflight: insufficient_evidence\nsearch_h02: skipped [budget_blocked]: unsupported search question\nsearch_h06: skipped [budget_blocked]: unsupported search question\nsearch_h07: skipped [budget_blocked]: entity or relation cannot be resolved\nsearch_h08: skipped [insufficient_evidence]: missing or ambiguous born fact\nsearch_h09: skipped [insufficient_evidence]: missing or ambiguous born fact\nsearch_h10: skipped [insufficient_evidence]: conflicting or ambiguous entity definitions\nsearch_h12: skipped [insufficient_evidence]: preflight: insufficient_evidence\nsearch_h13: skipped [insufficient_evidence]: conflicting or ambiguous entity definitions\nsearch_h14: skipped [insufficient_evidence]: missing or ambiguous born fact\nsearch_h15: skipped [budget_blocked]: unsupported search question\nsearch_h16: skipped [insufficient_evidence]: missing or ambiguous born fact\nsolved=40 skipped=88 failed=0 llm_tokens_used=0 budget=0\nbudget_limit=0 budget_spent=0.0 budget_reserved=0.0 budget_available=0.0 budget_uncertain_calls=0 budget_frozen=False\nplanner_strategy=priority reward_solved=217 unsuccessful_attempts=53\n"
+  },
+  "docker": {
+    "audit": {
+      "app_read_only": true,
+      "cap_eff": "0000000000000000",
+      "cgroup_limits": {
+        "cpus": 8,
+        "memory.max": 17179869184,
+        "pids.max": 512
+      },
+      "no_credentials_in_image_environment": true,
+      "no_new_privileges": true,
+      "openjiuwen": "0.1.20.post1",
+      "python": "3.12.12",
+      "tmpfs_bytes": 2147483648,
+      "user_namespace_errno": 1
+    },
+    "dependencies": "No broken requirements found.",
+    "docker_images_size": "976MB",
+    "image": "sidim-bez-dim:harness-v2-math",
+    "image_id": "sha256:d82149f5aeb66f0a69a594df3277cf664419f98440195b1dd4422d280d6a90af",
+    "inspect_size_bytes": 207953112,
+    "isolation_research": {
+      "architecture": "x86_64",
+      "experiments": {
+        "cgroup": {
+          "result": {
+            "errno": 1,
+            "result": -1
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "chroot": {
+          "result": {
+            "allowed": false,
+            "errno": 1
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "combined": {
+          "result": {
+            "files": {
+              "list_outside": {
+                "allowed": false,
+                "errno": 13
+              },
+              "read_outside": {
+                "allowed": false,
+                "errno": 13
+              },
+              "read_own": {
+                "allowed": true,
+                "errno": 0
+              },
+              "read_via_symlink": {
+                "allowed": false,
+                "errno": 13
+              },
+              "readlink_outside": {
+                "allowed": true,
+                "errno": 0
+              },
+              "stat_outside": {
+                "allowed": true,
+                "errno": 0
+              },
+              "write_outside": {
+                "allowed": false,
+                "errno": 13
+              },
+              "write_own": {
+                "allowed": true,
+                "errno": 0
+              }
+            },
+            "invalid_clone": {
+              "errno": 1,
+              "result": -1
+            },
+            "invalid_clone3": {
+              "errno": 1,
+              "result": -1
+            },
+            "landlock": {
+              "abi": {
+                "errno": 0,
+                "result": 3
+              },
+              "installed": true,
+              "restrict": {
+                "errno": 0,
+                "result": 0
+              }
+            },
+            "parent_signal_zero": {
+              "allowed": false,
+              "errno": 1
+            },
+            "preopened_outside_fd": {
+              "allowed": true,
+              "errno": 0
+            },
+            "seccomp": {
+              "installed": true,
+              "policy": "diagnostic denylist; NOT a sandbox",
+              "prctl": {
+                "errno": 0,
+                "result": 0
+              }
+            },
+            "setsid": {
+              "errno": 1,
+              "result": -1
+            },
+            "socket": {
+              "allowed": false,
+              "errno": 1
+            }
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "cpu": {
+          "result": null,
+          "returncode": -9,
+          "stderr": "",
+          "timed_out": false
+        },
+        "ipc": {
+          "result": {
+            "errno": 1,
+            "result": -1
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "landlock": {
+          "result": {
+            "files": {
+              "list_outside": {
+                "allowed": false,
+                "errno": 13
+              },
+              "read_outside": {
+                "allowed": false,
+                "errno": 13
+              },
+              "read_own": {
+                "allowed": true,
+                "errno": 0
+              },
+              "read_via_symlink": {
+                "allowed": false,
+                "errno": 13
+              },
+              "readlink_outside": {
+                "allowed": true,
+                "errno": 0
+              },
+              "stat_outside": {
+                "allowed": true,
+                "errno": 0
+              },
+              "write_outside": {
+                "allowed": false,
+                "errno": 13
+              },
+              "write_own": {
+                "allowed": true,
+                "errno": 0
+              }
+            },
+            "landlock": {
+              "abi": {
+                "errno": 0,
+                "result": 3
+              },
+              "installed": true,
+              "restrict": {
+                "errno": 0,
+                "result": 0
+              }
+            },
+            "parent_signal_zero": {
+              "allowed": true,
+              "errno": 0
+            },
+            "preopened_outside_fd": {
+              "allowed": true,
+              "errno": 0
+            },
+            "socket": {
+              "allowed": true,
+              "errno": 0
+            }
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "mount": {
+          "result": {
+            "errno": 1,
+            "result": -1
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "network": {
+          "result": {
+            "errno": 1,
+            "result": -1
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "nproc": {
+          "result": {
+            "errno": 0,
+            "fork_allowed": true,
+            "uid": 0
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "pid": {
+          "result": {
+            "errno": 1,
+            "result": -1
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "rlimits": {
+          "result": {
+            "file_size": 1024,
+            "large_file": {
+              "allowed": false,
+              "errno": 27
+            },
+            "memory_allocation_denied": true,
+            "nofile": [
+              32,
+              32
+            ],
+            "nproc": [
+              1,
+              1
+            ],
+            "nproc_enforcement_proven": false
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "seccomp": {
+          "result": {
+            "files": {
+              "list_outside": {
+                "allowed": true,
+                "errno": 0
+              },
+              "read_outside": {
+                "allowed": true,
+                "errno": 0
+              },
+              "read_own": {
+                "allowed": true,
+                "errno": 0
+              },
+              "read_via_symlink": {
+                "allowed": true,
+                "errno": 0
+              },
+              "readlink_outside": {
+                "allowed": true,
+                "errno": 0
+              },
+              "stat_outside": {
+                "allowed": true,
+                "errno": 0
+              },
+              "write_outside": {
+                "allowed": true,
+                "errno": 0
+              },
+              "write_own": {
+                "allowed": true,
+                "errno": 0
+              }
+            },
+            "invalid_clone": {
+              "errno": 1,
+              "result": -1
+            },
+            "invalid_clone3": {
+              "errno": 1,
+              "result": -1
+            },
+            "parent_signal_zero": {
+              "allowed": false,
+              "errno": 1
+            },
+            "preopened_outside_fd": {
+              "allowed": true,
+              "errno": 0
+            },
+            "seccomp": {
+              "installed": true,
+              "policy": "diagnostic denylist; NOT a sandbox",
+              "prctl": {
+                "errno": 0,
+                "result": 0
+              }
+            },
+            "setsid": {
+              "errno": 1,
+              "result": -1
+            },
+            "socket": {
+              "allowed": false,
+              "errno": 1
+            }
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "session": {
+          "result": {
+            "child_group": 24,
+            "child_returncode": 0,
+            "parent_group": 23
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "uid": {
+          "result": {
+            "after": [
+              0,
+              0
+            ],
+            "before": [
+              0,
+              0
+            ],
+            "setgid": {
+              "allowed": false,
+              "errno": 1
+            },
+            "setgroups": {
+              "allowed": false,
+              "errno": 1
+            },
+            "setuid": {
+              "allowed": false,
+              "errno": 1
+            }
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "user": {
+          "result": {
+            "errno": 1,
+            "result": -1
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        },
+        "uts": {
+          "result": {
+            "errno": 1,
+            "result": -1
+          },
+          "returncode": 0,
+          "stderr": "",
+          "timed_out": false
+        }
+      },
+      "gid": 0,
+      "kernel": "6.6.87.2-microsoft-standard-WSL2",
+      "process_status": {
+        "CapEff": "0000000000000000",
+        "NoNewPrivs": "1",
+        "Seccomp": "2"
+      },
+      "sandbox_confirmed": false,
+      "task_code_executed": false,
+      "uid": 0
+    },
+    "malformed_task_exit": 1,
+    "matching_runtime_files": 15,
+    "missing_directory_exit": 2,
+    "persisted_repairs": [
+      "coding_0003/workspace/mylib.py",
+      "coding_0007/workspace/mylib.py"
+    ],
+    "safe_examples": "6/8",
+    "source_materials_unchanged": true,
+    "trusted_examples": "8/8"
+  },
+  "docker_benchmark": {
+    "matches_host": 128,
+    "mode": "local",
+    "references_mounted": false,
+    "tasks": 128
+  },
+  "external_api_calls": 0,
+  "first_docker_smoke": "300-second test-driver timeout; repeated with 600 seconds, container security/resource limits unchanged",
+  "git_diff_check": "passed",
+  "head": "1219d05d5218142157ae84fb551859bd35a14bf2",
+  "metadata_note": "Runtime fingerprints appended after measurements; runtime unchanged since HEAD and initial snapshot; all stored raw answers regraded identically.",
+  "real_competition_tokens": 0,
+  "runtime_matches_head_files": 15,
+  "runtime_sha256": {
+    ".dockerignore": "0e096a456572ac8160ba05043dc4319b027e0e3b2cd42d18b004a582f889cca2",
+    "Dockerfile": "eff987a6a8cf4203ad887d582b3a491af5754206671d67be40827abc57f99a77",
+    "budget_manager.py": "8259d00cf23cb1c5f0bd2162784f0c91dc005cf570e99d9a4cfb30929abcbb4f",
+    "coding_solver.py": "e64d5913e831c72a2afd36e70512f290886d8fd7be577ed38d6a57ac3c30d9e7",
+    "data_solver.py": "c4be03febb1852211d8fd6329ea45a6f459cf596ca801d2d448590ced9cb9b0d",
+    "harness.py": "678339926da05c11dfeccb532158325842b9aea3822caf5c921a984acf4fec58",
+    "llm_fallback.py": "8d2ae2b53c057c117932393740a76d51312f0b4000749a4a40e650e7c710e354",
+    "llm_gateway.py": "d86450f235ed339dfc0766859b13a43b6f9a52d850a0fb7b06b8ff6a5d999331",
+    "math_solver.py": "5cff0d75ef690a58d53ce991f5c60898c005af7f5b699187bb5d55627d395c03",
+    "plan_semantics.py": "ed61b70aa4812dc259dbd81fce91c6ee160d5bd7a0186c9e04ea1487d3d9ee7c",
+    "planner.py": "a7503feccfca59b610b6473ea19e97e35c4f6c95eb116fc349e5eea848037c29",
+    "requirements.txt": "d8c2924d446449dfd156153333b01a3ae0ef3fd0da64acfe36eae937663a3da3",
+    "run_agent.py": "0b51035f9e3707b72c043fca5c63e460869b4df19e82b6fd8180ec05b3f878be",
+    "safe_files.py": "04aa6c98f6da2555b80ab298d0937ea32f39a0deea0710fa78e97d849d6c7cfb",
+    "search_solver.py": "1aa9987c50646a689d3f37c68b7111df51d57bd0fdaa9425d129dadd8cbf7cb6"
+  },
+  "source_materials_unchanged": 199,
+  "tests": {
+    "docker": {
+      "passed": 314,
+      "seconds": 333.119
+    },
+    "docker_benchmark_final": {
+      "passed": 15,
+      "seconds": 118.762
+    },
+    "host": {
+      "passed": 314,
+      "seconds": 143.827
+    },
+    "host_benchmark_final": {
+      "passed": 15,
+      "seconds": 51.664
+    }
+  }
+}

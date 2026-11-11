@@ -1,0 +1,6 @@
+{
+  "instruction": "Name all employees of Delta Thread as a JSON array sorted alphabetically?",
+  "reward": 1,
+  "task_id": "search_h06",
+  "task_type": "search"
+}

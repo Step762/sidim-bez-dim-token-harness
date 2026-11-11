@@ -1,0 +1,6 @@
+{
+  "instruction": "Subtract 7/8 from 3/2",
+  "reward": 5,
+  "task_id": "math_d07",
+  "task_type": "math"
+}

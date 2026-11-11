@@ -1,0 +1,6 @@
+{
+  "instruction": "The file observations.csv has columns sku,period,units,region,price (2 rows). How many rows are there?",
+  "reward": 3,
+  "task_id": "data_analysis_h04",
+  "task_type": "data_analysis"
+}

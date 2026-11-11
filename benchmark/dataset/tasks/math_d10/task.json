@@ -1,0 +1,6 @@
+{
+  "instruction": "Four tickets cost 17 euros each. A booking fee of 6 euros is added once. What is the total cost?",
+  "reward": 5,
+  "task_id": "math_d10",
+  "task_type": "math"
+}
