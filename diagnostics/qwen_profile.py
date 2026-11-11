@@ -1,7 +1,7 @@
-"""A sealed synthetic profile for fallback_pilot, reusing its durable primitives.
+"""One synthetic profile for fallback_pilot, reusing its durable primitives.
 
-Only injected MockTransport is admitted in this version. There is no real-HTTP
-switch; an approval file is an owner attestation, not evidence about a provider.
+Real transport requires an explicit --live plus a current private approval.
+An approval is an owner attestation, not evidence about a provider.
 """
 import argparse
 import asyncio
@@ -24,6 +24,7 @@ from safe_files import open_directory, read_text
 
 PROFILE = 'p3_proxy_direct_v1'
 MODEL = 'qwen3.6-35b-a3b-noreason'
+LIVE_ENDPOINT = 'https://api.neuraldeep.ru/v1/chat/completions'
 SYSTEM = 'Return only one JSON object with a string field value containing the arithmetic result.'
 PAYLOAD = {'instruction': 'Compute (7 - 3)'}
 # OS account home, not HOME/cwd/output: changing clone or HOME must not reset a slot.
@@ -42,6 +43,7 @@ def contract():
     inputs += ['diagnostics/qwen_profile.py', 'diagnostics/fallback_pilot.py', 'diagnostics/a1_resume.py']
     return {'profile': PROFILE, 'model': MODEL, 'budget': 200, 'max_tokens': 32,
             'timeout': 20, 'max_new_requests': 1, 'input_limit': 1500,
+            'live_endpoint_sha256': hashlib.sha256(LIVE_ENDPOINT.encode()).hexdigest(),
             'prompt_sha256': digest([SYSTEM, PAYLOAD]),
             'source_sha256': {n: hashlib.sha256((ROOT / n).read_bytes()).hexdigest() for n in inputs}}
 
@@ -117,8 +119,9 @@ def _prepare(approval_path, model, transport=None):
 
 
 def preflight(approval_path, *, model):
-    intent, manager, _ = _prepare(approval_path, model)
+    intent, manager, gateway = _prepare(approval_path, model)
     return {'profile': PROFILE, 'ready_for_mock': True, 'live_enabled': False,
+            'live_endpoint_matches': gateway._endpoint == LIVE_ENDPOINT,
             'estimated_input': intent['estimated_input'], 'reservation': intent['reservation'],
             'spent_before': str(manager.snapshot()['spent']), 'available_before': str(manager.available)}
 
@@ -135,8 +138,21 @@ def _layers(content):
 def run_mock(approval_path, *, model, transport):
     """Exercise the full intent/gateway/settlement path, never a real transport."""
     if not isinstance(transport, httpx.MockTransport):
-        raise ResumeBlocked('LIVE transport is sealed in this version')
+        raise ResumeBlocked('mock route requires MockTransport')
+    return _run(approval_path, model=model, transport=transport, live=False)
+
+
+def run_live(approval_path, *, model, live=False):
+    """Future operator invocation only; check/import/environment never enables it."""
+    if live is not True:
+        raise ResumeBlocked('explicit LIVE invocation is required')
+    return _run(approval_path, model=model, transport=None, live=True)
+
+
+def _run(approval_path, *, model, transport, live):
     intent, manager, gateway = _prepare(approval_path, model, transport)
+    if live and gateway._endpoint != LIVE_ENDPOINT:
+        raise ResumeBlocked('LIVE endpoint is not the reviewed NeuralDeep API')
     spent_before = manager.snapshot()['spent']
     started = time.monotonic()
     with state_directory(root=STATE_ROOT, create=True) as parent:
@@ -146,8 +162,17 @@ def run_mock(approval_path, *, model, transport):
             raise ResumeBlocked('another process already claimed the attempt') from None
         layers = (None, None, None)
         reply = None
+
+        async def complete_once():
+            if live:
+                # Construct the zero-retry real transport only AFTER durable intent.
+                async with httpx.AsyncHTTPTransport(retries=0) as wire:
+                    gateway._transport = wire
+                    return await gateway.complete(SYSTEM, PAYLOAD, task_id=PROFILE)
+            return await gateway.complete(SYSTEM, PAYLOAD, task_id=PROFILE)
+
         try:
-            reply = asyncio.run(gateway.complete(SYSTEM, PAYLOAD, task_id=PROFILE))
+            reply = asyncio.run(complete_once())
             layers = _layers(reply.content)
         except LLMError:
             pass  # Gateway retains/finalizes the reservation; no retry or error/body logging.
@@ -164,7 +189,7 @@ def run_mock(approval_path, *, model, transport):
                   'reasoning_tokens': usage.reasoning_tokens if usage else None,
                   'json_valid': layers[0], 'schema_valid': layers[1], 'value_correct': layers[2],
                   'seconds': time.monotonic() - started, 'attempts_upper_bound': 1,
-                  'live_enabled': False, 'retry_permitted': False}
+                  'live_enabled': live, 'retry_permitted': False}
         write_once(parent, RESULT, report)
     return report
 
@@ -221,8 +246,6 @@ def main(argv=None):
     parser.add_argument('--model')
     args = parser.parse_args(argv)
     try:
-        if args.live:
-            raise ResumeBlocked('LIVE is sealed; this stage permits mock transport only')
         if args.describe:
             print(json.dumps({'contract': contract(), 'contract_sha256': digest(contract()),
                               'live_enabled': False, 'approval_required': True}, sort_keys=True))
@@ -231,9 +254,14 @@ def main(argv=None):
         else:
             if args.approval is None:
                 raise ResumeBlocked('an explicit approval record is required')
+            if args.live:
+                report = run_live(args.approval, model=args.model, live=True)
+                print(json.dumps(report, sort_keys=True))
+                return 0 if report['status'] == 'completed' else 1
             print(json.dumps(preflight(args.approval, model=args.model), sort_keys=True))
         return 0
-    except (ValueError, OSError, TypeError):
+    except (ValueError, OSError, TypeError, httpx.HTTPError):
         print(json.dumps({'ready': False, 'live_enabled': False,
+                          'retry_permitted': False,
                           'error': 'preflight/state/configuration rejected; no automatic retry'}))
         return 2

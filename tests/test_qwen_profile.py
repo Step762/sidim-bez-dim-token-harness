@@ -51,6 +51,11 @@ class QwenProfileTests(unittest.TestCase):
     def run_mock(self, handler=None):
         return p.run_mock(self.approval, model=p.MODEL, transport=httpx.MockTransport(handler or self.response))
 
+    def live_config(self):
+        os.environ['LLM_BASE_URL'] = 'https://api.neuraldeep.ru/v1'
+        self.data['endpoint_sha256'] = hashlib.sha256(p.LIVE_ENDPOINT.encode()).hexdigest()
+        self.save()
+
     def test_first_mock_claim_and_safe_usage_are_durable(self):
         plan = p.preflight(self.approval, model=p.MODEL)
         self.assertEqual((plan['estimated_input'], plan['reservation']), (1217, '153.7'))
@@ -230,13 +235,89 @@ class QwenProfileTests(unittest.TestCase):
         with self.assertRaises(ValueError): self.run_mock()
         self.assertEqual(self.calls, [])
 
-    def test_live_transport_and_cli_are_sealed_without_claim(self):
+    def test_real_transport_requires_explicit_live_and_approval(self):
         for transport in (None, object()):
             with self.assertRaises(ValueError): p.run_mock(self.approval, model=p.MODEL, transport=transport)
         with redirect_stdout(io.StringIO()), patch('httpx.AsyncHTTPTransport', side_effect=AssertionError('real transport')):
             self.assertEqual(fallback_pilot.main(['--qwen-direct', '--live']), 2)
             self.assertEqual(fallback_pilot.main(['--qwen-direct', '--check', '--approval', str(self.approval), '--model', p.MODEL]), 0)
         self.assertFalse(self.state.exists())
+
+    def test_live_cli_constructs_zero_retry_transport_after_durable_intent(self):
+        self.live_config()
+        events = []
+        original = os.fsync
+        def sync(fd):
+            events.append('sync')
+            return original(fd)
+        def factory(**kwargs):
+            self.assertEqual(kwargs, {'retries': 0})
+            self.assertTrue((self.state / p.INTENT).is_file())
+            self.assertGreaterEqual(events.count('sync'), 3)
+            events.append('transport')
+            return httpx.MockTransport(self.response)
+        capture = io.StringIO()
+        args = ['--qwen-direct', '--live', '--approval', str(self.approval), '--model', p.MODEL]
+        with patch.object(os, 'fsync', side_effect=sync), patch('httpx.AsyncHTTPTransport', side_effect=factory) as wire, redirect_stdout(capture):
+            self.assertEqual(fallback_pilot.main(args), 0)
+            self.assertEqual(fallback_pilot.main(args), 2)
+            self.assertEqual(wire.call_count, 1)
+        report = json.loads(capture.getvalue().splitlines()[0])
+        self.assertTrue(report['live_enabled'])
+        self.assertEqual((report['spent'], len(self.calls)), ('16.0', 1))
+        self.assertNotIn(os.environ['LLM_API_KEY'], capture.getvalue())
+        self.assertFalse(p.recover()['retry_permitted'])
+
+    def test_complete_environment_check_describe_and_default_never_enable_live(self):
+        self.live_config()
+        for flag in ([], ['--check'], ['--describe']):
+            args = ['--qwen-direct', '--approval', str(self.approval), '--model', p.MODEL, *flag]
+            with patch('httpx.AsyncHTTPTransport', side_effect=AssertionError('not explicitly live')), redirect_stdout(io.StringIO()):
+                self.assertEqual(fallback_pilot.main(args), 0)
+        for enabled in (False, None, 1, 'true'):
+            with self.assertRaises(ValueError): p.run_live(self.approval, model=p.MODEL, live=enabled)
+        self.assertFalse(self.state.exists())
+
+    def test_live_target_is_pinned_even_with_a_matching_approval_for_another_url(self):
+        with patch('httpx.AsyncHTTPTransport', side_effect=AssertionError('wrong target')):
+            with self.assertRaises(ValueError): p.run_live(self.approval, model=p.MODEL, live=True)
+        self.assertFalse(self.state.exists())
+
+    def test_live_api_errors_timeout_usage_and_overrun_do_not_repeat(self):
+        self.live_config()
+        for i, failure in enumerate(('timeout', 401, 429, 500, 'missing_usage', 'reasoning', 'length', 'overrun')):
+            with self.subTest(failure=failure), patch.object(p, 'STATE_ROOT', self.root / f'live-error{i}'):
+                def handler(request):
+                    body = self.response(request)
+                    if failure == 'timeout': raise httpx.ReadTimeout('synthetic')
+                    if type(failure) is int: return httpx.Response(failure)
+                    raw = json.loads(body.content)
+                    if failure == 'missing_usage': raw.pop('usage')
+                    if failure == 'reasoning': raw['usage']['reasoning_tokens'] = 2
+                    if failure == 'length': raw['choices'][0]['finish_reason'] = 'length'
+                    if failure == 'overrun': raw['usage'] = {'prompt_tokens': 100, 'completion_tokens': 33}
+                    return httpx.Response(200, json=raw)
+                with patch('httpx.AsyncHTTPTransport', side_effect=lambda **kw: httpx.MockTransport(handler)) as wire:
+                    report = p.run_live(self.approval, model=p.MODEL, live=True)
+                    self.assertNotEqual(report['status'], 'completed')
+                    with self.assertRaises(ValueError): p.run_live(self.approval, model=p.MODEL, live=True)
+                    self.assertEqual(wire.call_count, 1)
+                self.assertFalse(p.recover()['retry_permitted'])
+
+    def test_failure_in_real_transport_factory_consumes_claim_before_any_wire(self):
+        self.live_config()
+        with patch('httpx.AsyncHTTPTransport', side_effect=RuntimeError('factory crash')) as wire:
+            with self.assertRaises(RuntimeError): p.run_live(self.approval, model=p.MODEL, live=True)
+            self.assertEqual(p.recover()['state'], 'uncertain')
+            with self.assertRaises(ValueError): p.run_live(self.approval, model=p.MODEL, live=True)
+            self.assertEqual(wire.call_count, 1)
+
+    def test_old_mock_claim_also_blocks_new_live_mode(self):
+        self.run_mock()
+        self.live_config()
+        with patch('httpx.AsyncHTTPTransport', side_effect=AssertionError('state reset')):
+            with self.assertRaises(ValueError): p.run_live(self.approval, model=p.MODEL, live=True)
+        self.assertEqual(len(self.calls), 1)
 
     def child(self, state, mode):
         script = '''import json,os,socket,sys
@@ -247,12 +328,15 @@ p.STATE_ROOT=Path(sys.argv[1])
 socket.socket.connect=lambda *a,**k: (_ for _ in ()).throw(AssertionError('no HTTP'))
 def handler(request):
     with open(sys.argv[3], 'ab', buffering=0) as f:f.write(b'x')
-    if sys.argv[4]=='crash':os._exit(41)
+    if sys.argv[4] in ('crash','live-crash'):os._exit(41)
     return httpx.Response(200,json={'usage':{'prompt_tokens':100,'completion_tokens':6},'choices':[{'finish_reason':'stop','message':{'role':'assistant','content':'{"value":"4"}'}}]})
 try:
-    if sys.argv[4]=='recover':
+    if sys.argv[4] in ('recover','live-recover'):
         print(json.dumps(p.recover()))
-    p.run_mock(Path(sys.argv[2]),model=p.MODEL,transport=httpx.MockTransport(handler))
+    if sys.argv[4].startswith('live'):
+        p.httpx.AsyncHTTPTransport=lambda **kw:httpx.MockTransport(handler)
+        p.run_live(Path(sys.argv[2]),model=p.MODEL,live=True)
+    else:p.run_mock(Path(sys.argv[2]),model=p.MODEL,transport=httpx.MockTransport(handler))
 except ValueError:print('BLOCKED')
 '''
         return subprocess.Popen([sys.executable, '-B', '-c', script, str(state), str(self.approval), str(self.root / 'sends'), mode],
@@ -280,6 +364,26 @@ except ValueError:print('BLOCKED')
         child = self.child(self.state, 'recover'); out, err = child.communicate(timeout=30)
         self.assertEqual(child.returncode, 0, err.decode())
         self.assertIn(b'BLOCKED', out)
+        self.assertEqual((self.root / 'sends').read_bytes(), b'x')
+
+    def test_live_mode_process_race_and_restart_have_one_mock_sender(self):
+        self.live_config()
+        children = [self.child(self.state, 'live') for _ in range(2)]
+        for child in children:
+            out, err = child.communicate(timeout=30)
+            self.assertEqual(child.returncode, 0, err.decode())
+        child = self.child(self.state, 'live-recover'); out, err = child.communicate(timeout=30)
+        self.assertEqual(child.returncode, 0, err.decode())
+        self.assertIn(b'BLOCKED', out)
+        self.assertEqual((self.root / 'sends').read_bytes(), b'x')
+
+    def test_live_mode_process_death_after_mock_send_is_not_retried(self):
+        self.live_config()
+        child = self.child(self.state, 'live-crash'); out, err = child.communicate(timeout=30)
+        self.assertEqual(child.returncode, 41, err.decode())
+        child = self.child(self.state, 'live-recover'); out, err = child.communicate(timeout=30)
+        self.assertEqual(child.returncode, 0, err.decode())
+        self.assertIn(b'uncertain', out); self.assertIn(b'BLOCKED', out)
         self.assertEqual((self.root / 'sends').read_bytes(), b'x')
 
 
