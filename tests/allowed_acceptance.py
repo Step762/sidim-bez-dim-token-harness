@@ -30,7 +30,7 @@ TESTS = (
     'test_llm', 'test_math_before', 'test_math_cost', 'test_math_extended',
     'test_math_ir', 'test_math_ir_workflow', 'test_math_ordered', 'test_math_power',
     'test_math_rounding', 'test_math_scientific', 'test_math_units', 'test_metamorphic',
-    'test_planner', 'test_q45_stress', 'test_q4_qualification', 'test_q5_workflow',
+    'test_planner', 'test_q45_stress', 'test_q4_qualification', 'test_q5_workflow', 'test_qwen_profile',
     'test_relation_graph', 'test_reward_routing', 'test_runtime', 'test_runtime_limits',
     'test_search', 'test_search_data_qa', 'test_search_employer', 'test_search_extensions', 'test_search_grounded',
     'test_search_inverse_scope', 'test_search_pilot', 'test_semantic_compiler', 'test_semantics',
@@ -48,7 +48,7 @@ CLOSED_TESTS = frozenset('test_benchmark.BenchmarkTests.' + name for name in (
 DIAGNOSTICS = (
     'a1_resume.py','batch_feasibility.py','compiler_replay.py','cycle_a.py',
     'fallback_pilot.py','metamorphic.py','q1_alias_probe.py','q2_coverage_probe.py',
-    'q45_stress.py','q4_qualification_probe.py','q5_probe.py','qualification_audit.py',
+    'q45_stress.py','q4_qualification_probe.py','q5_probe.py','qualification_audit.py','qwen_profile.py',
     'reward_routing.py','selection.py','static_coding.py','token_economics.py','trace.py',
 )
 EXPERIMENTS = ('math_ir.py','math_ir_parser.py','semantic_compiler.py')
