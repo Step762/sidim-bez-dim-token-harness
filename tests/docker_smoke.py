@@ -28,8 +28,11 @@ from pathlib import Path
 assert importlib.metadata.version("openjiuwen") == "0.1.20.post1"
 assert os.environ["HOME"] == "/tmp"
 assert not Path("/var/run/docker.sock").exists()
-for name in (".venv", ".git", "codex-local", "AGENTS.md", ".env", "tests", "benchmark", "diagnostics", "__pycache__"):
+for name in (".venv", ".git", "codex-local", "AGENTS.md", ".env", "tests", "benchmark", "__pycache__"):
     assert not Path("/app", name).exists(), name
+assert {path.name for path in Path("/app/diagnostics").iterdir()} == {
+    "coding_acceptance.py", "coding_research.py", "static_coding.py",
+}
 assert not any(key in os.environ for key in ("LLM_API_KEY", "LLM_BASE_URL"))
 try:
     Path("/app/forbidden-write").write_text("must fail")
