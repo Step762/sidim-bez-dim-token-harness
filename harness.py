@@ -299,6 +299,12 @@ async def run_tasks(
                                 raise ValueError("duplicate task directory")
                             guards[directory] = key
                             task = load_task(directory / "task.json")
+                            if allow_static_coding is True and task.task_type == "coding":
+                                # A prior run's answer must not outlive a skipped recheck.
+                                try:
+                                    os.unlink("answer.txt", dir_fd=child)
+                                except FileNotFoundError:
+                                    pass
                     seen.add(key)
                     tasks.append(task)
                 except Exception as exc:

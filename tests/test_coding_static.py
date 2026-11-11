@@ -144,6 +144,36 @@ class StaticCodingWorkflowTests(unittest.TestCase):
         self.assertEqual(source_file.read_text(encoding="utf-8"), source)
         self.assertFalse(task.joinpath("answer.txt").exists())
 
+    def test_skipped_rerun_removes_previous_done(self):
+        original = "def total(a,b):\n    return a-b\n"
+        task, source, tests = self.task("rerun", original, ["self.assertEqual(subject.total(3, 7), 10)"])
+        answer = task / "answer.txt"
+        self.assertEqual(self.run_static(), {"solved": 1, "skipped": 0, "failed": 0})
+        self.assertEqual(answer.read_text(encoding="utf-8"), "DONE\n")
+
+        updated_tests = tests.read_text(encoding="utf-8").replace(", 10)", ", 11)")
+        tests.write_text(updated_tests, encoding="utf-8")
+
+        self.assertEqual(asyncio.run(run_tasks(self.tasks)), {"solved": 0, "skipped": 1, "failed": 0})
+        self.assertEqual(answer.read_text(encoding="utf-8"), "DONE\n")
+        self.assertEqual(self.run_static(), {"solved": 0, "skipped": 1, "failed": 0})
+        self.assertFalse(answer.exists())
+        self.assertEqual(source.read_text(encoding="utf-8"), original.replace("-", "+"))
+        self.assertEqual(tests.read_text(encoding="utf-8"), updated_tests)
+
+    def test_reset_removes_answer_link_without_touching_target(self):
+        original = "def total(a,b):\n    return a-b\n"
+        task, _, _ = self.task("linked-answer", original, ["self.assertEqual(subject.total(3, 7), 11)"])
+        answer = task / "answer.txt"
+        archived_answer = self.tasks / "archived-answer.txt"
+        archived_answer.write_text("DONE\n", encoding="utf-8")
+        answer.symlink_to(archived_answer)
+
+        self.assertEqual(self.run_static(), {"solved": 0, "skipped": 1, "failed": 0})
+        self.assertFalse(answer.is_symlink())
+        self.assertFalse(answer.exists())
+        self.assertEqual(archived_answer.read_text(encoding="utf-8"), "DONE\n")
+
     def test_tests_changed_at_answer_publication_leave_source_and_answer_untouched(self):
         original = "def total(a,b):\n    return a-b\n"
         task, source, tests = self.task("late-change", original, ["self.assertEqual(subject.total(3, 7), 10)"])

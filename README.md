@@ -54,6 +54,7 @@ BUDGET=0 .venv/bin/python -B run_agent.py --tasks-dir /path/to/task-copies --sta
 ```
 
 В Docker добавьте `--static-coding` к аргументам `/app/run_agent.py`.
+При обнаружении Coding-задачи этот режим удаляет её прежний `answer.txt`.
 Решатель разбирает ограниченные исходники и `unittest`-проверки как данные,
 сам выбирает правку и сохраняет её вместе с `answer.txt` со строкой `DONE`.
 Режим требует точного подмножества поддерживаемых форм и пропускает
